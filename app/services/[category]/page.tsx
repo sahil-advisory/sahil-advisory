@@ -16,6 +16,7 @@ import CallbackForm from '@/app/components/CallbackForm'
 import PlanFinder from '@/app/components/PlanFinder'
 import { Container, Breadcrumbs, TrustStrip, ProcessSteps, SectionHeading, FaqAccordion, CtaBand, Button } from '@/app/components/ui'
 import { PlanCard, ExpertCard, TestimonialCard } from '@/app/components/cards'
+import { midSentence } from '@/app/lib/format'
 
 type Params = { category: string }
 
@@ -150,7 +151,7 @@ export default async function CategoryPage({ params }: { params: Promise<Params>
 
       {finder && finder.length > 0 && (
         <Container className="pb-16 lg:pb-20">
-          <PlanFinder title={`Find out which ${c.navLabel.toLowerCase()} plan you need`} subtitle="Select everything that applies. We recommend the right plan instantly." options={finder} basePath={path} priority={priority} names={names} />
+          <PlanFinder title={`Find out which ${midSentence(c.navLabel)} plan you need`} subtitle="Select everything that applies. We recommend the right plan instantly." options={finder} basePath={path} priority={priority} names={names} />
         </Container>
       )}
 
@@ -190,7 +191,7 @@ export default async function CategoryPage({ params }: { params: Promise<Params>
       </section>
 
       <Container className="py-16 lg:py-20">
-        <FaqAccordion faqs={c.faqs} title={`FAQ about ${c.navLabel.toLowerCase()}`} />
+        <FaqAccordion faqs={c.faqs} title={`FAQ about ${midSentence(c.navLabel)}`} />
         <div className="mt-16">
           <CtaBand />
         </div>

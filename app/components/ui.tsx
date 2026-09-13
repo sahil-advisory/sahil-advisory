@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import type { ReactNode } from 'react'
-import { ArrowRight, Check, ChevronDown } from 'lucide-react'
+import { ArrowRight, Check, ChevronDown, ClipboardList, UploadCloud, BadgeCheck, Clock } from 'lucide-react'
 import { formatINR } from '@/app/lib/format'
 
 export function Container({ children, className = '' }: { children: ReactNode; className?: string }) {
@@ -202,21 +202,44 @@ export function TrustStrip({ items }: { items: string[] }) {
   )
 }
 
-export function ProcessSteps({ steps, title = 'How it works' }: { steps: { title: string; desc: string; time: string }[]; title?: string }) {
+// Three steps as a connected sequence: numbered nodes on a track, an icon per
+// step, and the time as a pill. Reads as "this, then this, then this" rather
+// than three unrelated cards. Icons are positional (pick, upload, approve)
+// because every category's steps follow that shape.
+const STEP_ICONS = [ClipboardList, UploadCloud, BadgeCheck]
+
+export function ProcessSteps({ steps, title = 'How it works', desc }: { steps: { title: string; desc: string; time: string }[]; title?: string; desc?: string }) {
   return (
     <section>
-      <SectionHeading eyebrow="Simple process" title={title} />
-      <ol className="mt-10 grid gap-5 md:grid-cols-3">
-        {steps.map((s, i) => (
-          <li key={s.title} className="relative rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-card)]">
-            <span className="absolute right-5 top-4 font-mono text-4xl font-bold text-navy-100 select-none" aria-hidden>
-              {String(i + 1).padStart(2, '0')}
-            </span>
-            <h3 className="text-lg font-bold text-navy-900 pr-12">{s.title}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-text-2">{s.desc}</p>
-            <p className="mt-4 text-xs font-semibold text-green-700">{s.time}</p>
-          </li>
-        ))}
+      <SectionHeading eyebrow="Simple process" title={title} desc={desc} />
+      <ol className="relative mt-12 grid gap-8 md:grid-cols-3 md:gap-6">
+        {/* Track behind the nodes on desktop */}
+        <div aria-hidden className="absolute left-[16.66%] right-[16.66%] top-7 hidden h-0.5 bg-gradient-to-r from-green-100 via-green-500/60 to-green-100 md:block" />
+        {steps.map((s, i) => {
+          const Icon = STEP_ICONS[i] ?? Check
+          const last = i === steps.length - 1
+          return (
+            <li key={s.title} className="relative flex md:flex-col md:items-center md:text-center">
+              {/* Node */}
+              <div className="relative z-10 mr-4 flex shrink-0 flex-col items-center md:mr-0">
+                <span className={`flex h-14 w-14 items-center justify-center rounded-2xl ring-4 ring-white shadow-[var(--shadow-card)] ${last ? 'bg-green-600 text-white' : 'bg-navy-900 text-white'}`}>
+                  <Icon className="h-6 w-6" aria-hidden />
+                </span>
+                <span className="mt-2 font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-muted">Step {i + 1}</span>
+                {/* Vertical connector on mobile */}
+                {!last && <span aria-hidden className="mt-2 h-full w-0.5 flex-1 bg-green-100 md:hidden" />}
+              </div>
+              {/* Card */}
+              <div className="flex-1 rounded-2xl border border-border bg-card p-5 shadow-[var(--shadow-card)] md:mt-4 md:w-full">
+                <h3 className="text-lg font-bold text-navy-900">{s.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-text-2">{s.desc}</p>
+                <span className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-green-50 px-3 py-1 text-xs font-semibold text-green-700">
+                  <Clock className="h-3.5 w-3.5" aria-hidden /> {s.time}
+                </span>
+              </div>
+            </li>
+          )
+        })}
       </ol>
     </section>
   )

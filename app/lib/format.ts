@@ -34,3 +34,14 @@ export function daysUntil(d: Date | string, from: Date = new Date()): number {
   const ms = target.getTime() - from.getTime()
   return Math.ceil(ms / 86_400_000)
 }
+
+// Lowercase a name for use mid-sentence without flattening acronyms.
+// "ITR for NRIs" stays "ITR for NRIs"; "Private Limited Company" becomes
+// "private limited company"; "Tax Audit under Section 44AB" becomes
+// "tax audit under section 44AB". Only plain capitalised words change.
+export function midSentence(s: string): string {
+  return s
+    .split(' ')
+    .map((w) => (/^[A-Z][a-z]+$/.test(w) ? w.toLowerCase() : w))
+    .join(' ')
+}

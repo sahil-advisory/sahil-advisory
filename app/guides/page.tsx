@@ -8,6 +8,7 @@ import { REVIEWER } from '@/app/lib/experts'
 import JsonLd from '@/app/components/JsonLd'
 import { Container, Breadcrumbs, SectionHeading, CtaBand } from '@/app/components/ui'
 import { GuideCard } from '@/app/components/cards'
+import { midSentence } from '@/app/lib/format'
 
 export const metadata: Metadata = buildMetadata({
   title: 'Tax Guides | ITR, GST, TDS and Tax Saving Explained',
@@ -42,7 +43,7 @@ export default function GuidesHub() {
                     <h2 className="text-2xl font-extrabold tracking-tight text-navy-900">{c.name}</h2>
                     <p className="mt-1 text-sm text-text-2">{c.description}</p>
                   </div>
-                  <Link href={`/guides/${c.id}`} className="shrink-0 text-sm font-semibold text-green-700 hover:underline">All {c.name.toLowerCase()} →</Link>
+                  <Link href={`/guides/${c.id}`} className="shrink-0 text-sm font-semibold text-green-700 hover:underline">All {midSentence(c.name)} →</Link>
                 </div>
                 <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                   {items.slice(0, 3).map((g) => <GuideCard key={g.slug} guide={g} />)}

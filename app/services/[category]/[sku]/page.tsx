@@ -18,6 +18,7 @@ import PageEvent from '@/app/components/PageEvent'
 import RelatedReference from '@/app/components/reference/RelatedReference'
 import { Container, Breadcrumbs, TrustStrip, ProcessSteps, FaqAccordion, CtaBand, CheckList, PriceTag, Badge, SectionHeading } from '@/app/components/ui'
 import { PlanCard, ExpertCard, CalculatorCard, GuideCard } from '@/app/components/cards'
+import { midSentence } from '@/app/lib/format'
 
 type Params = { category: string; sku: string }
 
@@ -155,7 +156,7 @@ export default async function SkuPage({ params }: { params: Promise<Params> }) {
 
       <section className="bg-bg-alt py-16 lg:py-20">
         <Container>
-          <ProcessSteps steps={c.steps} title={`How ${s.name.toLowerCase()} works`} />
+          <ProcessSteps steps={c.steps} title={`How ${midSentence(s.name)} works`} />
         </Container>
       </section>
 
@@ -180,14 +181,14 @@ export default async function SkuPage({ params }: { params: Promise<Params> }) {
             <div className="mt-6"><ExpertCard expert={REVIEWER} /></div>
           </div>
           <div>
-            <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-muted">Other {c.navLabel.toLowerCase()} plans</p>
+            <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-muted">Other {midSentence(c.navLabel)} plans</p>
             <div className="mt-4 grid gap-4 sm:grid-cols-3">
               {others.map((o) => (
                 <PlanCard key={o.slug} service={o} compact />
               ))}
             </div>
             <Link href={catPath} className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-green-700 hover:underline">
-              All {c.navLabel.toLowerCase()} plans <ArrowRight className="h-4 w-4" />
+              All {midSentence(c.navLabel)} plans <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
         </Container>
@@ -196,14 +197,14 @@ export default async function SkuPage({ params }: { params: Promise<Params> }) {
       <Container className="py-16 lg:py-20">
         <RelatedReference service={s.slug} title="Sections and forms this plan covers" />
         <div className="mt-12" />
-        <FaqAccordion faqs={faqs} title={`FAQ about ${s.name.toLowerCase()}`} />
+        <FaqAccordion faqs={faqs} title={`FAQ about ${midSentence(s.name)}`} />
         {guides.length > 0 && (
           <p className="mt-6 text-center text-sm text-muted">
             Read next: {guides.map((g, i) => (<span key={g.slug}>{i > 0 && ' · '}<Link href={guidePath(g)} className="font-semibold text-green-700 hover:underline">{g.title}</Link></span>))}
           </p>
         )}
         <div className="mt-16">
-          <CtaBand title={`Ready to start ${s.name.toLowerCase()}?`} desc="Message us on WhatsApp with the service name, or request a callback. We confirm the price, list the documents and get going the same day." primary={{ label: 'Start on WhatsApp', href: wa }} />
+          <CtaBand title={`Ready to start ${midSentence(s.name)}?`} desc="Message us on WhatsApp with the service name, or request a callback. We confirm the price, list the documents and get going the same day." primary={{ label: 'Start on WhatsApp', href: wa }} />
         </div>
       </Container>
     </>

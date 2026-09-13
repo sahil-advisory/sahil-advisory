@@ -4,7 +4,7 @@ import { ArrowRight } from 'lucide-react'
 import { buildMetadata, breadcrumbJsonLd, graph, webPageJsonLd } from '@/app/lib/seo'
 import { BASE_URL } from '@/app/lib/site'
 import { CATEGORIES, CATEGORY_PATH, CONSULTATIONS, servicesIn } from '@/app/lib/services'
-import { formatINR } from '@/app/lib/format'
+import { formatINR, midSentence } from '@/app/lib/format'
 import JsonLd from '@/app/components/JsonLd'
 import { Button, Container, SectionHeading, Breadcrumbs, CtaBand, CheckList } from '@/app/components/ui'
 
@@ -56,7 +56,7 @@ export default function ServicesHub() {
                 </div>
                 <CheckList className="mt-5" items={items.slice(0, 5).map((s) => s.name)} />
                 <div className="mt-auto flex flex-wrap gap-3 pt-6">
-                  <Button href={CATEGORY_PATH[c.id]} icon>View {c.navLabel.toLowerCase()} plans</Button>
+                  <Button href={CATEGORY_PATH[c.id]} icon>View {midSentence(c.navLabel)} plans</Button>
                   <span className="self-center text-xs text-muted">{items.length} services</span>
                 </div>
               </article>
