@@ -1,4 +1,5 @@
 import { SITE, BASE_URL } from '@/app/lib/site'
+import { leadEmailHtml, leadEmailSubject, leadEmailText, type LeadEmailInput } from './lead-email'
 
 // One sender for every email the site produces: lead alerts today, sign-in
 // links, and later order updates. Two providers are supported so the choice
@@ -16,6 +17,7 @@ import { SITE, BASE_URL } from '@/app/lib/site'
 export type EmailResult = { sent: true; provider: string; id?: string } | { sent: false; reason: string }
 
 export type EmailMessage = {
+  /** One address, or several comma-separated. */
   to: string
   subject: string
   text: string
@@ -45,6 +47,10 @@ export function emailFrom(): { email: string; name: string } {
 
 const TIMEOUT_MS = 8000
 
+export function recipients(to: string): string[] {
+  return to.split(',').map((e) => e.trim()).filter(Boolean)
+}
+
 async function viaBrevo(msg: EmailMessage): Promise<EmailResult> {
   const key = process.env.BREVO_API_KEY
   if (!key) return { sent: false, reason: 'BREVO_API_KEY not set' }
@@ -54,7 +60,7 @@ async function viaBrevo(msg: EmailMessage): Promise<EmailResult> {
     headers: { 'api-key': key, 'Content-Type': 'application/json', Accept: 'application/json' },
     body: JSON.stringify({
       sender: { email: from.email, name: from.name },
-      to: [{ email: msg.to }],
+      to: recipients(msg.to).map((email) => ({ email })),
       subject: msg.subject,
       textContent: msg.text,
       ...(msg.html ? { htmlContent: msg.html } : {}),
@@ -79,7 +85,7 @@ async function viaResend(msg: EmailMessage): Promise<EmailResult> {
     headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
     body: JSON.stringify({
       from: `${from.name} <${from.email}>`,
-      to: [msg.to],
+      to: recipients(msg.to),
       subject: msg.subject,
       text: msg.text,
       ...(msg.html ? { html: msg.html } : {}),
@@ -105,33 +111,13 @@ export async function sendEmail(msg: EmailMessage): Promise<EmailResult> {
   }
 }
 
-export async function sendLeadEmail(input: {
-  name: string
-  phone: string
-  service?: string
-  detail?: string
-  message?: string
-  sourceUrl?: string
-  leadId?: string
-}): Promise<EmailResult> {
+export async function sendLeadEmail(input: LeadEmailInput): Promise<EmailResult> {
   const to = process.env.LEADS_TO_EMAIL || SITE.email
-  const lines = [
-    `Name: ${input.name}`,
-    `Phone: ${input.phone}`,
-    `Service: ${input.service || '-'}`,
-    `Detail: ${input.detail || '-'}`,
-    `Message: ${input.message || '-'}`,
-    `Page: ${input.sourceUrl || '-'}`,
-    input.leadId ? `Lead id: ${input.leadId}` : '',
-    '',
-    `Call: tel:+91${input.phone}`,
-    `WhatsApp: https://wa.me/91${input.phone}`,
-    input.leadId ? `Open in admin: ${BASE_URL}/admin/leads/${input.leadId}` : '',
-  ].filter(Boolean)
   return sendEmail({
     to,
-    replyTo: to,
-    subject: `New callback request: ${input.name} (${input.service || input.detail || 'general'})`,
-    text: lines.join('\n'),
+    replyTo: recipients(to)[0],
+    subject: leadEmailSubject(input),
+    text: leadEmailText(input),
+    html: leadEmailHtml(input),
   })
 }

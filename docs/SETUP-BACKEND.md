@@ -40,8 +40,10 @@ from day one.
 BREVO_API_KEY=xkeysib-...
 EMAIL_FROM=sahiladvisory1@gmail.com
 EMAIL_FROM_NAME=Sahil Advisory
-LEADS_TO_EMAIL=sahiladvisory1@gmail.com
+LEADS_TO_EMAIL=sahiladvisory1@gmail.com,sahiladvisorytax@gmail.com
 ```
+
+`LEADS_TO_EMAIL` takes several addresses separated by commas.
 
 The free plan adds a short "sent with Brevo" line to each email. When you
 own a domain, add it under **Domains**, follow the DNS records, and switch

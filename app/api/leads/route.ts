@@ -129,7 +129,7 @@ export async function POST(request: Request) {
         templateParams: [name, `+91${phone}`, service || 'General enquiry', detail || '-'],
         text: waText,
       }),
-      sendLeadEmail({ name, phone, service, detail, message, sourceUrl, leadId }),
+      sendLeadEmail({ name, phone, email, service, detail, message, sourceUrl, referrer: request.headers.get('referer') ?? undefined, utm: utmFrom(sourceUrl), leadId, receivedAt: new Date() }),
     ])
 
     if (!wa.sent) console.warn('[lead] whatsapp not sent:', wa.reason)
@@ -159,7 +159,7 @@ export async function POST(request: Request) {
           provider: mail.sent ? mail.provider : emailProvider(),
           kind: 'lead_alert',
           to: emailTo,
-          subject: `New callback request: ${name}`,
+          subject: `New lead: ${name}`,
           status: statusOf(mail),
           error: mail.sent ? null : mail.reason,
         },
