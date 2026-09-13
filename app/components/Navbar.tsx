@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, type CSSProperties } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Menu, X, ChevronDown, FileText, Receipt, Percent, Building2, ScrollText, Headset, Calculator, BookOpen, CalendarClock, ClipboardCheck } from 'lucide-react'
@@ -65,13 +65,23 @@ export default function Navbar() {
 
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : ''
+    if (!open) return
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setOpen(false)
+    }
+    window.addEventListener('keydown', onKey)
     return () => {
       document.body.style.overflow = ''
+      window.removeEventListener('keydown', onKey)
     }
   }, [open])
 
+  // The blur sits on the bar, not the header: backdrop-filter turns its
+  // element into the containing block for fixed descendants, which would
+  // pin the mobile drawer to the 72px bar instead of the viewport.
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/85">
+    <header className="sticky top-0 z-50">
+      <div className="relative z-10 border-b border-border bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/85">
       <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2.5" aria-label={`${SITE.name} home`}>
           <Logo size="sm" tagline />
@@ -128,30 +138,54 @@ export default function Navbar() {
           </Link>
         </div>
 
-        <button type="button" onClick={() => setOpen(!open)} className="rounded-lg p-2 text-navy-900 lg:hidden" aria-label="Toggle menu" aria-expanded={open}>
-          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+        <button
+          type="button"
+          onClick={() => setOpen(!open)}
+          className="relative h-10 w-10 rounded-lg text-navy-900 transition-colors hover:bg-bg-alt lg:hidden"
+          aria-label={open ? 'Close menu' : 'Open menu'}
+          aria-expanded={open}
+          aria-controls="mobile-menu"
+        >
+          {/* Both icons stay mounted and cross-fade with a quarter turn. */}
+          <Menu className={`absolute inset-0 m-auto h-6 w-6 transition-[opacity,transform] duration-300 ease-out motion-reduce:transition-none ${open ? 'rotate-90 opacity-0' : 'rotate-0 opacity-100'}`} />
+          <X className={`absolute inset-0 m-auto h-6 w-6 transition-[opacity,transform] duration-300 ease-out motion-reduce:transition-none ${open ? 'rotate-0 opacity-100' : '-rotate-90 opacity-0'}`} />
         </button>
       </div>
+      </div>
 
-      {open && (
-        <div className="fixed inset-x-0 top-[72px] bottom-0 overflow-y-auto border-t border-border bg-white lg:hidden">
-          <div className="space-y-6 px-4 py-6">
-            <MegaGroup title="Returns" items={returns} onNav={() => setOpen(false)} />
-            <MegaGroup title="Business and compliance" items={business} onNav={() => setOpen(false)} />
-            <MegaGroup title="Resources" items={resources} onNav={() => setOpen(false)} />
-            <div className="grid grid-cols-2 gap-2 border-t border-border pt-5 text-sm font-semibold text-navy-900">
-              <Link href="/pricing" className="rounded-lg bg-bg-alt px-3 py-2.5">Pricing</Link>
-              <Link href="/experts" className="rounded-lg bg-bg-alt px-3 py-2.5">Experts</Link>
-              <Link href="/about" className="rounded-lg bg-bg-alt px-3 py-2.5">About</Link>
-              <Link href="/contact" className="rounded-lg bg-bg-alt px-3 py-2.5">Contact</Link>
+      {/* Mobile drawer. Stays mounted so the close transition can play;
+          `inert` keeps its links out of the tab order while hidden. */}
+      <div
+        id="mobile-menu"
+        inert={!open}
+        aria-hidden={!open}
+        className={`fixed inset-x-0 bottom-0 top-[72px] overflow-y-auto overscroll-contain bg-white transition-[opacity,transform] duration-300 ease-out motion-reduce:transition-none lg:hidden ${open ? 'translate-y-0 opacity-100' : 'pointer-events-none -translate-y-3 opacity-0'}`}
+      >
+        {/* Keyed on `open` so the stagger replays each time the drawer opens. */}
+        <div key={String(open)} className="space-y-6 px-4 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-6">
+            {[
+              { title: 'Returns', items: returns },
+              { title: 'Business and compliance', items: business },
+              { title: 'Resources', items: resources },
+            ].map((g, i) => (
+              <div key={g.title} className="drawer-item" style={{ '--delay': `${60 + i * 70}ms` } as CSSProperties}>
+                <MegaGroup title={g.title} items={g.items} onNav={() => setOpen(false)} />
+              </div>
+            ))}
+            <div className="drawer-item grid grid-cols-2 gap-2 border-t border-border pt-5 text-sm font-semibold text-navy-900" style={{ '--delay': '270ms' } as CSSProperties}>
+              <Link href="/pricing" className="rounded-lg bg-bg-alt px-3 py-2.5 transition-colors active:bg-green-50">Pricing</Link>
+              <Link href="/experts" className="rounded-lg bg-bg-alt px-3 py-2.5 transition-colors active:bg-green-50">Experts</Link>
+              <Link href="/about" className="rounded-lg bg-bg-alt px-3 py-2.5 transition-colors active:bg-green-50">About</Link>
+              <Link href="/contact" className="rounded-lg bg-bg-alt px-3 py-2.5 transition-colors active:bg-green-50">Contact</Link>
             </div>
-            <Link href="/consult" className="block rounded-lg bg-green-600 px-4 py-3 text-center text-sm font-semibold text-white">
-              Talk to an expert
-            </Link>
-            <a href={`tel:${SITE.phoneE164}`} onClick={() => track('call_click', { placement: 'nav_mobile' })} className="block text-center text-sm font-semibold text-navy-900 font-mono">{SITE.phoneDisplay}</a>
-          </div>
+            <div className="drawer-item space-y-3" style={{ '--delay': '340ms' } as CSSProperties}>
+              <Link href="/consult" className="block rounded-lg bg-green-600 px-4 py-3 text-center text-sm font-semibold text-white transition-colors active:bg-green-700">
+                Talk to an expert
+              </Link>
+              <a href={`tel:${SITE.phoneE164}`} onClick={() => track('call_click', { placement: 'nav_mobile' })} className="block text-center text-sm font-semibold text-navy-900 font-mono">{SITE.phoneDisplay}</a>
+            </div>
         </div>
-      )}
+      </div>
     </header>
   )
 }
