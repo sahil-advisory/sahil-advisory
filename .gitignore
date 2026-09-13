@@ -42,6 +42,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Supplied logo concept (raster, 1.1 MB, black background). The site uses the
-# vector rebuild in app/components/Logo.tsx; keep the source out of the repo.
+# Supplied logo rasters. The site uses the vector rebuild in
+# app/components/Logo.tsx; keep the raster sources out of the repo.
 /logo.png
+/logo-2.png

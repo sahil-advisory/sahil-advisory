@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation'
 import { Menu, X, ChevronDown, FileText, Receipt, Percent, Building2, ScrollText, Headset, Calculator, BookOpen, CalendarClock, ClipboardCheck } from 'lucide-react'
 import { SITE } from '@/app/lib/site'
 import { track } from '@/app/lib/analytics'
-import { LogoMark } from './Logo'
+import { LogoLockup } from './Logo'
 
 const returns = [
   { label: 'ITR Filing', desc: 'Salaried, traders, freelancers, NRI', href: '/services/itr', icon: FileText },
@@ -74,11 +74,7 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 border-b border-border bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/85">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2.5" aria-label={`${SITE.name} home`}>
-          <LogoMark size={40} />
-          <span className="leading-tight">
-            <span className="block text-base font-extrabold tracking-tight text-navy-900">{SITE.name}</span>
-            <span className="block text-[10px] font-semibold uppercase tracking-[0.18em] text-muted">Tax and Compliance</span>
-          </span>
+          <LogoLockup height={40} />
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex" aria-label="Main">

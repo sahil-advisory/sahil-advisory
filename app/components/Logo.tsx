@@ -1,42 +1,66 @@
-// Brand mark, rebuilt as vector from the supplied concept: a serif "SA"
-// monogram split by a band carrying the name. Inline SVG so it is crisp at
-// any size, inherits the page fonts, and costs no request.
-//
-// Two variants:
-//   mark  square, for the navbar, favicons and small placements
-//   full  mark plus wordmark and tagline, for the footer and print
-//
-// The monogram uses a serif stack on purpose; it is the one place on the
-// site that departs from Geist, and it is what makes the mark feel like a
-// firm rather than an app.
+// Brand mark, rebuilt as vector from the supplied logo-2.png so it is crisp
+// at any size and sits on any background. The geometry is traced from the
+// raster: a green peak with a notch over a dark, open-bottomed "A" band.
+// Colours are sampled from the file. Wordmark is two-tone, "Sahil" dark and
+// "Advisory" green, set in the page font.
 
-const SERIF = "Georgia, 'Times New Roman', 'Noto Serif', serif"
+export const BRAND = {
+  green: '#58AE5A',
+  dark: '#12181B',
+  tagline: 'You grow, we handle it',
+} as const
 
-export function LogoMark({ size = 36, className = '', tone = 'navy' }: { size?: number; className?: string; tone?: 'navy' | 'white' }) {
-  const letter = tone === 'navy' ? '#0B1F3A' : '#FFFFFF'
-  const band = '#059669'
-  // No text in the band at this size: at 40px it would be illegible, and the
-  // wordmark sits beside the mark wherever it is used.
+// The A mark on a 300x300 box. Reused by the favicon and OG card.
+export function MarkPaths({ green = BRAND.green, dark = BRAND.dark, notch = '#FFFFFF' }: { green?: string; dark?: string; notch?: string }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 64 64" role="img" aria-label="Sahil Advisory" className={className}>
-      <text x="32" y="47" textAnchor="middle" fontFamily={SERIF} fontWeight="700" fontSize="48" fill={letter} letterSpacing="-2.5">SA</text>
-      <rect x="6" y="31" width="52" height="7" rx="1.5" fill={band} />
+    <>
+      {/* peak */}
+      <path d="M148 0 L228 155 L68 155 Z" fill={green} />
+      {/* notch that turns the peak into an A */}
+      <path d="M148 112 L170 155 L126 155 Z" fill={notch} />
+      {/* legs: outer trapezoid minus inner trapezoid */}
+      <path d="M0 300 L68 180 L228 180 L296 300 L236 300 L192 226 L104 226 L60 300 Z" fill={dark} />
+    </>
+  )
+}
+
+export function LogoMark({ size = 40, className = '', onDark = false }: { size?: number; className?: string; onDark?: boolean }) {
+  return (
+    <svg width={size} height={size} viewBox="-10 -10 320 320" role="img" aria-label="Sahil Advisory" className={className}>
+      <MarkPaths dark={onDark ? '#FFFFFF' : BRAND.dark} notch={onDark ? '#0B1F3A' : '#FFFFFF'} />
     </svg>
   )
 }
 
-export function LogoFull({ height = 64, className = '', tone = 'navy', tagline = true }: { height?: number; className?: string; tone?: 'navy' | 'white'; tagline?: boolean }) {
-  const letter = tone === 'navy' ? '#0B1F3A' : '#FFFFFF'
-  const muted = tone === 'navy' ? '#64748B' : 'rgba(255,255,255,0.65)'
-  const band = '#059669'
-  const width = Math.round((height * 240) / 100)
+// Horizontal lockup: mark on the left, two-line wordmark on the right,
+// optional tagline. Height sets the whole thing; width follows.
+export function LogoLockup({
+  height = 44,
+  className = '',
+  onDark = false,
+  tagline = false,
+}: {
+  height?: number
+  className?: string
+  onDark?: boolean
+  tagline?: boolean
+}) {
+  const dark = onDark ? '#FFFFFF' : BRAND.dark
+  const muted = onDark ? 'rgba(255,255,255,0.7)' : '#3A4149'
+  // Layout box traced from the original: mark 300 wide, then the wordmark
+  // spanning about 2.2 mark-widths, tagline centred under the whole lockup.
+  const H = tagline ? 372 : 300
+  const W = 980
+  const width = Math.round((height * W) / H)
   return (
-    <svg width={width} height={height} viewBox="0 0 240 100" role="img" aria-label="Sahil Advisory. You grow, we handle it." className={className}>
-      <text x="120" y="70" textAnchor="middle" fontFamily={SERIF} fontWeight="700" fontSize="74" fill={letter} letterSpacing="-3">SA</text>
-      <rect x="20" y="44" width="200" height="14" rx="2" fill={band} />
-      <text x="120" y="54.6" textAnchor="middle" fontFamily="inherit" fontWeight="700" fontSize="8.6" letterSpacing="2.6" fill="#FFFFFF">SAHIL ADVISORY</text>
+    <svg width={width} height={height} viewBox={`0 0 ${W} ${H}`} role="img" aria-label={`Sahil Advisory. ${BRAND.tagline}.`} className={className}>
+      <MarkPaths dark={dark} notch={onDark ? '#0B1F3A' : '#FFFFFF'} />
+      <text x="336" y="142" fontFamily="inherit" fontWeight="800" fontSize="150" letterSpacing="-5" fill={dark}>Sahil</text>
+      <text x="336" y="288" fontFamily="inherit" fontWeight="800" fontSize="150" letterSpacing="-5" fill={BRAND.green}>Advisory</text>
       {tagline && (
-        <text x="120" y="92" textAnchor="middle" fontFamily="inherit" fontWeight="600" fontSize="7" letterSpacing="2.2" fill={muted}>YOU GROW, WE HANDLE IT</text>
+        <text x="490" y="356" textAnchor="middle" fontFamily="inherit" fontWeight="600" fontSize="34" letterSpacing="13" fill={muted}>
+          {BRAND.tagline.toUpperCase().replace(',', '')}
+        </text>
       )}
     </svg>
   )
