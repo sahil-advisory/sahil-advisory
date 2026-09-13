@@ -34,7 +34,7 @@ export const SITE = {
   hours: 'Mon to Sat, 10 AM to 7 PM IST',
   openingHours: 'Mo-Sa 10:00-19:00',
   address: {
-    street: 'House 2032B, Block 22, CHB Flats, Phase 9, Sector 63',
+    street: 'CHB Flats, Phase 9, Sector 63',
     locality: 'Chandigarh',
     region: 'Chandigarh',
     postalCode: '160047',

@@ -187,7 +187,7 @@ export const guide: Guide = {
     {
       type: 'service-card',
       serviceSlug: 'itr-capital-gains',
-      text: 'Sold property or have hundreds of equity transactions? We compute gains with grandfathering, run the 12.5% versus indexed 20% comparison, plan 54, 54F and 54EC claims and file ITR-2 or ITR-3. From ₹2,999.',
+      text: 'Sold property or have hundreds of equity transactions? We compute gains with grandfathering, run the 12.5% versus indexed 20% comparison, plan 54, 54F and 54EC claims and file ITR-2 or ITR-3. From ₹1,999.',
     },
     { type: 'heading', text: 'Set-off and carry forward of capital losses', id: 'set-off-carry-forward' },
     {

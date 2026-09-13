@@ -21,6 +21,8 @@ export interface Service {
   mrp: number
   price: number | null // null = quoted after triage / scope review
   quoteLabel?: string // overrides the default "Quote after free triage" text
+  priceFrom?: boolean // price is a minimum; shown as "from ₹x"
+  priceNote?: string // what the final fee depends on, shown under the price
   popular?: boolean
   includes: string[]
   documents: string[]
@@ -68,10 +70,10 @@ export const CATEGORIES: ServiceCategory[] = [
     headline: 'Never miss an ITR deadline.',
     headlineEmphasis: 'File accurately, maximise your refund.',
     intro:
-      'Fixed-price ITR filing for salaried employees, investors, F&O traders, freelancers, businesses and NRIs. A qualified professional prepares, you approve, we file and e-verify.',
-    metaTitle: 'ITR Filing Online AY 2026-27 from ₹999 | Expert Assisted',
+      'Best-price ITR filing for salaried employees, investors, F&O traders, freelancers, businesses and NRIs. A qualified professional prepares, you approve, we file and e-verify.',
+    metaTitle: 'ITR Filing Online AY 2026-27 from ₹499 | Expert Assisted',
     metaDescription:
-      'Expert-assisted income tax return filing for AY 2026-27. Fixed prices from ₹999 for salaried, capital gains, F&O, freelancer, business and NRI returns. Draft approval before filing, WhatsApp updates.',
+      'Expert-assisted income tax return filing for AY 2026-27. Fixed prices from ₹499 for salaried, capital gains, F&O, freelancer, business and NRI returns. Draft approval before filing, WhatsApp updates.',
     keywords: ['itr filing online', 'income tax return filing', 'itr filing services', 'itr filing for salaried', 'itr filing last date 2026', 'ca for itr filing'],
     steps: [
       { title: 'Pick your plan', desc: 'Use the plan finder or choose directly. Pay online, or request a callback if unsure.', time: 'Under 2 minutes' },
@@ -305,7 +307,7 @@ export const SERVICES: Service[] = [
     slug: 'itr-salaried', category: 'itr', name: 'ITR for Salaried', whoFor: 'One Form 16, interest income, one house property',
     shortDesc: 'Regime comparison, AIS and 26AS reconciliation, e-verification and a basic 143(1) reply if needed.',
     longDesc: 'Built for employees with a single Form 16. Your expert compares old and new regimes on your actual numbers, reconciles TDS with Form 26AS and AIS, claims deductions you are entitled to, files ITR-1 or ITR-2 and guides you through e-verification.',
-    unit: 'one_time', mrp: 1499, price: 999, popular: true,
+    unit: 'one_time', mrp: 999, price: 499, popular: true,
     includes: ['Old vs new regime comparison on your numbers', 'Form 16, AIS and 26AS reconciliation', 'HRA, 80C, 80D, home loan interest claims', 'ITR-1 or ITR-2 filing and e-verify guidance', 'Basic 143(1) intimation reply included'],
     documents: ['PAN and Aadhaar', 'Form 16', 'Bank interest certificate or statement', 'AIS and Form 26AS (we can download with your consent)', 'Rent receipts if claiming HRA', 'Investment proofs if using the old regime'],
     turnaroundDays: '1 business day',
@@ -320,7 +322,7 @@ export const SERVICES: Service[] = [
     slug: 'itr-salaried-plus', category: 'itr', name: 'ITR for Salaried Plus', whoFor: 'Multiple Form 16s, HRA, capital gains up to 50 transactions, rental income',
     shortDesc: 'Everything in Salaried plus capital gains computation from broker and mutual fund statements.',
     longDesc: 'For employees who changed jobs, own property that earns rent, or have equity and mutual fund gains. Includes capital gains computation from broker P&L, grandfathering for pre-2018 holdings and rental income with 24(b) interest.',
-    unit: 'one_time', mrp: 2499, price: 1999,
+    unit: 'one_time', mrp: 1999, price: 1299,
     includes: ['Everything in ITR for Salaried', 'Multiple Form 16 consolidation', 'Capital gains up to 50 transactions', 'Rental income and home loan interest', 'Loss set-off and carry-forward'],
     documents: ['All Form 16s', 'Broker capital gains statement', 'Mutual fund capital gains statement (CAMS / KFintech)', 'Rent agreement and loan interest certificate', 'AIS and Form 26AS'],
     turnaroundDays: '2 business days',
@@ -332,7 +334,7 @@ export const SERVICES: Service[] = [
     slug: 'itr-capital-gains', category: 'itr', name: 'ITR for Investors and Capital Gains', whoFor: 'Equity, mutual funds, property, bonds, ESOP/RSU, unlimited transactions',
     shortDesc: 'Full capital gains computation with grandfathering, indexation choice for property and set-off planning.',
     longDesc: 'For active investors and anyone who sold property this year. Covers STCG and LTCG on listed equity, debt and hybrid funds, property with the 12.5% versus indexed 20% choice, ESOP and RSU perquisites, and sections 54, 54EC and 54F exemptions.',
-    unit: 'one_time', mrp: 3499, price: 2999,
+    unit: 'one_time', mrp: 2999, price: 1999,
     includes: ['Unlimited equity and mutual fund transactions', 'Property sale with 54 / 54F / 54EC planning', 'ESOP, RSU and foreign stock reporting', 'Schedule FA for foreign assets', 'Loss carry-forward tracking'],
     documents: ['Broker tax P&L', 'Mutual fund capital gains statements', 'Property sale deed and purchase documents', 'ESOP / RSU statements', 'AIS and Form 26AS'],
     turnaroundDays: '2 to 3 business days',
@@ -344,7 +346,7 @@ export const SERVICES: Service[] = [
     slug: 'itr-fno-trader', category: 'itr', name: 'ITR for F&O and Intraday Traders', whoFor: 'Futures, options, intraday equity, commodity and currency traders',
     shortDesc: 'Turnover computation, 44AD decision, loss carry-forward and tax audit arranged if thresholds are crossed.',
     longDesc: 'F&O and intraday income is business income and needs ITR-3. We compute turnover the way the ICAI guidance note prescribes, decide whether presumptive 44AD applies, set off and carry forward losses for 8 years, and flag audit if required. Audit-tier work is delivered by empanelled CAs.',
-    unit: 'one_time', mrp: 2999, price: 1999, popular: true,
+    unit: 'one_time', mrp: 3499, price: 2499, popular: true,
     includes: ['Turnover computation from broker P&L', '44AD versus regular books decision', 'ITR-3 with P&L and balance sheet', 'Loss carry-forward for 8 years', 'Tax audit arranged with an empanelled CA if thresholds are crossed'],
     documents: ['Broker tax P&L (Zerodha, Groww, Upstox, Angel etc.)', 'Contract notes if turnover is disputed', 'Bank statement', 'Salary Form 16 if applicable', 'AIS and Form 26AS'],
     turnaroundDays: '2 to 3 business days',
@@ -359,7 +361,7 @@ export const SERVICES: Service[] = [
     slug: 'itr-freelancer', category: 'itr', name: 'ITR for Freelancers and Consultants', whoFor: 'Professionals under 44ADA, gig workers, creators',
     shortDesc: 'Presumptive 44ADA filing at 50% of receipts, GST advisory note and advance tax schedule.',
     longDesc: 'For designers, developers, doctors, consultants, creators and gig workers. We file ITR-4 under 44ADA where eligible, or ITR-3 with expenses where that saves more, and give you a GST and advance tax plan for next year.',
-    unit: 'one_time', mrp: 2499, price: 1999,
+    unit: 'one_time', mrp: 3499, price: 2499,
     includes: ['44ADA versus actual-expense comparison', 'ITR-4 or ITR-3 filing', 'TDS reconciliation from clients (194J)', 'GST applicability note', 'Advance tax calendar for next year'],
     documents: ['Bank statements for the year', 'Invoices or receipts summary', 'Form 26AS and AIS', 'Expense summary if not using 44ADA'],
     turnaroundDays: '2 business days',
@@ -371,7 +373,7 @@ export const SERVICES: Service[] = [
     slug: 'itr-business', category: 'itr', name: 'ITR for Business and Proprietorship', whoFor: 'Shops, traders, agencies with books of account',
     shortDesc: 'P&L and balance sheet preparation, depreciation, ITR-3 filing, GST turnover reconciliation.',
     longDesc: 'For proprietors who maintain books or need them prepared. We compile P&L and balance sheet from your bank and GST data, compute depreciation, reconcile turnover with GSTR-1 and file ITR-3. Audit cases handled with an empanelled CA.',
-    unit: 'one_time', mrp: 3999, price: 2999,
+    unit: 'one_time', mrp: 3999, price: 2999, priceFrom: true, priceNote: 'Minimum fee. Final fee depends on turnover and volume of transactions.',
     includes: ['P&L and balance sheet preparation', 'Depreciation schedule', 'GST turnover reconciliation', 'ITR-3 filing', 'Audit referral if turnover thresholds crossed'],
     documents: ['Bank statements', 'Sales and purchase registers or GST returns', 'Fixed asset details', 'Loan statements', 'AIS and Form 26AS'],
     turnaroundDays: '3 to 5 business days',
@@ -383,7 +385,7 @@ export const SERVICES: Service[] = [
     slug: 'itr-nri', category: 'itr', name: 'ITR for NRIs', whoFor: 'NRIs, OCIs, returning Indians with Indian income',
     shortDesc: 'Residential status, DTAA relief, NRO interest, rental income, property sale and Schedule FA.',
     longDesc: 'For non-residents with Indian rent, interest, capital gains or property sales, and for returning Indians in their transition year. Includes residential status determination, DTAA relief with TRC, Form 10F guidance and refund of excess TDS on NRO accounts.',
-    unit: 'one_time', mrp: 5999, price: 4999,
+    unit: 'one_time', mrp: 5999, price: 4999, priceFrom: true, priceNote: 'Minimum fee. Final fee depends on volume of transactions.',
     includes: ['Residential status and RNOR check', 'DTAA relief and Form 10F guidance', 'NRO interest and rent reporting', 'Property sale gains and lower TDS certificate advice', 'Refund tracking of excess TDS'],
     documents: ['Passport with travel dates', 'NRO and NRE statements', 'Tax residency certificate if claiming DTAA', 'Property or rent documents', 'AIS and Form 26AS'],
     turnaroundDays: '3 business days',
@@ -394,8 +396,8 @@ export const SERVICES: Service[] = [
   {
     slug: 'itr-belated', category: 'itr', name: 'Belated or Revised Return', whoFor: 'Missed the 31 July deadline, or need to correct a filed return',
     shortDesc: 'Belated return by 31 December with 234F fee computed, or revised return to fix errors.',
-    longDesc: 'Missed the due date? A belated return can be filed until 31 December 2026 with a late fee of ₹1,000 or ₹5,000. Already filed but found a mistake? A revised return replaces it. Both are handled at the same fixed fee.',
-    unit: 'one_time', mrp: 1999, price: 1499,
+    longDesc: 'Missed the due date? A belated return can be filed until 31 December 2026 with a late fee of ₹1,000 or ₹5,000. Already filed but found a mistake? A revised return replaces it. Both start at the same minimum fee; the final fee depends on which ITR form applies.',
+    unit: 'one_time', mrp: 2499, price: 1999, priceFrom: true, priceNote: 'Minimum fee. Final fee depends on the ITR form.',
     includes: ['Late fee and interest computation', 'Belated or revised ITR filing', 'Original return reconciliation', 'E-verify guidance'],
     documents: ['Same documents as the original return', 'Acknowledgement of original return if revising'],
     turnaroundDays: '1 to 2 business days',
@@ -407,7 +409,7 @@ export const SERVICES: Service[] = [
     slug: 'itr-updated', category: 'itr', name: 'Updated Return (ITR-U)', whoFor: 'Correcting or filing returns for up to 4 previous years',
     shortDesc: 'ITR-U with additional tax of 25% to 70% computed, for years where the belated window has closed.',
     longDesc: 'Section 139(8A) lets you file or update a return within 48 months of the end of the assessment year by paying additional tax. Useful when you missed filing entirely or under-reported income and want to regularise before a notice arrives.',
-    unit: 'one_time', mrp: 3999, price: 3499,
+    unit: 'one_time', mrp: 2499, price: 1999, priceFrom: true, priceNote: 'Minimum fee. Final fee depends on the ITR form.',
     includes: ['Eligibility check (no refund or loss increase allowed)', 'Additional tax computation (25/50/60/70%)', 'ITR-U preparation and filing', 'Challan guidance'],
     documents: ['Income details for the relevant year', 'Original return if any', 'AIS and 26AS for that year'],
     turnaroundDays: '2 business days',
@@ -429,7 +431,7 @@ export const SERVICES: Service[] = [
     slug: 'itr-company', category: 'itr', name: 'ITR for Private Limited Companies', whoFor: 'Private Limited and OPC, ITR-6',
     shortDesc: 'ITR-6 with MAT computation, coordinated with statutory audit by an empanelled CA.',
     longDesc: 'Corporate return filing including MAT under 115JB, dividend and TDS reconciliation, and coordination with the statutory auditor. Statutory audit itself is performed by an empanelled Chartered Accountant.',
-    unit: 'one_time', mrp: 14999, price: 14999,
+    unit: 'one_time', mrp: 14999, price: 14999, priceFrom: true, priceNote: 'Minimum fee. Final fee depends on turnover and volume of transactions.',
     includes: ['ITR-6 preparation and filing', 'MAT computation', 'Audit report coordination', 'Advance tax review for next year'],
     documents: ['Audited financial statements', 'Tax audit report if applicable', 'TDS and GST returns', 'Board resolutions for dividends'],
     turnaroundDays: '5 to 7 business days',

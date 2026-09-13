@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const { category, sku } = await params
   const s = getService(sku)
   if (!s || s.category !== category) return {}
-  const priceTxt = s.price === null ? 'Fixed quote after free triage' : s.price === 0 ? 'Free' : `₹${s.price.toLocaleString('en-IN')}${unitSuffix(s.unit) ? ' ' + unitSuffix(s.unit).replace('/ ', 'per ') : ''}`
+  const priceTxt = s.price === null ? 'Fixed quote after free triage' : s.price === 0 ? 'Free' : `${s.priceFrom ? 'from ' : ''}₹${s.price.toLocaleString('en-IN')}${unitSuffix(s.unit) ? ' ' + unitSuffix(s.unit).replace('/ ', 'per ') : ''}`
   return buildMetadata({
     title: `${s.name} | ${priceTxt}`.slice(0, 60),
     // No manual slice here: buildMetadata clamps at a word boundary, and
@@ -56,7 +56,7 @@ export default async function SkuPage({ params }: { params: Promise<Params> }) {
   const calcs = LIVE_CALCULATORS.filter((x) => s.relatedCalculators?.includes(x.slug))
   const deadlines = deadlineItems(c.deadlineKeys).slice(0, 2)
   const faqs = [...s.faqs, ...c.faqs.slice(0, 4)]
-  const wa = whatsappLink(`Hi, I want to get started with ${s.name}${s.price !== null && s.price > 0 ? ` (₹${s.price.toLocaleString('en-IN')})` : ''}.`)
+  const wa = whatsappLink(`Hi, I want to get started with ${s.name}${s.price !== null && s.price > 0 ? ` (${s.priceFrom ? 'from ' : ''}₹${s.price.toLocaleString('en-IN')})` : ''}.`)
 
   const jsonLd = graph(
     webPageJsonLd({ path, name: s.name, description: s.shortDesc }),
@@ -109,7 +109,7 @@ export default async function SkuPage({ params }: { params: Promise<Params> }) {
               <p className="mt-3 text-base font-medium text-green-700">{s.whoFor}</p>
               <p className="mt-4 max-w-xl text-lg leading-relaxed text-text-2">{s.longDesc}</p>
               <div className="mt-7 rounded-2xl border border-border bg-card p-5 shadow-[var(--shadow-card)]">
-                <PriceTag size="lg" price={s.price} mrp={s.mrp} unit={unitSuffix(s.unit)} quote={s.quoteLabel} />
+                <PriceTag size="lg" price={s.price} mrp={s.mrp} unit={unitSuffix(s.unit)} quote={s.quoteLabel} from={s.priceFrom} note={s.priceNote} />
                 <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-sm text-text-2">
                   <span className="flex items-center gap-1.5"><Clock className="h-4 w-4 text-green-600" /> {s.turnaroundDays}</span>
                   <span className="flex items-center gap-1.5"><ShieldCheck className="h-4 w-4 text-green-600" /> Reviewed by {REVIEWER.name}</span>

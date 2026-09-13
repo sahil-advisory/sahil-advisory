@@ -6,7 +6,7 @@ Generated from the registries on 13 September 2026. The primary target is the pa
 
 | Page | Primary target | Long-tail variants |
 |---|---|---|
-| `itr` | ITR Filing Online AY 2026-27 from ₹999 | Expert Assisted | itr filing online, income tax return filing, itr filing services, itr filing for salaried, itr filing last date 2026, ca for itr filing |
+| `itr` | ITR Filing Online AY 2026-27 from ₹499 | Expert Assisted | itr filing online, income tax return filing, itr filing services, itr filing for salaried, itr filing last date 2026, ca for itr filing |
 | `gst` | GST Return Filing Online from ₹999/month | GSTR-1, 3B, 9 | gst return filing, gst registration online, gstr 3b filing, gst filing services, gst return filing charges, gst for freelancers |
 | `tds` | TDS Return Filing Online | 24Q, 26Q, 27Q, 26QB from ₹1,499 | tds return filing, tds return due date, form 26qb, tds on property purchase, form 24q filing, tds correction statement |
 | `registrations` | Business Registration Services | Pvt Ltd, LLP, MSME, IEC, GST | pvt ltd registration cost, llp registration, msme registration, udyam registration, iec registration, cma report for bank loan |

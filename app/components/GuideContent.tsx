@@ -99,7 +99,7 @@ export default function GuideContent({ sections }: { sections: ContentSection[] 
                 <p className="mt-2 text-lg font-bold">{sv.name}</p>
                 <p className="mt-1 text-sm text-white/70">{s.text ?? sv.shortDesc}</p>
                 <div className="mt-4 flex flex-wrap items-center gap-4">
-                  <span className="font-mono text-xl font-bold">{sv.price === null ? 'Quote after triage' : sv.price === 0 ? 'Free' : `${formatINR(sv.price)} ${unitSuffix(sv.unit)}`}</span>
+                  <span className="font-mono text-xl font-bold">{sv.price === null ? 'Quote after triage' : sv.price === 0 ? 'Free' : `${sv.priceFrom ? 'from ' : ''}${formatINR(sv.price)} ${unitSuffix(sv.unit)}`}</span>
                   <Link href={servicePath(sv)} className="inline-flex items-center gap-2 rounded-lg bg-green-600 px-4 py-2 text-sm font-semibold !text-white !no-underline hover:bg-green-700">View plan <ArrowRight className="h-4 w-4" /></Link>
                 </div>
               </div>

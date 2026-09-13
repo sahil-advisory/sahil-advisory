@@ -656,7 +656,7 @@ export const CALCULATORS: CalculatorDef[] = [
     intro: 'Enter your gross salary and deductions. The calculator computes tax under both regimes side by side with the standard deduction, section 87A rebate, marginal relief, surcharge and 4% cess, and tells you which regime leaves more in hand.',
     updatedFor: 'FY 2025-26 (AY 2026-27), Budget 2025 slabs',
     sections: INCOME_TAX_SECTIONS, faqs: INCOME_TAX_FAQS, relatedServiceSlug: 'itr-salaried',
-    ctaText: 'Get your return filed under the better regime from ₹999.',
+    ctaText: 'Get your return filed under the better regime from ₹499.',
     related: ['hra', 'old-vs-new-regime', 'take-home-salary', 'advance-tax'], phase: 0,
   },
   {
@@ -682,7 +682,7 @@ export const CALCULATORS: CalculatorDef[] = [
     intro: 'Select the asset, enter purchase and sale details and the calculator applies the correct holding period, rate and exemption. For property bought before 23 July 2024 it also shows the indexed 20% option so you can pick the lower tax.',
     updatedFor: 'FY 2025-26, rates effective 23 July 2024',
     sections: CAPITAL_GAINS_SECTIONS, faqs: CAPITAL_GAINS_FAQS, relatedServiceSlug: 'itr-capital-gains',
-    ctaText: 'Sold shares or property this year? Get capital gains filed correctly from ₹2,999.',
+    ctaText: 'Sold shares or property this year? Get capital gains filed correctly from ₹1,999.',
     related: ['income-tax', 'advance-tax', 'fno-turnover'], phase: 0,
   },
   {
@@ -734,7 +734,7 @@ export const CALCULATORS: CalculatorDef[] = [
     intro: 'Enter your CTC and the calculator estimates basic, HRA, employee and employer PF, professional tax and income tax, giving a monthly in-hand figure under the new regime.',
     updatedFor: 'FY 2025-26 new regime',
     sections: TAKE_HOME_SECTIONS, faqs: TAKE_HOME_FAQS, relatedServiceSlug: 'itr-salaried',
-    ctaText: 'Got your first Form 16? Salaried ITR filing from ₹999.',
+    ctaText: 'Got your first Form 16? Salaried ITR filing from ₹499.',
     related: ['income-tax', 'hra', 'old-vs-new-regime'], phase: 0,
   },
   {
@@ -747,7 +747,7 @@ export const CALCULATORS: CalculatorDef[] = [
     intro: 'Fill in the details once and generate receipts for every month of the period. Employers ask for these when you declare HRA; if annual rent exceeds ₹1 lakh, the landlord\'s PAN is mandatory.',
     updatedFor: 'FY 2025-26',
     sections: RENT_RECEIPT_SECTIONS, faqs: RENT_RECEIPT_FAQS, relatedServiceSlug: 'itr-salaried',
-    ctaText: 'Claiming HRA in your return? We check the exemption and file from ₹999.',
+    ctaText: 'Claiming HRA in your return? We check the exemption and file from ₹499.',
     related: ['hra', 'income-tax'], phase: 0,
   },
   // Phase 1 (listed in hub as "coming soon", not in sitemap until built)

@@ -34,7 +34,7 @@ export function PlanCard({ service, compact, hideBadge }: { service: Service; co
       <p className="mt-1 text-xs font-medium text-muted">{service.whoFor}</p>
       {!compact && <CheckList items={service.includes.slice(0, 3)} className="mt-4" />}
       <div className="mt-5 border-t border-border pt-4">
-        <PriceTag price={service.price} mrp={service.mrp} unit={unitSuffix(service.unit)} quote={service.price === null ? (service.quoteLabel ?? 'Quote after free triage') : undefined} />
+        <PriceTag price={service.price} mrp={service.mrp} unit={unitSuffix(service.unit)} quote={service.price === null ? (service.quoteLabel ?? 'Quote after free triage') : undefined} from={service.priceFrom} note={compact ? undefined : service.priceNote} />
         <p className="mt-1 flex items-center gap-1 text-xs text-muted">
           <Clock className="h-3.5 w-3.5" /> {service.turnaroundDays}
         </p>

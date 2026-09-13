@@ -247,7 +247,7 @@ export const guide: Guide = {
     {
       type: 'service-card',
       serviceSlug: 'itr-salaried',
-      text: 'Every salaried return we file includes a side-by-side regime computation on your actual Form 16, rent and investment numbers. You approve the better one before we file. From ₹999.',
+      text: 'Every salaried return we file includes a side-by-side regime computation on your actual Form 16, rent and investment numbers. You approve the better one before we file. From ₹499.',
     },
     { type: 'heading', text: 'Who should pick which regime', id: 'who-should-pick' },
     {

@@ -11,7 +11,7 @@ import { Container, Breadcrumbs, SectionHeading, FaqAccordion, CtaBand, Badge } 
 
 export const metadata: Metadata = buildMetadata({
   title: 'Pricing | Every ITR, GST, TDS and Registration Fee Published',
-  description: 'All our prices on one page. ITR filing from ₹999, GST returns from ₹999 per month, TDS returns from ₹3,999 per quarter, Pvt Ltd from ₹6,999, consultations from ₹499. Ex-GST, no hidden fees.',
+  description: 'All our prices on one page. ITR filing from ₹499, GST returns from ₹999 per month, TDS returns from ₹3,999 per quarter, Pvt Ltd from ₹6,999, consultations from ₹499. Ex-GST, no hidden fees.',
   path: '/pricing',
   keywords: ['itr filing charges', 'gst return filing charges', 'tds return filing fees', 'pvt ltd registration cost', 'tax consultant fees india', 'ca fees for itr filing'],
 })
@@ -92,8 +92,10 @@ export default function PricingPage() {
                             ) : (
                               <>
                                 {s.mrp > s.price && <span className="mr-2 text-xs text-muted line-through">{formatINR(s.mrp)}</span>}
+                                {s.priceFrom && <span className="mr-1 text-xs text-text-2">from</span>}
                                 <span className="font-bold text-navy-900">{formatINR(s.price)}</span>
                                 {unitSuffix(s.unit) && <span className="ml-1 text-xs text-muted">{unitSuffix(s.unit)}</span>}
+                                {s.priceNote && <span className="block text-[11px] font-sans text-muted">{s.priceNote}</span>}
                               </>
                             )}
                           </td>

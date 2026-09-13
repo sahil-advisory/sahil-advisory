@@ -180,7 +180,7 @@ export const guide: Guide = {
     {
       type: 'service-card',
       serviceSlug: 'itr-belated',
-      text: 'Missed the deadline or found an error? We compute the fee, interest and any additional tax, file the belated, revised or updated return and share the challan and acknowledgement. Belated and revised from ₹1,499, ITR-U from ₹3,499.',
+      text: 'Missed the deadline or found an error? We compute the fee, interest and any additional tax, file the belated, revised or updated return and share the challan and acknowledgement. Belated, revised and updated returns from ₹1,999, depending on the ITR form.',
     },
     { type: 'heading', text: 'Belated vs revised vs updated: side by side', id: 'comparison' },
     {

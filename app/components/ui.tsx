@@ -94,7 +94,7 @@ export function Badge({ children, tone = 'green' }: { children: ReactNode; tone?
   return <span className={`inline-flex items-center rounded-md border px-2 py-0.5 text-[11px] font-bold uppercase tracking-wider ${c}`}>{children}</span>
 }
 
-export function PriceTag({ price, mrp, unit, size = 'md', quote }: { price: number | null; mrp?: number; unit?: string; size?: 'md' | 'lg'; quote?: string }) {
+export function PriceTag({ price, mrp, unit, size = 'md', quote, from, note }: { price: number | null; mrp?: number; unit?: string; size?: 'md' | 'lg'; quote?: string; from?: boolean; note?: string }) {
   if (price === null) {
     return (
       <div className="font-mono tabular">
@@ -104,11 +104,15 @@ export function PriceTag({ price, mrp, unit, size = 'md', quote }: { price: numb
     )
   }
   return (
-    <div className="flex items-baseline gap-2 font-mono tabular">
-      {mrp && mrp > price ? <span className="text-sm text-muted line-through">{formatINR(mrp)}</span> : null}
-      <span className={`${size === 'lg' ? 'text-3xl' : 'text-2xl'} font-bold text-navy-900`}>{price === 0 ? 'Free' : formatINR(price)}</span>
-      {unit ? <span className="text-sm text-text-2">{unit}</span> : null}
-      {price > 0 && <span className="text-xs text-muted">+ 18% GST</span>}
+    <div>
+      <div className="flex items-baseline gap-2 font-mono tabular">
+        {mrp && mrp > price ? <span className="text-sm text-muted line-through">{formatINR(mrp)}</span> : null}
+        {from && price > 0 && <span className="text-sm font-semibold text-text-2">from</span>}
+        <span className={`${size === 'lg' ? 'text-3xl' : 'text-2xl'} font-bold text-navy-900`}>{price === 0 ? 'Free' : formatINR(price)}</span>
+        {unit ? <span className="text-sm text-text-2">{unit}</span> : null}
+        {price > 0 && <span className="text-xs text-muted">+ 18% GST</span>}
+      </div>
+      {note && <p className="mt-1 text-xs text-muted">{note}</p>}
     </div>
   )
 }

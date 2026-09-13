@@ -201,7 +201,7 @@ export const guide: Guide = {
     {
       type: 'service-card',
       serviceSlug: 'itr-salaried',
-      text: 'Want it done for you? Upload Form 16 and AIS, approve a draft computation under the better regime, and a qualified professional (CMA/CA) files and e-verifies with you. From ₹999.',
+      text: 'Want it done for you? Upload Form 16 and AIS, approve a draft computation under the better regime, and a qualified professional (CMA/CA) files and e-verifies with you. From ₹499.',
     },
     { type: 'heading', text: 'Refunds: how long and how to track', id: 'refunds' },
     {

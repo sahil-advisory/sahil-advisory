@@ -158,7 +158,7 @@ export default async function CategoryPage({ params }: { params: Promise<Params>
       <section className="bg-bg-alt py-16 lg:py-20">
         <Container className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)]">
           <div>
-            <SectionHeading align="left" eyebrow="Your expert" title="You pick the plan." emphasis="A named professional does the work." desc="Every order shows who is handling it. Audit-tier work is delivered by empanelled Chartered Accountants." />
+            <SectionHeading align="left" eyebrow="Your expert" title="You pick the plan." emphasis="A named professional does the work." desc="Every order shows who is handling it. Audit-tier work is delivered by professional." />
             <div className="mt-6 space-y-4">
               {publishedExperts().map((e) => (
                 <ExpertCard key={e.slug} expert={e} />

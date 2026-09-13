@@ -15,10 +15,10 @@ import type { ContentSection } from './guides/types'
 
 const u = (p: string) => `${BASE_URL}${p}`
 
-function price(s: { price: number | null; unit: 'one_time' | 'month' | 'quarter' | 'year' | 'session'; mrp: number; quoteLabel?: string }) {
+function price(s: { price: number | null; unit: 'one_time' | 'month' | 'quarter' | 'year' | 'session'; mrp: number; quoteLabel?: string; priceFrom?: boolean; priceNote?: string }) {
   if (s.price === null) return s.quoteLabel ?? 'Quoted after free triage'
   if (s.price === 0) return 'Free'
-  return `${formatINR(s.price)}${unitSuffix(s.unit) ? ' ' + unitSuffix(s.unit) : ''} + 18% GST`
+  return `${s.priceFrom ? 'from ' : ''}${formatINR(s.price)}${unitSuffix(s.unit) ? ' ' + unitSuffix(s.unit) : ''} + 18% GST${s.priceNote ? ` (${s.priceNote.replace(/^Minimum fee\. /, '').replace(/\.$/, '').toLowerCase()})` : ''}`
 }
 
 export function llmsIndex(): string {

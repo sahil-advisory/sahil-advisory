@@ -166,7 +166,7 @@ export const guide: Guide = {
     {
       type: 'service-card',
       serviceSlug: 'itr-salaried',
-      text: 'We compute HRA on your actual rent and salary structure, check whether the old regime still beats the new one, and file the return with the exemption claimed correctly. From ₹999.',
+      text: 'We compute HRA on your actual rent and salary structure, check whether the old regime still beats the new one, and file the return with the exemption claimed correctly. From ₹499.',
     },
     { type: 'heading', text: 'Section 80GG: rent deduction when you get no HRA', id: 'section-80gg' },
     {

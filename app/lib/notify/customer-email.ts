@@ -81,6 +81,7 @@ export function customerEmailText(i: CustomerEmailInput) {
       `ABOUT ${p.name.toUpperCase()}`,
       p.shortDesc,
       `Price:       ${planPrice(p)}${p.price !== null && p.mrp > p.price ? ` (usually ${formatINR(p.mrp)})` : ''}`,
+      p.priceNote ? `             ${p.priceNote}` : '',
       `Turnaround:  ${p.turnaroundDays}`,
       '',
       'Documents to keep ready:',
@@ -173,7 +174,7 @@ export function customerEmailHtml(i: CustomerEmailInput) {
             <ul style="margin:0;padding:0 0 0 18px">${inc}</ul>
           </td>
         </tr></table>
-        <div style="margin-top:12px;font-size:12px;color:${MUTED}">Prices exclude GST. The exact scope is confirmed on the call; nothing is charged until you approve.</div>
+        <div style="margin-top:12px;font-size:12px;color:${MUTED}">${p.priceNote ? esc(p.priceNote) + ' ' : ''}Prices exclude GST. The exact scope is confirmed on the call; nothing is charged until you approve.</div>
       </td></tr>
     </table>
   </td></tr>`

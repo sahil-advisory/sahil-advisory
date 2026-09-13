@@ -28,7 +28,7 @@ export const metadata: Metadata = buildMetadata({
 })
 
 const HOME_FAQS = [
-  { q: 'How much does ITR filing cost?', a: 'Salaried ITR filing starts at ₹999 plus GST. Capital gains and F&O returns from ₹1,999, NRI returns from ₹4,999. Every price is on the pricing page; there are no hidden charges.' },
+  { q: 'How much does ITR filing cost?', a: 'Salaried ITR filing starts at ₹499 plus GST. Capital gains returns from ₹1,999, F&O and freelancer returns from ₹2,499, NRI returns from ₹4,999. Every price is on the pricing page; there are no hidden charges.' },
   { q: 'Who actually prepares my return?', a: 'A qualified professional from our panel, a Cost and Management Accountant or a Chartered Accountant, prepares and reviews it. You see the expert\'s name on your order and can message them directly.' },
   { q: 'Is it safe to share my PAN and Form 16?', a: 'Documents are encrypted at rest in private storage, visible only to your assigned expert and never shared with third parties. Read the security page for details.' },
   { q: 'Do you file GST returns every month?', a: 'Yes. GSTR-1 and GSTR-3B monthly filing costs ₹999 per month with ITC reconciliation, or ₹899 per month on annual prepay. Quarterly QRMP and composition plans are also available.' },
@@ -61,7 +61,7 @@ export default function HomePage() {
               <span className="block text-green-600">At prices you can see.</span>
             </h1>
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-text-2">
-              ITR, GST, TDS, registrations and notices, prepared by a qualified professional, approved by you before filing, and tracked on WhatsApp. No surprises at checkout.
+              ITR, GST, TDS, business registrations and notices, prepared by a qualified professional, approved by you before filing, and tracked on WhatsApp. No surprises at checkout.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button href="/services/itr" size="lg" icon>File my ITR</Button>
@@ -71,7 +71,7 @@ export default function HomePage() {
               {[
                 { icon: ShieldCheck, k: 'Reviewed before filing', v: 'By a CMA or CA' },
                 { icon: Clock, k: '1 to 3 business days', v: 'Salaried returns next day' },
-                { icon: IndianRupee, k: 'From ₹999', v: 'All prices published' },
+                { icon: IndianRupee, k: 'From ₹499', v: 'All prices published' },
               ].map((c) => (
                 <div key={c.k} className="flex gap-2.5">
                   <c.icon className="mt-0.5 h-5 w-5 shrink-0 text-green-600" />

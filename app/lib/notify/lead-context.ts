@@ -36,7 +36,7 @@ const STEPS = [
 
 export function planPrice(s: Service): string {
   if (s.price === null) return s.quoteLabel || 'Quote after a free review'
-  return `${formatINR(s.price)}${s.unit === 'one_time' ? '' : ' ' + unitSuffix(s.unit)}`
+  return `${s.priceFrom ? 'from ' : ''}${formatINR(s.price)}${s.unit === 'one_time' ? '' : ' ' + unitSuffix(s.unit)}`
 }
 
 function pathOf(url?: string): string {

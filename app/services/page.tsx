@@ -10,7 +10,7 @@ import { Button, Container, SectionHeading, Breadcrumbs, CtaBand, CheckList } fr
 
 export const metadata: Metadata = buildMetadata({
   title: 'Tax and Compliance Services | ITR, GST, TDS, Registrations, Notices',
-  description: 'All tax and compliance services at fixed prices: ITR filing from ₹999, GST returns from ₹999/month, TDS returns, company and MSME registration, notice replies and paid consultations.',
+  description: 'All tax and compliance services at fixed prices: ITR filing from ₹499, GST returns from ₹999/month, TDS returns, company and MSME registration, notice replies and paid consultations.',
   path: '/services',
   keywords: ['tax filing services', 'gst filing services', 'tds filing services', 'business registration services', 'tax consultant online'],
 })
