@@ -13,6 +13,7 @@ import JsonLd from '@/app/components/JsonLd'
 import FaqJsonLd from '@/app/components/FaqJsonLd'
 import GuideContent, { headingId } from '@/app/components/GuideContent'
 import CallbackForm from '@/app/components/CallbackForm'
+import RelatedReference from '@/app/components/reference/RelatedReference'
 import { Container, Breadcrumbs, FaqAccordion, CtaBand, Badge } from '@/app/components/ui'
 import { GuideCard, CalculatorCard, PlanCard } from '@/app/components/cards'
 
@@ -126,6 +127,8 @@ export default async function GuidePage({ params }: { params: Promise<Params> })
                 </div>
               </section>
             )}
+
+            <RelatedReference guide={g.slug} />
 
             <p className="mt-8 text-xs leading-relaxed text-muted">
               This guide is general information for FY 2025-26 and is not professional advice. Your assigned expert advises on your specific facts. <Link href="/disclaimer" className="underline">Disclaimer</Link>

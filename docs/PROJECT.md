@@ -22,7 +22,8 @@ Built and type-checked:
 | Services registry | `app/lib/services.ts` | 6 categories, 45 SKUs, consultations. Prices are launch proposals |
 | Due dates | `app/lib/due-dates.ts` | 11 deadlines with recurrence rules, `lastVerified` stamps |
 | Calculators | `app/lib/calculators.ts`, `app/components/calculators/*` | 8 live, 8 marked phase 1 (shown as coming soon, not in sitemap) |
-| Guides | `app/lib/guides/*` | Typed content blocks, 13 guides across 8 clusters, `plannedCount` gap tracking |
+| Guides | `app/lib/guides/*` | Typed content blocks, 14 guides across 8 clusters incl. the FY 2025-26 slabs pillar, `plannedCount` gap tracking |
+| Reference pages | `app/lib/reference/*`, `app/sections`, `app/forms` | One page per Income-tax section and per form: snippet summary, key-facts table, worked example, FAQs, Act 2025 mapping. Reverse-linked from guides, calculators and plans |
 | Experts | `app/lib/experts.ts` | 1 published (CMA lead). CA partners hidden until confirmed |
 | Routes | `app/**` | Home, services hub, 6 category pages, 45 SKU pages, pricing, consult, calculators, due-dates, guides, experts, about, contact, 7 legal/trust pages, 404 |
 | Leads | `app/api/leads/route.ts`, `app/lib/db/*`, `app/lib/notify/*` | Rate-limited, honeypot. Writes to Supabase, alerts WhatsApp and email after the response. Degrades to logging when unconfigured |

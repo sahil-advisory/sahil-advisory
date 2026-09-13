@@ -101,6 +101,33 @@ Generated from the registries on 13 September 2026. The primary target is the pa
 | `old-vs-new-tax-regime` | Old vs New Tax Regime FY 2025-26: Which Saves More? | old vs new tax regime, new tax regime slabs 2025-26, which tax regime is better, new tax regime deductions, old tax regime vs new tax regime calculator, tax regime break even |
 | `llp-vs-pvt-ltd` | LLP vs Pvt Ltd vs OPC vs Proprietorship: Which to Choose | llp vs private limited company, opc vs private limited, proprietorship vs llp, which business structure to choose india, llp tax rate, private limited company tax rate 22% |
 
+## Reference pages: sections and forms (22)
+
+| Page | Primary target | Long-tail variants |
+|---|---|---|
+| `sections/80c` | Section 80C Deduction FY 2025-26: Limit and List | section 80c, 80c deduction list, section 80c limit 2025-26, 80c in new tax regime, 80c investment options, ppf 80c deduction |
+| `sections/80d` | Section 80D Deduction FY 2025-26: Limits and Example | section 80d, 80d deduction limit 2025-26, 80d for senior citizen parents, preventive health checkup 80d, 80d in new tax regime, health insurance tax benefit |
+| `sections/80ccd-1b` | Section 80CCD(1B) NPS Deduction FY 2025-26: ₹50,000 | section 80ccd(1b), nps tax benefit 80ccd 1b, 80ccd(1b) limit 2025-26, nps 50000 deduction, 80ccd(2) employer contribution new regime, nps deduction in new tax regime |
+| `sections/24b` | Section 24(b) Home Loan Interest FY 2025-26: ₹2L Limit | section 24b, home loan interest deduction, section 24(b) limit 2025-26, home loan interest 2 lakh limit, pre construction interest deduction, home loan tax benefit new regime |
+| `sections/80tta-80ttb` | Section 80TTA and 80TTB FY 2025-26: Interest Deduction | section 80tta, section 80ttb, 80tta deduction limit, 80ttb senior citizen 50000, savings account interest tax exemption, 80tta in new tax regime |
+| `sections/87a` | Section 87A Rebate FY 2025-26: ₹60,000 up to ₹12 Lakh | section 87a rebate, 87a rebate new regime 2025-26, rebate under 87a 12 lakh, marginal relief 87a, zero tax up to 12 lakh, 87a rebate for nri |
+| `sections/10-13a` | Section 10(13A) HRA Exemption FY 2025-26: Formula | section 10(13a), hra exemption formula, hra exemption calculation 2025-26, hra metro cities list, landlord pan for hra above 1 lakh, rent paid to parents hra |
+| `sections/44ad` | Section 44AD Presumptive Tax FY 2025-26: Limits, Rates | section 44ad, 44ad presumptive taxation, 44ad turnover limit 2025-26, 44ad 6 percent 8 percent, 44ad 3 crore limit digital, presumptive income scheme for small business |
+| `sections/44ada` | Section 44ADA for Professionals FY 2025-26: 50% Rule | section 44ada, 44ada presumptive taxation for professionals, 44ada limit 2025-26, 44ada 75 lakh limit, 44ada eligible professions list, freelancer tax 44ada |
+| `sections/54` | Section 54 Exemption FY 2025-26: House Sale Reinvestment | section 54, section 54 exemption capital gains, capital gains on sale of house property, section 54 vs 54f, 54ec bonds 50 lakh, capital gains account scheme |
+| `sections/234f` | Section 234F Late Fee AY 2026-27: ₹5,000 or ₹1,000 | section 234f, 234f late fee, late filing fee itr 5000, itr late fee 1000 below 5 lakh, 234f fee for nil return, penalty for late filing of itr ay 2026-27 |
+| `sections/143-1` | Section 143(1) Intimation AY 2026-27: Meaning, Reply | section 143(1), intimation under section 143(1), 143(1) intimation meaning, 143(1) demand notice what to do, how to respond to 143(1) intimation, rectification under section 154 |
+| `forms/form-16` | Form 16 Explained: Part A, Part B, Download (AY 2026-27) | form 16, form 16 download, form 16 part a and part b, itr without form 16, form 16 due date 2026, form 16 traces download |
+| `forms/form-26as` | Form 26AS: Download, What It Shows, Mismatch (AY 2026-27) | form 26as, form 26as download, how to view form 26as, form 26as traces, form 26as password, form 26as vs ais |
+| `forms/ais` | AIS and TIS Explained: Download, Feedback (AY 2026-27) | ais income tax, annual information statement, ais download, ais vs form 26as, ais feedback, taxpayer information summary tis |
+| `forms/form-15g-15h` | Form 15G and 15H: Eligibility, Limits, How to Submit | form 15g, form 15h, form 15g eligibility, form 15h for senior citizens, form 15g submit online, form 15g for fd interest |
+| `forms/form-26qb` | Form 26QB: TDS on Property Purchase, Due Date, Steps | form 26qb, tds on property purchase, 26qb due date, form 26qb online payment, form 16b download, 26qb for joint buyers |
+| `forms/itr-1` | ITR-1 Sahaj: Eligibility and How to File (AY 2026-27) | itr 1, itr 1 sahaj, itr 1 eligibility ay 2026-27, who can file itr 1, itr 1 vs itr 2, itr 1 for salaried |
+| `forms/itr-2` | ITR-2: Eligibility, Schedules and Filing (AY 2026-27) | itr 2, itr 2 eligibility, itr 2 for capital gains, itr 2 for nri, itr 2 vs itr 3, itr 2 schedule fa foreign assets |
+| `forms/itr-3` | ITR-3: Business, F&O and Partner Income (AY 2026-27) | itr 3, itr 3 eligibility, itr 3 for f&o trading, itr 3 for intraday trading, itr 3 for partner of firm, itr 3 vs itr 4 |
+| `forms/itr-4` | ITR-4 Sugam: 44AD, 44ADA, 44AE Eligibility (AY 2026-27) | itr 4, itr 4 sugam, itr 4 eligibility ay 2026-27, itr 4 for freelancers 44ada, itr 4 presumptive income 44ad, itr 4 vs itr 3 |
+| `forms/form-10-iea` | Form 10-IEA: Opt Out of New Regime (AY 2026-27) | form 10-iea, form 10 iea due date, how to file form 10-iea, opt out of new tax regime business income, form 10-iea for salaried, form 10-iea vs form 10-ie |
+
 ## Where the site is thin, in order of search volume
 
 These are the queries from the blueprint's keyword universe that have no page
@@ -110,13 +137,13 @@ almost nobody else has built yet.
 
 | Query cluster | Approx. demand | What to build | Blueprint route |
 |---|---|---|---|
-| income tax slab 2025-26, new tax regime slab, income tax slab for senior citizens | very high, seasonal peak Feb and Jul | A slab page with every table, both regimes, all ages, plus the regime guide linked | `/guides/tax-saving/income-tax-slabs-fy-2025-26` |
-| form 16, form 16 download, form 16 part a and b | high, Jun and Jul | Form explainer with a screenshot walk-through and a link to the salaried ITR plan | `/forms/form-16` |
-| section 80c, 80c deduction list, 80c limit | high, Jan to Mar | Deduction page with the full list and a worked example | `/sections/80c` |
-| form 26as, ais vs 26as, how to download ais | high, Jun and Jul | Two form pages cross-linked | `/forms/form-26as`, `/forms/ais` |
-| 87a rebate, marginal relief 87a | medium, Jan to Jul | Section page with the marginal relief worked example the calculator already computes | `/sections/87a` |
-| 44ad vs 44ada, presumptive taxation | medium | Section page linking the freelancer and business plans | `/sections/44ad`, `/sections/44ada` |
-| itr 1 vs itr 2, which itr form | medium | Exists as a guide; add per-form pages so each form name ranks | `/forms/itr-1` to `/forms/itr-7` |
+| income tax slab 2025-26, new tax regime slab, income tax slab for senior citizens | very high, seasonal peak Feb and Jul | **Built 13 Sep 2026** | `/guides/tax-saving/income-tax-slabs-fy-2025-26` |
+| form 16, form 16 download, form 16 part a and b | high, Jun and Jul | **Built 13 Sep 2026** | `/forms/form-16` |
+| section 80c, 80c deduction list, 80c limit | high, Jan to Mar | **Built 13 Sep 2026** | `/sections/80c` |
+| form 26as, ais vs 26as, how to download ais | high, Jun and Jul | **Built 13 Sep 2026** | `/forms/form-26as`, `/forms/ais` |
+| 87a rebate, marginal relief 87a | medium, Jan to Jul | **Built 13 Sep 2026** | `/sections/87a` |
+| 44ad vs 44ada, presumptive taxation | medium | **Built 13 Sep 2026** | `/sections/44ad`, `/sections/44ada` |
+| itr 1 vs itr 2, which itr form | medium | **ITR-1 to ITR-4 built 13 Sep 2026**; ITR-5 to 7 pending | `/forms/itr-1` to `/forms/itr-7` |
 | section 80c under new act, new section numbers income tax act 2025, form 130 | low now, will spike Apr 2027 | Section mapping table page plus one page per renumbered section. Almost no competition | `/guides/income-tax-act-2025/section-mapping`, `/sections/*` |
 | tax consultant chandigarh, ca in panchkula, itr filing chandigarh | medium, local | Google Business Profile plus a city page only for the two real offices | `/chandigarh`, `/panchkula` |
 | Hindi: आयकर कैलकुलेटर, ITR कैसे भरें, GST रिटर्न | high, under-served | Hindi mirrors of the top 20 pages with hreflang | `/hi/*` |
@@ -144,5 +171,5 @@ the ranking depends on, and where this site stands:
   before clicks. Rewrite titles where impressions grow but click-through stays
   under 3%. That single loop is what moved MarketsEasy.
 
-Priority for the next content sprint, in order: slabs page, Form 16, 80C,
-26AS and AIS, 87A, then the Act 2025 section set before April 2027.
+Next content sprint, in order: ITR-5 to ITR-7, the Act 2025 section mapping
+table, the two city pages, the glossary, then Hindi mirrors of the top 20.

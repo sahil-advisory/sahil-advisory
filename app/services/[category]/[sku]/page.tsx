@@ -15,6 +15,7 @@ import DeadlineWidget from '@/app/components/DeadlineWidget'
 import CallbackForm from '@/app/components/CallbackForm'
 import TrackedLink from '@/app/components/TrackedLink'
 import PageEvent from '@/app/components/PageEvent'
+import RelatedReference from '@/app/components/reference/RelatedReference'
 import { Container, Breadcrumbs, TrustStrip, ProcessSteps, FaqAccordion, CtaBand, CheckList, PriceTag, Badge, SectionHeading } from '@/app/components/ui'
 import { PlanCard, ExpertCard, CalculatorCard, GuideCard } from '@/app/components/cards'
 
@@ -193,6 +194,8 @@ export default async function SkuPage({ params }: { params: Promise<Params> }) {
       </section>
 
       <Container className="py-16 lg:py-20">
+        <RelatedReference service={s.slug} title="Sections and forms this plan covers" />
+        <div className="mt-12" />
         <FaqAccordion faqs={faqs} title={`FAQ about ${s.name.toLowerCase()}`} />
         {guides.length > 0 && (
           <p className="mt-6 text-center text-sm text-muted">

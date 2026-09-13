@@ -22,6 +22,7 @@ const resources = [
   { label: 'Calculators', desc: 'Income tax, HRA, capital gains, GST', href: '/calculators', icon: Calculator },
   { label: 'Guides', desc: 'Plain-English tax guides', href: '/guides', icon: BookOpen },
   { label: 'Due Dates', desc: 'Live compliance calendar', href: '/due-dates', icon: CalendarClock },
+  { label: 'Sections and Forms', desc: '80C, 87A, Form 16, 26AS, ITR forms', href: '/sections', icon: ScrollText },
 ]
 
 function MegaGroup({ title, items, onNav }: { title: string; items: typeof returns; onNav?: () => void }) {

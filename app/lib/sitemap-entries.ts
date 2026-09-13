@@ -4,6 +4,7 @@ import { LIVE_CALCULATORS } from './calculators'
 import { DEADLINES } from './due-dates'
 import { GUIDES, CLUSTERS, guidesIn, guidePath } from './guides'
 import { publishedExperts } from './experts'
+import { REFERENCE, referencePath } from './reference'
 
 // One source of truth for "which URLs exist and when did they change". The
 // grouped sitemaps, the sitemap index, IndexNow and llms.txt all read this,
@@ -21,7 +22,7 @@ export type Entry = {
   priority: number
 }
 
-export const SITEMAP_SECTIONS = ['pages', 'services', 'guides', 'calculators', 'due-dates'] as const
+export const SITEMAP_SECTIONS = ['pages', 'services', 'guides', 'calculators', 'due-dates', 'reference'] as const
 export type SitemapSection = (typeof SITEMAP_SECTIONS)[number]
 
 const u = (p: string) => `${BASE_URL}${p}`
@@ -58,6 +59,12 @@ export function sitemapEntries(section: SitemapSection): Entry[] {
       return LIVE_CALCULATORS.map((c) => ({ url: u(`/calculators/${c.slug}`), lastModified: STATIC_DATE, changeFrequency: 'monthly' as const, priority: 0.85 }))
     case 'due-dates':
       return DEADLINES.map((d) => ({ url: u(`/due-dates/${d.slug}`), lastModified: new Date(d.lastVerified), changeFrequency: 'weekly' as const, priority: 0.8 }))
+    case 'reference':
+      return [
+        { url: u('/sections'), lastModified: STATIC_DATE, changeFrequency: 'weekly', priority: 0.7 },
+        { url: u('/forms'), lastModified: STATIC_DATE, changeFrequency: 'weekly', priority: 0.7 },
+        ...REFERENCE.map((r) => ({ url: u(referencePath(r)), lastModified: new Date(r.dateModified), changeFrequency: 'monthly' as const, priority: 0.75 })),
+      ]
   }
 }
 

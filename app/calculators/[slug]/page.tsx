@@ -12,6 +12,7 @@ import { CALCULATOR_COMPONENTS } from '@/app/components/calculators'
 import JsonLd from '@/app/components/JsonLd'
 import FaqJsonLd from '@/app/components/FaqJsonLd'
 import CalculatorTracker from '@/app/components/CalculatorTracker'
+import RelatedReference from '@/app/components/reference/RelatedReference'
 import TrackedLink from '@/app/components/TrackedLink'
 import { ArrowRight as ArrowRightIcon } from 'lucide-react'
 import { Container, Breadcrumbs, FaqAccordion } from '@/app/components/ui'
@@ -125,6 +126,8 @@ export default async function CalculatorPage({ params }: { params: Promise<Param
             </div>
           </section>
         )}
+
+        <RelatedReference calculator={c.slug} title="The rules behind this calculator" />
 
         <div className="mt-14">
           <FaqAccordion faqs={c.faqs} title={`${c.name}: questions`} />

@@ -4,6 +4,7 @@ import { LIVE_CALCULATORS } from './calculators'
 import { DEADLINES, nextDue } from './due-dates'
 import { GUIDES, CLUSTERS, guidesIn, guidePath } from './guides'
 import { publishedExperts } from './experts'
+import { REFERENCE, referenceOf, referencePath } from './reference'
 import { formatINR, formatDateIN } from './format'
 import type { ContentSection } from './guides/types'
 
@@ -57,6 +58,14 @@ export function llmsIndex(): string {
     for (const g of gs) lines.push(`- [${g.title}](${u(guidePath(g))}): ${g.excerpt}`)
     lines.push('')
   }
+  lines.push('## Income Tax Act sections')
+  lines.push('')
+  for (const r of referenceOf('section')) lines.push(`- [${r.name}](${u(referencePath(r))}): ${r.summary}${r.act2025 ? ` (${r.act2025.newNumber} under the Income-tax Act 2025, ${r.act2025.status})` : ''}`)
+  lines.push('')
+  lines.push('## Forms')
+  lines.push('')
+  for (const r of referenceOf('form')) lines.push(`- [${r.name}](${u(referencePath(r))}): ${r.summary}`)
+  lines.push('')
   lines.push('## People')
   lines.push('')
   for (const e of publishedExperts()) lines.push(`- [${e.name}](${u(`/experts/${e.slug}`)}): ${e.title}, ${e.years}+ years. ${e.specialisations.join(', ')}.`)
@@ -118,6 +127,14 @@ export function llmsFull(): string {
       if (s.table) out.push(`\n| ${s.table.head.join(' | ')} |\n| ${s.table.head.map(() => '---').join(' | ')} |\n${s.table.rows.map((r) => `| ${r.join(' | ')} |`).join('\n')}\n`)
     }
     out.push(c.faqs.map((f) => `\n**Q: ${f.q}**\n${f.a}`).join('\n') + '\n')
+  }
+
+  out.push('\n# Sections and forms\n')
+  for (const r of REFERENCE) {
+    out.push(`\n## ${r.h1}\nURL: ${u(referencePath(r))}\nUpdated: ${r.dateModified}\n\n${r.summary}\n\n${r.keyFacts.map((f) => `- ${f.label}: ${f.value}`).join('\n')}\n`)
+    if (r.act2025) out.push(`\nUnder the Income-tax Act 2025 (from tax year 2026-27) this is ${r.act2025.newNumber}${r.act2025.status === 'reported' ? ', as reported in secondary sources; verify against the notified Rules' : ''}.\n`)
+    for (const s of r.sections) out.push(sectionToMd(s))
+    out.push('\n### Frequently asked questions\n' + r.faqs.map((f) => `\n**Q: ${f.q}**\n${f.a}`).join('\n') + '\n')
   }
 
   out.push('\n# Guides\n')

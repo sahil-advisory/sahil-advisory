@@ -23,6 +23,8 @@ const resources = [
   { label: 'All calculators', href: '/calculators' },
   { label: 'Tax guides', href: '/guides' },
   { label: 'Due dates calendar', href: '/due-dates' },
+  { label: 'Income tax sections', href: '/sections' },
+  { label: 'Tax forms explained', href: '/forms' },
   { label: 'ITR filing last date', href: '/due-dates/itr-filing-last-date' },
   { label: 'GSTR-3B due date', href: '/due-dates/gstr-3b-due-date' },
   { label: 'Advance tax due dates', href: '/due-dates/advance-tax-due-date' },

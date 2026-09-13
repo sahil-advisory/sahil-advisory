@@ -7,8 +7,10 @@ import { guide as belatedRevisedUpdated } from './belated-revised-updated-return
 import { guide as oldVsNewRegime } from './old-vs-new-tax-regime'
 import { guide as hraExemption } from './hra-exemption'
 import { guide as capitalGains } from './capital-gains-tax-guide'
+import { guide as incomeTaxSlabs } from './income-tax-slabs-fy-2025-26'
 
 export const GUIDES_A: Guide[] = [
+  incomeTaxSlabs,
   itrFilingGuide,
   whichItrForm,
   belatedRevisedUpdated,

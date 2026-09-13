@@ -10,7 +10,8 @@ Read `docs/PROJECT.md` first (state, open decisions, checklist) and `TAX-PLATFOR
 - App Router only. `params` are Promises (`await params`). Proxy lives in `proxy.ts` (not middleware).
 - Every indexable route uses `buildMetadata()` from `app/lib/seo.ts` (sets canonical). Never add `alternates.canonical` to the root layout.
 - JSON-LD: server `<JsonLd>` for everything except FAQPage; FAQs go through the client `<FaqJsonLd>` (see comment in that file).
-- Content, catalogue, deadlines and calculators are typed registries in `app/lib`. Add there, not in pages.
+- Content, catalogue, deadlines, calculators and reference pages (sections, forms) are typed registries in `app/lib`. Add there, not in pages. A new registry entry flows into its route, the grouped sitemap, IndexNow, llms.txt and the reverse-link strips automatically.
+- Reference pages (`app/lib/reference`) answer the query in `summary` first; that paragraph is the featured-snippet candidate. Never invent an Income-tax Act 2025 mapping: mark `act2025.status` as `reported` unless the Rules are notified.
 - Tax rates and dates live only in `app/lib/tax/rules/<fy>.ts`.
 - Money: rupees, `formatINR`, `font-mono tabular`.
 - Copy: "expert-assisted", "qualified professional (CMA/CA)". Never "CA-assisted". No Hinglish, no emoji, no em-dashes.
