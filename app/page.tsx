@@ -1,15 +1,14 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowRight, ShieldCheck, Clock, Users, IndianRupee, MessageCircle, FileCheck2 } from 'lucide-react'
+import { ShieldCheck, Clock, Users, IndianRupee, MessageCircle, FileCheck2 } from 'lucide-react'
 import { buildMetadata, graph, webPageJsonLd } from '@/app/lib/seo'
 import { SITE } from '@/app/lib/site'
-import { SERVICES, servicePath, unitSuffix } from '@/app/lib/services'
+import { SERVICES } from '@/app/lib/services'
 import { CALCULATORS } from '@/app/lib/calculators'
 import { GUIDES } from '@/app/lib/guides'
 import { publishedExperts } from '@/app/lib/experts'
 import { TESTIMONIALS } from '@/app/lib/testimonials'
 import { upcomingDeadlines } from '@/app/lib/deadline-items'
-import { formatINR } from '@/app/lib/format'
 import JsonLd from '@/app/components/JsonLd'
 import FaqJsonLd from '@/app/components/FaqJsonLd'
 import HeroStatusCard from '@/app/components/HeroStatusCard'
@@ -205,35 +204,6 @@ export default function HomePage() {
               { title: 'Approve the draft, we file', desc: 'Your expert shares the computation. You approve, we file and send the acknowledgement. Reminders next year.', time: '1 to 3 business days' },
             ]}
           />
-        </Container>
-      </section>
-
-      {/* Personas */}
-      <section className="py-16 lg:py-24">
-        <Container>
-          <SectionHeading eyebrow="Who we file for" title="Built for the way you earn" />
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {[
-              { t: 'Salaried employees', d: 'Form 16, HRA, regime choice, refunds.', slug: 'itr-salaried' },
-              { t: 'Investors and F&O traders', d: 'Capital gains, turnover, loss carry-forward, audit checks.', slug: 'itr-fno-trader' },
-              { t: 'Freelancers and consultants', d: '44ADA, GST threshold, advance tax calendar.', slug: 'itr-freelancer' },
-              { t: 'Shops and small businesses', d: 'GST monthly, TDS, books and ITR-3.', slug: 'gst-monthly' },
-              { t: 'Startup founders', d: 'Incorporation, Startup India, first-year compliance.', slug: 'pvt-ltd-incorporation' },
-              { t: 'NRIs', d: 'DTAA, NRO interest, property sale, Schedule FA.', slug: 'itr-nri' },
-            ].map((p) => {
-              const s = SERVICES.find((x) => x.slug === p.slug)!
-              return (
-                <Link key={p.slug} href={servicePath(s)} className="group flex items-center justify-between gap-4 rounded-2xl border border-border bg-card p-5 shadow-[var(--shadow-card)] hover:border-green-600">
-                  <div>
-                    <p className="font-bold text-navy-900 group-hover:text-green-700">{p.t}</p>
-                    <p className="mt-1 text-sm text-text-2">{p.d}</p>
-                    <p className="mt-2 font-mono text-sm font-semibold text-navy-900">{s.price !== null ? `from ${formatINR(s.price)}${unitSuffix(s.unit) ? ' ' + unitSuffix(s.unit) : ''}` : 'Quote after triage'}</p>
-                  </div>
-                  <ArrowRight className="h-5 w-5 shrink-0 text-muted group-hover:text-green-700" />
-                </Link>
-              )
-            })}
-          </div>
         </Container>
       </section>
 
