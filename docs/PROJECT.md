@@ -44,7 +44,7 @@ Not built yet (Phase 1+): auth, database, cart/checkout, Razorpay, client dashbo
 
 ## Owner decisions still open
 
-1. Brand and domain: `NEXT_PUBLIC_BASE_URL` defaults to `https://sahiladvisory.in`. Confirm the domain.
+1. Domain: **done.** `sahiladvisory.in` is live on the business Vercel account (team `sahil-advisory`), registered at Hostinger, with `www` and the old `sahil-advisory.vercel.app` redirecting to it. `NEXT_PUBLIC_BASE_URL` is set in production.
 2. Legal entity, GSTIN (`NEXT_PUBLIC_COMPANY_GSTIN`), CIN, registered address. Footer shows GSTIN only when set.
 3. Sign off on prices in `app/lib/services.ts` and consultation fees. Strikethrough MRPs are valid until 31 March 2027 per the pricing page.
 4. **CA partner details, now blocking.** The audit category is live and sells tax audit under 44AB and statutory audit, both of which say the report is "signed by an empanelled Chartered Accountant". No CA is named anywhere yet, which is honest but incomplete. Send name, membership number, firm, years and a photo, and I will add them to `app/lib/experts.ts` with `isPublished: true` so the audit pages, order pages and `reviewedBy` schema name a real signatory.
