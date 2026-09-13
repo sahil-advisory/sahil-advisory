@@ -7,7 +7,6 @@ import { BASE_URL } from '@/app/lib/site'
 import { CATEGORIES, CATEGORY_PATH, getCategory, servicesIn, servicePath, type ServiceCategoryId } from '@/app/lib/services'
 import { deadlineItems } from '@/app/lib/deadline-items'
 import { publishedExperts } from '@/app/lib/experts'
-import { TESTIMONIALS } from '@/app/lib/testimonials'
 import { GUIDES, guidePath } from '@/app/lib/guides'
 import JsonLd from '@/app/components/JsonLd'
 import CategoryFacts from '@/app/components/CategoryFacts'
@@ -16,7 +15,7 @@ import DeadlineWidget from '@/app/components/DeadlineWidget'
 import CallbackForm from '@/app/components/CallbackForm'
 import PlanFinder from '@/app/components/PlanFinder'
 import { Container, Breadcrumbs, TrustStrip, ProcessSteps, SectionHeading, FaqAccordion, CtaBand, Button } from '@/app/components/ui'
-import { PlanCard, ExpertCard, TestimonialCard } from '@/app/components/cards'
+import { PlanCard, ExpertCard } from '@/app/components/cards'
 import { midSentence } from '@/app/lib/format'
 
 type Params = { category: string }
@@ -163,14 +162,8 @@ export default async function CategoryPage({ params }: { params: Promise<Params>
             </div>
           </div>
           <div>
-            <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-muted">Clients</p>
-            <div className="mt-4 grid gap-4 sm:grid-cols-2">
-              {TESTIMONIALS.slice(0, 2).map((t) => (
-                <TestimonialCard key={t.name} t={t} />
-              ))}
-            </div>
             {guides.length > 0 && (
-              <div className="mt-8">
+              <div>
                 <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-muted">Read before you file</p>
                 <ul className="mt-3 divide-y divide-border rounded-2xl border border-border bg-card">
                   {guides.map((g) => (
