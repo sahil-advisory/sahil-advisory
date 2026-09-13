@@ -9,7 +9,7 @@ next one more useful, but any subset works.
 
 | Part | Variables | What you get |
 |---|---|---|
-| 1. Email alerts | `RESEND_API_KEY`, `LEADS_TO_EMAIL`, `LEADS_FROM_EMAIL` | Every lead in your inbox. Minutes to set up |
+| 1. Email | `BREVO_API_KEY`, `EMAIL_FROM`, `LEADS_TO_EMAIL` | Every lead in your inbox, and sign-in links. Minutes to set up |
 | 2. Database | `DATABASE_URL`, `DIRECT_URL` | Leads stored permanently, with every alert attempt logged |
 | 3. WhatsApp alerts | `WHATSAPP_PROVIDER`, `WHATSAPP_NOTIFY_TO` plus provider keys | Instant ping on your phone |
 | 4. Sign-in | `AUTH_SECRET`, `ADMIN_EMAILS` | The admin inbox at `/admin` |
@@ -21,22 +21,35 @@ still sees success. Verified against a real Postgres and a broken connection.
 
 ---
 
-## 1. Email alerts (Resend)
+## 1. Email (Brevo)
 
-1. Sign up at resend.com, add your sending domain, and add the DNS records it
-   gives you. Delivery fails until the domain shows as verified.
-2. Create an API key.
-3. Set:
+Carries the lead alerts and the sign-in links. Brevo's free plan sends 300
+emails a day and, unlike Resend, can send from a **verified sender address**
+without owning a domain, so sahiladvisory1@gmail.com works as the sender
+from day one.
+
+1. Sign up at brevo.com with sahiladvisory1@gmail.com.
+2. **Senders, Domains & Dedicated IPs**, then **Senders**, **Add a sender**.
+   Enter the Gmail address, then click the confirmation link Brevo emails to
+   it. The sender must show as verified.
+3. Top-right profile menu, **SMTP & API**, tab **API Keys**, **Generate a new
+   API key**. Name it `sahil-advisory-site`. Copy it; it is shown once.
+4. Set:
 
 ```
-RESEND_API_KEY=re_...
+BREVO_API_KEY=xkeysib-...
+EMAIL_FROM=sahiladvisory1@gmail.com
+EMAIL_FROM_NAME=Sahil Advisory
 LEADS_TO_EMAIL=sahiladvisory1@gmail.com
-LEADS_FROM_EMAIL=leads@<your verified domain>
 ```
 
-The same key also sends the sign-in links in part 4.
+The free plan adds a short "sent with Brevo" line to each email. When you
+own a domain, add it under **Domains**, follow the DNS records, and switch
+`EMAIL_FROM` to an address on it; deliverability improves and the sign-in
+email looks like it comes from the business.
 
----
+Resend is still supported: set `RESEND_API_KEY` instead and the code uses
+it. It needs a verified domain to deliver to anyone but your own inbox.
 
 ## 2. Database (Supabase)
 

@@ -31,7 +31,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Search
 
         {!authAvailable ? (
           <p className="mt-4 rounded-xl bg-bg-alt p-4 text-sm text-text-2">
-            Sign-in is not configured on this deployment yet. It needs <code className="font-mono">AUTH_SECRET</code>, a database and an email key. See <code className="font-mono">docs/SETUP-BACKEND.md</code>.
+            Sign-in is not configured on this deployment yet. It needs <code className="font-mono">AUTH_SECRET</code>, a database and an email provider key. See <code className="font-mono">docs/SETUP-BACKEND.md</code>.
           </p>
         ) : sent ? (
           <div className="mt-4 rounded-xl border border-green-100 bg-green-50 p-5">
@@ -50,7 +50,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Search
               className="mt-6 space-y-3"
               action={async (formData) => {
                 'use server'
-                await signIn('resend', { email: String(formData.get('email') || ''), redirectTo: target })
+                await signIn('email', { email: String(formData.get('email') || ''), redirectTo: target })
               }}
             >
               <label className="block">

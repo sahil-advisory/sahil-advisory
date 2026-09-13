@@ -2,7 +2,7 @@ import { after } from 'next/server'
 import { eq, sql } from 'drizzle-orm'
 import { db, leads, notifications, type NotificationStatus } from '@/app/lib/db'
 import { sendWhatsApp } from '@/app/lib/notify/whatsapp'
-import { sendLeadEmail } from '@/app/lib/notify/email'
+import { sendLeadEmail, emailProvider } from '@/app/lib/notify/email'
 import { getClientIP, rateLimit } from '@/app/lib/rate-limit'
 import { SITE } from '@/app/lib/site'
 
@@ -156,7 +156,7 @@ export async function POST(request: Request) {
         {
           leadId,
           channel: 'email',
-          provider: 'resend',
+          provider: mail.sent ? mail.provider : emailProvider(),
           kind: 'lead_alert',
           to: emailTo,
           subject: `New callback request: ${name}`,
