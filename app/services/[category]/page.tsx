@@ -10,6 +10,7 @@ import { publishedExperts } from '@/app/lib/experts'
 import { GUIDES, guidePath } from '@/app/lib/guides'
 import JsonLd from '@/app/components/JsonLd'
 import CategoryFacts from '@/app/components/CategoryFacts'
+import TaxShowcase from '@/app/components/TaxShowcase'
 import FaqJsonLd from '@/app/components/FaqJsonLd'
 import DeadlineWidget from '@/app/components/DeadlineWidget'
 import CallbackForm from '@/app/components/CallbackForm'
@@ -117,6 +118,8 @@ export default async function CategoryPage({ params }: { params: Promise<Params>
       <Container className="py-16 lg:py-20">
         <ProcessSteps steps={c.steps} title={`${c.navLabel} in 3 simple steps`} />
       </Container>
+
+      {c.id === 'itr' && <TaxShowcase />}
 
       <section className="bg-bg-alt py-16 lg:py-20">
         <Container>

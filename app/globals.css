@@ -157,6 +157,11 @@ details.faq[open] .faq-chevron {
   transform: none;
 }
 
+@keyframes showcase-progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
 /* Mobile drawer. Items fade up in sequence; the delay is set inline. */
 .drawer-item {
   animation: fade-up 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;

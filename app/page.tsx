@@ -15,6 +15,7 @@ import HeroStatusCard from '@/app/components/HeroStatusCard'
 import DeadlineWidget from '@/app/components/DeadlineWidget'
 import CallbackForm from '@/app/components/CallbackForm'
 import Reveal from '@/app/components/Reveal'
+import TaxShowcase from '@/app/components/TaxShowcase'
 import { Button, Container, SectionHeading, FaqAccordion, CtaBand, StatsRow, Eyebrow, ProcessSteps } from '@/app/components/ui'
 import { CategoryCard, ExpertCard, TestimonialCard, CalculatorCard, GuideCard, PlanCard } from '@/app/components/cards'
 
@@ -206,6 +207,8 @@ export default function HomePage() {
           />
         </Container>
       </section>
+
+      <TaxShowcase />
 
       {/* Guides */}
       {guides.length > 0 && (
