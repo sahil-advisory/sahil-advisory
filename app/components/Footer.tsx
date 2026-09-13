@@ -3,6 +3,7 @@ import { Phone, Mail, MapPin, Clock, MessageCircle, Lock } from 'lucide-react'
 import { SITE, FOOTER_DISCLAIMER, WHATSAPP_DEFAULT } from '@/app/lib/site'
 import { LIVE_CALCULATORS } from '@/app/lib/calculators'
 import TrackedLink from './TrackedLink'
+import { LogoFull } from './Logo'
 
 const services = [
   { label: 'ITR Filing', href: '/services/itr' },
@@ -54,13 +55,7 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)_minmax(0,1.2fr)]">
           <div>
-            <div className="flex items-center gap-2.5">
-              <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-green-600 font-bold text-white">SA</span>
-              <span className="leading-tight">
-                <span className="block text-base font-extrabold">{SITE.name}</span>
-                <span className="block text-[10px] font-semibold uppercase tracking-[0.18em] text-white/50">Tax and Compliance</span>
-              </span>
-            </div>
+            <LogoFull height={84} tone="white" />
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/65">{SITE.shortDescription}</p>
             <div className="mt-5 flex items-center gap-2 text-xs text-white/60">
               <Lock className="h-3.5 w-3.5 text-green-500" />
