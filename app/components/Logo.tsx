@@ -1,8 +1,9 @@
-// Brand mark, rebuilt as vector from the supplied logo-2.png so it is crisp
-// at any size and sits on any background. The geometry is traced from the
-// raster: a green peak with a notch over a dark, open-bottomed "A" band.
-// Colours are sampled from the file. Wordmark is two-tone, "Sahil" dark and
-// "Advisory" green, set in the page font.
+// Brand mark and lockup, from the supplied logo-2.png.
+//
+// The A mark is traced into SVG paths with colours sampled from the file.
+// The wordmark is real HTML text in Poppins (the face the original uses),
+// so it stays crisp at every size and the tagline can be set at a legible
+// pixel size instead of scaling down with an SVG.
 
 export const BRAND = {
   green: '#58AE5A',
@@ -14,11 +15,8 @@ export const BRAND = {
 export function MarkPaths({ green = BRAND.green, dark = BRAND.dark, notch = '#FFFFFF' }: { green?: string; dark?: string; notch?: string }) {
   return (
     <>
-      {/* peak */}
       <path d="M148 0 L228 155 L68 155 Z" fill={green} />
-      {/* notch that turns the peak into an A */}
       <path d="M148 112 L170 155 L126 155 Z" fill={notch} />
-      {/* legs: outer trapezoid minus inner trapezoid */}
       <path d="M0 300 L68 180 L228 180 L296 300 L236 300 L192 226 L104 226 L60 300 Z" fill={dark} />
     </>
   )
@@ -32,36 +30,36 @@ export function LogoMark({ size = 40, className = '', onDark = false }: { size?:
   )
 }
 
-// Horizontal lockup: mark on the left, two-line wordmark on the right,
-// optional tagline. Height sets the whole thing; width follows.
-export function LogoLockup({
-  height = 44,
-  className = '',
-  onDark = false,
-  tagline = false,
-}: {
-  height?: number
-  className?: string
-  onDark?: boolean
-  tagline?: boolean
-}) {
+type Size = 'sm' | 'md' | 'lg'
+
+// Pixel sizes per variant: mark, wordmark line, tagline. Chosen so the
+// tagline is never below 8px, the floor for legibility on a retina phone.
+const SIZES: Record<Size, { mark: number; word: number; lead: number; tag: number; tagTrack: string; gap: number }> = {
+  sm: { mark: 40, word: 19, lead: 19, tag: 8, tagTrack: '0.22em', gap: 10 },
+  md: { mark: 52, word: 24, lead: 24, tag: 9.5, tagTrack: '0.24em', gap: 12 },
+  lg: { mark: 72, word: 34, lead: 34, tag: 12, tagTrack: '0.26em', gap: 16 },
+}
+
+// Horizontal lockup: mark, two-line wordmark, optional tagline centred
+// beneath the whole thing exactly as in the original.
+export function Logo({ size = 'sm', onDark = false, tagline = false, className = '' }: { size?: Size; onDark?: boolean; tagline?: boolean; className?: string }) {
+  const s = SIZES[size]
   const dark = onDark ? '#FFFFFF' : BRAND.dark
-  const muted = onDark ? 'rgba(255,255,255,0.7)' : '#3A4149'
-  // Layout box traced from the original: mark 300 wide, then the wordmark
-  // spanning about 2.2 mark-widths, tagline centred under the whole lockup.
-  const H = tagline ? 372 : 300
-  const W = 980
-  const width = Math.round((height * W) / H)
+  const muted = onDark ? 'rgba(255,255,255,0.72)' : '#2B3138'
   return (
-    <svg width={width} height={height} viewBox={`0 0 ${W} ${H}`} role="img" aria-label={`Sahil Advisory. ${BRAND.tagline}.`} className={className}>
-      <MarkPaths dark={dark} notch={onDark ? '#0B1F3A' : '#FFFFFF'} />
-      <text x="336" y="142" fontFamily="inherit" fontWeight="800" fontSize="150" letterSpacing="-5" fill={dark}>Sahil</text>
-      <text x="336" y="288" fontFamily="inherit" fontWeight="800" fontSize="150" letterSpacing="-5" fill={BRAND.green}>Advisory</text>
+    <span className={`inline-flex flex-col items-center ${className}`} aria-label={`Sahil Advisory. ${BRAND.tagline}.`} role="img">
+      <span className="flex items-center" style={{ gap: s.gap }}>
+        <LogoMark size={s.mark} onDark={onDark} />
+        <span className="font-brand flex flex-col font-extrabold" style={{ fontSize: s.word, lineHeight: `${s.lead}px`, letterSpacing: '-0.02em' }}>
+          <span style={{ color: dark }}>Sahil</span>
+          <span style={{ color: BRAND.green }}>Advisory</span>
+        </span>
+      </span>
       {tagline && (
-        <text x="490" y="356" textAnchor="middle" fontFamily="inherit" fontWeight="600" fontSize="34" letterSpacing="13" fill={muted}>
-          {BRAND.tagline.toUpperCase().replace(',', '')}
-        </text>
+        <span className="font-brand mt-1 whitespace-nowrap font-medium uppercase" style={{ fontSize: s.tag, letterSpacing: s.tagTrack, color: muted, lineHeight: 1 }}>
+          {BRAND.tagline.replace(',', '')}
+        </span>
       )}
-    </svg>
+    </span>
   )
 }

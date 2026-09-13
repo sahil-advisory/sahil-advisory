@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Geist, Geist_Mono, Poppins } from 'next/font/google'
 import Script from 'next/script'
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { Analytics } from '@vercel/analytics/next'
@@ -13,6 +13,8 @@ import { graph, organizationJsonLd } from './lib/seo'
 
 const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] })
 const geistMono = Geist_Mono({ variable: '--font-geist-mono', subsets: ['latin'] })
+// Brand face for the logo wordmark only; the rest of the site stays on Geist.
+const poppins = Poppins({ variable: '--font-poppins', subsets: ['latin'], weight: ['500', '800'], display: 'swap' })
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
@@ -59,7 +61,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const clarityId = process.env.NEXT_PUBLIC_CLARITY_ID
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} h-full antialiased`}>
       <head>
         <meta name="theme-color" content="#0B1F3A" />
         <JsonLd data={graph(organizationJsonLd())} />

@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation'
 import { Menu, X, ChevronDown, FileText, Receipt, Percent, Building2, ScrollText, Headset, Calculator, BookOpen, CalendarClock, ClipboardCheck } from 'lucide-react'
 import { SITE } from '@/app/lib/site'
 import { track } from '@/app/lib/analytics'
-import { LogoLockup } from './Logo'
+import { Logo } from './Logo'
 
 const returns = [
   { label: 'ITR Filing', desc: 'Salaried, traders, freelancers, NRI', href: '/services/itr', icon: FileText },
@@ -72,9 +72,9 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/85">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2.5" aria-label={`${SITE.name} home`}>
-          <LogoLockup height={40} />
+          <Logo size="sm" tagline />
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex" aria-label="Main">
@@ -134,7 +134,7 @@ export default function Navbar() {
       </div>
 
       {open && (
-        <div className="fixed inset-x-0 top-16 bottom-0 overflow-y-auto border-t border-border bg-white lg:hidden">
+        <div className="fixed inset-x-0 top-[72px] bottom-0 overflow-y-auto border-t border-border bg-white lg:hidden">
           <div className="space-y-6 px-4 py-6">
             <MegaGroup title="Returns" items={returns} onNav={() => setOpen(false)} />
             <MegaGroup title="Business and compliance" items={business} onNav={() => setOpen(false)} />
