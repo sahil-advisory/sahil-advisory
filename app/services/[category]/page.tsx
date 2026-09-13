@@ -1,15 +1,16 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { Star, ArrowRight } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { buildMetadata, breadcrumbJsonLd, graph, webPageJsonLd, ORG_ID } from '@/app/lib/seo'
-import { BASE_URL, SITE } from '@/app/lib/site'
+import { BASE_URL } from '@/app/lib/site'
 import { CATEGORIES, CATEGORY_PATH, getCategory, servicesIn, servicePath, type ServiceCategoryId } from '@/app/lib/services'
 import { deadlineItems } from '@/app/lib/deadline-items'
 import { publishedExperts } from '@/app/lib/experts'
 import { TESTIMONIALS } from '@/app/lib/testimonials'
 import { GUIDES, guidePath } from '@/app/lib/guides'
 import JsonLd from '@/app/components/JsonLd'
+import CategoryFacts from '@/app/components/CategoryFacts'
 import FaqJsonLd from '@/app/components/FaqJsonLd'
 import DeadlineWidget from '@/app/components/DeadlineWidget'
 import CallbackForm from '@/app/components/CallbackForm'
@@ -102,11 +103,7 @@ export default async function CategoryPage({ params }: { params: Promise<Params>
                 <Button href="#plans" size="lg" icon>Choose my plan</Button>
                 {minPrice !== null && <span className="self-center font-mono text-sm text-text-2">from ₹{minPrice.toLocaleString('en-IN')} + GST</span>}
               </div>
-              <dl className="mt-10 grid grid-cols-3 gap-4 border-t border-border pt-6">
-                <div><dt className="text-xs text-muted">Returns filed</dt><dd className="font-mono text-2xl font-bold text-navy-900">{SITE.returnsFiled}+</dd></div>
-                <div><dt className="text-xs text-muted">On-time</dt><dd className="font-mono text-2xl font-bold text-navy-900">100%</dd></div>
-                <div><dt className="text-xs text-muted">Google rating</dt><dd className="flex items-center gap-1 font-mono text-2xl font-bold text-navy-900">{SITE.googleRating.toFixed(1)} <Star className="h-4 w-4 fill-gold-600 text-gold-600" /></dd></div>
-              </dl>
+              <CategoryFacts facts={c.facts} />
             </div>
             <div className="space-y-4 lg:pl-4">
               {deadlines.length > 0 && <DeadlineWidget items={deadlines} />}

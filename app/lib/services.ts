@@ -49,7 +49,12 @@ export interface ServiceCategory {
   finder?: { label: string; desc: string; slug: string }[]
   faqs: Faq[]
   deadlineKeys: string[]
+  // Four facts a visitor checks before choosing: due date, cost of missing
+  // it, forms, speed. `deadlineKey` renders the live next due date.
+  facts: CategoryFact[]
 }
+
+export type CategoryFact = { label: string; value?: string; hint?: string; deadlineKey?: string }
 
 const unitLabel: Record<Unit, string> = {
   one_time: '',
@@ -108,6 +113,12 @@ export const CATEGORIES: ServiceCategory[] = [
       { q: 'How long does expert-assisted filing take?', a: 'Most salaried returns are filed within one business day of receiving complete documents. Capital gains, F&O and business returns take two to three business days.' },
     ],
     deadlineKeys: ['itr-non-audit', 'itr-audit', 'itr-belated'],
+    facts: [
+      { label: 'Due date', deadlineKey: 'itr-non-audit' },
+      { label: 'Late fee if missed', value: '₹1,000 to ₹5,000', hint: 'Section 234F' },
+      { label: 'Forms covered', value: 'ITR-1 to ITR-6', hint: 'Individuals to companies' },
+      { label: 'Fastest turnaround', value: '1 business day', hint: 'Salaried returns' },
+    ],
   },
   {
     id: 'gst',
@@ -154,6 +165,12 @@ export const CATEGORIES: ServiceCategory[] = [
       { q: 'Do freelancers need GST?', a: 'Only if annual receipts exceed ₹20 lakh, or you export services and want to claim refunds or a LUT. Below the threshold, registration is optional. See our guide on GST for freelancers.' },
     ],
     deadlineKeys: ['gstr-1', 'gstr-3b', 'gstr-9'],
+    facts: [
+      { label: 'GSTR-3B due', deadlineKey: 'gstr-3b' },
+      { label: 'Late fee if missed', value: '₹50 per day', hint: '₹20 per day for nil returns' },
+      { label: 'New registration', value: '3 to 7 days', hint: 'GSTIN in hand' },
+      { label: 'ITC matched', value: 'Every month', hint: 'Against GSTR-2B before 3B' },
+    ],
   },
   {
     id: 'tds',
@@ -188,6 +205,12 @@ export const CATEGORIES: ServiceCategory[] = [
       { q: 'How is interest on late TDS calculated?', a: '1% per month from the date TDS was deductible to the date deducted, and 1.5% per month from the date deducted to the date deposited. Part of a month counts as a full month.' },
     ],
     deadlineKeys: ['tds-payment', 'tds-return'],
+    facts: [
+      { label: 'Deposit due', deadlineKey: 'tds-payment' },
+      { label: 'Late deposit interest', value: '1.5% per month', hint: 'From deduction to deposit' },
+      { label: 'Late return fee', value: '₹200 per day', hint: 'Section 234E' },
+      { label: 'Form 16 / 16A', value: '2 business days', hint: 'After the quarterly return' },
+    ],
   },
   {
     id: 'registrations',
@@ -221,6 +244,12 @@ export const CATEGORIES: ServiceCategory[] = [
       { q: 'Do I need a DSC?', a: 'A Class 3 Digital Signature Certificate is required to sign company incorporation forms, GST returns for companies and LLPs, income tax returns for audit cases, and tenders on GeM.' },
     ],
     deadlineKeys: [],
+    facts: [
+      { label: 'Pvt Ltd or LLP', value: '7 to 12 days', hint: 'Working days, MCA dependent' },
+      { label: 'Udyam / MSME', value: 'Same day', hint: 'Certificate delivered' },
+      { label: 'Government fees', value: 'At actuals', hint: 'Receipts shared with you' },
+      { label: 'After registration', value: 'Compliance calendar', hint: 'First-year dates mapped' },
+    ],
   },
   {
     id: 'notices',
@@ -254,6 +283,12 @@ export const CATEGORIES: ServiceCategory[] = [
       { q: 'What is a GST ASMT-10 notice?', a: 'A scrutiny notice pointing out discrepancies in your GST returns, such as ITC claimed in 3B exceeding 2B or turnover mismatch with GSTR-1. You must reply in ASMT-11 within 30 days.' },
     ],
     deadlineKeys: [],
+    facts: [
+      { label: 'Free assessment', value: '4 working hours', hint: 'Upload the notice, we explain it' },
+      { label: 'Fee', value: 'Fixed, upfront', hint: 'Quoted before any work' },
+      { label: 'Usual reply window', value: '15 to 30 days', hint: 'We track the date for you' },
+      { label: 'Appeals', value: 'Empanelled CAs', hint: 'CIT(A) and ITAT' },
+    ],
   },
   {
     id: 'audit',
@@ -298,6 +333,12 @@ export const CATEGORIES: ServiceCategory[] = [
       { q: 'What documents does an audit need?', a: 'Trial balance and ledgers, bank statements, sales and purchase registers, GST returns, TDS returns and Form 26AS, fixed asset register, loan statements, stock records and last year\'s audited financials.' },
     ],
     deadlineKeys: ['itr-audit'],
+    facts: [
+      { label: 'Audited return due', deadlineKey: 'itr-audit' },
+      { label: '44AB threshold', value: '₹1 crore', hint: '₹10 crore with 95% digital receipts' },
+      { label: 'Signed by', value: 'Empanelled CA', hint: 'Cost audit signed by our CMA' },
+      { label: 'Late report penalty', value: '0.5% of turnover', hint: 'Up to ₹1.5 lakh, section 271B' },
+    ],
   },
 ]
 
