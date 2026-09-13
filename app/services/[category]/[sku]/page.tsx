@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { ArrowRight, Clock, FileText, ShieldCheck } from 'lucide-react'
+import { ArrowRight, Clock, ShieldCheck } from 'lucide-react'
 import { buildMetadata, breadcrumbJsonLd, graph, webPageJsonLd, ORG_ID } from '@/app/lib/seo'
 import { BASE_URL, whatsappLink } from '@/app/lib/site'
 import { SERVICES, CATEGORY_PATH, getCategory, getService, servicesIn, servicePath, unitSuffix } from '@/app/lib/services'
@@ -13,10 +13,11 @@ import JsonLd from '@/app/components/JsonLd'
 import FaqJsonLd from '@/app/components/FaqJsonLd'
 import DeadlineWidget from '@/app/components/DeadlineWidget'
 import CallbackForm from '@/app/components/CallbackForm'
+import PlanDetails from '@/app/components/PlanDetails'
 import TrackedLink from '@/app/components/TrackedLink'
 import PageEvent from '@/app/components/PageEvent'
 import RelatedReference from '@/app/components/reference/RelatedReference'
-import { Container, Breadcrumbs, TrustStrip, ProcessSteps, FaqAccordion, CtaBand, CheckList, PriceTag, Badge, SectionHeading } from '@/app/components/ui'
+import { Container, Breadcrumbs, TrustStrip, ProcessSteps, FaqAccordion, CtaBand, PriceTag, Badge, SectionHeading } from '@/app/components/ui'
 import { PlanCard, ExpertCard, CalculatorCard, GuideCard } from '@/app/components/cards'
 import { midSentence } from '@/app/lib/format'
 
@@ -135,24 +136,7 @@ export default async function SkuPage({ params }: { params: Promise<Params> }) {
 
       <TrustStrip items={c.trust} />
 
-      <Container className="grid gap-10 py-16 lg:grid-cols-2 lg:py-20">
-        <div className="rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-card)]">
-          <h2 className="text-xl font-bold text-navy-900">What is included</h2>
-          <CheckList className="mt-4" items={s.includes} />
-        </div>
-        <div className="rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-card)]">
-          <h2 className="flex items-center gap-2 text-xl font-bold text-navy-900"><FileText className="h-5 w-5 text-green-600" /> Documents we need</h2>
-          <ol className="mt-4 space-y-2.5">
-            {s.documents.map((d, i) => (
-              <li key={d} className="flex gap-3 text-sm text-text-2">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-navy-100 font-mono text-xs font-bold text-navy-900">{i + 1}</span>
-                {d}
-              </li>
-            ))}
-          </ol>
-          <p className="mt-4 text-xs text-muted">Missing something? Start anyway. Your expert tells you exactly what is needed and what can be downloaded with your consent.</p>
-        </div>
-      </Container>
+      <PlanDetails service={s} />
 
       <section className="bg-bg-alt py-16 lg:py-20">
         <Container>
