@@ -15,7 +15,7 @@ import FaqJsonLd from '@/app/components/FaqJsonLd'
 import HeroStatusCard from '@/app/components/HeroStatusCard'
 import DeadlineWidget from '@/app/components/DeadlineWidget'
 import CallbackForm from '@/app/components/CallbackForm'
-import { Button, Container, SectionHeading, FaqAccordion, CtaBand, StatsRow, Eyebrow } from '@/app/components/ui'
+import { Button, Container, SectionHeading, FaqAccordion, CtaBand, StatsRow, Eyebrow, ProcessSteps } from '@/app/components/ui'
 import { CategoryCard, ExpertCard, TestimonialCard, CalculatorCard, GuideCard, PlanCard } from '@/app/components/cards'
 
 // Deadline countdown data is computed on the server; refresh hourly.
@@ -187,21 +187,15 @@ export default function HomePage() {
       {/* Process */}
       <section className="bg-bg-alt py-16 lg:py-24">
         <Container>
-          <SectionHeading eyebrow="How it works" title="Three steps. One to three business days." />
-          <ol className="mt-12 grid gap-6 md:grid-cols-3">
-            {[
-              { n: '01', t: 'Pick a plan or ask for a callback', d: 'Use the plan finder on any service page. Unsure? Request a callback and we recommend one on the phone.', time: 'Under 2 minutes' },
-              { n: '02', t: 'Share documents securely', d: 'Upload Form 16, AIS, broker statements or GST data on the dashboard or WhatsApp. We tell you exactly what is missing.', time: '5 to 10 minutes' },
-              { n: '03', t: 'Approve the draft, we file', d: 'Your expert shares the computation. You approve, we file and send the acknowledgement. Reminders next year.', time: '1 to 3 business days' },
-            ].map((s) => (
-              <li key={s.n} className="relative rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-card)]">
-                <span className="font-mono text-4xl font-bold text-navy-100" aria-hidden>{s.n}</span>
-                <h3 className="mt-3 text-lg font-bold text-navy-900">{s.t}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-text-2">{s.d}</p>
-                <p className="mt-4 text-xs font-semibold text-green-700">{s.time}</p>
-              </li>
-            ))}
-          </ol>
+          <ProcessSteps
+            eyebrow="How it works"
+            title="Three steps. One to three business days."
+            steps={[
+              { title: 'Pick a plan or ask for a callback', desc: 'Use the plan finder on any service page. Unsure? Request a callback and we recommend one on the phone.', time: 'Under 2 minutes' },
+              { title: 'Share documents securely', desc: 'Upload Form 16, AIS, broker statements or GST data on the dashboard or WhatsApp. We tell you exactly what is missing.', time: '5 to 10 minutes' },
+              { title: 'Approve the draft, we file', desc: 'Your expert shares the computation. You approve, we file and send the acknowledgement. Reminders next year.', time: '1 to 3 business days' },
+            ]}
+          />
         </Container>
       </section>
 

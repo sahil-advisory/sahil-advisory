@@ -208,10 +208,10 @@ export function TrustStrip({ items }: { items: string[] }) {
 // because every category's steps follow that shape.
 const STEP_ICONS = [ClipboardList, UploadCloud, BadgeCheck]
 
-export function ProcessSteps({ steps, title = 'How it works', desc }: { steps: { title: string; desc: string; time: string }[]; title?: string; desc?: string }) {
+export function ProcessSteps({ steps, title = 'How it works', desc, eyebrow = 'Simple process' }: { steps: { title: string; desc: string; time: string }[]; title?: string; desc?: string; eyebrow?: string }) {
   return (
     <section>
-      <SectionHeading eyebrow="Simple process" title={title} desc={desc} />
+      <SectionHeading eyebrow={eyebrow} title={title} desc={desc} />
       <ol className="relative mt-12 grid gap-8 md:grid-cols-3 md:gap-6">
         {/* Track behind the nodes on desktop */}
         <div aria-hidden className="absolute left-[16.66%] right-[16.66%] top-7 hidden h-0.5 bg-gradient-to-r from-green-100 via-green-500/60 to-green-100 md:block" />
