@@ -212,7 +212,7 @@ export default function HomePage() {
         <section className="bg-bg-alt py-16 lg:py-24">
           <Container>
             <div className="flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-end">
-              <SectionHeading align="left" eyebrow="Guides" title="Plain-English tax guides," emphasis="reviewed by a CMA" desc="Worked examples, current-year numbers and the exact steps. Updated whenever the law or a deadline changes." />
+              <SectionHeading align="left" eyebrow="Guides" title="Plain-English tax guides," emphasis="reviewed by a professional" desc="Worked examples, current-year numbers and the exact steps. Updated whenever the law or a deadline changes." />
               <Button href="/guides" variant="secondary" icon>All guides</Button>
             </div>
             <div className="mt-10 grid gap-5 md:grid-cols-3">

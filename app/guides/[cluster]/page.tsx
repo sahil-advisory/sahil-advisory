@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const { cluster } = await params
   const c = CLUSTERS.find((x) => x.id === cluster)
   if (!c) return {}
-  return buildMetadata({ title: `${c.name} Guides | Sahil Advisory`, description: `${c.description} Worked examples for FY 2025-26, reviewed by a CMA.`.slice(0, 160), path: `/guides/${c.id}` })
+  return buildMetadata({ title: `${c.name} Guides | Sahil Advisory`, description: `${c.description} Worked examples for FY 2025-26, reviewed by a qualified professional.`.slice(0, 160), path: `/guides/${c.id}` })
 }
 
 export default async function ClusterPage({ params }: { params: Promise<Params> }) {
