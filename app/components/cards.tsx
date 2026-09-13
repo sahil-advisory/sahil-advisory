@@ -1,7 +1,8 @@
 import Link from 'next/link'
-import { ArrowRight, Star, Calculator as CalcIcon, BookOpen, Clock } from 'lucide-react'
+import { ArrowRight, Star, Calculator as CalcIcon, BookOpen, Clock, Check, FileText, Receipt, Percent, Building2, ClipboardCheck, ScrollText, type LucideIcon } from 'lucide-react'
 import { Badge, CheckList, PriceTag } from './ui'
-import { servicePath, unitSuffix, type Service, type ServiceCategory } from '@/app/lib/services'
+import { servicePath, unitSuffix, servicesIn, CATEGORY_PATH, type Service, type ServiceCategoryId } from '@/app/lib/services'
+import { formatINR } from '@/app/lib/format'
 import type { Expert } from '@/app/lib/experts'
 import type { Testimonial } from '@/app/lib/testimonials'
 import type { CalculatorDef } from '@/app/lib/calculators'
@@ -51,22 +52,66 @@ export function PlanCard({ service, compact, hideBadge }: { service: Service; co
   )
 }
 
-export function CategoryCard({ category, items, href, cta }: { category: Pick<ServiceCategory, 'name'> & { sub: string }; items: string[]; href: string; cta: string }) {
+const CATEGORY_ICON: Record<ServiceCategoryId, LucideIcon> = {
+  itr: FileText,
+  gst: Receipt,
+  tds: Percent,
+  registrations: Building2,
+  audit: ClipboardCheck,
+  notices: ScrollText,
+}
+
+// Whole card is the link. Starting price and plan count come from the
+// registry so this never drifts from the pricing page.
+export function CategoryCard({ id, name, sub, items, cta }: { id: ServiceCategoryId; name: string; sub: string; items: readonly string[]; cta: string }) {
+  const Icon = CATEGORY_ICON[id]
+  const plans = servicesIn(id)
+  const priced = plans.filter((s) => s.price !== null && s.price > 0)
+  const min = priced.length ? Math.min(...priced.map((s) => s.price as number)) : null
   return (
-    <article className="flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-[var(--shadow-card)]">
-      <div className="bg-navy-900 px-6 py-5 text-white">
-        <h3 className="text-xl font-bold">{category.name}</h3>
-        <p className="mt-1 text-sm text-white/65">{category.sub}</p>
+    <Link
+      href={CATEGORY_PATH[id]}
+      className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-card)] transition-[transform,box-shadow,border-color] duration-300 ease-out hover:-translate-y-1 hover:border-green-600/60 hover:shadow-[var(--shadow-lift)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+    >
+      {/* Top accent that draws in on hover */}
+      <span aria-hidden className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-gradient-to-r from-green-600 to-green-400 transition-transform duration-500 ease-out group-hover:scale-x-100 motion-reduce:transition-none" />
+
+      <div className="flex items-start justify-between gap-4">
+        <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-navy-900 text-white transition-colors duration-300 group-hover:bg-green-600">
+          <Icon className="h-6 w-6" aria-hidden />
+        </span>
+        {min !== null && (
+          <span className="rounded-lg bg-green-50 px-2.5 py-1.5 text-right leading-none">
+            <span className="block text-[10px] font-bold uppercase tracking-wider text-green-700">From</span>
+            <span className="mt-0.5 block font-mono text-base font-bold tabular text-navy-900">{formatINR(min)}</span>
+          </span>
+        )}
       </div>
-      <div className="flex flex-1 flex-col p-6">
-        <CheckList items={items} />
-        <div className="mt-auto pt-6">
-          <Link href={href} className="flex items-center justify-between rounded-lg bg-green-600 px-4 py-3 text-sm font-semibold text-white hover:bg-green-700">
-            {cta} <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
+
+      <h3 className="mt-5 text-xl font-bold tracking-tight text-navy-900 transition-colors group-hover:text-green-700">{name}</h3>
+      <p className="mt-1 text-sm text-text-2">{sub}</p>
+
+      <ul className="mt-5 space-y-2.5">
+        {items.map((it) => (
+          <li key={it} className="flex gap-2.5 text-sm leading-snug text-text-2">
+            <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-green-50 text-green-700">
+              <Check className="h-3 w-3" strokeWidth={3} aria-hidden />
+            </span>
+            <span>{it}</span>
+          </li>
+        ))}
+      </ul>
+
+      <div className="mt-auto flex items-center justify-between border-t border-border pt-5">
+        <span className="text-sm font-semibold text-green-700">{cta}</span>
+        <span className="flex items-center gap-3">
+          <span className="text-xs text-muted">{plans.length} plans</span>
+          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-bg-alt text-navy-900 transition-[background-color,color,transform] duration-300 group-hover:translate-x-1 group-hover:bg-green-600 group-hover:text-white motion-reduce:group-hover:translate-x-0">
+            <ArrowRight className="h-4 w-4" aria-hidden />
+          </span>
+        </span>
       </div>
-    </article>
+    </Link>
   )
 }
 

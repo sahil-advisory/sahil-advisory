@@ -15,6 +15,7 @@ import FaqJsonLd from '@/app/components/FaqJsonLd'
 import HeroStatusCard from '@/app/components/HeroStatusCard'
 import DeadlineWidget from '@/app/components/DeadlineWidget'
 import CallbackForm from '@/app/components/CallbackForm'
+import Reveal from '@/app/components/Reveal'
 import { Button, Container, SectionHeading, FaqAccordion, CtaBand, StatsRow, Eyebrow, ProcessSteps } from '@/app/components/ui'
 import { CategoryCard, ExpertCard, TestimonialCard, CalculatorCard, GuideCard, PlanCard } from '@/app/components/cards'
 
@@ -35,6 +36,15 @@ const HOME_FAQS = [
   { q: 'Can you help with an income tax notice?', a: 'Upload the notice and we assess it free within four working hours. We then quote a fixed fee for the reply. Intimation and defective return replies start at ₹999.' },
   { q: 'Where are you located?', a: 'Chandigarh and Panchkula, serving clients across India online. Everything from document upload to approval happens on the dashboard or WhatsApp.' },
 ]
+
+const CATEGORY_CARDS = [
+  { id: 'itr', name: 'Income tax returns', sub: 'For salaried, investors and business', items: ['Salaried, capital gains and F&O traders', 'Freelancers under 44ADA and proprietors', 'NRI returns with DTAA relief', 'Belated, revised and updated returns'], cta: 'View ITR plans' },
+  { id: 'gst', name: 'GST', sub: 'For registration and monthly filing', items: ['Registration in 3 to 7 days', 'GSTR-1 and 3B monthly or QRMP', 'Composition CMP-08 and GSTR-4', 'Annual GSTR-9, 9C and ITC reconciliation'], cta: 'View GST plans' },
+  { id: 'tds', name: 'TDS', sub: 'For employers and property buyers', items: ['Monthly deposit and challan support', 'Quarterly 24Q, 26Q and 27Q returns', 'Form 26QB on property purchase', 'TRACES corrections and Form 16'], cta: 'View TDS plans' },
+  { id: 'registrations', name: 'Business registrations', sub: 'For starting or structuring entities', items: ['Private Limited, LLP, OPC, partnership', 'MSME Udyam, IEC, DSC, Startup India', 'TAN, PAN and professional tax', 'CMA data and project reports for loans'], cta: 'View registrations' },
+  { id: 'audit', name: 'Audit and assurance', sub: 'Signed by the right professional', items: ['Tax audit under 44AB, signed by a CA', 'Statutory audit under the Companies Act', 'Cost audit under section 148, signed by our CMA', 'Internal and stock audit'], cta: 'View audit services' },
+  { id: 'notices', name: 'Tax notices', sub: 'For replies, assessments and appeals', items: ['143(1) intimation and 139(9) defective', '142(1), 143(2) scrutiny submissions', '148 / 148A reassessment', 'GST ASMT-10, DRC-01 and TDS defaults'], cta: 'Resolve a notice' },
+] as const
 
 export default function HomePage() {
   const featured = ['itr-salaried', 'itr-fno-trader', 'gst-monthly', 'tds-quarterly', 'pvt-ltd-incorporation', 'cma-project-report']
@@ -97,12 +107,11 @@ export default function HomePage() {
         <Container>
           <SectionHeading eyebrow="Services" title="What do you need help with?" desc="Filing, registrations, audit and notices, each with a fixed price, a named professional and a tracked timeline." />
           <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            <CategoryCard category={{ name: 'Income tax returns', sub: 'For salaried, investors and business' }} items={['Salaried, capital gains and F&O traders', 'Freelancers under 44ADA and proprietors', 'NRI returns with DTAA relief', 'Belated, revised and updated returns']} href="/services/itr" cta="View ITR plans" />
-            <CategoryCard category={{ name: 'GST', sub: 'For registration and monthly filing' }} items={['Registration in 3 to 7 days', 'GSTR-1 and 3B monthly or QRMP', 'Composition CMP-08 and GSTR-4', 'Annual GSTR-9, 9C and ITC reconciliation']} href="/services/gst" cta="View GST plans" />
-            <CategoryCard category={{ name: 'TDS', sub: 'For employers and property buyers' }} items={['Monthly deposit and challan support', 'Quarterly 24Q, 26Q and 27Q returns', 'Form 26QB on property purchase', 'TRACES corrections and Form 16']} href="/services/tds" cta="View TDS plans" />
-            <CategoryCard category={{ name: 'Business registrations', sub: 'For starting or structuring entities' }} items={['Private Limited, LLP, OPC, partnership', 'MSME Udyam, IEC, DSC, Startup India', 'TAN, PAN and professional tax', 'CMA data and project reports for loans']} href="/services/registrations" cta="View registrations" />
-            <CategoryCard category={{ name: 'Audit and assurance', sub: 'Signed by the right professional' }} items={['Tax audit under 44AB, signed by a CA', 'Statutory audit under the Companies Act', 'Cost audit under section 148, signed by our CMA', 'Internal and stock audit']} href="/services/audit" cta="View audit services" />
-            <CategoryCard category={{ name: 'Tax notices', sub: 'For replies, assessments and appeals' }} items={['143(1) intimation and 139(9) defective', '142(1), 143(2) scrutiny submissions', '148 / 148A reassessment', 'GST ASMT-10, DRC-01 and TDS defaults']} href="/services/notices" cta="Resolve a notice" />
+            {CATEGORY_CARDS.map((c, i) => (
+              <Reveal key={c.id} delay={i * 80} className="h-full">
+                <CategoryCard {...c} />
+              </Reveal>
+            ))}
           </div>
           <p className="mt-8 text-center text-sm text-text-2">
             Want advice before you commit to anything?{' '}
