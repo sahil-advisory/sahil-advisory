@@ -1,8 +1,5 @@
 import { BASE_URL } from '@/app/lib/site'
-import { CATEGORIES, CATEGORY_PATH, SERVICES, servicePath } from '@/app/lib/services'
-import { LIVE_CALCULATORS } from '@/app/lib/calculators'
-import { DEADLINES } from '@/app/lib/due-dates'
-import { GUIDES, guidePath } from '@/app/lib/guides'
+import { allEntries } from '@/app/lib/sitemap-entries'
 
 export const dynamic = 'force-dynamic'
 export const runtime = 'nodejs'
@@ -14,13 +11,10 @@ const INDEXNOW_KEY = process.env.INDEXNOW_KEY || ''
 const HOST = BASE_URL.replace(/^https?:\/\//, '')
 
 function buildPriorityUrls(): string[] {
-  const statics = ['/', '/services', '/pricing', '/consult', '/calculators', '/guides', '/due-dates', '/experts']
-  const categories = CATEGORIES.map((c) => CATEGORY_PATH[c.id])
-  const skus = SERVICES.map((s) => servicePath(s))
-  const calcs = LIVE_CALCULATORS.map((c) => `/calculators/${c.slug}`)
-  const dues = DEADLINES.map((d) => `/due-dates/${d.slug}`)
-  const guides = GUIDES.map((g) => guidePath(g))
-  return [...statics, ...categories, ...skus, ...calcs, ...dues, ...guides].map((p) => `${BASE_URL}${p}`)
+  // Everything in the sitemap except legal pages, which never need a push.
+  return allEntries()
+    .map((e) => e.url)
+    .filter((url) => !/\/(privacy-policy|terms|refund-policy|cancellation-policy|data-deletion|disclaimer)$/.test(url))
 }
 
 export async function GET(request: Request) {
