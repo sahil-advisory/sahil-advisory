@@ -54,7 +54,8 @@ export interface ServiceCategory {
   facts: CategoryFact[]
 }
 
-export type CategoryFact = { label: string; value?: string; hint?: string; deadlineKey?: string }
+export type CategoryFactIcon = 'calendar' | 'fee' | 'form' | 'speed' | 'check' | 'shield' | 'rupee' | 'scale'
+export type CategoryFact = { label: string; value?: string; hint?: string; deadlineKey?: string; icon?: CategoryFactIcon }
 
 const unitLabel: Record<Unit, string> = {
   one_time: '',
@@ -115,9 +116,9 @@ export const CATEGORIES: ServiceCategory[] = [
     deadlineKeys: ['itr-non-audit', 'itr-audit', 'itr-belated'],
     facts: [
       { label: 'Due date', deadlineKey: 'itr-non-audit' },
-      { label: 'Late fee if missed', value: '₹1,000 to ₹5,000', hint: 'Section 234F' },
-      { label: 'Forms covered', value: 'ITR-1 to ITR-6', hint: 'Individuals to companies' },
-      { label: 'Fastest turnaround', value: '1 business day', hint: 'Salaried returns' },
+      { label: 'Late fee', value: '₹1,000 to ₹5,000', hint: 'Section 234F', icon: 'fee' },
+      { label: 'Forms', value: 'ITR-1 to ITR-6', hint: 'Individuals to companies', icon: 'form' },
+      { label: 'Turnaround', value: '1 business day', hint: 'Salaried returns', icon: 'speed' },
     ],
   },
   {
@@ -167,9 +168,9 @@ export const CATEGORIES: ServiceCategory[] = [
     deadlineKeys: ['gstr-1', 'gstr-3b', 'gstr-9'],
     facts: [
       { label: 'GSTR-3B due', deadlineKey: 'gstr-3b' },
-      { label: 'Late fee if missed', value: '₹50 per day', hint: '₹20 per day for nil returns' },
-      { label: 'New registration', value: '3 to 7 days', hint: 'GSTIN in hand' },
-      { label: 'ITC matched', value: 'Every month', hint: 'Against GSTR-2B before 3B' },
+      { label: 'Late fee', value: '₹50 per day', hint: '₹20 per day for nil returns', icon: 'fee' },
+      { label: 'New registration', value: '3 to 7 days', hint: 'GSTIN in hand', icon: 'speed' },
+      { label: 'ITC matched', value: 'Every month', hint: 'Against GSTR-2B before 3B', icon: 'check' },
     ],
   },
   {
@@ -207,9 +208,9 @@ export const CATEGORIES: ServiceCategory[] = [
     deadlineKeys: ['tds-payment', 'tds-return'],
     facts: [
       { label: 'Deposit due', deadlineKey: 'tds-payment' },
-      { label: 'Late deposit interest', value: '1.5% per month', hint: 'From deduction to deposit' },
-      { label: 'Late return fee', value: '₹200 per day', hint: 'Section 234E' },
-      { label: 'Form 16 / 16A', value: '2 business days', hint: 'After the quarterly return' },
+      { label: 'Late deposit', value: '1.5% per month', hint: 'From deduction to deposit', icon: 'fee' },
+      { label: 'Late return', value: '₹200 per day', hint: 'Section 234E', icon: 'fee' },
+      { label: 'Form 16 / 16A', value: '2 business days', hint: 'After the quarterly return', icon: 'form' },
     ],
   },
   {
@@ -245,10 +246,10 @@ export const CATEGORIES: ServiceCategory[] = [
     ],
     deadlineKeys: [],
     facts: [
-      { label: 'Pvt Ltd or LLP', value: '7 to 12 days', hint: 'Working days, MCA dependent' },
-      { label: 'Udyam / MSME', value: 'Same day', hint: 'Certificate delivered' },
-      { label: 'Government fees', value: 'At actuals', hint: 'Receipts shared with you' },
-      { label: 'After registration', value: 'Compliance calendar', hint: 'First-year dates mapped' },
+      { label: 'Pvt Ltd or LLP', value: '7 to 12 days', hint: 'Working days, MCA dependent', icon: 'speed' },
+      { label: 'Udyam / MSME', value: 'Same day', hint: 'Certificate delivered', icon: 'check' },
+      { label: 'Government fees', value: 'At actuals', hint: 'Receipts shared with you', icon: 'rupee' },
+      { label: 'Afterwards', value: 'Compliance calendar', hint: 'First-year dates mapped', icon: 'calendar' },
     ],
   },
   {
@@ -284,10 +285,10 @@ export const CATEGORIES: ServiceCategory[] = [
     ],
     deadlineKeys: [],
     facts: [
-      { label: 'Free assessment', value: '4 working hours', hint: 'Upload the notice, we explain it' },
-      { label: 'Fee', value: 'Fixed, upfront', hint: 'Quoted before any work' },
-      { label: 'Usual reply window', value: '15 to 30 days', hint: 'We track the date for you' },
-      { label: 'Appeals', value: 'Empanelled CAs', hint: 'CIT(A) and ITAT' },
+      { label: 'Free assessment', value: '4 working hours', hint: 'Upload the notice, we explain it', icon: 'speed' },
+      { label: 'Fee', value: 'Fixed, upfront', hint: 'Quoted before any work', icon: 'rupee' },
+      { label: 'Reply window', value: '15 to 30 days', hint: 'We track the date for you', icon: 'calendar' },
+      { label: 'Appeals', value: 'Empanelled CAs', hint: 'CIT(A) and ITAT', icon: 'scale' },
     ],
   },
   {
@@ -334,10 +335,10 @@ export const CATEGORIES: ServiceCategory[] = [
     ],
     deadlineKeys: ['itr-audit'],
     facts: [
-      { label: 'Audited return due', deadlineKey: 'itr-audit' },
-      { label: '44AB threshold', value: '₹1 crore', hint: '₹10 crore with 95% digital receipts' },
-      { label: 'Signed by', value: 'Empanelled CA', hint: 'Cost audit signed by our CMA' },
-      { label: 'Late report penalty', value: '0.5% of turnover', hint: 'Up to ₹1.5 lakh, section 271B' },
+      { label: 'Return due', deadlineKey: 'itr-audit' },
+      { label: '44AB threshold', value: '₹1 crore', hint: '₹10 crore with 95% digital receipts', icon: 'rupee' },
+      { label: 'Signed by', value: 'Empanelled CA', hint: 'Cost audit signed by our CMA', icon: 'shield' },
+      { label: 'Late report', value: '0.5% of turnover', hint: 'Up to ₹1.5 lakh, section 271B', icon: 'fee' },
     ],
   },
 ]
