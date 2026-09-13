@@ -1,5 +1,6 @@
 import { SITE, BASE_URL } from '@/app/lib/site'
 import { leadEmailHtml, leadEmailSubject, leadEmailText, type LeadEmailInput } from './lead-email'
+import { customerEmailHtml, customerEmailSubject, customerEmailText, type CustomerEmailInput } from './customer-email'
 
 // One sender for every email the site produces: lead alerts today, sign-in
 // links, and later order updates. Two providers are supported so the choice
@@ -119,5 +120,18 @@ export async function sendLeadEmail(input: LeadEmailInput): Promise<EmailResult>
     subject: leadEmailSubject(input),
     text: leadEmailText(input),
     html: leadEmailHtml(input),
+  })
+}
+
+// The acknowledgement to the customer. Reply-to is the team inbox so their
+// reply (usually with documents attached) lands where the alert did.
+export async function sendCustomerEmail(input: CustomerEmailInput): Promise<EmailResult> {
+  const team = recipients(process.env.LEADS_TO_EMAIL || SITE.email)[0]
+  return sendEmail({
+    to: input.email,
+    replyTo: team,
+    subject: customerEmailSubject(input),
+    text: customerEmailText(input),
+    html: customerEmailHtml(input),
   })
 }

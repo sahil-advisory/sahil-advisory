@@ -2,7 +2,8 @@ import { after } from 'next/server'
 import { eq, sql } from 'drizzle-orm'
 import { db, leads, notifications, type NotificationStatus } from '@/app/lib/db'
 import { sendWhatsApp } from '@/app/lib/notify/whatsapp'
-import { sendLeadEmail, emailProvider } from '@/app/lib/notify/email'
+import { sendLeadEmail, sendCustomerEmail, emailProvider } from '@/app/lib/notify/email'
+import { resolveLeadContext } from '@/app/lib/notify/lead-context'
 import { getClientIP, rateLimit } from '@/app/lib/rate-limit'
 import { SITE } from '@/app/lib/site'
 
@@ -18,6 +19,7 @@ type LeadBody = {
   phone?: string
   email?: string
   detail?: string
+  detailLabel?: string
   message?: string
   service?: string
   sourceUrl?: string
@@ -62,8 +64,12 @@ export async function POST(request: Request) {
 
   const name = clean(body.name, 80)
   const phone = clean(body.phone, 15).replace(/\D/g, '')
-  const email = clean(body.email, 160)
+  const rawEmail = clean(body.email, 160).toLowerCase()
+  // A bad address is dropped rather than rejected: the phone is the primary
+  // channel and a typo in an optional field should not block the request.
+  const email = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(rawEmail) ? rawEmail : ''
   const detail = clean(body.detail, 80)
+  const detailLabel = clean(body.detailLabel, 40)
   const message = clean(body.message, 1000)
   const service = clean(body.service, 80)
   const sourceUrl = clean(body.sourceUrl, 300)
@@ -123,17 +129,23 @@ export async function POST(request: Request) {
       .filter(Boolean)
       .join('\n')
 
-    const [wa, mail] = await Promise.all([
+    const receivedAt = new Date()
+    const [wa, mail, ack] = await Promise.all([
       sendWhatsApp({
         // Template body order: name, phone, service, detail.
         templateParams: [name, `+91${phone}`, service || 'General enquiry', detail || '-'],
         text: waText,
       }),
-      sendLeadEmail({ name, phone, email, service, detail, message, sourceUrl, referrer: request.headers.get('referer') ?? undefined, utm: utmFrom(sourceUrl), leadId, receivedAt: new Date() }),
+      sendLeadEmail({ name, phone, email, service, detail, message, sourceUrl, referrer: request.headers.get('referer') ?? undefined, utm: utmFrom(sourceUrl), leadId, receivedAt }),
+      // Acknowledgement to the customer, only when they gave an address.
+      email
+        ? sendCustomerEmail({ name, phone, email, detail, detailLabel, message, leadId, receivedAt, ctx: resolveLeadContext({ service, sourceUrl }) })
+        : Promise.resolve<{ sent: false; reason: string }>({ sent: false, reason: 'customer email not provided' }),
     ])
 
     if (!wa.sent) console.warn('[lead] whatsapp not sent:', wa.reason)
     if (!mail.sent) console.warn('[lead] email not sent:', mail.reason)
+    if (email && !ack.sent) console.warn('[lead] customer ack not sent:', ack.reason)
 
     if (!db) return
     // "skipped" means the channel was not configured at all, which is worth
@@ -162,6 +174,18 @@ export async function POST(request: Request) {
           subject: `New lead: ${name}`,
           status: statusOf(mail),
           error: mail.sent ? null : mail.reason,
+        },
+        // Logged even when no address was given, so the inbox shows why a
+        // customer did not get an acknowledgement.
+        {
+          leadId,
+          channel: 'email',
+          provider: ack.sent ? ack.provider : emailProvider(),
+          kind: 'lead_ack',
+          to: email || '-',
+          subject: email ? 'We have your request' : null,
+          status: email ? statusOf(ack) : 'skipped',
+          error: ack.sent ? null : ack.reason,
         },
       ])
       if (leadId && (wa.sent || mail.sent)) {

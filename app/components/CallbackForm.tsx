@@ -22,7 +22,7 @@ export default function CallbackForm({
 }: Props) {
   const [status, setStatus] = useState<'idle' | 'submitting' | 'done' | 'error'>('idle')
   const [error, setError] = useState('')
-  const [values, setValues] = useState({ name: '', phone: '', detail: options.values[0], message: '' })
+  const [values, setValues] = useState({ name: '', phone: '', email: '', detail: options.values[0], message: '' })
 
   async function onSubmit(e: FormEvent) {
     e.preventDefault()
@@ -35,7 +35,9 @@ export default function CallbackForm({
         body: JSON.stringify({
           name: values.name,
           phone: values.phone,
+          email: values.email,
           detail: values.detail,
+          detailLabel: options.label,
           message: values.message,
           service,
           sourceUrl: typeof window !== 'undefined' ? window.location.href : '',
@@ -62,7 +64,7 @@ export default function CallbackForm({
       <div className="rounded-2xl border border-green-100 bg-green-50 p-6 text-center">
         <CheckCircle2 className="mx-auto h-10 w-10 text-green-600" />
         <h3 className="mt-3 text-lg font-bold text-navy-900">Request received</h3>
-        <p className="mt-1 text-sm text-text-2">We call back within 2 working hours (Mon to Sat, 10 AM to 7 PM). Prefer WhatsApp?</p>
+        <p className="mt-1 text-sm text-text-2">We call back within 2 working hours (Mon to Sat, 10 AM to 7 PM).{values.email ? ' A confirmation with what happens next is on its way to your inbox.' : ''} Prefer WhatsApp?</p>
         <a href={wa} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex rounded-lg bg-green-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-green-700">
           Continue on WhatsApp
         </a>
@@ -114,6 +116,18 @@ export default function CallbackForm({
             </select>
           </label>
         </div>
+        <label className="block">
+          <span className="text-xs font-semibold text-text-2">Email <span className="font-normal text-muted">(optional, for a confirmation)</span></span>
+          <input
+            type="email"
+            value={values.email}
+            onChange={(e) => setValues({ ...values, email: e.target.value })}
+            className="mt-1 w-full rounded-lg border border-border-strong px-3 py-2.5 text-sm outline-none focus:border-green-600 focus:ring-2 focus:ring-green-100"
+            placeholder="you@example.com"
+            autoComplete="email"
+            inputMode="email"
+          />
+        </label>
         {!compact && (
           <label className="block">
             <span className="text-xs font-semibold text-text-2">Anything we should know? (optional)</span>
