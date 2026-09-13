@@ -87,7 +87,11 @@ cost audit line is a genuine differentiator: it is work a CA cannot sign.
 Design and build order: `docs/BACKEND.md`. Shape and running cost:
 `docs/ARCHITECTURE.md`. Setup, step by step: `docs/SETUP-BACKEND.md`.
 
-**Built, dormant until env vars are set:**
+**Live in production (13 September 2026):** Supabase (Mumbai), Brevo email from
+`leads@sahiladvisory.in` to both owner inboxes, passwordless sign-in with two
+admins, the admin inbox. **Still dormant:** WhatsApp alerts and analytics keys.
+
+**What each piece needs:**
 
 | Piece | Where | Switched on by |
 |---|---|---|
