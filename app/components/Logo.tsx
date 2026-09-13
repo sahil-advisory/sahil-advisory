@@ -1,13 +1,16 @@
 // Brand mark and lockup, from the supplied logo-2.png.
 //
-// The A mark is traced into SVG paths with colours sampled from the file.
+// The A mark is traced into SVG paths. The file's own colours (a lime green
+// and a charcoal) sat off the site palette, so the mark is painted with the
+// theme tokens instead: navy-900 for the legs and "Sahil", green-600 for the
+// peak and "Advisory". Keep these in step with app/globals.css.
 // The wordmark is real HTML text in Poppins (the face the original uses),
 // so it stays crisp at every size and the tagline can be set at a legible
 // pixel size instead of scaling down with an SVG.
 
 export const BRAND = {
-  green: '#58AE5A',
-  dark: '#12181B',
+  green: '#059669',
+  dark: '#0B1F3A',
   tagline: 'You grow, we handle it',
 } as const
 
@@ -45,7 +48,7 @@ const SIZES: Record<Size, { mark: number; word: number; lead: number; tag: numbe
 export function Logo({ size = 'sm', onDark = false, tagline = false, className = '' }: { size?: Size; onDark?: boolean; tagline?: boolean; className?: string }) {
   const s = SIZES[size]
   const dark = onDark ? '#FFFFFF' : BRAND.dark
-  const muted = onDark ? 'rgba(255,255,255,0.72)' : '#2B3138'
+  const muted = onDark ? 'rgba(255,255,255,0.72)' : '#1e3a5f'
   return (
     <span className={`inline-flex flex-col items-center ${className}`} aria-label={`Sahil Advisory. ${BRAND.tagline}.`} role="img">
       <span className="flex items-center" style={{ gap: s.gap }}>

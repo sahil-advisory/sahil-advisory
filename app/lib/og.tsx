@@ -196,7 +196,7 @@ export function ogCard(input: OgCardInput): ReactElement {
         <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
           {/* The A mark, white legs on the dark card, from app/components/Logo.tsx */}
           <svg width="56" height="56" viewBox="-10 -10 320 320">
-            <path d="M148 0 L228 155 L68 155 Z" fill="#58AE5A" />
+            <path d="M148 0 L228 155 L68 155 Z" fill="#059669" />
             <path d="M148 112 L170 155 L126 155 Z" fill="#0B1F3A" />
             <path d="M0 300 L68 180 L228 180 L296 300 L236 300 L192 226 L104 226 L60 300 Z" fill="#FFFFFF" />
           </svg>
