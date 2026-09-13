@@ -1,12 +1,63 @@
 'use client'
 
-import { useEffect, useState, type CSSProperties } from 'react'
+import { useEffect, useState, useSyncExternalStore, type CSSProperties, type ReactNode } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Menu, X, ChevronDown, FileText, Receipt, Percent, Building2, ScrollText, Headset, Calculator, BookOpen, CalendarClock, ClipboardCheck } from 'lucide-react'
-import { SITE } from '@/app/lib/site'
+import { SITE, WHATSAPP_DEFAULT } from '@/app/lib/site'
 import { track } from '@/app/lib/analytics'
 import { Logo } from './Logo'
+import { WhatsAppIcon } from './WhatsAppFloat'
+
+// Which top-level item owns the current path, for the active underline.
+const SECTION_PREFIXES: Record<'services' | 'resources', string[]> = {
+  services: ['/services', '/consult'],
+  resources: ['/calculators', '/guides', '/due-dates', '/sections', '/forms'],
+}
+
+const subscribeScroll = (cb: () => void) => {
+  window.addEventListener('scroll', cb, { passive: true })
+  return () => window.removeEventListener('scroll', cb)
+}
+const isScrolled = () => window.scrollY > 8
+
+function NavItem({ href, label, active }: { href: string; label: string; active: boolean }) {
+  return (
+    <Link href={href} aria-current={active ? 'page' : undefined} className={`relative rounded-lg px-3 py-2 text-sm font-semibold transition-colors hover:bg-bg-alt ${active ? 'text-green-700' : 'text-navy-900'}`}>
+      {label}
+      <span aria-hidden className={`absolute inset-x-3 -bottom-0.5 h-0.5 rounded-full bg-green-600 transition-transform duration-200 ${active ? 'scale-x-100' : 'scale-x-0'}`} />
+    </Link>
+  )
+}
+
+function MegaButton({ label, open, active, onClick }: { label: string; open: boolean; active: boolean; onClick: () => void }) {
+  return (
+    <button
+      type="button"
+      className={`relative flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-semibold transition-colors hover:bg-bg-alt ${active || open ? 'text-green-700' : 'text-navy-900'}`}
+      aria-expanded={open}
+      onClick={onClick}
+    >
+      {label}
+      <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${open ? 'rotate-180 text-green-600' : 'text-muted'}`} />
+      <span aria-hidden className={`absolute inset-x-3 -bottom-0.5 h-0.5 rounded-full bg-green-600 transition-transform duration-200 ${active ? 'scale-x-100' : 'scale-x-0'}`} />
+    </button>
+  )
+}
+
+// Mega panel wrapper. Stays mounted and animates in and out so the hover
+// hand-off from the button to the panel does not flicker.
+function MegaPanel({ open, width, children }: { open: boolean; width: string; children: ReactNode }) {
+  return (
+    <div
+      inert={!open}
+      aria-hidden={!open}
+      className={`absolute left-1/2 top-full -translate-x-1/2 pt-2 transition-[opacity,transform] duration-200 ease-out motion-reduce:transition-none ${width} ${open ? 'translate-y-0 opacity-100' : 'pointer-events-none -translate-y-1 opacity-0'}`}
+    >
+      {children}
+    </div>
+  )
+}
 
 const returns = [
   { label: 'ITR Filing', desc: 'Salaried, traders, freelancers, NRI', href: '/services/itr', icon: FileText },
@@ -53,6 +104,8 @@ export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [mega, setMega] = useState<'services' | 'resources' | null>(null)
   const pathname = usePathname()
+  const scrolled = useSyncExternalStore(subscribeScroll, isScrolled, () => false)
+  const section = (Object.keys(SECTION_PREFIXES) as Array<keyof typeof SECTION_PREFIXES>).find((k) => SECTION_PREFIXES[k].some((p) => pathname.startsWith(p)))
 
   // Close both menus when the route changes. Adjusting state during render on
   // a changed value is React's recommended alternative to a pathname effect.
@@ -81,7 +134,7 @@ export default function Navbar() {
   // pin the mobile drawer to the 72px bar instead of the viewport.
   return (
     <header className="sticky top-0 z-50">
-      <div className="relative z-10 border-b border-border bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/85">
+      <div className={`relative z-10 border-b bg-white/95 backdrop-blur transition-[box-shadow,border-color] duration-300 supports-[backdrop-filter]:bg-white/85 ${scrolled ? 'border-transparent shadow-[var(--shadow-card)]' : 'border-border'}`}>
       <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2.5" aria-label={`${SITE.name} home`}>
           <Logo size="sm" tagline />
@@ -89,51 +142,45 @@ export default function Navbar() {
 
         <nav className="hidden items-center gap-1 lg:flex" aria-label="Main">
           <div className="relative" onMouseEnter={() => setMega('services')} onMouseLeave={() => setMega(null)}>
-            <button
-              type="button"
-              className="flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-semibold text-navy-900 hover:bg-bg-alt"
-              aria-expanded={mega === 'services'}
-              onClick={() => setMega(mega === 'services' ? null : 'services')}
-            >
-              Services <ChevronDown className="h-4 w-4 text-muted" />
-            </button>
-            {mega === 'services' && (
-              <div className="absolute left-1/2 top-full w-[600px] -translate-x-1/2 pt-2">
-                <div className="grid grid-cols-2 gap-6 rounded-2xl border border-border bg-white p-6 shadow-[var(--shadow-lift)]">
+            <MegaButton label="Services" open={mega === 'services'} active={section === 'services'} onClick={() => setMega(mega === 'services' ? null : 'services')} />
+            <MegaPanel open={mega === 'services'} width="w-[640px]">
+              <div className="overflow-hidden rounded-2xl border border-border bg-white shadow-[var(--shadow-lift)]">
+                <div className="grid grid-cols-2 gap-6 p-6">
                   <MegaGroup title="Returns" items={returns} />
                   <MegaGroup title="Business and compliance" items={business} />
-                  <Link href="/pricing" className="col-span-2 rounded-xl bg-green-50 px-4 py-3 text-sm font-semibold text-green-700 hover:bg-green-100">
-                    See every price on one page →
-                  </Link>
+                </div>
+                <div className="flex items-center justify-between gap-4 border-t border-border bg-bg-alt px-6 py-3.5">
+                  <Link href="/pricing" className="text-sm font-semibold text-green-700 hover:underline">See every price on one page →</Link>
+                  <span className="text-xs text-muted">Fixed fees. Draft approved by you before filing.</span>
                 </div>
               </div>
-            )}
+            </MegaPanel>
           </div>
           <div className="relative" onMouseEnter={() => setMega('resources')} onMouseLeave={() => setMega(null)}>
-            <button
-              type="button"
-              className="flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-semibold text-navy-900 hover:bg-bg-alt"
-              aria-expanded={mega === 'resources'}
-              onClick={() => setMega(mega === 'resources' ? null : 'resources')}
-            >
-              Resources <ChevronDown className="h-4 w-4 text-muted" />
-            </button>
-            {mega === 'resources' && (
-              <div className="absolute left-1/2 top-full w-[320px] -translate-x-1/2 pt-2">
-                <div className="rounded-2xl border border-border bg-white p-5 shadow-[var(--shadow-lift)]">
-                  <MegaGroup title="Free tools and reading" items={resources} />
-                </div>
+            <MegaButton label="Resources" open={mega === 'resources'} active={section === 'resources'} onClick={() => setMega(mega === 'resources' ? null : 'resources')} />
+            <MegaPanel open={mega === 'resources'} width="w-[340px]">
+              <div className="rounded-2xl border border-border bg-white p-5 shadow-[var(--shadow-lift)]">
+                <MegaGroup title="Free tools and reading" items={resources} />
               </div>
-            )}
+            </MegaPanel>
           </div>
-          <Link href="/pricing" className="rounded-lg px-3 py-2 text-sm font-semibold text-navy-900 hover:bg-bg-alt">Pricing</Link>
-          <Link href="/experts" className="rounded-lg px-3 py-2 text-sm font-semibold text-navy-900 hover:bg-bg-alt">Experts</Link>
-          <Link href="/about" className="rounded-lg px-3 py-2 text-sm font-semibold text-navy-900 hover:bg-bg-alt">About</Link>
+          <NavItem href="/pricing" label="Pricing" active={pathname.startsWith('/pricing')} />
+          <NavItem href="/experts" label="Experts" active={pathname.startsWith('/experts')} />
+          <NavItem href="/about" label="About" active={pathname.startsWith('/about')} />
         </nav>
 
         <div className="hidden items-center gap-2 lg:flex">
-          <a href={`tel:${SITE.phoneE164}`} onClick={() => track('call_click', { placement: 'nav' })} className="px-3 text-sm font-semibold text-navy-900 font-mono tabular">{SITE.phoneDisplay}</a>
-          <Link href="/consult" className="rounded-lg bg-green-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-green-700">
+          <a
+            href={WHATSAPP_DEFAULT}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => track('whatsapp_click', { placement: 'nav' })}
+            className="flex items-center gap-2 rounded-lg border border-border px-3.5 py-2.5 text-sm font-semibold text-navy-900 transition-colors hover:border-[#25D366] hover:bg-green-50"
+          >
+            <WhatsAppIcon className="h-4.5 w-4.5 text-[#25D366]" />
+            WhatsApp
+          </a>
+          <Link href="/consult" className="rounded-lg bg-green-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-green-700">
             Talk to an expert
           </Link>
         </div>
