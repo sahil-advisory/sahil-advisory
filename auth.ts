@@ -88,6 +88,13 @@ export const authConfig: NextAuthConfig = {
   pages: { signIn: '/login', verifyRequest: '/login?sent=1', error: '/login' },
   trustHost: true,
   callbacks: {
+    // Sign-in is staff-only until the client portal exists. Without this, a
+    // visitor who finds /login gets a working account that leads to a 404.
+    // When orders and the dashboard ship, drop this callback (or gate it on a
+    // CLIENT_SIGNIN_ENABLED flag) and client accounts start working as-is.
+    async signIn({ user }) {
+      return roleForEmail(user.email) === 'admin'
+    },
     async jwt({ token, user, trigger }) {
       // On sign-in `user` is the adapter row. Copy the id and resolve the role.
       if (user) {

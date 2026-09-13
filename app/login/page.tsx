@@ -43,7 +43,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Search
             <p className="mt-2 text-sm text-text-2">No password. We email you a one-time link.</p>
             {error && (
               <p className="mt-4 rounded-lg border border-red-100 bg-red-50 px-3 py-2 text-sm text-red-600">
-                {error === 'AccessDenied' ? 'That email is not allowed to sign in.' : 'Sign-in failed. Try again or use a different method.'}
+                {error === 'AccessDenied' ? 'Sign-in is for the Sahil Advisory team only. Client accounts arrive with order tracking.' : 'Sign-in failed. Try again or use a different method.'}
               </p>
             )}
             <form
@@ -85,7 +85,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Search
         )}
 
         <p className="mt-6 flex items-center gap-1.5 text-[11px] text-muted">
-          <ShieldCheck className="h-3.5 w-3.5 text-green-600" /> Staff sign-in. Client accounts arrive with the dashboard.
+          <ShieldCheck className="h-3.5 w-3.5 text-green-600" /> Team sign-in only. Clients do not need an account yet: every service on the site works without one.
         </p>
       </div>
     </Container>
