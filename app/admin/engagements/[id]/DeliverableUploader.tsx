@@ -3,7 +3,8 @@
 import { useState, useTransition } from 'react'
 import { useRouter } from 'next/navigation'
 import { Loader2, FileUp } from 'lucide-react'
-import { DELIVERABLE_TYPES, type DeliverableType } from '@/app/lib/db'
+import type { DeliverableType } from '@/app/lib/db/schema'
+import { DELIVERABLE_TYPE_LIST } from '@/app/lib/engagements/status'
 import { refreshEngagementAction } from '@/app/lib/engagements/actions'
 
 const LABEL: Record<DeliverableType, string> = { draft: 'Draft for approval', computation: 'Computation', acknowledgement: 'Acknowledgement (filed)', invoice: 'Invoice', other: 'Other document' }
@@ -42,7 +43,7 @@ export function DeliverableUploader({ engagementId }: { engagementId: string }) 
     <div className="space-y-2">
       <div className="grid gap-2 sm:grid-cols-2">
         <select value={type} onChange={(e) => setType(e.target.value as DeliverableType)} className="rounded-lg border border-border-strong bg-white px-3 py-2 text-sm">
-          {DELIVERABLE_TYPES.map((t) => <option key={t} value={t}>{LABEL[t]}</option>)}
+          {DELIVERABLE_TYPE_LIST.map((t) => <option key={t} value={t}>{LABEL[t]}</option>)}
         </select>
         <input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Title (optional)" className="rounded-lg border border-border-strong px-3 py-2 text-sm outline-none focus:border-green-600" />
       </div>

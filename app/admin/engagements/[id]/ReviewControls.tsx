@@ -3,7 +3,7 @@
 import { useState, useTransition } from 'react'
 import { useRouter } from 'next/navigation'
 import { Check, X, MinusCircle, RotateCcw, Download, Loader2, Plus } from 'lucide-react'
-import type { RequirementStatus, EngagementStatus } from '@/app/lib/db'
+import type { RequirementStatus, EngagementStatus } from '@/app/lib/db/schema'
 import { MANUAL_TRANSITIONS, STATUS_LABEL } from '@/app/lib/engagements/status'
 import {
   verifyRequirementAction,

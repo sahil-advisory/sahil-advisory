@@ -1,4 +1,4 @@
-import type { EngagementStatus, RequirementStatus } from '@/app/lib/db'
+import type { EngagementStatus, RequirementStatus } from '@/app/lib/db/schema'
 import { STATUS_LABEL, REQ_LABEL } from '@/app/lib/engagements/status'
 
 const TONE: Record<'muted' | 'navy' | 'green' | 'gold' | 'red', string> = {

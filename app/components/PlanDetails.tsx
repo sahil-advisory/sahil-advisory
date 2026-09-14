@@ -28,7 +28,7 @@ function howToSend(doc: string, kind: DocKind): { icon: typeof Camera; text: str
 }
 
 // Small illustrated documents. One SVG each, tinted by kind.
-function DocArt({ kind }: { kind: DocKind }) {
+export function DocArt({ kind }: { kind: DocKind }) {
   const tone = { id: '#0B1F3A', statement: '#059669', agreement: '#B45309', login: '#1E3A5F', form: '#047857' }[kind]
   if (kind === 'id') {
     return (

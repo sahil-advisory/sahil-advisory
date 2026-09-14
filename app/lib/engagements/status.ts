@@ -1,4 +1,7 @@
-import type { EngagementStatus, RequirementStatus } from '@/app/lib/db/schema'
+import type { EngagementStatus, RequirementStatus, DeliverableType } from '@/app/lib/db/schema'
+
+// Mirrors DELIVERABLE_TYPES in the schema, importable from client code.
+export const DELIVERABLE_TYPE_LIST: DeliverableType[] = ['draft', 'computation', 'acknowledgement', 'invoice', 'other']
 
 // Labels and allowed transitions. The machine is deliberately small: most
 // moves happen automatically (checklist complete, draft uploaded, client
