@@ -9,7 +9,7 @@ import * as schema from '@/app/lib/db/schema'
 const pg = new PGlite()
 const db = drizzle(pg, { schema })
 await migrate(db, { migrationsFolder: './drizzle' })
-;(globalThis as { __sahilDb?: unknown }).__sahilDb = db
+;(globalThis as { __sahilTestDb?: unknown }).__sahilTestDb = db
 process.env.DATABASE_URL = 'pglite'
 
 const core = await import('@/app/lib/engagements/core')
