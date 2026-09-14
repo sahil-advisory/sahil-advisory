@@ -13,6 +13,9 @@ export const metadata: Metadata = {
 // Everything under /admin is request-time: it reads the session cookie and
 // the database on every load.
 export const dynamic = 'force-dynamic'
+// Fail fast if the database stalls, instead of holding the request for the
+// platform maximum.
+export const maxDuration = 30
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
   const user = await requireStaff()

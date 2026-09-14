@@ -7,6 +7,9 @@ import { isDbConfigured } from '@/app/lib/db'
 
 export const metadata: Metadata = { title: 'Your portal', robots: { index: false, follow: false } }
 export const dynamic = 'force-dynamic'
+// Fail fast if the database stalls, instead of holding the request for the
+// platform maximum.
+export const maxDuration = 30
 
 export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
   const user = await requireUser()
