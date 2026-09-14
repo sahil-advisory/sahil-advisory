@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { ArrowLeft, Phone, MessageCircle, Mail, CheckCircle2, XCircle, MinusCircle } from 'lucide-react'
+import { ArrowLeft, Phone, MessageCircle, Mail, CheckCircle2, XCircle, MinusCircle, FolderPlus } from 'lucide-react'
 import { getLead, listAdmins } from '@/app/lib/leads/queries'
 import { LEAD_STATUSES } from '@/app/lib/db'
 import { formatDateIN } from '@/app/lib/format'
@@ -39,6 +39,11 @@ export default async function LeadDetail({ params }: { params: Promise<{ id: str
               <a href={`tel:+91${lead.phone}`} className="inline-flex items-center gap-2 rounded-lg bg-navy-900 px-4 py-2 text-sm font-semibold text-white hover:bg-navy-800"><Phone className="h-4 w-4" /> Call</a>
               <a href={wa} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-lg bg-[#25D366] px-4 py-2 text-sm font-semibold text-white hover:opacity-90"><MessageCircle className="h-4 w-4" /> WhatsApp</a>
               {lead.email && <a href={`mailto:${lead.email}`} className="inline-flex items-center gap-2 rounded-lg border border-border-strong bg-white px-4 py-2 text-sm font-semibold text-navy-900 hover:bg-bg-alt"><Mail className="h-4 w-4" /> Email</a>}
+              {lead.convertedTo ? (
+                <Link href={`/admin/engagements/${lead.convertedTo}`} className="inline-flex items-center gap-2 rounded-lg bg-green-50 px-4 py-2 text-sm font-semibold text-green-700 hover:bg-green-100"><FolderPlus className="h-4 w-4" /> Open engagement</Link>
+              ) : (
+                <Link href={`/admin/engagements/new?lead=${lead.id}`} className="inline-flex items-center gap-2 rounded-lg bg-green-600 px-4 py-2 text-sm font-semibold text-white hover:bg-green-700"><FolderPlus className="h-4 w-4" /> Create engagement</Link>
+              )}
             </div>
             {lead.message && (
               <blockquote className="mt-5 rounded-xl bg-bg-alt p-4 text-sm leading-relaxed text-text-2">“{lead.message}”</blockquote>

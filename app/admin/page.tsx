@@ -4,9 +4,13 @@ import { leadStats, listLeads } from '@/app/lib/leads/queries'
 import { LEAD_STATUSES } from '@/app/lib/db'
 import { formatDateIN } from '@/app/lib/format'
 import { StatusBadge } from './leads/StatusBadge'
+import { engagementCounts, listEngagements } from '@/app/lib/engagements/queries'
+import { EngagementBadge } from '@/app/components/portal/badges'
 
 export default async function AdminOverview() {
-  const [stats, recent] = await Promise.all([leadStats(), listLeads({ pageSize: 10 })])
+  const [stats, recent, eCounts, toCheck] = await Promise.all([leadStats(), listLeads({ pageSize: 10 }), engagementCounts(), listEngagements({ status: 'open' })])
+  const waiting = toCheck.rows.filter((r) => r.received > 0)
+  const openEngagements = toCheck.total
   const newCount = stats.byStatus.new ?? 0
   return (
     <div className="space-y-8">
@@ -33,6 +37,29 @@ export default async function AdminOverview() {
           </div>
         ))}
       </dl>
+
+      <section className="rounded-2xl border border-border bg-card p-5">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <h2 className="text-sm font-bold text-navy-900">Engagements</h2>
+          <Link href="/admin/engagements" className="text-xs font-semibold text-green-700 hover:underline">{openEngagements} open <ArrowRight className="inline h-3 w-3" /></Link>
+        </div>
+        <div className="mt-3 flex flex-wrap gap-2">
+          {Object.entries(eCounts).map(([st, n]) => (
+            <Link key={st} href={`/admin/engagements?status=${st}`} className="inline-flex items-center gap-2 rounded-lg border border-border px-2 py-1 text-xs hover:bg-bg-alt"><EngagementBadge status={st as never} /><span className="font-mono tabular text-navy-900">{n}</span></Link>
+          ))}
+          {Object.keys(eCounts).length === 0 && <p className="text-sm text-muted">No engagements yet. Open one from a lead.</p>}
+        </div>
+        {waiting.length > 0 && (
+          <ul className="mt-4 divide-y divide-border text-sm">
+            {waiting.slice(0, 6).map((r) => (
+              <li key={r.id} className="flex items-center justify-between py-2">
+                <Link href={`/admin/engagements/${r.id}`} className="font-semibold text-navy-900 hover:text-green-700">{r.clientName ?? r.clientEmail} · {r.service?.name ?? r.serviceSlug}</Link>
+                <span className="rounded-md bg-navy-100 px-1.5 py-0.5 font-mono text-xs font-bold text-navy-900">{r.received} to check</span>
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
 
       <div className="grid gap-6 lg:grid-cols-3">
         <section className="rounded-2xl border border-border bg-card p-5">
