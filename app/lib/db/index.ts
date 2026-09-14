@@ -1,4 +1,4 @@
-import { drizzle } from 'drizzle-orm/postgres-js'
+import { drizzle, PostgresJsDatabase } from 'drizzle-orm/postgres-js'
 import postgres from 'postgres'
 import * as schema from './schema'
 
@@ -61,9 +61,11 @@ function current(): Client | null {
 
 // `db` looks like a drizzle instance to every caller but resolves to the
 // current healthy client on each property access. Methods are bound to that
-// client so `this` inside drizzle never points at the proxy.
+// client so `this` inside drizzle never points at the proxy. The proxy target
+// carries the drizzle prototype so `instanceof` checks (the Auth.js adapter
+// does one) still pass.
 export const db: Client | null = process.env.DATABASE_URL || globalThis.__sahilTestDb
-  ? (new Proxy({} as Client, {
+  ? (new Proxy(Object.create(PostgresJsDatabase.prototype) as Client, {
       get(_t, prop) {
         const c = current()
         if (!c) return undefined
