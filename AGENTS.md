@@ -17,4 +17,6 @@ Read `docs/PROJECT.md` first (state, open decisions, checklist) and `TAX-PLATFOR
 - Copy: "expert-assisted", "qualified professional (CMA/CA)". Never "CA-assisted". No Hinglish, no emoji, no em-dashes.
 - Audit signing rights are a legal fact, not a copy choice. Tax audit (44AB) and statutory audit are signed by an empanelled Chartered Accountant; cost audit (s.148) is signed by a Cost Accountant and a CA cannot sign it. See the table in `docs/PROJECT.md` before editing any audit copy.
 - Palette: navy + emerald. Gold only for tags. Red only for urgency.
-- Type-check with `pnpm exec tsc --noEmit -p tsconfig.json`; lint with `pnpm lint`; build with `pnpm build`.
+- Type-check with `pnpm exec tsc --noEmit -p tsconfig.json`; lint with `pnpm lint`; build with `pnpm build`; `pnpm test:flow` runs the portal flow on an in-process Postgres.
+- Client components never import `@/app/lib/db` (it loads the Postgres driver). Types come from `@/app/lib/db/schema`, constants from `app/lib/engagements/status.ts`.
+- Portal writes go through `app/lib/engagements/core.ts`: check access, write in a transaction, append an event, send the email. Never update `engagements` or `requirements` directly from a page or action.

@@ -31,7 +31,7 @@ Built and type-checked:
 | Analytics | `app/layout.tsx` | GA4 (`NEXT_PUBLIC_GA_ID`), Clarity (`NEXT_PUBLIC_CLARITY_ID`), Vercel Analytics |
 | OG cards | `app/lib/og.tsx`, `app/**/opengraph-image.tsx` | One `ogCard()` design for all 117 pages. Geist TTFs vendored at `assets/fonts` (satori cannot use the woff2 from `next/font`). Add a route, add its `opengraph-image.tsx` |
 
-Not built yet (Phase 1+): auth, database, cart/checkout, Razorpay, client dashboard, document upload, admin kanban, WhatsApp BSP templates, slot picker, Hindi mirrors, notice upload triage flow.
+Not built yet: cart/checkout, Razorpay, WhatsApp BSP templates, slot picker, Hindi mirrors, notice upload triage flow, the filing engine (`docs/FILING-ENGINE-DESIGN.md`).
 
 ## Conventions
 
@@ -102,8 +102,33 @@ admins, the admin inbox. **Still dormant:** WhatsApp alerts and analytics keys.
 | Admin inbox | `app/admin/*`, `app/lib/leads/*` | Sign-in plus database |
 | Analytics events | `app/lib/analytics`, `instrumentation-client.ts`, `TrackedLink`, `PageEvent` | `NEXT_PUBLIC_POSTHOG_KEY`, `NEXT_PUBLIC_GA_ID`, `NEXT_PUBLIC_CLARITY_ID` |
 
-Until then leads reach only Vercel's runtime logs. Not started: client
-dashboard, orders, payments, document upload.
+Not started: orders, payments.
+
+## Client portal (14 September 2026)
+
+Design: `docs/DOCUMENT-PORTAL-DESIGN.md`. Built, Phase A:
+
+| Piece | Where |
+|---|---|
+| Tables: engagements, requirements, files, deliverables, engagement_events, access_log | `app/lib/db/schema.ts`, `drizzle/0002_engagements.sql` |
+| Checklists with intake questions (ITR plans, GST monthly; keyword fallback for the rest) | `app/lib/checklists.ts` |
+| Private storage, signed upload and download URLs | `app/lib/storage.ts` (bucket `client-files`) |
+| Core flow: create from lead, verify, reject, waive, add, consent, upload, draft approval, status, reminders | `app/lib/engagements/core.ts` |
+| Server actions and route handlers | `app/lib/engagements/actions.ts`, `app/api/portal/*` |
+| Admin: list, create, review | `app/admin/engagements/*` |
+| Client: dashboard, checklist, uploads, approval | `app/dashboard/*` |
+| Reminder cron, 04:30 UTC daily | `app/api/cron/engagements`, `vercel.json` |
+| Portal emails | `app/lib/notify/portal-email.ts`, sent through `sendPortalEmail` and logged in `notifications.engagement_id` |
+
+Sign-in: admins from `ADMIN_EMAILS`; anyone else only if a `users` row exists
+(created when an engagement is opened for them). Experts see assigned
+engagements only. Needs `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` (set on
+Vercel). **Migration 0002 must be applied with `DIRECT_URL` before first use.**
+
+Test the whole flow without any keys: `pnpm test:flow` (in-process Postgres).
+
+Next: Phase B (message thread, SLA flags, board), Phase C (WhatsApp inbound,
+phone OTP, consent-based fetch), then the filing engine.
 
 ## Verification commands
 
@@ -111,6 +136,7 @@ dashboard, orders, payments, document upload.
 pnpm exec tsc --noEmit -p tsconfig.json   # types
 pnpm lint                                  # eslint
 pnpm build                                 # 241 pages
+pnpm test:flow                             # engagement flow on pglite
 ```
 
 Tax math was checked against known values (₹12.75L salary is nil under the new
