@@ -18,9 +18,9 @@ type Search = Promise<{ sent?: string; error?: string; callbackUrl?: string }>
 export default async function LoginPage({ searchParams }: { searchParams: Search }) {
   const { sent, error, callbackUrl } = await searchParams
   const session = await getSession()
-  if (session?.user) redirect(session.user.role === 'admin' ? '/admin' : '/dashboard')
+  if (session?.user) redirect(session.user.role === 'client' ? '/dashboard' : '/admin')
 
-  const target = callbackUrl && callbackUrl.startsWith('/') ? callbackUrl : '/admin'
+  const target = callbackUrl && callbackUrl.startsWith('/') ? callbackUrl : '/dashboard'
   const googleEnabled = Boolean(process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET)
 
   return (
@@ -40,10 +40,10 @@ export default async function LoginPage({ searchParams }: { searchParams: Search
           </div>
         ) : (
           <>
-            <p className="mt-2 text-sm text-text-2">No password. We email you a one-time link.</p>
+            <p className="mt-2 text-sm text-text-2">No password. Enter the email your checklist was sent to and we email you a one-time link.</p>
             {error && (
               <p className="mt-4 rounded-lg border border-red-100 bg-red-50 px-3 py-2 text-sm text-red-600">
-                {error === 'AccessDenied' ? 'Sign-in is for the Sahil Advisory team only. Client accounts arrive with order tracking.' : 'Sign-in failed. Try again or use a different method.'}
+                {error === 'AccessDenied' ? 'We could not find a portal account for that email. Use the address we sent your checklist to, or WhatsApp us and we will set it up.' : 'Sign-in failed. Try again or use a different method.'}
               </p>
             )}
             <form

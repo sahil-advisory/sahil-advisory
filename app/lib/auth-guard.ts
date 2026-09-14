@@ -16,3 +16,12 @@ export async function requireUser() {
   if (!session?.user) redirect('/login?callbackUrl=/dashboard')
   return session.user
 }
+
+// Admin or expert. Experts are further limited to assigned engagements by
+// the engagement queries themselves.
+export async function requireStaff() {
+  const session = await getSession()
+  if (!session?.user) redirect('/login?callbackUrl=/admin')
+  if (session.user.role !== 'admin' && session.user.role !== 'expert') redirect('/login?error=AccessDenied')
+  return session.user
+}

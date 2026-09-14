@@ -88,12 +88,15 @@ export const authConfig: NextAuthConfig = {
   pages: { signIn: '/login', verifyRequest: '/login?sent=1', error: '/login' },
   trustHost: true,
   callbacks: {
-    // Sign-in is staff-only until the client portal exists. Without this, a
-    // visitor who finds /login gets a working account that leads to a 404.
-    // When orders and the dashboard ship, drop this callback (or gate it on a
-    // CLIENT_SIGNIN_ENABLED flag) and client accounts start working as-is.
+    // Who may sign in: admins from the allowlist, and anyone who already has
+    // a users row (created when an engagement is opened for them, or a staff
+    // account added by an admin). A stranger who finds /login has no row, so
+    // no link is sent and no account is created.
     async signIn({ user }) {
-      return roleForEmail(user.email) === 'admin'
+      if (roleForEmail(user.email) === 'admin') return true
+      if (!db || !user.email) return false
+      const [row] = await db.select({ id: users.id }).from(users).where(eq(users.email, user.email.toLowerCase())).limit(1)
+      return Boolean(row)
     },
     async jwt({ token, user, trigger }) {
       // On sign-in `user` is the adapter row. Copy the id and resolve the role.
