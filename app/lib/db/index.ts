@@ -4,10 +4,12 @@ import * as schema from './schema'
 
 export * from './schema'
 
-// Runtime connects through Supabase's transaction pooler (port 6543).
-// `prepare: false` is required there: the pooler hands each query to whichever
-// backend is free, so prepared statements from an earlier connection are not
-// found. Migrations use DIRECT_URL (session pooler, 5432) instead.
+// Runtime connects through Supabase's session pooler (port 5432), the same
+// endpoint migrations use. The transaction pooler (6543) was tried first and
+// drops queries sent on a connection while another is in flight, whatever
+// the driver's pipelining setting, which showed up as pages hanging until
+// the function timeout. Session mode behaves like plain Postgres. Keep
+// `prepare: false` so the URL can be swapped back without code changes.
 //
 // Serverless connections go stale: an instance is suspended between requests
 // with its socket open, the pooler drops the other end, and on resume the
@@ -30,9 +32,12 @@ const STALE_AFTER_MS = 5_000
 function open(): Client | null {
   const url = process.env.DATABASE_URL
   if (!url) return null
+  // A small pool: pages fan out a handful of queries in parallel, and each
+  // instance closes its client after five idle seconds (see below), so the
+  // session pooler's connection budget is not held for long.
   const client = postgres(url, {
     prepare: false,
-    max: 1,
+    max: 4,
     idle_timeout: 10,
     max_lifetime: 60 * 5,
     connect_timeout: 10,
