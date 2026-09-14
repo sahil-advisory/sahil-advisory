@@ -15,6 +15,13 @@
       "when": 1789204291502,
       "tag": "0001_auth_activities_notifications",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1789391826645,
+      "tag": "0002_engagements",
+      "breakpoints": true
     }
   ]
 }
