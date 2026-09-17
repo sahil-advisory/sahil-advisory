@@ -15,6 +15,8 @@ export interface Expert {
   years: number
   // Degrees and other qualifications, shown as chips.
   qualifications: string[]
+  // Shown as a small tag next to the name.
+  role?: 'Founder'
   specialisations: string[]
   languages: string[]
   bio: string
@@ -29,6 +31,7 @@ export const EXPERTS: Expert[] = [
     name: 'CMA Sahil',
     credential: 'CMA',
     credentialLabel: 'Cost and Management Accountant (ICMAI)',
+    role: 'Founder',
     title: 'Cost and Management Accountant, Lead Tax Expert',
     years: 8,
     qualifications: ['CMA'],

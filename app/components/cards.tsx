@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ArrowRight, Star, Calculator as CalcIcon, BookOpen, Clock, Check, FileText, Receipt, Percent, Building2, ClipboardCheck, ScrollText, type LucideIcon } from 'lucide-react'
+import { ArrowRight, Star, Calculator as CalcIcon, BookOpen, Clock, Check, FileText, Receipt, Percent, Building2, ClipboardCheck, ScrollText, Sparkles, type LucideIcon } from 'lucide-react'
 import { Badge, CheckList, PriceTag } from './ui'
 import { servicePath, unitSuffix, servicesIn, CATEGORY_PATH, type Service, type ServiceCategoryId } from '@/app/lib/services'
 import { formatINR } from '@/app/lib/format'
@@ -115,6 +115,14 @@ export function CategoryCard({ id, name, sub, items, cta }: { id: ServiceCategor
   )
 }
 
+export function FounderTag() {
+  return (
+    <span className="inline-flex items-center gap-1 rounded-full border border-amber-200 bg-gold-50 px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.12em] text-gold-600">
+      <Sparkles className="h-3 w-3" aria-hidden /> Founder
+    </span>
+  )
+}
+
 export function expertInitials(name: string) {
   return name.replace(/^(CMA|CA|CS)\s+/, '').split(' ').map((w) => w[0]).join('').slice(0, 2).toUpperCase()
 }
@@ -128,6 +136,7 @@ export function ExpertCard({ expert, compact }: { expert: Expert; compact?: bool
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-2">
             <h3 className="text-base font-bold text-navy-900"><Link href={`/experts/${expert.slug}`} className="hover:text-green-700">{expert.name}</Link></h3>
+            {expert.role === 'Founder' && <FounderTag />}
             <Badge tone="navy">{expert.credential === 'Consultant' ? expert.qualifications[0] ?? 'Consultant' : expert.credential}</Badge>
           </div>
           <p className="text-xs text-muted">{expert.years}+ years · {expert.languages.join(', ')}</p>
@@ -145,9 +154,12 @@ export function ExpertCard({ expert, compact }: { expert: Expert; compact?: bool
       </div>
       <div className="-mt-10 flex flex-1 flex-col px-6 pb-6">
         <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-white text-2xl font-extrabold text-navy-900 shadow-[var(--shadow-lift)] ring-4 ring-white">{initials}</div>
-        <h3 className="mt-4 text-xl font-bold tracking-tight text-navy-900">
-          <Link href={`/experts/${expert.slug}`} className="hover:text-green-700">{expert.name}</Link>
-        </h3>
+        <div className="mt-4 flex flex-wrap items-center gap-2">
+          <h3 className="text-xl font-bold tracking-tight text-navy-900">
+            <Link href={`/experts/${expert.slug}`} className="hover:text-green-700">{expert.name}</Link>
+          </h3>
+          {expert.role === 'Founder' && <FounderTag />}
+        </div>
         <p className="mt-0.5 text-sm text-text-2">{expert.title}</p>
         <ul className="mt-3 flex flex-wrap gap-1.5">
           {expert.qualifications.map((q) => (
