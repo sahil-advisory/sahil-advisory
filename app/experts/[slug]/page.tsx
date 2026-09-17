@@ -8,7 +8,7 @@ import { publishedExperts, getExpert } from '@/app/lib/experts'
 import { GUIDES, guidePath } from '@/app/lib/guides'
 import JsonLd from '@/app/components/JsonLd'
 import { Container, Breadcrumbs, Badge, CtaBand } from '@/app/components/ui'
-import { GuideCard } from '@/app/components/cards'
+import { GuideCard, expertInitials } from '@/app/components/cards'
 
 type Params = { slug: string }
 
@@ -43,7 +43,7 @@ export default async function ExpertPage({ params }: { params: Promise<Params> }
             worksFor: { '@id': ORG_ID },
             knowsAbout: e.knowsAbout,
             knowsLanguage: e.languages,
-            hasCredential: { '@type': 'EducationalOccupationalCredential', credentialCategory: 'Professional certification', name: e.credential === 'CMA' ? 'Cost and Management Accountant (ICMAI)' : e.credential === 'CA' ? 'Chartered Accountant (ICAI)' : e.credential },
+            hasCredential: { '@type': 'EducationalOccupationalCredential', credentialCategory: 'Professional certification', name: e.credentialLabel },
             description: e.bio,
           },
           breadcrumbJsonLd([{ name: 'Experts', path: '/experts' }, { name: e.name, path }], path)
@@ -53,10 +53,10 @@ export default async function ExpertPage({ params }: { params: Promise<Params> }
         <Breadcrumbs crumbs={[{ name: 'Experts', path: '/experts' }, { name: e.name, path }]} />
         <div className="mt-6 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)]">
           <div className="rounded-3xl border border-border bg-card p-8 shadow-[var(--shadow-card)]">
-            <div className="flex h-20 w-20 items-center justify-center rounded-full bg-navy-900 text-2xl font-bold text-white">{e.name.replace(/^(CMA|CA|CS)\s+/, '').slice(0, 2).toUpperCase()}</div>
+            <div className="flex h-20 w-20 items-center justify-center rounded-full bg-navy-900 text-2xl font-bold text-white">{expertInitials(e.name)}</div>
             <h1 className="mt-5 text-3xl font-extrabold tracking-tight text-navy-900">{e.name}</h1>
             <p className="mt-1 text-sm text-text-2">{e.title}</p>
-            <div className="mt-3 flex flex-wrap gap-2"><Badge tone="navy">{e.credential}</Badge><Badge tone="green">{e.years}+ years</Badge></div>
+            <div className="mt-3 flex flex-wrap gap-2"><Badge tone="navy">{e.credentialLabel}</Badge><Badge tone="green">{e.years}+ years</Badge>{e.qualifications.filter((q) => q !== e.credential).map((q) => <Badge key={q} tone="muted">{q}</Badge>)}</div>
             <dl className="mt-6 space-y-4 text-sm">
               <div><dt className="text-xs font-bold uppercase tracking-wider text-muted">Specialisations</dt><dd className="mt-1 text-text-2">{e.specialisations.join(' · ')}</dd></div>
               <div><dt className="text-xs font-bold uppercase tracking-wider text-muted">Languages</dt><dd className="mt-1 text-text-2">{e.languages.join(', ')}</dd></div>

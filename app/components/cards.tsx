@@ -115,26 +115,66 @@ export function CategoryCard({ id, name, sub, items, cta }: { id: ServiceCategor
   )
 }
 
+export function expertInitials(name: string) {
+  return name.replace(/^(CMA|CA|CS)\s+/, '').split(' ').map((w) => w[0]).join('').slice(0, 2).toUpperCase()
+}
+
 export function ExpertCard({ expert, compact }: { expert: Expert; compact?: boolean }) {
-  const initials = expert.name.replace(/^(CMA|CA|CS)\s+/, '').split(' ').map((w) => w[0]).join('').slice(0, 2)
-  return (
-    <article className="flex gap-4 rounded-2xl border border-border bg-card p-5 shadow-[var(--shadow-card)]">
-      <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-navy-900 text-lg font-bold text-white">{initials}</div>
-      <div className="min-w-0">
-        <div className="flex flex-wrap items-center gap-2">
-          <h3 className="text-base font-bold text-navy-900">
-            <Link href={`/experts/${expert.slug}`} className="hover:text-green-700">{expert.name}</Link>
-          </h3>
-          <Badge tone="navy">{expert.credential}</Badge>
+  const initials = expertInitials(expert.name)
+  if (compact) {
+    return (
+      <article className="flex gap-4 rounded-2xl border border-border bg-card p-5 shadow-[var(--shadow-card)]">
+        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-navy-900 text-lg font-bold text-white">{initials}</div>
+        <div className="min-w-0">
+          <div className="flex flex-wrap items-center gap-2">
+            <h3 className="text-base font-bold text-navy-900"><Link href={`/experts/${expert.slug}`} className="hover:text-green-700">{expert.name}</Link></h3>
+            <Badge tone="navy">{expert.credential === 'Consultant' ? expert.qualifications[0] ?? 'Consultant' : expert.credential}</Badge>
+          </div>
+          <p className="text-xs text-muted">{expert.years}+ years · {expert.languages.join(', ')}</p>
         </div>
-        <p className="text-xs text-muted">{expert.years}+ years · {expert.languages.join(', ')}</p>
-        {!compact && (
-          <ul className="mt-2 flex flex-wrap gap-1.5">
-            {expert.specialisations.slice(0, 3).map((s) => (
-              <li key={s} className="rounded-md bg-bg-alt px-2 py-0.5 text-[11px] font-medium text-text-2">{s}</li>
-            ))}
-          </ul>
-        )}
+      </article>
+    )
+  }
+  return (
+    <article className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-[var(--shadow-card)] transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-0.5 hover:border-green-600/50 hover:shadow-[var(--shadow-lift)] motion-reduce:transition-none">
+      <div className="bg-[linear-gradient(135deg,_var(--navy-900),_var(--navy-700))] px-6 pb-14 pt-6">
+        <div className="flex items-start justify-between gap-3">
+          <span className="rounded-md bg-white/10 px-2 py-0.5 text-[11px] font-bold uppercase tracking-wider text-white/90">{expert.credentialLabel}</span>
+          <span className="rounded-md bg-green-500/20 px-2 py-0.5 font-mono text-[11px] font-bold text-green-300">{expert.years}+ yrs</span>
+        </div>
+      </div>
+      <div className="-mt-10 flex flex-1 flex-col px-6 pb-6">
+        <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-white text-2xl font-extrabold text-navy-900 shadow-[var(--shadow-lift)] ring-4 ring-white">{initials}</div>
+        <h3 className="mt-4 text-xl font-bold tracking-tight text-navy-900">
+          <Link href={`/experts/${expert.slug}`} className="hover:text-green-700">{expert.name}</Link>
+        </h3>
+        <p className="mt-0.5 text-sm text-text-2">{expert.title}</p>
+        <ul className="mt-3 flex flex-wrap gap-1.5">
+          {expert.qualifications.map((q) => (
+            <li key={q} className="rounded-md border border-green-100 bg-green-50 px-2 py-0.5 text-[11px] font-bold uppercase tracking-wider text-green-700">{q}</li>
+          ))}
+        </ul>
+        <p className="mt-4 line-clamp-3 text-sm leading-relaxed text-text-2">{expert.bio}</p>
+        <dl className="mt-4 space-y-2 text-sm">
+          <div>
+            <dt className="text-[11px] font-bold uppercase tracking-wider text-muted">Handles</dt>
+            <dd className="mt-1 flex flex-wrap gap-1.5">
+              {expert.specialisations.map((sp) => (
+                <span key={sp} className="rounded-md bg-bg-alt px-2 py-0.5 text-xs text-text-2">{sp}</span>
+              ))}
+            </dd>
+          </div>
+          <div className="flex items-center justify-between gap-3">
+            <div>
+              <dt className="text-[11px] font-bold uppercase tracking-wider text-muted">Speaks</dt>
+              <dd className="mt-0.5 text-xs text-text-2">{expert.languages.join(', ')}</dd>
+            </div>
+          </div>
+        </dl>
+        <div className="mt-auto flex items-center justify-between border-t border-border pt-4">
+          <Link href={`/experts/${expert.slug}`} className="inline-flex items-center gap-1 text-sm font-semibold text-green-700 hover:underline">Profile <ArrowRight className="h-4 w-4" /></Link>
+          <Link href="/consult" className="rounded-lg bg-navy-900 px-3.5 py-2 text-xs font-semibold text-white hover:bg-navy-800">Book a call</Link>
+        </div>
       </div>
     </article>
   )

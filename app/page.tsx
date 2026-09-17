@@ -163,7 +163,7 @@ export default function HomePage() {
           <div className="space-y-4">
             <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-white/60">Your experts</p>
             {experts.map((e) => (
-              <ExpertCard key={e.slug} expert={e} />
+              <ExpertCard key={e.slug} expert={e} compact />
             ))}
             <div className="rounded-2xl border border-white/10 bg-white/5 p-5 text-sm text-white/70">
               Audit-tier work (tax audit under 44AB, statutory audit, certifications) is delivered by empanelled Chartered Accountants. <Link href="/experts" className="font-semibold text-green-500 hover:underline">Meet the panel</Link>

@@ -160,7 +160,7 @@ export default async function CategoryPage({ params }: { params: Promise<Params>
             <SectionHeading align="left" eyebrow="Your expert" title="You pick the plan." emphasis="A named professional does the work." desc="Every order shows who is handling it. Audit-tier work is delivered by professional." />
             <div className="mt-6 space-y-4">
               {publishedExperts().map((e) => (
-                <ExpertCard key={e.slug} expert={e} />
+                <ExpertCard key={e.slug} expert={e} compact />
               ))}
             </div>
           </div>

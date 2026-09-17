@@ -45,7 +45,7 @@ export default function AboutPage() {
               { value: SITE.googleRating.toFixed(1), label: 'Google rating' },
               { value: '100%', label: 'On time' },
             ]} />
-            {publishedExperts().map((e) => <ExpertCard key={e.slug} expert={e} />)}
+            {publishedExperts().map((e) => <ExpertCard key={e.slug} expert={e} compact />)}
           </div>
         </div>
         <div className="mt-16"><CtaBand /></div>

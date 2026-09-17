@@ -104,7 +104,7 @@ export default function ConsultPage() {
               <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-muted">Who you will speak to</p>
               <div className="mt-3 space-y-3">
                 {experts.map((e) => (
-                  <ExpertCard key={e.slug} expert={e} />
+                  <ExpertCard key={e.slug} expert={e} compact />
                 ))}
               </div>
             </div>

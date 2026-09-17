@@ -162,7 +162,7 @@ export default async function SkuPage({ params }: { params: Promise<Params> }) {
         <Container className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)]">
           <div>
             <SectionHeading align="left" eyebrow="Your expert" title="Prepared and reviewed by a qualified professional" />
-            <div className="mt-6"><ExpertCard expert={REVIEWER} /></div>
+            <div className="mt-6"><ExpertCard expert={REVIEWER} compact /></div>
           </div>
           <div>
             <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-muted">Other {midSentence(c.navLabel)} plans</p>
