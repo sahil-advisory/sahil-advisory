@@ -54,10 +54,8 @@ export default async function ExpertPage({ params }: { params: Promise<Params> }
         <div className="mt-6 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)]">
           <div className="rounded-3xl border border-border bg-card p-8 shadow-[var(--shadow-card)]">
             <div className="flex h-20 w-20 items-center justify-center rounded-full bg-navy-900 text-2xl font-bold text-white">{expertInitials(e.name)}</div>
-            <div className="mt-5 flex flex-wrap items-center gap-2">
-              <h1 className="text-3xl font-extrabold tracking-tight text-navy-900">{e.name}</h1>
-              {e.role === 'Founder' && <FounderTag />}
-            </div>
+            {e.role === 'Founder' && <div className="mt-5"><FounderTag /></div>}
+            <h1 className={`${e.role === 'Founder' ? 'mt-1.5' : 'mt-5'} text-3xl font-extrabold tracking-tight text-navy-900`}>{e.name}</h1>
             <p className="mt-1 text-sm text-text-2">{e.title}</p>
             <div className="mt-3 flex flex-wrap gap-2"><Badge tone="navy">{e.credentialLabel}</Badge><Badge tone="green">{e.years}+ years</Badge>{e.qualifications.filter((q) => q !== e.credential).map((q) => <Badge key={q} tone="muted">{q}</Badge>)}</div>
             <dl className="mt-6 space-y-4 text-sm">

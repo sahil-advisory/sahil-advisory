@@ -117,7 +117,7 @@ export function CategoryCard({ id, name, sub, items, cta }: { id: ServiceCategor
 
 export function FounderTag() {
   return (
-    <span className="inline-flex items-center rounded-full border border-amber-200 bg-gold-50 px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.12em] text-gold-600">Founder</span>
+    <span className="inline-flex items-center rounded-md border border-amber-200 bg-gold-50 px-1.5 py-px text-[9px] font-bold uppercase tracking-[0.14em] text-gold-600">Founder</span>
   )
 }
 
@@ -132,9 +132,9 @@ export function ExpertCard({ expert, compact }: { expert: Expert; compact?: bool
       <article className="flex gap-4 rounded-2xl border border-border bg-card p-5 shadow-[var(--shadow-card)]">
         <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-navy-900 text-lg font-bold text-white">{initials}</div>
         <div className="min-w-0">
+          {expert.role === 'Founder' && <div className="mb-1"><FounderTag /></div>}
           <div className="flex flex-wrap items-center gap-2">
             <h3 className="text-base font-bold text-navy-900"><Link href={`/experts/${expert.slug}`} className="hover:text-green-700">{expert.name}</Link></h3>
-            {expert.role === 'Founder' && <FounderTag />}
             <Badge tone="navy">{expert.credential === 'Consultant' ? expert.qualifications[0] ?? 'Consultant' : expert.credential}</Badge>
           </div>
           <p className="text-xs text-muted">{expert.years}+ years · {expert.languages.join(', ')}</p>
@@ -152,12 +152,10 @@ export function ExpertCard({ expert, compact }: { expert: Expert; compact?: bool
       </div>
       <div className="-mt-10 flex flex-1 flex-col px-6 pb-6">
         <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-white text-2xl font-extrabold text-navy-900 shadow-[var(--shadow-lift)] ring-4 ring-white">{initials}</div>
-        <div className="mt-4 flex flex-wrap items-center gap-2">
-          <h3 className="text-xl font-bold tracking-tight text-navy-900">
-            <Link href={`/experts/${expert.slug}`} className="hover:text-green-700">{expert.name}</Link>
-          </h3>
-          {expert.role === 'Founder' && <FounderTag />}
-        </div>
+        {expert.role === 'Founder' && <div className="mt-4"><FounderTag /></div>}
+        <h3 className={`${expert.role === 'Founder' ? 'mt-1.5' : 'mt-4'} text-xl font-bold tracking-tight text-navy-900`}>
+          <Link href={`/experts/${expert.slug}`} className="hover:text-green-700">{expert.name}</Link>
+        </h3>
         <p className="mt-0.5 text-sm text-text-2">{expert.title}</p>
         <ul className="mt-3 flex flex-wrap gap-1.5">
           {expert.qualifications.map((q) => (
