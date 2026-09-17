@@ -156,7 +156,7 @@ export const guide: Guide = {
       rows: [
         ['Government fees', 'Nil (GST, MSME registration free)', '₹500 to ₹5,000 based on contribution, plus stamp duty on LLP agreement', 'Nil MCA fee up to ₹15 lakh authorised capital; stamp duty at state rate', 'Nil MCA fee up to ₹15 lakh authorised capital; stamp duty at state rate'],
         ['Digital signatures', 'Not required', '2 DSCs, about ₹1,500 each', '1 DSC', '2 DSCs'],
-        ['Professional fee for incorporation', '₹499 to ₹1,499 for registrations', '₹5,999', '₹6,999', '₹6,999'],
+        ['Professional fee for incorporation', '₹299 to ₹1,499 for registrations', '₹5,999', '₹6,999', '₹6,999'],
         ['Typical all-in setup cost', '₹1,000 to ₹3,000', '₹10,000 to ₹15,000', '₹11,000 to ₹18,000', '₹12,000 to ₹20,000'],
         ['Typical annual compliance cost', '₹3,000 to ₹15,000', '₹15,000 to ₹30,000', '₹25,000 to ₹45,000', '₹30,000 to ₹60,000'],
       ],

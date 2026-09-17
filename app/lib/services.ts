@@ -631,12 +631,12 @@ export const SERVICES: Service[] = [
   // Registrations
   {
     slug: 'pan-application', category: 'registrations', name: 'PAN Application', whoFor: 'Individuals, firms, companies, trusts', shortDesc: 'New PAN or correction, e-PAN in 2 to 5 days.',
-    longDesc: 'New PAN, reprint or correction for individuals and entities through the NSDL / UTIITSL route with document verification.', unit: 'one_time', mrp: 599, price: 499,
+    longDesc: 'New PAN, reprint or correction for individuals and entities through the NSDL / UTIITSL route with document verification.', unit: 'one_time', mrp: 499, price: 299,
     includes: ['Form 49A / 49AA', 'Document verification', 'e-PAN delivery'], documents: ['Aadhaar or identity proof', 'Address proof', 'Photograph'], turnaroundDays: '2 to 5 business days', faqs: [], keywords: ['pan card apply online'], relatedGuides: [], relatedCalculators: [],
   },
   {
     slug: 'msme-udyam', category: 'registrations', name: 'MSME / Udyam Registration', whoFor: 'Any micro, small or medium business', shortDesc: 'Udyam certificate for loans, subsidies and delayed-payment protection. Same day.',
-    longDesc: 'Udyam registration unlocks priority-sector lending, collateral-free CGTMSE loans, tender preferences and 45-day payment protection under the MSMED Act. We register or update your Udyam profile the same day.', unit: 'one_time', mrp: 699, price: 499,
+    longDesc: 'Udyam registration unlocks priority-sector lending, collateral-free CGTMSE loans, tender preferences and 45-day payment protection under the MSMED Act. We register or update your Udyam profile the same day.', unit: 'one_time', mrp: 499, price: 299,
     includes: ['Classification advice', 'Udyam filing', 'Certificate download', 'Benefits checklist'], documents: ['Aadhaar of proprietor / partner / director', 'PAN', 'GSTIN if any'], turnaroundDays: 'Same day', faqs: [], keywords: ['msme registration online', 'udyam registration'], relatedGuides: ['msme-benefits-guide'], relatedCalculators: [],
   },
   {
@@ -671,7 +671,7 @@ export const SERVICES: Service[] = [
   },
   {
     slug: 'partnership-deed', category: 'registrations', name: 'Partnership Firm Registration', whoFor: 'Two or more partners without limited liability', shortDesc: 'Deed drafting, stamping guidance, Registrar of Firms filing, PAN.',
-    longDesc: 'Partnership deed drafted for your profit-sharing and remuneration terms, registered with the Registrar of Firms and PAN obtained.', unit: 'one_time', mrp: 3499, price: 2999,
+    longDesc: 'Partnership deed drafted for your profit-sharing and remuneration terms, registered with the Registrar of Firms and PAN obtained.', unit: 'one_time', mrp: 4999, price: 3999,
     includes: ['Deed drafting', 'Registrar filing', 'PAN application'], documents: ['Partner PAN and Aadhaar', 'Office address proof'], turnaroundDays: '5 to 10 business days', faqs: [], keywords: ['partnership firm registration'], relatedGuides: ['llp-vs-pvt-ltd'], relatedCalculators: [],
   },
   {
@@ -681,7 +681,7 @@ export const SERVICES: Service[] = [
   },
   {
     slug: 'shop-establishment', category: 'registrations', name: 'Shop and Establishment Registration', whoFor: 'Shops, offices and commercial establishments', shortDesc: 'State labour department registration required for bank accounts and payroll.',
-    longDesc: 'State-specific Shop and Establishment Act registration, often needed to open a current account and required for hiring staff.', unit: 'one_time', mrp: 2499, price: 1999,
+    longDesc: 'State-specific Shop and Establishment Act registration, often needed to open a current account and required for hiring staff.', unit: 'one_time', mrp: 1499, price: 999,
     includes: ['State portal application', 'Certificate download', 'Renewal reminder'], documents: ['PAN', 'Address proof of premises', 'Employee count'], turnaroundDays: '3 to 10 business days', faqs: [], keywords: ['shop and establishment registration'], relatedGuides: [], relatedCalculators: [],
   },
   {
