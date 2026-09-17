@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ArrowRight, Star, Calculator as CalcIcon, BookOpen, Clock, Check, FileText, Receipt, Percent, Building2, ClipboardCheck, ScrollText, Sparkles, type LucideIcon } from 'lucide-react'
+import { ArrowRight, Star, Calculator as CalcIcon, BookOpen, Clock, Check, FileText, Receipt, Percent, Building2, ClipboardCheck, ScrollText, type LucideIcon } from 'lucide-react'
 import { Badge, CheckList, PriceTag } from './ui'
 import { servicePath, unitSuffix, servicesIn, CATEGORY_PATH, type Service, type ServiceCategoryId } from '@/app/lib/services'
 import { formatINR } from '@/app/lib/format'
@@ -117,9 +117,7 @@ export function CategoryCard({ id, name, sub, items, cta }: { id: ServiceCategor
 
 export function FounderTag() {
   return (
-    <span className="inline-flex items-center gap-1 rounded-full border border-amber-200 bg-gold-50 px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.12em] text-gold-600">
-      <Sparkles className="h-3 w-3" aria-hidden /> Founder
-    </span>
+    <span className="inline-flex items-center rounded-full border border-amber-200 bg-gold-50 px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.12em] text-gold-600">Founder</span>
   )
 }
 
