@@ -1,4 +1,9 @@
 import type { Guide } from '../types'
+import { act2025Of } from '@/app/lib/act2025'
+
+// Tables are generated from the central map in app/lib/act2025.ts so the
+// guide and the 22 reference pages can never drift apart.
+const row = (e: { old: string; new: string | null; what: string }) => [e.what, e.old, e.new ?? 'No direct equivalent listed']
 
 export const guide: Guide = {
   slug: 'income-tax-act-2025-what-changes',
@@ -100,19 +105,8 @@ export const guide: Guide = {
     {
       type: 'table',
       head: ['Provision', '1961 Act section', 'Reported 2025 Act reference'],
-      rows: [
-        ['Deduction for PF, PPF, ELSS, life insurance, tuition fees', '80C', 'Section 123'],
-        ['Rebate for resident individuals', '87A', 'Section 156'],
-        ['House rent allowance exemption', '10(13A)', 'Schedule III (exemptions to salaried employees)'],
-        ['Interest on housing loan for house property', '24(b)', 'Section 22'],
-        ['Exemption on sale of residential house', '54', 'Section 82'],
-        ['Presumptive taxation for business and profession', '44AD and 44ADA', 'Section 58'],
-        ['Return of income', '139', 'Section 263'],
-        ['Tax deducted at source on salary', '192', 'Section 392'],
-        ['Tax deducted at source on other payments (194A, 194C, 194J, 194I and others)', '194 to 206', 'Section 393, with rates in tables'],
-        ['Tax collected at source', '206C', 'Section 394'],
-      ],
-      caption: 'Commonly cited section mappings, reported and unverified',
+      rows: act2025Of('section').map(row),
+      caption: 'Section mapping, reported and unverified. Returns for AY 2026-27 still use the 1961 numbering.',
     },
     {
       type: 'paragraph',
@@ -125,14 +119,9 @@ export const guide: Guide = {
     },
     {
       type: 'table',
-      head: ['Document', 'Current form', 'Reported new form', 'First used for'],
-      rows: [
-        ['Salary TDS certificate', 'Form 16', 'Form 130', 'Tax year 2026-27, issued by June 2027'],
-        ['Annual tax statement', 'Form 26AS', 'Form 168', 'Tax year 2026-27'],
-        ['Self-declaration for nil TDS on interest', 'Form 15G and 15H', 'Form 121', 'Declarations from tax year 2026-27'],
-        ['Tax audit report', 'Form 3CA, 3CB and 3CD', 'Form 26', 'Audits for tax year 2026-27, due 2027'],
-      ],
-      caption: 'Form renumbering reported in draft Rules, to be verified against the notified Rules',
+      head: ['Document', 'Current form', 'Reported new form'],
+      rows: [...act2025Of('form'), ...act2025Of('challan')].map(row),
+      caption: 'Form and challan renumbering, reported and unverified. The first Form 130 would be issued in 2027 for salary paid from April 2026.',
     },
     { type: 'heading', text: 'What does not change: slabs, rates and deductions', id: 'what-does-not-change' },
     {

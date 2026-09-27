@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { ArrowRight, Clock, RefreshCw, ShieldCheck, BookOpen } from 'lucide-react'
 import type { ReferencePage as Ref } from '@/app/lib/reference/types'
-import { referencePath, getReferenceBySlug, KIND_LABEL } from '@/app/lib/reference'
+import { referencePath, getReferenceBySlug, KIND_LABEL, act2025Note } from '@/app/lib/reference'
 import { getService } from '@/app/lib/services'
 import { LIVE_CALCULATORS } from '@/app/lib/calculators'
 import { getGuideBySlug } from '@/app/lib/guides'
@@ -23,6 +23,7 @@ export default function ReferencePageView({ page }: { page: Ref }) {
   const service = page.relatedServiceSlugs.map(getService).find(Boolean)
   const calcs = LIVE_CALCULATORS.filter((c) => page.relatedCalculatorSlugs.includes(c.slug)).slice(0, 2)
   const guides = page.relatedGuideSlugs.map(getGuideBySlug).filter((g): g is NonNullable<typeof g> => Boolean(g)).slice(0, 3)
+  const act2025 = act2025Note(page)
   const siblings = page.relatedReferenceSlugs.map(getReferenceBySlug).filter((r): r is Ref => Boolean(r)).slice(0, 4)
 
   return (
@@ -33,7 +34,7 @@ export default function ReferencePageView({ page }: { page: Ref }) {
           <header>
             <div className="flex flex-wrap items-center gap-2">
               <Badge tone="navy">{page.group}</Badge>
-              {page.act2025 && <Badge tone="gold">Income-tax Act 2025: {page.act2025.newNumber}</Badge>}
+              {act2025 && <Badge tone="gold">Income-tax Act 2025: {act2025.newNumber}</Badge>}
             </div>
             <h1 className="mt-3 text-3xl font-extrabold leading-[1.1] tracking-tight text-navy-900 sm:text-4xl">{page.h1}</h1>
             {/* The snippet paragraph. Kept as a single <p> right after the H1 on purpose. */}
@@ -56,14 +57,14 @@ export default function ReferencePageView({ page }: { page: Ref }) {
             </dl>
           </section>
 
-          {page.act2025 && (
+          {act2025 && (
             <aside className="mt-6 rounded-2xl border border-amber-200 bg-gold-50 p-5 text-sm leading-relaxed">
               <p className="font-bold text-navy-900">Under the Income-tax Act 2025, from tax year 2026-27</p>
               <p className="mt-1 text-text-2">
-                {page.name} becomes <strong className="text-navy-900">{page.act2025.newNumber}</strong>. The rule itself does not change; only the number does. Returns for AY {SITE.currentAY} still use the 1961 Act numbering.
-                {page.act2025.status === 'reported' && ' This mapping is reported in secondary sources and should be verified against the notified Rules before you rely on it.'}
+                {page.name} becomes <strong className="text-navy-900">{act2025.newNumber}</strong>. The rule itself does not change; only the number does. Returns for AY {SITE.currentAY} still use the 1961 Act numbering.
+                {act2025.status === 'reported' && ' This mapping is reported in secondary sources and should be verified against the notified Rules before you rely on it.'}
                 {/* The template already states the 'reported' caveat; only print a note that adds something. */}
-                {page.act2025.note && !/^reported in secondary sources/i.test(page.act2025.note) ? ` ${page.act2025.note}` : ''}
+                {act2025.note && !/^reported in secondary sources/i.test(act2025.note) ? ` ${act2025.note}` : ''}
               </p>
               <Link href="/guides/income-tax-act-2025/income-tax-act-2025-what-changes" className="mt-2 inline-flex items-center gap-1 text-sm font-semibold text-green-700 hover:underline">What changes under the 2025 Act <ArrowRight className="h-4 w-4" /></Link>
             </aside>

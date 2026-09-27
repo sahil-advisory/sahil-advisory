@@ -1,4 +1,5 @@
-import type { ReferencePage, ReferenceKind } from './types'
+import type { ReferencePage, ReferenceKind, Act2025Note } from './types'
+import { act2025ForRef } from '@/app/lib/act2025'
 import { SECTIONS } from './content/sections'
 import { FORMS } from './content/forms'
 
@@ -13,6 +14,16 @@ export function getReference(kind: ReferenceKind, slug: string) {
 export function getReferenceBySlug(slug: string) {
   return REFERENCE.find((r) => r.slug === slug)
 }
+// Every reference page shows its 2025 Act number. A page may declare its own
+// note; otherwise it resolves from the central map in app/lib/act2025.ts, so
+// a correction there reaches all 22 pages at once.
+export function act2025Note(page: Pick<ReferencePage, 'slug' | 'act2025'>): Act2025Note | undefined {
+  if (page.act2025) return page.act2025
+  const m = act2025ForRef(page.slug)
+  if (!m || !m.new) return undefined
+  return { newNumber: m.new, status: 'reported', note: m.note }
+}
+
 export function referencePath(r: Pick<ReferencePage, 'kind' | 'slug'>) {
   return `/${r.kind}s/${r.slug}`
 }
