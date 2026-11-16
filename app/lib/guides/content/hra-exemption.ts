@@ -4,7 +4,7 @@ export const guide: Guide = {
   slug: 'hra-exemption',
   cluster: 'tax-saving',
   title: 'HRA Exemption Under Section 10(13A): Rules, Formula and Examples',
-  h1: 'HRA Exemption Under Section 10(13A): Rules, Formula and Examples for FY 2025-26',
+  h1: 'HRA Exemption Under Section 10(13A): Rules, Formula and Examples for FY 2025-26 and 2026-27',
   metaTitle: 'HRA Exemption u/s 10(13A): Formula, Rules, Examples',
   metaDescription:
     'HRA exemption FY 2025-26: least-of-three formula, metro vs non-metro, rent to parents, landlord PAN above ₹1 lakh, TDS on rent and section 80GG without HRA.',
@@ -22,7 +22,7 @@ export const guide: Guide = {
   excerpt:
     'HRA is the largest exemption most salaried employees can claim under the old regime. This guide walks through the formula, the metro list, rent to parents, the PAN and TDS rules, and 80GG for those without HRA.',
   datePublished: '2026-09-06',
-  dateModified: '2026-09-06',
+  dateModified: '2026-11-16',
   readMinutes: 10,
   sections: [
     {
@@ -51,7 +51,7 @@ export const guide: Guide = {
     { type: 'heading', text: 'What HRA is and who can claim the exemption', id: 'what-is-hra' },
     {
       type: 'paragraph',
-      text: 'House Rent Allowance is a component of salary that employers pay to help with accommodation costs. Section 10(13A) of the Income-tax Act 1961, read with rule 2A, exempts part of it from tax if you live in rented accommodation and actually pay rent. The exemption is not automatic; it depends on your salary structure, your rent and your city.',
+      text: 'House Rent Allowance is a component of salary that employers pay to help with accommodation costs. Section 10(13A) of the Income-tax Act 1961, read with rule 2A, exempts part of it from tax if you live in rented accommodation and actually pay rent. The exemption is not automatic; it depends on your salary structure, your rent and your city. From tax year 2026-27 the exemption is section 11 of the Income-tax Act 2025 read with Schedule III; the least-of-three formula on this page is the same.',
     },
     {
       type: 'list',
@@ -146,7 +146,7 @@ export const guide: Guide = {
     { type: 'heading', text: 'Landlord PAN, rent receipts and TDS', id: 'landlord-pan-tds' },
     {
       type: 'paragraph',
-      text: 'Employers are required by rule 26C to collect Form 12BB with rent receipts and, where annual rent exceeds ₹1 lakh, the landlord PAN. If the landlord has no PAN, a declaration with name and address is accepted, but the department can still ask you to prove the payment. Without proof, the employer taxes the full HRA, and you can only claim the exemption in your return with the risk of a query.',
+      text: 'Employers are required by rule 26C to collect Form 12BB (Form 124 under the Income-tax Rules 2026 from tax year 2026-27) with rent receipts and, where annual rent exceeds ₹1 lakh, the landlord PAN. If the landlord has no PAN, a declaration with name and address is accepted, but the department can still ask you to prove the payment. Without proof, the employer taxes the full HRA, and you can only claim the exemption in your return with the risk of a query.',
     },
     {
       type: 'table',
@@ -154,7 +154,7 @@ export const guide: Guide = {
       rows: [
         ['Up to ₹1,00,000', 'Rent receipts or declaration', 'Keep receipts and bank proof'],
         ['₹1,00,001 to ₹6,00,000', 'Rent receipts plus landlord PAN', 'Keep receipts, agreement and PAN'],
-        ['Above ₹6,00,000 (₹50,000 per month)', 'Rent receipts plus landlord PAN', 'Deduct 2% TDS u/s 194-IB once a year, file Form 26QC within 30 days of March or vacating, issue Form 16C'],
+        ['Above ₹6,00,000 (₹50,000 per month)', 'Rent receipts plus landlord PAN', 'Deduct 2% TDS u/s 194-IB (section 393(1) Sl.2(i) from 1 April 2026). Rent paid up to 31 March 2026 is reported in Form 26QC with Form 16C; from 1 April 2026 file Form 141 within 30 days of the month end and issue Form 132 within 15 days of that due date'],
       ],
     },
     {
@@ -195,14 +195,14 @@ export const guide: Guide = {
         'Claiming HRA for months when no rent was paid, for example while living with family between two leases.',
         'Claiming both HRA and home loan interest on a house in the same city without a genuine reason, which is allowed in law but frequently questioned.',
         'Treating Bengaluru, Hyderabad or Pune as metros and using 50%.',
-        'Skipping the 194-IB TDS on rent above ₹50,000 a month; the default attracts interest and a late fee of ₹200 a day for Form 26QC.',
+        'Skipping the 194-IB TDS on rent above ₹50,000 a month; the default attracts interest and a late fee of ₹200 a day for the statement (Form 26QC up to March 2026, Form 141 from April 2026; the fee is section 427 of the Income-tax Act 2025).',
         'Filing under the new regime and still entering an HRA exemption in the return, which CPC removes with an adjustment under 143(1)(a).',
       ],
     },
     { type: 'heading', text: 'What to do next', id: 'what-to-do-next' },
     {
       type: 'paragraph',
-      text: 'Pull your basic, DA and HRA from the salary slip, total the rent paid during FY 2025-26, and run the HRA calculator to see the exempt figure. Generate rent receipts if you have not kept them, collect the landlord PAN if rent crosses ₹1 lakh, and then compare the old regime total with the new regime before filing.',
+      text: 'The AY 2026-27 due date of 31 July 2026 has passed, and a belated return is assessed under the new regime, so HRA for FY 2025-26 cannot be claimed in a belated return. For tax year 2026-27, pull your basic, DA and HRA from the salary slip, total the rent paid since April 2026, and run the HRA calculator to see the exempt figure. Generate rent receipts if you have not kept them, collect the landlord PAN if rent crosses ₹1 lakh, give your employer Form 124 before the year ends, and compare the old regime total with the new regime before filing by 31 July 2027.',
     },
   ],
   faqs: [
@@ -212,7 +212,7 @@ export const guide: Guide = {
     },
     {
       q: 'Is HRA exemption available in the new tax regime?',
-      a: 'No. Section 10(13A) applies only under the old regime. Under the new regime the entire HRA is taxable, offset partly by the higher ₹75,000 standard deduction and wider slabs.',
+      a: 'No. Section 10(13A), section 11 with Schedule III from tax year 2026-27, applies only under the old regime. Under the new regime the entire HRA is taxable, offset partly by the higher ₹75,000 standard deduction and wider slabs.',
     },
     {
       q: 'Can I claim HRA for rent paid to my parents?',
@@ -220,7 +220,7 @@ export const guide: Guide = {
     },
     {
       q: 'Is landlord PAN mandatory for HRA?',
-      a: 'Yes, when annual rent exceeds ₹1 lakh. Give the PAN to your employer in Form 12BB. If the landlord has no PAN, a signed declaration with name and address is required, but be ready to prove the payment.',
+      a: 'Yes, when annual rent exceeds ₹1 lakh. Give the PAN to your employer in Form 12BB, which is Form 124 from tax year 2026-27. If the landlord has no PAN, a signed declaration with name and address is required, but be ready to prove the payment.',
     },
     {
       q: 'Which cities are metro for HRA purposes?',
@@ -232,7 +232,7 @@ export const guide: Guide = {
     },
     {
       q: 'Do I need to deduct TDS on rent for HRA?',
-      a: 'Only if rent exceeds ₹50,000 a month. Section 194-IB requires an individual tenant to deduct 2% TDS once a year and file Form 26QC. Below that threshold no TDS is required.',
+      a: 'Only if rent exceeds ₹50,000 a month. Section 194-IB requires an individual tenant to deduct 2% TDS; rent paid up to 31 March 2026 is reported in Form 26QC, and from 1 April 2026 the provision is section 393(1) Sl.2(i) and the statement is Form 141. Below that threshold no TDS is required.',
     },
     {
       q: 'What is section 80GG and who can claim it?',

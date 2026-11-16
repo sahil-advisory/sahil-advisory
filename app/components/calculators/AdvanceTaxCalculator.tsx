@@ -3,8 +3,8 @@
 import { useMemo, useState } from 'react'
 import { CalendarClock, CheckCircle2 } from 'lucide-react'
 import { computeNewRegime, computeOldRegime } from '@/app/lib/tax/compute'
-import { ADVANCE_TAX, FY, LATE_FEES, PRESUMPTIVE } from '@/app/lib/tax/rules/fy2025-26'
-import { formatDateIN, formatINR } from '@/app/lib/format'
+import { ADVANCE_TAX, LATE_FEES, PRESUMPTIVE } from '@/app/lib/tax/rules/fy2025-26'
+import { formatINR } from '@/app/lib/format'
 
 const inputCls =
   'w-full rounded-lg border border-border-strong bg-white px-3 py-2.5 text-sm outline-none focus:border-green-600 focus:ring-2 focus:ring-green-100'
@@ -128,7 +128,7 @@ export default function AdvanceTaxCalculator() {
   return (
     <div className="grid gap-6 lg:grid-cols-2 lg:items-start">
       <div className="rounded-2xl border border-border bg-card p-5 sm:p-6 shadow-[var(--shadow-card)]">
-        <h2 className="text-base font-bold text-navy-900">Expected income for FY {FY}</h2>
+        <h2 className="text-base font-bold text-navy-900">Expected income for tax year 2026-27</h2>
         <div className="mt-4 space-y-4">
           <Segmented
             label="Tax regime"
@@ -186,7 +186,7 @@ export default function AdvanceTaxCalculator() {
         <div className="rounded-2xl border border-border bg-card p-5 sm:p-6 shadow-[var(--shadow-card)]">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <h2 className="text-base font-bold text-navy-900">Advance tax schedule</h2>
-            <span className="rounded-md border border-navy-100 bg-navy-100 px-2 py-0.5 text-[11px] font-bold uppercase tracking-wider text-navy-900">FY {FY}</span>
+            <span className="rounded-md border border-navy-100 bg-navy-100 px-2 py-0.5 text-[11px] font-bold uppercase tracking-wider text-navy-900">Tax year 2026-27</span>
           </div>
           <div className={`mt-4 flex items-start gap-2 rounded-xl border p-3 text-sm ${r.applies ? 'border-amber-200 bg-gold-50 text-gold-600' : 'border-green-100 bg-green-50 text-green-700'}`}>
             {r.applies ? <CalendarClock className="mt-0.5 h-4 w-4 shrink-0" aria-hidden /> : <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0" aria-hidden />}
@@ -228,7 +228,7 @@ export default function AdvanceTaxCalculator() {
               <tbody>
                 {r.rows.map((row) => (
                   <tr key={row.date} className="border-t border-border">
-                    <td className="px-3 py-2 font-semibold text-navy-900">{formatDateIN(row.date)}</td>
+                    <td className="px-3 py-2 font-semibold text-navy-900">{row.label}</td>
                     <td className="px-3 py-2 text-right font-mono tabular">{row.cumulativePct}%</td>
                     <td className="px-3 py-2 text-right font-mono tabular">{formatINR(r.applies ? row.cumDue : 0)}</td>
                     <td className="px-3 py-2 text-right font-mono tabular font-semibold text-navy-900">{formatINR(r.applies ? row.instalment : 0)}</td>
@@ -255,8 +255,8 @@ export default function AdvanceTaxCalculator() {
           </div>
           <div className="mt-4 rounded-lg border border-border bg-bg-alt/60 p-3 text-[11px] leading-relaxed text-muted">
             <strong className="text-text-2">Assumptions:</strong> advance tax is due when tax after TDS exceeds {formatINR(ADVANCE_TAX.threshold)}; instalments of{' '}
-            {ADVANCE_TAX.instalments.map((i) => i.cumulativePct + '%').join(', ')} cumulative by 15 June, 15 September, 15 December and 15 March. Presumptive taxpayers (44AD/44ADA) pay 100%
-            by 15 March. Interest u/s 234C at {LATE_FEES.sec234C_monthlyPct}% per month on the shortfall for 3 months (1 month for March), with no interest on the first two
+            {ADVANCE_TAX.instalments.map((i) => i.cumulativePct + '%').join(', ')} cumulative by 15 June, 15 September, 15 December and 15 March. Presumptive taxpayers (44AD/44ADA, section 58 of the 2025 Act) pay 100%
+            by 15 March. Interest u/s 234C (section 425 from tax year 2026-27) at {LATE_FEES.sec234C_monthlyPct}% per month on the shortfall for 3 months (1 month for March), with no interest on the first two
             instalments if 12%/36% has been paid. Resident senior citizens without business income are exempt from advance tax. Interest is indicative; capital gains that
             arise later in the year are payable from the next instalment.
           </div>

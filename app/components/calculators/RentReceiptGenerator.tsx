@@ -120,8 +120,8 @@ export default function RentReceiptGenerator() {
   const [pan, setPan] = useState('')
   const [address, setAddress] = useState('')
   const [rent, setRent] = useState('15000')
-  const [from, setFrom] = useState('2025-04')
-  const [to, setTo] = useState('2026-03')
+  const [from, setFrom] = useState('2026-04')
+  const [to, setTo] = useState('2027-03')
   const [mode, setMode] = useState('Bank transfer / UPI')
   const [printing, setPrinting] = useState(false)
 

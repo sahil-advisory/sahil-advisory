@@ -63,6 +63,7 @@ export default function ReferencePageView({ page }: { page: Ref }) {
               <p className="mt-1 text-text-2">
                 {page.name} becomes <strong className="text-navy-900">{act2025.newNumber}</strong>. The rule itself does not change; only the number does. Returns for AY {SITE.currentAY} still use the 1961 Act numbering.
                 {act2025.status === 'reported' && ' This mapping is reported in secondary sources and should be verified against the notified Rules before you rely on it.'}
+                {act2025.status === 'notified' && ' Checked against the text of the Income-tax Act 2025 as enacted.'}
                 {/* The template already states the 'reported' caveat; only print a note that adds something. */}
                 {act2025.note && !/^reported in secondary sources/i.test(act2025.note) ? ` ${act2025.note}` : ''}
               </p>

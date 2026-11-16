@@ -3,11 +3,11 @@ import type { Guide } from '../types'
 export const guide: Guide = {
   slug: 'old-vs-new-tax-regime',
   cluster: 'tax-saving',
-  title: 'Old vs New Tax Regime FY 2025-26: Which Saves More Tax?',
-  h1: 'Old vs New Tax Regime FY 2025-26 (AY 2026-27): Which Saves More Tax?',
-  metaTitle: 'Old vs New Tax Regime FY 2025-26: Which Saves More?',
+  title: 'Old vs New Tax Regime FY 2025-26 and 2026-27: Which Saves More Tax?',
+  h1: 'Old vs New Tax Regime FY 2025-26 (AY 2026-27) and FY 2026-27: Which Saves More Tax?',
+  metaTitle: 'Old vs New Tax Regime FY 2025-26 and 2026-27: Which Wins?',
   metaDescription:
-    'Old vs new regime slabs for FY 2025-26 with worked examples at ₹8L, ₹12.75L, ₹18L and ₹30L, break-even deductions, who picks which, and switching rules.',
+    'Old vs new regime slabs for FY 2025-26 and 2026-27 (unchanged) with worked examples at ₹8L, ₹12.75L, ₹18L and ₹30L, break-even deductions and switching rules.',
   keywords: [
     'old vs new tax regime',
     'new tax regime slabs 2025-26',
@@ -22,16 +22,16 @@ export const guide: Guide = {
   excerpt:
     'The new regime is the default and tax-free up to ₹12.75 lakh of salary. This guide shows exactly how much in deductions you need before the old regime wins, with worked examples at four salary levels.',
   datePublished: '2026-09-06',
-  dateModified: '2026-09-06',
+  dateModified: '2026-11-16',
   readMinutes: 12,
   sections: [
     {
       type: 'key-takeaways',
       items: [
-        'Under the new regime, salary up to ₹12.75 lakh attracts zero tax for FY 2025-26 because of the ₹75,000 standard deduction and the ₹60,000 rebate under section 87A. The old regime cannot match this without ₹7.75 lakh of deductions.',
+        'Under the new regime, salary up to ₹12.75 lakh attracts zero tax for FY 2025-26 because of the ₹75,000 standard deduction and the ₹60,000 rebate under section 87A. The old regime cannot match this without ₹7.75 lakh of deductions. The Finance Act 2026 kept the same slabs, rebate and standard deduction for tax year 2026-27.',
         'For salaries above ₹24.75 lakh, the old regime wins only if your deductions beyond the standard deduction exceed ₹8 lakh. Between ₹15 lakh and ₹20 lakh the break-even is roughly ₹5.4 lakh to ₹7.1 lakh.',
         'The most common way to cross the break-even is a large HRA exemption plus ₹2 lakh of home loan interest plus a full 80C. Without HRA or a home loan, the new regime almost always wins.',
-        'Salaried taxpayers can switch every year, but only in a return filed by the due date. Taxpayers with business income get one lifetime switch out of the new regime.',
+        'Salaried taxpayers can switch every year, but only in a return filed by the due date. For AY 2026-27 that was 31 July 2026 and has passed; for tax year 2026-27 it is 31 July 2027. Taxpayers with business income get one lifetime switch out of the new regime.',
       ],
     },
     {
@@ -48,10 +48,10 @@ export const guide: Guide = {
       calculatorSlug: 'income-tax',
       text: 'Enter your salary and deductions once and see both regimes side by side, including 87A rebate, marginal relief, surcharge and cess.',
     },
-    { type: 'heading', text: 'Slabs for FY 2025-26 under both regimes', id: 'slabs' },
+    { type: 'heading', text: 'Slabs for FY 2025-26 and 2026-27 under both regimes', id: 'slabs' },
     {
       type: 'paragraph',
-      text: 'Budget 2025 rewrote the new regime slabs and raised the rebate threshold. The old regime slabs have not changed since 2014. The tables below apply to income earned between 1 April 2025 and 31 March 2026, which you report in AY 2026-27.',
+      text: 'Budget 2025 rewrote the new regime slabs and raised the rebate threshold. The old regime slabs have not changed since 2014. The tables below apply to income earned between 1 April 2025 and 31 March 2026, which you report in AY 2026-27. The Finance Act 2026 kept both sets of slabs unchanged for tax year 2026-27 (1 April 2026 to 31 March 2027), the first year under the Income-tax Act 2025. The new regime is now section 202 and the rebate section 156, and the old regime is still available by opting out.',
     },
     {
       type: 'table',
@@ -65,7 +65,7 @@ export const guide: Guide = {
         ['₹20,00,001 to ₹24,00,000', '25%', '₹3,00,000'],
         ['Above ₹24,00,000', '30%', '₹3,00,000 plus 30% of excess'],
       ],
-      caption: 'New regime under section 115BAC. Rebate u/s 87A up to ₹60,000 if taxable income is ₹12 lakh or less, with marginal relief just above.',
+      caption: 'New regime under section 115BAC (section 202 from tax year 2026-27). Rebate u/s 87A (section 156) up to ₹60,000 if taxable income is ₹12 lakh or less, with marginal relief just above.',
     },
     {
       type: 'table',
@@ -102,6 +102,10 @@ export const guide: Guide = {
         ['Professional tax deduction', 'Yes', 'No'],
         ['Family pension deduction', '₹15,000', '₹25,000'],
       ],
+    },
+    {
+      type: 'paragraph',
+      text: 'From tax year 2026-27 the same claims sit under new section numbers in the Income-tax Act 2025: 80C is now section 123 (the list of eligible investments is in Schedule XV), 80D is section 126, 80CCD(1B) is section 124(3), 80CCD(2) is section 124(1) and (2), HRA under 10(13A) is section 11 read with Schedule III, and home loan interest under 24(b) is section 22(1)(b). The limits in the table are unchanged.',
     },
     { type: 'heading', text: 'Worked example 1: salary ₹8 lakh', id: 'example-8-lakh' },
     {
@@ -242,7 +246,7 @@ export const guide: Guide = {
         ['₹20,00,000', '₹1,92,400', '₹7,08,333', 'Depends on HRA'],
         ['₹25,00,000 and above', '₹3,19,800 at ₹25 lakh', '₹8,00,000', 'Old only with very large HRA and loan interest'],
       ],
-      caption: 'Break-even computed on FY 2025-26 slabs. Deductions exclude the standard deduction, which is built into both columns.',
+      caption: 'Break-even computed on FY 2025-26 slabs, which are unchanged for tax year 2026-27. Deductions exclude the standard deduction, which is built into both columns.',
     },
     {
       type: 'service-card',
@@ -264,13 +268,13 @@ export const guide: Guide = {
     { type: 'heading', text: 'Rules for switching between regimes', id: 'switching-rules' },
     {
       type: 'paragraph',
-      text: 'The new regime is the default under section 115BAC for everyone from FY 2023-24 onwards. Choosing the old regime is an opt-out, and the mechanics differ by type of income.',
+      text: 'The new regime is the default under section 115BAC for everyone from FY 2023-24 onwards, and under section 202 of the Income-tax Act 2025 from tax year 2026-27. Choosing the old regime is an opt-out, and the mechanics differ by type of income.',
     },
     {
       type: 'table',
       head: ['Taxpayer', 'How to opt for the old regime', 'Can switch back?'],
       rows: [
-        ['Salaried, no business income', 'Tick the opt-out in the ITR filed by 31 July 2026; no separate form', 'Yes, freely every year'],
+        ['Salaried, no business income', 'Tick the opt-out in the return filed by the due date (31 July 2026 for AY 2026-27, now passed; 31 July 2027 for tax year 2026-27); no separate form', 'Yes, freely every year'],
         ['Business or professional income', 'File Form 10-IEA before the due date of the return', 'Only once: after returning to the new regime you cannot opt out again'],
         ['Belated return filer (no business income)', 'Not possible; belated returns are assessed under the new regime', 'Next year, if filed on time'],
       ],
@@ -284,7 +288,7 @@ export const guide: Guide = {
     { type: 'heading', text: 'What to do next', id: 'what-to-do-next' },
     {
       type: 'paragraph',
-      text: 'Add up your HRA exemption, 80C, 80D, NPS and home loan interest for FY 2025-26 and compare the total with the break-even figure for your salary. If it is below the figure, file under the new regime and stop collecting investment proofs. If it is above, file under the old regime by the due date and keep the proofs for six years. Either way, run the income tax calculator before submitting.',
+      text: 'For FY 2025-26 the due date has passed, and a belated return is assessed under the new regime, so the choice now matters for tax year 2026-27. Add up your HRA exemption, 80C, 80D, NPS and home loan interest for the year and compare the total with the break-even figure for your salary. If it is below the figure, stay in the new regime and stop collecting investment proofs. If it is above, give your employer the proofs before the year ends, file under the old regime by 31 July 2027 and keep the proofs for six years. Either way, run the income tax calculator before submitting.',
     },
   ],
   faqs: [
@@ -314,7 +318,7 @@ export const guide: Guide = {
     },
     {
       q: 'Is the old tax regime being removed?',
-      a: 'No announcement has removed it. The Income-tax Act 2025, effective from 1 April 2026, retains both regimes with the new regime as the default. Budget changes are announced each February.',
+      a: 'No. The Income-tax Act 2025, in force from 1 April 2026, retains both regimes, and the Finance Act 2026 kept the old regime slabs unchanged for tax year 2026-27. The new regime under section 202 is the default and the old regime is available by opting out.',
     },
     {
       q: 'Does the ₹75,000 standard deduction apply to pensioners?',

@@ -42,13 +42,13 @@ const INCOME_TAX_SECTIONS: CalcSection[] = [
     paragraphs: [
       'The calculator takes your gross annual income and runs it through both tax regimes for FY 2025-26 (AY 2026-27) at the same time. Under the new regime it subtracts the standard deduction of ₹75,000, applies the Budget 2025 slabs, checks the section 87A rebate and marginal relief, then adds surcharge and the 4% health and education cess. Under the old regime it subtracts the ₹50,000 standard deduction plus every deduction you enter (80C, 80D, HRA, home loan interest, NPS and others), applies the older 5/20/30% slabs with age-based exemption limits, and adds surcharge and cess.',
       'The two results appear side by side so you can see the total tax, effective rate and take-home under each, with a badge on the regime that leaves more money in hand. Expand either card to see the slab-wise breakup. Everything updates as you type, so you can test what happens if you invest another ₹50,000 in NPS or claim HRA.',
-      'The new regime is the default from FY 2023-24 onwards. Salaried employees can still pick the old regime each year at filing time by ticking the option in the ITR form; people with business income must file Form 10-IEA to opt out of the new regime and can switch back only once.',
+      'The new regime is the default from FY 2023-24 onwards, and from tax year 2026-27 it sits in section 202 of the Income-tax Act 2025. Salaried employees can still pick the old regime each year at filing time by ticking the option in the ITR form; people with business income must file Form 10-IEA to opt out of the new regime and can switch back only once.',
     ],
   },
   {
-    heading: 'New regime slabs for FY 2025-26 (Budget 2025)',
+    heading: 'New regime slabs for FY 2025-26 and tax year 2026-27',
     paragraphs: [
-      'Budget 2025 rewrote the new regime slabs and raised the rebate limit. The slabs apply to taxable income after the ₹75,000 standard deduction, so a salaried person with gross salary of ₹12,75,000 pays no tax at all.',
+      'Budget 2025 rewrote the new regime slabs and raised the rebate limit, and Finance Act 2026 kept the slabs, the rebate and the standard deduction unchanged for tax year 2026-27 (FY 2026-27), the first year under the Income-tax Act 2025. The slabs apply to taxable income after the ₹75,000 standard deduction, so a salaried person with gross salary of ₹12,75,000 pays no tax at all.',
     ],
     table: {
       head: ['Taxable income', 'Rate', 'Tax in the slab'],
@@ -64,8 +64,8 @@ const INCOME_TAX_SECTIONS: CalcSection[] = [
     },
     bullets: [
       'Standard deduction for salary and pension: ₹75,000.',
-      'Section 87A rebate: up to ₹60,000, which wipes out the tax on taxable income up to ₹12,00,000.',
-      'Employer NPS contribution under section 80CCD(2) up to 14% of basic is still deductible; almost every other chapter VI-A deduction is not.',
+      'Section 87A rebate (section 156 of the 2025 Act from tax year 2026-27): up to ₹60,000, which wipes out the tax on taxable income up to ₹12,00,000.',
+      'Employer NPS contribution under section 80CCD(2) (section 124(1)-(2) from tax year 2026-27) up to 14% of basic is still deductible; almost every other chapter VI-A deduction is not.',
       'Same slabs for every age; there is no separate senior citizen limit under the new regime.',
     ],
   },
@@ -129,7 +129,7 @@ const INCOME_TAX_SECTIONS: CalcSection[] = [
 ]
 
 const INCOME_TAX_FAQS = [
-  { q: 'What is the tax-free income limit for FY 2025-26 under the new regime?', a: '₹12,00,000 of taxable income is effectively tax-free because the section 87A rebate cancels tax up to ₹60,000. For salaried people the standard deduction of ₹75,000 pushes the tax-free gross salary to ₹12,75,000. Above that, marginal relief limits the tax to the amount by which income exceeds ₹12 lakh, up to roughly ₹12.75 lakh of taxable income.' },
+  { q: 'What is the tax-free income limit for FY 2025-26 under the new regime?', a: '₹12,00,000 of taxable income is effectively tax-free because the section 87A rebate cancels tax up to ₹60,000; the same limit applies for tax year 2026-27 under section 156 of the Income-tax Act 2025. For salaried people the standard deduction of ₹75,000 pushes the tax-free gross salary to ₹12,75,000. Above that, marginal relief limits the tax to the amount by which income exceeds ₹12 lakh, up to roughly ₹12.75 lakh of taxable income.' },
   { q: 'How much tax do I pay on a ₹10 lakh salary in FY 2025-26?', a: 'Nil under the new regime: ₹10,00,000 less the ₹75,000 standard deduction is ₹9,25,000, slab tax of ₹32,500 is fully covered by the 87A rebate. Under the old regime with ₹1,50,000 in 80C and the ₹50,000 standard deduction you would pay about ₹75,400 including cess.' },
   { q: 'Is the standard deduction ₹75,000 or ₹50,000?', a: '₹75,000 under the new regime and ₹50,000 under the old regime for FY 2025-26. It is available only to salaried employees and pensioners (including family pensioners, at ₹25,000 under the new regime) and needs no proof or investment.' },
   { q: 'Can I switch from the new regime to the old regime?', a: 'Yes, salaried taxpayers can choose either regime every year simply by selecting it in the ITR form before the due date. Taxpayers with business or professional income must file Form 10-IEA to opt for the old regime and get only one chance to switch back to the new regime.' },
@@ -143,7 +143,7 @@ const HRA_SECTIONS: CalcSection[] = [
   {
     heading: 'How HRA exemption is calculated under section 10(13A)',
     paragraphs: [
-      'House Rent Allowance is part of your salary, but the portion that qualifies for exemption is not taxed. Rule 2A of the Income-tax Rules fixes the exempt amount as the least of three figures: (1) the actual HRA you received, (2) rent paid minus 10% of salary, and (3) 50% of salary if you live in Delhi, Mumbai, Kolkata or Chennai, or 40% of salary anywhere else. Whatever is left of the HRA after this exemption is added to your taxable salary.',
+      'House Rent Allowance is part of your salary, but the portion that qualifies for exemption is not taxed. Rule 2A of the Income-tax Rules fixes the exempt amount as the least of three figures: (1) the actual HRA you received, (2) rent paid minus 10% of salary, and (3) 50% of salary if you live in Delhi, Mumbai, Kolkata or Chennai, or 40% of salary anywhere else. Whatever is left of the HRA after this exemption is added to your taxable salary. From tax year 2026-27 the HRA exemption is in section 11 read with Schedule III of the Income-tax Act 2025.',
       '"Salary" for this purpose means basic pay plus dearness allowance (only if DA counts for retirement benefits) plus any commission fixed as a percentage of turnover. Special allowance, bonus and other allowances are not included, which is why two people on the same CTC can get very different exemptions depending on how their pay is structured.',
       'The calculation is done for the period in which rent was actually paid, so if you moved cities or started renting mid-year, work it out separately for each stretch. The calculator lets you enter monthly or annual figures; monthly figures are multiplied by 12.',
     ],
@@ -177,8 +177,8 @@ const HRA_SECTIONS: CalcSection[] = [
     bullets: [
       'You must actually pay rent for accommodation you occupy; you cannot claim HRA for a house you own or one occupied rent-free.',
       'Rent receipts are needed for the employer; most companies ask for them if rent exceeds ₹3,000 a month. Keep the rent agreement and bank transfers as well.',
-      'If annual rent exceeds ₹1,00,000 (₹8,333 a month), the landlord\'s PAN must be given to the employer in Form 12BB, or a declaration in Form 60 if the landlord has no PAN.',
-      'If monthly rent exceeds ₹50,000, deduct 2% TDS under section 194-IB once a year and file Form 26QC; you do not need a TAN.',
+      'If annual rent exceeds ₹1,00,000 (₹8,333 a month), the landlord\'s PAN must be given to the employer in Form 12BB (Form 124 from 1 April 2026), or a declaration in Form 60 if the landlord has no PAN.',
+      'If monthly rent exceeds ₹50,000, deduct 2% TDS under section 194-IB once a year and file Form 26QC (Form 141 for rent paid from 1 April 2026); you do not need a TAN.',
       'Paying rent to parents is allowed if the house is in their name and the money genuinely changes hands; they must report it as rental income. Paying rent to a spouse is generally not accepted.',
       'HRA can be claimed together with home loan interest if you own a house in another city or cannot live in your own house because of work.',
     ],
@@ -218,7 +218,7 @@ const CAPITAL_GAINS_SECTIONS: CalcSection[] = [
   {
     heading: 'Capital gains tax rates after 23 July 2024',
     paragraphs: [
-      'Budget 2024 simplified capital gains taxation for transfers made on or after 23 July 2024, and these rates continue for FY 2025-26. Long-term gains on almost every asset are now taxed at 12.5% without indexation, while short-term gains on listed equity and equity mutual funds are taxed at 20%. Other short-term gains are added to your income and taxed at slab rates.',
+      'Budget 2024 simplified capital gains taxation for transfers made on or after 23 July 2024, and these rates continue for FY 2025-26 and, unchanged by Finance Act 2026, for tax year 2026-27, where section 111A becomes section 196, section 112A becomes section 198 and other long-term gains fall under section 197 of the Income-tax Act 2025. Long-term gains on almost every asset are now taxed at 12.5% without indexation, while short-term gains on listed equity and equity mutual funds are taxed at 20%. Other short-term gains are added to your income and taxed at slab rates.',
     ],
     table: {
       head: ['Asset', 'Long-term after', 'STCG rate', 'LTCG rate'],
@@ -235,6 +235,7 @@ const CAPITAL_GAINS_SECTIONS: CalcSection[] = [
       'Health and education cess of 4% is added to every rate above.',
       'Surcharge on gains under sections 111A and 112A is capped at 15% even for incomes above ₹2 crore.',
       'The ₹1.25 lakh exemption is per financial year, across all equity shares and equity funds together.',
+      'Buyback of shares: from tax year 2026-27 the proceeds are taxed as capital gains in the shareholder\'s hands, not as dividend; promoters pay additional tax.',
     ],
   },
   {
@@ -379,7 +380,7 @@ const TDS_SECTIONS: CalcSection[] = [
   },
   {
     heading: 'TDS rate chart for FY 2025-26',
-    paragraphs: ['Budget 2025 raised several thresholds from 1 April 2025. The most common sections are:'],
+    paragraphs: ['Budget 2025 raised several thresholds from 1 April 2025, and the same thresholds were carried into section 393 of the Income-tax Act 2025 for tax year 2026-27. The most common sections are:'],
     table: {
       head: ['Section', 'Nature of payment', 'Rate', 'Threshold'],
       rows: [
@@ -407,14 +408,14 @@ const TDS_SECTIONS: CalcSection[] = [
     paragraphs: [
       'Professional fees: you pay a designer ₹60,000 in the year. This exceeds the ₹50,000 threshold under section 194J, so deduct 10% = ₹6,000 and pay ₹54,000. Had the designer not shared a PAN, the deduction would be 20% = ₹12,000.',
       'Contractor: a single bill of ₹40,000 from a proprietorship contractor exceeds the ₹30,000 per-bill limit under 194C, so deduct 1% = ₹400 (2% or ₹800 if the contractor were a company). Once the yearly total crosses ₹1,00,000, every bill is liable, including earlier small ones.',
-      'Rent above ₹50,000 a month: a salaried tenant paying ₹60,000 a month deducts 2% of the year\'s rent (₹7,20,000 × 2% = ₹14,400) in March or the last month of tenancy, files Form 26QC within 30 days and gives the landlord Form 16C.',
+      'Rent above ₹50,000 a month: a salaried tenant paying ₹60,000 a month deducts 2% of the year\'s rent (₹7,20,000 × 2% = ₹14,400) in March or the last month of tenancy, files Form 26QC within 30 days and gives the landlord Form 16C. For rent paid from 1 April 2026 these are Form 141 and Form 132.',
       'Property purchase: on a flat costing ₹75,00,000 the buyer deducts 1% = ₹75,000 on each payment made to the seller, deposits it through Form 26QB within 30 days of the end of that month, and issues Form 16B. If the seller is an NRI, section 195 applies instead at the capital gains rate on the whole amount.',
     ],
   },
   {
     heading: 'When TDS must be deposited and reported',
     bullets: [
-      'Deposit by the 7th of the month after deduction; TDS for March is due by 30 April. Use challan ITNS 281 (or the PAN-based 26QB/26QC/26QD forms).',
+      'Deposit by the 7th of the month after deduction; TDS for March is due by 30 April. Use challan ITNS 281 (or the PAN-based 26QB/26QC/26QD forms, replaced by the single Form 141 for payments from 1 April 2026).',
       'Quarterly returns: Form 24Q for salary and 26Q for other resident payments, due 31 July, 31 October, 31 January and 31 May for the four quarters; 27Q for non-residents.',
       'Issue Form 16 (salary) by 15 June and Form 16A (others) within 15 days of the return due date so recipients can claim credit.',
       'Interest for late deduction is 1% per month from the date the tax was deductible to the date it is deducted; for late deposit it is 1.5% per month from the date of deduction to the date of payment, counting part months as full.',
@@ -423,15 +424,45 @@ const TDS_SECTIONS: CalcSection[] = [
     ],
   },
   {
+    heading: 'TDS from 1 April 2026 under the Income-tax Act 2025',
+    paragraphs: [
+      'From tax year 2026-27 salary TDS is under section 392 and every other TDS provision sits in the table of section 393: section 393(1) for residents and 393(2) for non-residents. Deposit dates and quarterly due dates are unchanged. Periods up to 31 March 2026, including the Q4 FY 2025-26 statements, Form 16 for FY 2025-26 and corrections, stay on the old forms; the new forms apply from 1 April 2026.',
+    ],
+    table: {
+      head: ['1961 Act', 'Income-tax Act 2025 / Rules 2026'],
+      rows: [
+        ['Section 192 (salary)', 'Section 392'],
+        ['194A (interest)', 'Section 393(1), Sl.5'],
+        ['194C (contractors)', 'Section 393(1), Sl.6(i)'],
+        ['194J (professional fees)', 'Section 393(1), Sl.6(iii)'],
+        ['194I (rent)', 'Section 393(1), Sl.2(ii)'],
+        ['194-IB (rent by individuals)', 'Section 393(1), Sl.2(i)'],
+        ['194-IA (property)', 'Section 393(1), Sl.3(i)'],
+        ['195 (non-residents)', 'Section 393(2)'],
+        ['Form 24Q / 26Q / 27Q', 'Form 138 / 140 / 144'],
+        ['Form 16 / 16A', 'Form 130 / 131'],
+        ['Form 26QB / 26QC / 26QD', 'Form 141 (single challan-cum-statement)'],
+        ['Form 16B / 16C / 16D', 'Form 132'],
+        ['Late fee 234E / interest 201(1A)', 'Section 427 / section 398'],
+      ],
+    },
+    bullets: [
+      'Form 130 (salary certificate) is due by 15 June; Form 141 within 30 days of the end of the month; Form 132 within 15 days of the Form 141 due date.',
+      'Supply of manpower is now treated as work, so contractor rates of 1% or 2% apply.',
+      'From 1 October 2026 an individual or HUF buying property from a non-resident does not need a TAN.',
+      'Late filing fee under section 427 stays at ₹200 a day, capped at the TDS; the penalty under section 461 is ₹10,000 to ₹1,00,000, with none if the tax is paid and the statement filed within one month.',
+    ],
+  },
+  {
     heading: 'TDS on salary: how section 192 differs',
     paragraphs: [
-      'Salary TDS is not a flat rate. The employer estimates your annual income, applies the regime you chose (new by default), subtracts standard deduction and declared investments, and spreads the resulting tax evenly across the remaining months. That is why the deduction jumps in January to March if your investment proofs fall short of the declaration. Use the income tax calculator to estimate the annual figure; divide by 12 for an approximate monthly TDS. From FY 2024-25 employers must also give credit for TCS and other TDS if you declare them in Form 12BB.',
+      'Salary TDS is not a flat rate. The employer estimates your annual income, applies the regime you chose (new by default), subtracts standard deduction and declared investments, and spreads the resulting tax evenly across the remaining months. That is why the deduction jumps in January to March if your investment proofs fall short of the declaration. Use the income tax calculator to estimate the annual figure; divide by 12 for an approximate monthly TDS. From FY 2024-25 employers must also give credit for TCS and other TDS if you declare them in Form 12BB (Form 124 from 1 April 2026). From tax year 2026-27 salary TDS is under section 392 of the Income-tax Act 2025.',
     ],
   },
   {
     heading: 'How to check and claim TDS credit',
     paragraphs: [
-      'Every deduction appears in your Form 26AS and AIS on the income-tax portal within a few weeks of the deductor filing its return. Match the figures with your Form 16/16A before filing the ITR; if a deductor has not filed, the credit will not show and you should follow up rather than claim it blindly, as a mismatch delays the refund. Excess TDS, common for freelancers and fixed-deposit investors whose income is below the taxable limit, is refunded after the return is processed, with 0.5% per month interest under section 244A.',
+      'Every deduction appears in your Form 26AS (Form 168 under the Income-tax Rules 2026) and AIS on the income-tax portal within a few weeks of the deductor filing its return. Match the figures with your Form 16/16A before filing the ITR; if a deductor has not filed, the credit will not show and you should follow up rather than claim it blindly, as a mismatch delays the refund. Excess TDS, common for freelancers and fixed-deposit investors whose income is below the taxable limit, is refunded after the return is processed, with 0.5% per month interest under section 244A.',
     ],
   },
 ]
@@ -444,39 +475,40 @@ const TDS_FAQS = [
   { q: 'By when must TDS be deposited?', a: 'By the 7th of the following month for April to February deductions and by 30 April for March. Property (26QB), rent (26QC) and 194M (26QD) payments are due within 30 days of the end of the month of deduction. Late deposit attracts 1.5% interest per month.' },
   { q: 'Is TDS deducted on property purchase?', a: 'Yes, 1% under section 194-IA when the consideration or stamp duty value is ₹50 lakh or more, deducted by the buyer from each payment and deposited through Form 26QB. No TAN is needed; if the seller is a non-resident, section 195 applies at the capital gains rate instead.' },
   { q: 'Can I get a refund of excess TDS?', a: 'Yes, TDS is only an advance collection; if your final tax is lower, the excess is refunded after you file the ITR, with 0.5% per month interest under section 244A. To avoid the deduction in the first place, submit Form 15G/15H for interest or obtain a lower-deduction certificate under section 197.' },
-  { q: 'What is the penalty for late filing of TDS returns?', a: '₹200 per day under section 234E until the return is filed, capped at the TDS amount, plus a possible penalty of ₹10,000 to ₹1,00,000 under section 271H if the delay exceeds one year or the return has wrong PANs. Interest on late deduction or deposit is charged separately.' },
+  { q: 'What is the penalty for late filing of TDS returns?', a: '₹200 per day under section 234E (section 427 from tax year 2026-27) until the return is filed, capped at the TDS amount, plus a possible penalty of ₹10,000 to ₹1,00,000 under section 271H if the delay exceeds one year or the return has wrong PANs. Interest on late deduction or deposit is charged separately.' },
 ]
 
 const ADVANCE_TAX_SECTIONS: CalcSection[] = [
   {
     heading: 'Who has to pay advance tax',
     paragraphs: [
-      'Advance tax is income tax paid during the year instead of at filing time. Section 208 makes it compulsory for anyone whose tax liability for the year, after subtracting TDS and TCS, is ₹10,000 or more. That covers freelancers and consultants, F&O and intraday traders, landlords, people with large interest or dividend income, anyone who booked capital gains, and salaried employees whose side income is not covered by the employer\'s TDS.',
+      'Advance tax is income tax paid during the year instead of at filing time. It is compulsory for anyone whose tax liability for the year, after subtracting TDS and TCS, is ₹10,000 or more; the Income-tax Act 2025 keeps the same ₹10,000 threshold and the same four instalments for tax year 2026-27. That covers freelancers and consultants, F&O and intraday traders, landlords, people with large interest or dividend income, anyone who booked capital gains, and salaried employees whose side income is not covered by the employer\'s TDS.',
       'Resident senior citizens (60 and above) with no business or professional income are exempt, even if their pension and interest income is large. Everyone else must estimate income for the full year, compute the tax under their chosen regime, subtract expected TDS, and pay the balance in four instalments.',
     ],
   },
   {
-    heading: 'Advance tax due dates and instalments for FY 2025-26',
+    heading: 'Advance tax due dates and instalments for tax year 2026-27',
     table: {
       head: ['Due date', 'Cumulative tax to be paid', 'Instalment share'],
       rows: [
-        ['15 June 2025', '15% of total advance tax', '15%'],
-        ['15 September 2025', '45%', '30%'],
-        ['15 December 2025', '75%', '30%'],
-        ['15 March 2026', '100%', '25%'],
+        ['15 June 2026', '15% of total advance tax', '15%'],
+        ['15 September 2026', '45%', '30%'],
+        ['15 December 2026', '75%', '30%'],
+        ['15 March 2027', '100%', '25%'],
       ],
     },
     bullets: [
-      'Taxpayers under presumptive schemes 44AD (business) and 44ADA (profession) pay the entire amount in one instalment by 15 March.',
+      'The next instalment is 15 December 2026, by which 75% of the year\'s advance tax should be paid.',
+      'Taxpayers under presumptive schemes 44AD (business) and 44ADA (profession), both in section 58 of the 2025 Act, pay the entire amount in one instalment by 15 March.',
       'Tax paid by 31 March still counts as advance tax for the year, but interest under 234C runs for the March instalment.',
       'If the 15th is a bank holiday, payment on the next working day is accepted.',
-      'Pay online through the e-Filing portal (e-Pay Tax) using challan 280, minor head 100 (advance tax), assessment year 2026-27.',
+      'Pay online through the e-Filing portal (e-Pay Tax) as advance tax (minor head 100), and check the payment is tagged to the right year: instalments due from June 2026 to March 2027 are for tax year 2026-27.',
     ],
   },
   {
     heading: 'Worked example: F&O trader with ₹15 lakh profit',
     paragraphs: [
-      'Suppose you expect ₹15,00,000 of F&O and business profit plus ₹50,000 of interest in FY 2025-26, choose the new regime and have no TDS. There is no standard deduction because there is no salary, so taxable income is ₹15,50,000. Tax = ₹20,000 (5% slab) + ₹40,000 (10% slab) + ₹52,500 (15% on ₹3,50,000) = ₹1,12,500, plus 4% cess ₹4,500 = ₹1,17,000.',
+      'Suppose you expect ₹15,00,000 of F&O and business profit plus ₹50,000 of interest in tax year 2026-27, choose the new regime and have no TDS. There is no standard deduction because there is no salary, so taxable income is ₹15,50,000. Tax = ₹20,000 (5% slab) + ₹40,000 (10% slab) + ₹52,500 (15% on ₹3,50,000) = ₹1,12,500, plus 4% cess ₹4,500 = ₹1,17,000.',
       'The instalments are: ₹17,550 by 15 June (15%), a further ₹35,100 by 15 September (cumulative ₹52,650), ₹35,100 more by 15 December (cumulative ₹87,750) and the final ₹29,250 by 15 March. If profits turn out higher or lower during the year, revise the estimate and adjust the remaining instalments; the law expects a reasonable estimate, not a perfect one.',
       'If the same trader opted for section 44AD and declared 6% of a ₹2 crore digital turnover (₹12,00,000), the tax after the 87A rebate would be nil, and even if it were not, the whole amount could be paid by 15 March.',
     ],
@@ -484,7 +516,7 @@ const ADVANCE_TAX_SECTIONS: CalcSection[] = [
   {
     heading: 'Interest under section 234C for late or short instalments',
     paragraphs: [
-      'Section 234C charges simple interest at 1% per month on any shortfall in an instalment, for three months on the June, September and December instalments and one month on the March instalment. In the example above, skipping the June instalment entirely costs about ₹525 (₹17,500 × 1% × 3, after rounding the shortfall down to the nearest hundred). Missing all four would cost roughly ₹4,400.',
+      'From tax year 2026-27 section 234C becomes section 425 and section 234B becomes section 424 of the Income-tax Act 2025. Section 234C charges simple interest at 1% per month on any shortfall in an instalment, for three months on the June, September and December instalments and one month on the March instalment. In the example above, skipping the June instalment entirely costs about ₹525 (₹17,500 × 1% × 3, after rounding the shortfall down to the nearest hundred). Missing all four would cost roughly ₹5,900 under section 234C alone (₹525 + ₹1,578 + ₹2,631 + ₹1,170).',
       'Two safe harbours soften the first instalments: no interest is charged for June if at least 12% of the total has been paid, and none for September if at least 36% has been paid. Interest is also not charged on the shortfall caused by capital gains, lottery winnings or new business income that arose after an instalment date, provided the tax on that income is paid in the next instalment.',
       'Section 234B is separate: if less than 90% of the total tax is paid as advance tax by 31 March, interest of 1% per month runs from 1 April until the return is filed and the balance paid. Together, 234B and 234C can add 6 to 10% to a bill that is paid a year late.',
     ],
@@ -492,7 +524,7 @@ const ADVANCE_TAX_SECTIONS: CalcSection[] = [
   {
     heading: 'Salaried employees: when TDS is not enough',
     paragraphs: [
-      'Your employer deducts TDS only on salary, so tax on bank interest, rent, dividends, capital gains or freelance income must be paid separately once the shortfall crosses ₹10,000. The simplest route is to declare the other income to your employer in Form 12BB so it is added to the TDS; otherwise pay advance tax yourself on the schedule above. A common surprise is equity gains booked in March, on which the tax is due by 15 March if the sale happened before, or with the return (with 234B interest only if the total shortfall exceeds 10%) if the sale came later.',
+      'Your employer deducts TDS only on salary, so tax on bank interest, rent, dividends, capital gains or freelance income must be paid separately once the shortfall crosses ₹10,000. The simplest route is to declare the other income to your employer in Form 12BB (Form 124 from 1 April 2026) so it is added to the TDS; otherwise pay advance tax yourself on the schedule above. A common surprise is equity gains booked in March, on which the tax is due by 15 March if the sale happened before, or with the return (with 234B interest only if the total shortfall exceeds 10%) if the sale came later.',
     ],
   },
   {
@@ -509,19 +541,19 @@ const ADVANCE_TAX_SECTIONS: CalcSection[] = [
   {
     heading: 'Refunds, revisions and paying after the year ends',
     paragraphs: [
-      'Paying too much advance tax is not wasted: the excess is refunded after the return is processed, with 0.5% per month interest under section 244A from 1 April. Paying too little is fixed by paying self-assessment tax (challan 280, minor head 300) before filing, together with 234B and 234C interest calculated in the ITR utility. Keep the challan receipts and check that each payment appears in Form 26AS or AIS under the right assessment year before you file, since a wrong year is the most common reason for advance tax credit going missing.',
+      'Paying too much advance tax is not wasted: the excess is refunded after the return is processed, with 0.5% per month interest under section 244A from 1 April. Paying too little is fixed by paying self-assessment tax (challan 280, minor head 300) before filing, together with 234B and 234C interest calculated in the ITR utility. Keep the challan receipts and check that each payment appears in Form 26AS (Form 168 under the Rules 2026) or AIS under the right year before you file, since a wrong year is the most common reason for advance tax credit going missing.',
     ],
   },
 ]
 
 const ADVANCE_TAX_FAQS = [
   { q: 'Who is required to pay advance tax?', a: 'Anyone whose income tax for the year, after deducting TDS and TCS, is ₹10,000 or more, including freelancers, traders, landlords and salaried people with untaxed side income. Resident senior citizens with no business or professional income are exempt.' },
-  { q: 'What are the advance tax due dates for FY 2025-26?', a: '15 June (15% of the tax), 15 September (45% cumulative), 15 December (75%) and 15 March 2026 (100%). Taxpayers under the presumptive schemes 44AD and 44ADA pay the whole amount by 15 March.' },
-  { q: 'How is interest under section 234C calculated?', a: '1% simple interest per month on the shortfall in each instalment: three months for the June, September and December instalments and one month for March. No interest applies to the June and September instalments if at least 12% and 36% of the tax has been paid by then.' },
-  { q: 'What is the difference between 234B and 234C interest?', a: '234C penalises late or short instalments during the year at 1% per month for one to three months. 234B applies when less than 90% of the total tax is paid by 31 March, charging 1% per month from 1 April until the balance is paid. Both can apply to the same shortfall.' },
+  { q: 'What are the advance tax due dates for tax year 2026-27?', a: '15 June 2026 (15% of the tax), 15 September 2026 (45% cumulative), 15 December 2026 (75%) and 15 March 2027 (100%), the same schedule as FY 2025-26. The next instalment is 15 December 2026. Taxpayers under the presumptive schemes 44AD and 44ADA (section 58) pay the whole amount by 15 March.' },
+  { q: 'How is interest under section 234C calculated?', a: 'From tax year 2026-27 the provision is section 425 of the Income-tax Act 2025. It charges 1% simple interest per month on the shortfall in each instalment: three months for the June, September and December instalments and one month for March. No interest applies to the June and September instalments if at least 12% and 36% of the tax has been paid by then.' },
+  { q: 'What is the difference between 234B and 234C interest?', a: '234C penalises late or short instalments during the year at 1% per month for one to three months. 234B applies when less than 90% of the total tax is paid by 31 March, charging 1% per month from 1 April until the balance is paid. Both can apply to the same shortfall. From tax year 2026-27 they are sections 425 and 424 of the Income-tax Act 2025.' },
   { q: 'Do salaried employees need to pay advance tax?', a: 'Only if tax on income outside salary, such as interest, rent, capital gains or freelance work, exceeds ₹10,000 after TDS. Employers deduct TDS on salary alone, though you can declare other income in Form 12BB and let the employer deduct the extra tax monthly.' },
   { q: 'Is advance tax payable on capital gains?', a: 'Yes, the tax on a gain is due with the first instalment after the sale date; a gain in October is payable by 15 December. Section 234C interest is not charged for instalments that fell before the sale, as long as the tax is paid in the remaining instalments.' },
-  { q: 'How do I pay advance tax online?', a: 'Log in to the income-tax e-Filing portal, choose e-Pay Tax, select assessment year 2026-27 and "Advance Tax (100)", and pay through net banking, UPI, debit card or at a bank counter. The challan appears in Form 26AS within a few days and is claimed in the ITR.' },
+  { q: 'How do I pay advance tax online?', a: 'Log in to the income-tax e-Filing portal, choose e-Pay Tax, select the year the payment is for (instalments due from June 2026 to March 2027 belong to tax year 2026-27) and "Advance Tax (100)", and pay through net banking, UPI, debit card or at a bank counter. The challan appears in Form 26AS within a few days and is claimed in the ITR.' },
   { q: 'What if I paid more advance tax than needed?', a: 'The excess is refunded after your return is processed, with interest of 0.5% per month under section 244A from 1 April. You can also reduce later instalments once you see the estimate was high, since the law only requires a reasonable estimate at each date.' },
 ]
 
@@ -530,7 +562,7 @@ const TAKE_HOME_SECTIONS: CalcSection[] = [
     heading: 'CTC, gross salary and in-hand: what the numbers mean',
     paragraphs: [
       'Cost to company is everything your employer spends on you: cash salary, the employer\'s provident fund share, gratuity provision, insurance premiums and sometimes variable pay. Gross salary is the cash portion before deductions. In-hand or take-home salary is what reaches your bank account after the employee\'s PF share, professional tax and income tax (TDS) are subtracted. For a ₹12 lakh CTC the in-hand figure is typically ₹95,000 to ₹97,000 a month, not ₹1,00,000.',
-      'This calculator rebuilds a typical Indian salary structure from your CTC: basic at 40% of CTC, HRA at 50% of basic, employer PF at 12% of basic (capped at ₹1,800 a month if your company applies the ₹15,000 wage ceiling), an optional gratuity provision of 4.81% of basic, and the balance as special allowance. It then computes income tax under the new regime for FY 2025-26 and gives monthly and annual figures.',
+      'This calculator rebuilds a typical Indian salary structure from your CTC: basic at 40% of CTC, HRA at 50% of basic, employer PF at 12% of basic (capped at ₹1,800 a month if your company applies the ₹15,000 wage ceiling), an optional gratuity provision of 4.81% of basic, and the balance as special allowance. It then computes income tax under the new regime for FY 2025-26, which uses the same slabs, rebate and standard deduction as tax year 2026-27, and gives monthly and annual figures.',
     ],
   },
   {
@@ -564,7 +596,7 @@ const TAKE_HOME_SECTIONS: CalcSection[] = [
       'Variable pay, joining bonus and retention bonus are usually paid separately and taxed in the month received.',
       'Some companies compute PF on full basic (12% of ₹40,000 = ₹4,800 a month) rather than the ₹1,800 cap; untick the cap toggle to see that case.',
       'Flexible benefits such as meal cards, fuel, telephone and books reduce taxable salary under the old regime only.',
-      'Employer NPS under section 80CCD(2), up to 14% of basic, is deductible even under the new regime and is the single biggest lever to raise post-tax income for higher earners.',
+      'Employer NPS under section 80CCD(2) (section 124(1)-(2) from tax year 2026-27), up to 14% of basic, is deductible even under the new regime and is the single biggest lever to raise post-tax income for higher earners.',
       'If you declared the old regime with HRA, 80C and home loan interest, TDS may be lower or higher than the new regime figure shown here; compare with the income tax calculator.',
       'Taxes are deducted evenly across months, but if you join mid-year or change jobs the employer\'s TDS may be too low, leaving tax to pay at filing.',
     ],
@@ -578,7 +610,7 @@ const TAKE_HOME_SECTIONS: CalcSection[] = [
 ]
 
 const TAKE_HOME_FAQS = [
-  { q: 'What is the in-hand salary for a ₹12 lakh CTC?', a: 'About ₹96,000 a month under the new regime for FY 2025-26, assuming basic at 40% of CTC, employer PF of ₹1,800 a month included in CTC and professional tax of ₹2,500 a year. Income tax is nil because taxable income after the ₹75,000 standard deduction stays below ₹12 lakh.' },
+  { q: 'What is the in-hand salary for a ₹12 lakh CTC?', a: 'About ₹96,000 a month under the new regime for FY 2025-26 and tax year 2026-27, assuming basic at 40% of CTC, employer PF of ₹1,800 a month included in CTC and professional tax of ₹2,500 a year. Income tax is nil because taxable income after the ₹75,000 standard deduction stays below ₹12 lakh.' },
   { q: 'How much is the in-hand salary for ₹20 lakh CTC?', a: 'Roughly ₹1,47,000 a month: gross cash salary of about ₹19.78 lakh less employee PF ₹21,600, professional tax ₹2,500 and new-regime income tax of about ₹1,88,000 including cess. A higher basic or full-basic PF would lower the cash figure but raise retirement savings.' },
   { q: 'What is the difference between CTC and gross salary?', a: 'CTC includes the employer\'s PF contribution, gratuity provision and other benefits on top of cash salary, while gross salary is only the cash components before deductions. In-hand salary is gross minus employee PF, professional tax and TDS, and is usually 85 to 96% of CTC.' },
   { q: 'Is employer PF part of CTC?', a: 'Yes, in most Indian offer letters the employer\'s 12% PF contribution is counted inside CTC, so it reduces the cash you receive. Some employers add it over and above CTC; untick the toggle in the calculator if that applies to you.' },
@@ -591,7 +623,7 @@ const RENT_RECEIPT_SECTIONS: CalcSection[] = [
   {
     heading: 'Why you need rent receipts for HRA',
     paragraphs: [
-      'House rent allowance is exempt under section 10(13A) only if you actually pay rent, and the employer must satisfy itself before allowing the exemption in your TDS. Rent receipts are the standard proof. Most companies collect them between December and February along with Form 12BB and the landlord\'s PAN, then reflect the exemption in Form 16. Without receipts the employer taxes the full HRA, and you have to claim the exemption yourself in the ITR, which invites verification.',
+      'House rent allowance is exempt under section 10(13A) only if you actually pay rent, and the employer must satisfy itself before allowing the exemption in your TDS. Rent receipts are the standard proof. Most companies collect them between December and February along with Form 12BB and the landlord\'s PAN, then reflect the exemption in Form 16 (Form 130 for tax year 2026-27). Without receipts the employer taxes the full HRA, and you have to claim the exemption yourself in the ITR, which invites verification.',
       'This generator produces one receipt for each month of the period you select, with the tenant, landlord, address, amount in figures and words, payment mode and a signature line. Print them or save as PDF, get the landlord to sign each one (a scanned signature is accepted by most employers if the receipt is otherwise complete), and keep copies for at least six years, the period within which the department can reopen an assessment.',
     ],
   },
@@ -627,7 +659,7 @@ const RENT_RECEIPT_SECTIONS: CalcSection[] = [
   {
     heading: 'TDS when rent exceeds ₹50,000 a month',
     paragraphs: [
-      'Tenants who are individuals or HUFs not liable to tax audit must deduct 2% TDS under section 194-IB when monthly rent exceeds ₹50,000. The deduction is made once, from the rent for March or the last month of tenancy, deposited through Form 26QC within 30 days of the end of that month, and the landlord receives Form 16C. No TAN is required. For a rent of ₹60,000 a month the annual TDS is ₹14,400. Skipping it attracts interest at 1% or 1.5% per month and a late fee of ₹200 a day, and the landlord cannot claim credit until the return is filed.',
+      'Tenants who are individuals or HUFs not liable to tax audit must deduct 2% TDS under section 194-IB when monthly rent exceeds ₹50,000. The deduction is made once, from the rent for March or the last month of tenancy, deposited through Form 26QC within 30 days of the end of that month, and the landlord receives Form 16C. For rent paid from 1 April 2026 the forms are Form 141 and Form 132. No TAN is required. For a rent of ₹60,000 a month the annual TDS is ₹14,400. Skipping it attracts interest at 1% or 1.5% per month and a late fee of ₹200 a day, and the landlord cannot claim credit until the return is filed.',
     ],
   },
   {
@@ -658,7 +690,8 @@ export const CALCULATORS: CalculatorDef[] = [
       'Free income tax calculator for FY 2025-26. Compare old and new regime on your salary with the 87A rebate, marginal relief, surcharge and 4% cess.',
     keywords: ['income tax calculator', 'income tax calculator fy 2025-26', 'new tax regime calculator', 'old vs new regime calculator', 'tax calculator india', 'income tax calculator ay 2026-27'],
     intro: 'Enter your gross salary and deductions. The calculator computes tax under both regimes side by side with the standard deduction, section 87A rebate, marginal relief, surcharge and 4% cess, and tells you which regime leaves more in hand.',
-    updatedFor: 'FY 2025-26 (AY 2026-27), Budget 2025 slabs',
+    updatedFor: 'FY 2025-26 and tax year 2026-27, slabs unchanged',
+    dateModified: '2026-11-16',
     sections: INCOME_TAX_SECTIONS, faqs: INCOME_TAX_FAQS, relatedServiceSlug: 'itr-salaried',
     ctaText: 'Get your return filed under the better regime from ₹499.',
     related: ['hra', 'old-vs-new-regime', 'take-home-salary', 'advance-tax'], phase: 0,
@@ -668,10 +701,11 @@ export const CALCULATORS: CalculatorDef[] = [
     h1: 'HRA Calculator: House Rent Allowance Exemption FY 2025-26',
     metaTitle: 'HRA Calculator FY 2025-26 | Exemption u/s 10(13A)',
     metaDescription:
-      'Calculate your HRA exemption under section 10(13A) for FY 2025-26. Enter basic, DA, HRA received and rent paid for metro or non-metro cities.',
+      'Calculate your HRA exemption under section 10(13A) for FY 2025-26 and tax year 2026-27. Enter basic, DA, HRA received and rent paid, metro or non-metro.',
     keywords: ['hra calculator', 'hra exemption calculator', 'house rent allowance calculator', 'hra calculation formula', '10(13a) exemption'],
     intro: 'HRA exemption is the least of three amounts: actual HRA received, rent paid minus 10% of salary, and 50% of salary in a metro (40% elsewhere). This calculator shows all three so you can see which one limits your exemption.',
-    updatedFor: 'FY 2025-26, old regime only',
+    updatedFor: 'FY 2025-26 and tax year 2026-27, old regime only',
+    dateModified: '2026-11-16',
     sections: HRA_SECTIONS, faqs: HRA_FAQS, relatedServiceSlug: 'itr-salaried',
     ctaText: 'Not sure whether to claim HRA or switch to the new regime? We compare both when filing.',
     related: ['income-tax', 'rent-receipt-generator', 'old-vs-new-regime'], phase: 0,
@@ -684,7 +718,8 @@ export const CALCULATORS: CalculatorDef[] = [
       'Work out capital gains tax on shares, mutual funds and property for FY 2025-26 at the post-July 2024 rates: 20% STCG, 12.5% LTCG, ₹1.25 lakh exempt.',
     keywords: ['capital gains tax calculator', 'ltcg calculator', 'stcg calculator', 'capital gains on shares', 'capital gains on property calculator', 'ltcg tax on mutual funds'],
     intro: 'Select the asset, enter purchase and sale details and the calculator applies the correct holding period, rate and exemption. For property bought before 23 July 2024 it also shows the indexed 20% option so you can pick the lower tax.',
-    updatedFor: 'FY 2025-26, rates effective 23 July 2024',
+    updatedFor: 'FY 2025-26 and tax year 2026-27, rates unchanged',
+    dateModified: '2026-11-16',
     sections: CAPITAL_GAINS_SECTIONS, faqs: CAPITAL_GAINS_FAQS, relatedServiceSlug: 'itr-capital-gains',
     ctaText: 'Sold shares or property this year? Get capital gains filed correctly from ₹1,999.',
     related: ['income-tax', 'advance-tax', 'fno-turnover'], phase: 0,
@@ -694,7 +729,7 @@ export const CALCULATORS: CalculatorDef[] = [
     h1: 'GST Calculator: Add or Remove GST at 5%, 18% and 40%',
     metaTitle: 'GST Calculator | Add or Remove GST at 5%, 18%, 40%',
     metaDescription:
-      'Free GST calculator to add GST to a price or extract it from an inclusive amount. Shows the CGST, SGST and IGST split for every rate slab.',
+      'Free GST calculator at the current 5%, 18% and 40% rates. Add GST to a price or extract it from an inclusive amount, with the CGST, SGST and IGST split.',
     keywords: ['gst calculator', 'gst calculator online', 'reverse gst calculator', 'gst inclusive calculator', 'cgst sgst calculator'],
     intro: 'Enter an amount, pick the GST rate and choose whether the amount is exclusive or inclusive of GST. The calculator shows the tax amount and the CGST/SGST or IGST split for intra-state and inter-state supplies.',
     updatedFor: 'GST 2.0 rates from 22 September 2025',
@@ -711,7 +746,8 @@ export const CALCULATORS: CalculatorDef[] = [
       'Calculate TDS on rent, professional fees, contractor payments, interest and property for FY 2025-26, with section-wise rates and threshold checks.',
     keywords: ['tds calculator', 'tds rate chart 2025-26', 'tds on rent calculator', 'tds on professional fees', 'tds on property calculator'],
     intro: 'Pick the nature of payment and enter the amount. The calculator applies the section, threshold and rate for FY 2025-26, including the higher 20% rate when the deductee has no PAN.',
-    updatedFor: 'FY 2025-26 rates and thresholds',
+    updatedFor: 'FY 2025-26 and tax year 2026-27 thresholds',
+    dateModified: '2026-11-16',
     sections: TDS_SECTIONS, faqs: TDS_FAQS, relatedServiceSlug: 'tds-quarterly',
     ctaText: 'Deducting TDS every month? We handle challans and quarterly returns from ₹499/month.',
     related: ['gst', 'income-tax', 'advance-tax'], phase: 0,
@@ -721,10 +757,11 @@ export const CALCULATORS: CalculatorDef[] = [
     h1: 'Advance Tax Calculator FY 2026-27: Instalments and 234C Interest',
     metaTitle: 'Advance Tax Calculator FY 2026-27 | Instalment Amounts',
     metaDescription:
-      'Estimate your advance tax instalments for 15 June, September, December and March from expected income, TDS and deductions, with 234C interest.',
+      'Estimate advance tax instalments for tax year 2026-27, due 15 June, September, December and March, from expected income, TDS and deductions, with 234C interest.',
     keywords: ['advance tax calculator', 'advance tax due date', 'advance tax instalments', '234c interest calculator', 'advance tax for f&o'],
     intro: 'Enter your expected income for the year, TDS already deducted and deductions. The calculator computes total tax under your chosen regime and splits it into the four instalments, with interest if an instalment is missed.',
-    updatedFor: 'FY 2026-27 instalment schedule, FY 2025-26 slabs',
+    updatedFor: 'Tax year 2026-27 instalments, slabs unchanged',
+    dateModified: '2026-11-16',
     sections: ADVANCE_TAX_SECTIONS, faqs: ADVANCE_TAX_FAQS, relatedServiceSlug: 'itr-fno-trader',
     ctaText: 'Trader or freelancer with advance tax to plan? A 30-minute session costs ₹499.',
     related: ['income-tax', 'capital-gains', 'freelancer-44ada'], phase: 0,
@@ -737,7 +774,8 @@ export const CALCULATORS: CalculatorDef[] = [
       'Convert CTC to monthly in-hand salary for FY 2025-26 after PF, professional tax and income tax, with a full breakup of basic, HRA and allowances.',
     keywords: ['take home salary calculator', 'ctc to in hand calculator', 'in hand salary calculator', 'salary calculator india', 'monthly salary calculator'],
     intro: 'Enter your CTC and the calculator estimates basic, HRA, employee and employer PF, professional tax and income tax, giving a monthly in-hand figure under the new regime.',
-    updatedFor: 'FY 2025-26 new regime',
+    updatedFor: 'FY 2025-26 and tax year 2026-27, new regime',
+    dateModified: '2026-11-16',
     sections: TAKE_HOME_SECTIONS, faqs: TAKE_HOME_FAQS, relatedServiceSlug: 'itr-salaried',
     ctaText: 'Got your first Form 16? Salaried ITR filing from ₹499.',
     related: ['income-tax', 'hra', 'old-vs-new-regime'], phase: 0,
@@ -747,10 +785,11 @@ export const CALCULATORS: CalculatorDef[] = [
     h1: 'Rent Receipt Generator for HRA Claim (Free, Printable)',
     metaTitle: 'Rent Receipt Generator | Free Printable for HRA',
     metaDescription:
-      'Generate printable monthly rent receipts for your HRA claim in seconds. Includes the landlord PAN field required above ₹1 lakh annual rent.',
+      'Generate printable monthly rent receipts for your HRA claim, for FY 2026-27 or any period. Includes the landlord PAN field needed above ₹1 lakh annual rent.',
     keywords: ['rent receipt generator', 'rent receipt format', 'rent receipt for hra', 'rent receipt pdf', 'house rent receipt'],
     intro: 'Fill in the details once and generate receipts for every month of the period. Employers ask for these when you declare HRA; if annual rent exceeds ₹1 lakh, the landlord\'s PAN is mandatory.',
-    updatedFor: 'FY 2025-26',
+    updatedFor: 'FY 2025-26 and tax year 2026-27',
+    dateModified: '2026-11-16',
     sections: RENT_RECEIPT_SECTIONS, faqs: RENT_RECEIPT_FAQS, relatedServiceSlug: 'itr-salaried',
     ctaText: 'Claiming HRA in your return? We check the exemption and file from ₹499.',
     related: ['hra', 'income-tax'], phase: 0,

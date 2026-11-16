@@ -22,7 +22,7 @@ export const guide: Guide = {
   excerpt:
     'A notice from the income tax department is usually a request for information, not an accusation. This guide decodes the five most common notices, the deadline for each, what triggers them and how to reply on the portal.',
   datePublished: '2026-09-06',
-  dateModified: '2026-09-06',
+  dateModified: '2026-11-16',
   readMinutes: 12,
   sections: [
     {
@@ -67,10 +67,16 @@ export const guide: Guide = {
       ],
       caption: 'Income tax notices at a glance, AY 2026-27',
     },
+    {
+      type: 'callout',
+      tone: 'info',
+      title: 'New section numbers from tax year 2026-27',
+      text: 'Notices for AY 2026-27 and earlier years stay under the 1961 Act and carry the numbers above. For tax year 2026-27 onwards, under the Income-tax Act 2025, the 143(1) intimation is now section 270(1), the 148 notice is now section 280 and the 148A show-cause notice is now section 281. The 143(2) scrutiny notice is reported to be section 270(2). Sources do not yet agree on the new number for 142(1).',
+    },
     { type: 'heading', text: 'Section 143(1): intimation after processing', id: 'section-143-1' },
     {
       type: 'paragraph',
-      text: 'Every return is processed by the Centralised Processing Centre and an intimation under section 143(1) is sent, usually within a few weeks and at most within nine months from the end of the financial year in which you filed. It shows two columns: income and tax as reported by you, and as computed by the department. If both match, the intimation is simply a receipt. If they differ, it ends in a demand, a reduced refund or an increased refund.',
+      text: 'Every return is processed by the Centralised Processing Centre and an intimation under section 143(1) is sent, usually within a few weeks and at most within nine months from the end of the financial year in which you filed. It shows two columns: income and tax as reported by you, and as computed by the department. If both match, the intimation is simply a receipt. If they differ, it ends in a demand, a reduced refund or an increased refund. For tax year 2026-27 onwards this intimation is now section 270(1) of the Income-tax Act 2025.',
     },
     {
       type: 'list',
@@ -149,7 +155,7 @@ export const guide: Guide = {
     { type: 'heading', text: 'Sections 148A and 148: reassessment of a past year', id: 'section-148' },
     {
       type: 'paragraph',
-      text: 'A reassessment notice reopens a year that was already processed or assessed, on the basis that income escaped assessment. Since 1 September 2024 the procedure is: a show-cause notice under section 148A(1) with the information suggesting escapement, your reply within the time given in the notice, an order under 148A(3) deciding whether it is a fit case, and only then a notice under 148 requiring you to file a return for that year.',
+      text: 'A reassessment notice reopens a year that was already processed or assessed, on the basis that income escaped assessment. Since 1 September 2024 the procedure is: a show-cause notice under section 148A(1) with the information suggesting escapement, your reply within the time given in the notice, an order under 148A(3) deciding whether it is a fit case, and only then a notice under 148 requiring you to file a return for that year. Under the Income-tax Act 2025, 148A is now section 281 and 148 is now section 280, for tax year 2026-27 onwards.',
     },
     {
       type: 'table',
@@ -163,7 +169,7 @@ export const guide: Guide = {
     },
     {
       type: 'paragraph',
-      text: 'The information behind a 148A notice usually comes from the Statement of Financial Transactions: a property purchase above ₹30 lakh, cash deposits above ₹10 lakh, mutual fund or share purchases above ₹10 lakh, credit card payments above ₹10 lakh, or a foreign remittance. If the transaction is already explained in the return of that year, or funded from disclosed sources, say so with proof in the 148A reply. A well-documented reply often ends the proceeding at the 148A(3) stage.',
+      text: 'The information behind a 148A notice usually comes from the Statement of Financial Transactions: a property purchase above ₹30 lakh, cash deposits above ₹10 lakh, mutual fund or share purchases above ₹10 lakh, credit card payments above ₹10 lakh, or a foreign remittance. If the transaction is already explained in the return of that year, or funded from disclosed sources, say so with proof in the 148A reply. A well-documented reply often ends the proceeding at the 148A(3) stage. If the income was genuinely omitted, note that from 1 March 2026 an updated return (ITR-U) can be filed even after a reassessment notice, with a further 10% additional tax on top of the usual 25% to 70%.',
     },
     { type: 'heading', text: 'What triggers notices: AIS, TDS and high-value transactions', id: 'common-triggers' },
     {
@@ -216,7 +222,7 @@ export const guide: Guide = {
       type: 'table',
       head: ['Situation', 'Use'],
       rows: [
-        ['You made a mistake in the return and the due date has not passed', 'Revised return under 139(5), until 31 December 2026 for AY 2026-27'],
+        ['You made a mistake in the return and the revision window is open', 'Revised return under 139(5), until 31 March 2027 for AY 2026-27 (234-I fee after 31 December 2026)'],
         ['CPC processed the correct return wrongly', 'Rectification under 154: reprocess, tax credit mismatch or return data correction'],
         ['You omitted income and the revised return window has closed', 'Updated return under 139(8A) with additional tax, within 48 months'],
         ['You disagree with an assessment order', 'Appeal to Commissioner (Appeals) within 30 days of the order'],
@@ -272,7 +278,7 @@ export const guide: Guide = {
     },
     {
       q: 'When should I file a rectification under section 154 instead of a revised return?',
-      a: 'When your return was correct but the processing was wrong, for example TDS in Form 26AS not credited. A revised return is for mistakes you made, and can be filed until 31 December 2026 for AY 2026-27.',
+      a: 'When your return was correct but the processing was wrong, for example TDS in Form 26AS not credited. A revised return is for mistakes you made, and can be filed until 31 March 2027 for AY 2026-27, with a fee under section 234-I if filed after 31 December 2026.',
     },
     {
       q: 'Why did I get a notice for AIS mismatch?',

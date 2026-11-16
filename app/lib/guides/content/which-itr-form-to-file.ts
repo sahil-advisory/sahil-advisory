@@ -22,7 +22,7 @@ export const guide: Guide = {
   excerpt:
     'A plain-language map of ITR-1 to ITR-7 for AY 2026-27, with an eligibility table, the errors that get returns marked defective, and six real-life personas matched to the right form.',
   datePublished: '2026-09-06',
-  dateModified: '2026-09-06',
+  dateModified: '2026-11-16',
   readMinutes: 10,
   sections: [
     {
@@ -164,7 +164,7 @@ export const guide: Guide = {
     { type: 'heading', text: 'What if you already filed the wrong form?', id: 'wrong-form-filed' },
     {
       type: 'paragraph',
-      text: 'If the return has been filed and the mistake is noticed before 31 December 2026, file a revised return under section 139(5) in the correct form. The revised return replaces the original and no penalty applies. If a 139(9) defective return notice has already arrived, respond within 15 days through the e-Proceedings tab by uploading a corrected return in the right form.',
+      text: 'If the return has been filed and the mistake is noticed in time, file a revised return under section 139(5) in the correct form. For AY 2026-27 the Finance Act 2026 allows revision until 31 March 2027: no fee until 31 December 2026, then a fee under section 234-I of ₹1,000 if total income is up to ₹5 lakh and ₹5,000 otherwise. The revised return replaces the original. If a 139(9) defective return notice has already arrived, respond within 15 days through the e-Proceedings tab by uploading a corrected return in the right form.',
     },
     {
       type: 'callout',

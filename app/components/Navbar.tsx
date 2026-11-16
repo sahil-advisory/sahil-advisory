@@ -62,7 +62,7 @@ function MegaPanel({ open, width, children }: { open: boolean; width: string; ch
 const returns = [
   { label: 'ITR Filing', desc: 'Salaried, traders, freelancers, NRI', href: '/services/itr', icon: FileText },
   { label: 'GST Returns', desc: 'Registration, monthly, QRMP, annual', href: '/services/gst', icon: Receipt },
-  { label: 'TDS Returns', desc: '24Q, 26Q, 26QB, corrections', href: '/services/tds', icon: Percent },
+  { label: 'TDS Returns', desc: 'Forms 138, 140 (24Q, 26Q), 141, corrections', href: '/services/tds', icon: Percent },
   { label: 'Accounting', desc: 'Bookkeeping, payroll, virtual CFO, global', href: '/services/accounting', icon: BookOpenCheck },
 ]
 const business = [

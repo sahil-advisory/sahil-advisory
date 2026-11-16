@@ -28,14 +28,14 @@ export const FORMS: ReferencePage[] = [
       'form 16 password',
     ],
     summary:
-      'Form 16 is the TDS certificate an employer issues to every employee whose salary tax was deducted, due by 15 June 2026 for FY 2025-26. Part A is generated on TRACES and shows quarter-wise TDS deposited against your PAN; Part B is the employer\'s breakup of salary, exemptions, deductions and tax. You use it to fill the salary and TDS schedules of ITR-1 or ITR-2 by 31 July 2026.',
+      'Form 16 is the TDS certificate an employer issues to every employee whose salary tax was deducted, due by 15 June 2026 for FY 2025-26. Part A is generated on TRACES and shows quarter-wise TDS deposited against your PAN; Part B is the employer\'s breakup of salary, exemptions, deductions and tax. You use it to fill the salary and TDS schedules of ITR-1 or ITR-2 for AY 2026-27. For salary paid from 1 April 2026 (tax year 2026-27) the certificate becomes Form 130 under the Income-tax Rules 2026, due by 15 June 2027.',
     keyFacts: [
       { label: 'Issued by', value: 'Employer (deductor) under section 203 and Rule 31' },
       { label: 'Due date', value: '15 June 2026 for FY 2025-26 (AY 2026-27)' },
       { label: 'Part A', value: 'Downloaded by the employer from TRACES after the Q4 24Q return is processed' },
       { label: 'Part B', value: 'Employer\'s annexure: salary breakup, section 10 exemptions, chapter VI-A deductions, tax computed' },
-      { label: 'Used for', value: 'Salary schedule and TDS credit in ITR-1 or ITR-2, due 31 July 2026' },
-      { label: 'Income-tax Act 2025', value: 'Reported as Form 130 from tax year 2026-27; verify against the notified Rules' },
+      { label: 'Used for', value: 'Salary schedule and TDS credit in ITR-1 or ITR-2 for AY 2026-27 (due 31 July 2026; belated return until 31 December 2026)' },
+      { label: 'Income-tax Act 2025', value: 'Form 130 for salary paid from 1 April 2026, due by 15 June 2027; FY 2025-26 and earlier stay on Form 16 (reported mapping)' },
     ],
     sections: [
       { type: 'heading', text: 'What it is', id: 'what-it-is' },
@@ -107,7 +107,7 @@ export const FORMS: ReferencePage[] = [
         type: 'callout',
         tone: 'warning',
         title: 'Common mistake: claiming the standard deduction twice',
-        text: 'Each employer gives you the full ₹75,000 standard deduction and the full slab benefit in its own Form 16. When you add two Form 16s, the deduction is allowed only once and the slabs apply to the combined salary. Report both salaries in one salary schedule, claim the deduction once, and pay the balance as self-assessment tax before 31 July 2026 to avoid interest under sections 234A and 234B.',
+        text: 'Each employer gives you the full ₹75,000 standard deduction and the full slab benefit in its own Form 16. When you add two Form 16s, the deduction is allowed only once and the slabs apply to the combined salary. Report both salaries in one salary schedule, claim the deduction once, and pay the balance as self-assessment tax before you file; tax still unpaid after the due date (31 July 2026 for a salaried return) attracts interest under sections 234A and 234B.',
       },
       {
         type: 'tool-card',
@@ -117,10 +117,14 @@ export const FORMS: ReferencePage[] = [
       { type: 'heading', text: 'What to do next', id: 'what-to-do-next' },
       {
         type: 'paragraph',
-        text: 'Match Form 16 with Form 26AS and AIS as soon as you receive it in June. Choose the regime by comparing both in the calculator, not by what the employer applied. File ITR-1 if salary, one house property and interest are all you have, and ITR-2 if you sold shares or property. File by 31 July 2026; a belated return by 31 December 2026 attracts a fee of ₹5,000 under section 234F, or ₹1,000 if total income is up to ₹5 lakh.',
+        text: 'Match Form 16 with Form 26AS and AIS as soon as you receive it in June. Choose the regime by comparing both in the calculator, not by what the employer applied. File ITR-1 if salary, one house property and interest are all you have, and ITR-2 if you sold shares or property. The AY 2026-27 due date of 31 July 2026 was not extended; a belated return can still be filed until 31 December 2026 with a fee of ₹5,000 under section 234F, or ₹1,000 if total income is up to ₹5 lakh. A return filed on time can be revised until 31 March 2027, with a fee under section 234-I if revised after 31 December 2026.',
       },
     ],
     faqs: [
+      {
+        q: 'Is Form 16 replaced by Form 130?',
+        a: 'For salary paid from 1 April 2026 (tax year 2026-27), yes: the salary TDS certificate under the Income-tax Rules 2026 is Form 130, due by 15 June 2027, and salary TDS moves from section 192 to section 392 of the Income-tax Act 2025. Form 16 for FY 2025-26, and corrections for earlier years, stay on the old form.',
+      },
       {
         q: 'When is Form 16 issued for FY 2025-26?',
         a: 'By 15 June 2026. Rule 31 requires the employer to issue it within 15 days of the due date for the fourth-quarter TDS return, which is 31 May. If your employer is late, ask in writing; the employer faces a per-day penalty under section 272A, and you can still file using Form 26AS and AIS.',
@@ -158,14 +162,14 @@ export const FORMS: ReferencePage[] = [
     act2025: {
       newNumber: 'Form 130',
       status: 'reported',
-      note: 'Reported in secondary sources; verify against the notified Rules.',
+      note: 'Form mapping from two secondary sources that agree. Form 16 covers FY 2025-26 and earlier; Form 130 applies to salary paid from 1 April 2026.',
     },
     relatedServiceSlugs: ['itr-salaried', 'form-16-generation'],
     relatedCalculatorSlugs: ['take-home-salary', 'income-tax'],
     relatedGuideSlugs: ['itr-filing-guide-ay-2026-27', 'old-vs-new-tax-regime', 'tds-guide-for-employers'],
     relatedReferenceSlugs: ['form-26as', 'ais', '10-13a'],
     datePublished: '2026-09-13',
-    dateModified: '2026-09-13',
+    dateModified: '2026-11-16',
   },
 
   {
@@ -188,14 +192,14 @@ export const FORMS: ReferencePage[] = [
       '26as download income tax portal',
     ],
     summary:
-      'Form 26AS is your annual tax statement: every rupee of TDS and TCS credited to your PAN, the advance tax and self-assessment tax you paid, and the refunds issued, for one financial year. You open it from the e-filing portal, which hands you over to TRACES. Before filing ITR for AY 2026-27, the TDS you claim must match what 26AS shows, or the credit is cut in the 143(1) intimation.',
+      'Form 26AS is your annual tax statement: every rupee of TDS and TCS credited to your PAN, the advance tax and self-assessment tax you paid, and the refunds issued, for one financial year. You open it from the e-filing portal, which hands you over to TRACES. Before filing ITR for AY 2026-27, the TDS you claim must match what 26AS shows, or the credit is cut in the 143(1) intimation. For tax year 2026-27 (FY 2026-27) the annual statement becomes Form 168 under the Income-tax Rules 2026; AY 2026-27 and earlier years stay on Form 26AS.',
     keyFacts: [
       { label: 'Maintained by', value: 'Income Tax Department (CPC-TDS) on TRACES, under section 285BB and Rule 114-I' },
       { label: 'Where to get it', value: 'e-filing portal, e-File, Income Tax Returns, View Form 26AS, then TRACES; also via net banking' },
       { label: 'What it shows', value: 'TDS, TCS, TDS on property and rent, advance tax, self-assessment tax, refunds, TDS defaults' },
       { label: 'Updated', value: 'After each quarterly TDS return is processed; Q4 (January to March 2026) shows by early June 2026' },
       { label: 'Used for', value: 'Matching the TDS and TCS claimed in the ITR; credit is allowed only to the extent it appears here' },
-      { label: 'Income-tax Act 2025', value: 'Reported as Form 168 from tax year 2026-27; verify against the notified Rules' },
+      { label: 'Income-tax Act 2025', value: 'Form 168 from tax year 2026-27; AY 2026-27 and earlier stay on Form 26AS (reported mapping)' },
     ],
     sections: [
       { type: 'heading', text: 'What it is', id: 'what-it-is' },
@@ -263,7 +267,7 @@ export const FORMS: ReferencePage[] = [
         type: 'callout',
         tone: 'warning',
         title: 'Common mistake: claiming TDS from the certificate, not from 26AS',
-        text: 'The ITR utility prefills TDS from 26AS. If you type in a higher figure from Form 16 or 16A that 26AS does not carry, CPC processes the return on the 26AS figure and raises a demand or trims the refund. Get the deductor to correct first, then file. If the deadline is close, file with the 26AS figure and revise by 31 December 2026 once the correction is processed.',
+        text: 'The ITR utility prefills TDS from 26AS. If you type in a higher figure from Form 16 or 16A that 26AS does not carry, CPC processes the return on the 26AS figure and raises a demand or trims the refund. Get the deductor to correct first, then file. If the deadline is close, file with the 26AS figure and revise once the correction is processed; for AY 2026-27 a revised return is allowed until 31 March 2027, with a fee under section 234-I if filed after 31 December 2026.',
       },
       {
         type: 'tool-card',
@@ -273,7 +277,7 @@ export const FORMS: ReferencePage[] = [
       { type: 'heading', text: 'What to do next', id: 'what-to-do-next' },
       {
         type: 'paragraph',
-        text: 'Download 26AS and AIS together in June, tick off every TDS entry against a Form 16 or 16A, and chase the deductor for anything missing while there is still time before 31 July 2026. Add up the advance tax challans and make sure each has the right assessment year; a challan paid under AY 2025-26 by mistake needs a challan correction request, not a fresh payment. Keep the PDF with your filing records for the year.',
+        text: 'Download 26AS and AIS together in June, tick off every TDS entry against a Form 16 or 16A, and chase the deductor for anything missing before you file. The AY 2026-27 due date for non-business returns was 31 July 2026; a belated return is open until 31 December 2026. Add up the advance tax challans and make sure each has the right assessment year; a challan paid under AY 2025-26 by mistake needs a challan correction request, not a fresh payment. Keep the PDF with your filing records for the year.',
       },
     ],
     faqs: [
@@ -302,6 +306,10 @@ export const FORMS: ReferencePage[] = [
         a: 'Each time a TDS or TCS return is processed, typically within a week of filing, and each time a challan you paid is settled by the bank, usually within 2 to 3 working days. There is no fixed monthly update.',
       },
       {
+        q: 'Is Form 26AS replaced under the Income-tax Act 2025?',
+        a: 'For tax year 2026-27 onwards the annual tax statement is Form 168 under the Income-tax Rules 2026. For AY 2026-27 and earlier years, which stay under the 1961 Act, you still use Form 26AS.',
+      },
+      {
         q: 'Does Form 26AS show self-assessment tax I paid?',
         a: 'Yes, under the part for tax paid other than TDS and TCS, along with the BSR code, challan serial number and date. Check that the assessment year on the challan is 2026-27; a wrong year means the payment will not be matched with your return.',
       },
@@ -310,14 +318,14 @@ export const FORMS: ReferencePage[] = [
     act2025: {
       newNumber: 'Form 168',
       status: 'reported',
-      note: 'Reported in secondary sources; verify against the notified Rules.',
+      note: 'Form mapping from two secondary sources that agree. Form 26AS covers AY 2026-27 and earlier; Form 168 applies from tax year 2026-27.',
     },
     relatedServiceSlugs: ['itr-salaried', 'notice-143-1'],
     relatedCalculatorSlugs: ['tds', 'advance-tax'],
     relatedGuideSlugs: ['itr-filing-guide-ay-2026-27', 'income-tax-notices-explained', 'tds-guide-for-employers'],
     relatedReferenceSlugs: ['form-16', 'ais', '143-1'],
     datePublished: '2026-09-13',
-    dateModified: '2026-09-13',
+    dateModified: '2026-11-16',
   },
 
   {
@@ -484,14 +492,14 @@ export const FORMS: ReferencePage[] = [
       'form 15g false declaration penalty',
     ],
     summary:
-      'Form 15G and Form 15H are self-declarations under section 197A that tell a bank, post office or company not to deduct TDS on your interest because your tax for the year will be nil. Form 15G is for residents under 60 whose total interest also stays within the basic exemption limit; Form 15H is for residents aged 60 and above with only the nil-tax condition. Both are valid for one financial year and must be filed afresh every April.',
+      'Form 15G and Form 15H are self-declarations under section 197A that tell a bank, post office or company not to deduct TDS on your interest because your tax for the year will be nil. Form 15G is for residents under 60 whose total interest also stays within the basic exemption limit; Form 15H is for residents aged 60 and above with only the nil-tax condition. Both are valid for one financial year and must be filed afresh every April. For declarations from 1 April 2026 (tax year 2026-27) the two are replaced by a single Form 121 under the Income-tax Rules 2026; Form 15G and 15H cover FY 2025-26 and earlier.',
     keyFacts: [
       { label: 'Legal basis', value: 'Section 197A, Rule 29C' },
       { label: 'Form 15G', value: 'Resident individual under 60, HUF or trust; tax on total income nil and total interest within the basic exemption limit' },
       { label: 'Form 15H', value: 'Resident individual aged 60 or above; only condition is nil tax on total income after the 87A rebate' },
       { label: 'When to submit', value: 'April each year, and again for every new deposit or bank; valid for one financial year only' },
-      { label: 'Bank interest TDS threshold (194A, FY 2025-26)', value: '₹50,000 a year for others, ₹1,00,000 for senior citizens, per bank' },
-      { label: 'Income-tax Act 2025', value: 'Reported as Form 121 from tax year 2026-27; verify against the notified Rules' },
+      { label: 'Bank interest TDS threshold (194A; section 393(1) Sl.5 from tax year 2026-27)', value: '₹50,000 a year for others, ₹1,00,000 for senior citizens, per bank' },
+      { label: 'Income-tax Act 2025', value: 'Single Form 121 replaces 15G and 15H for declarations from 1 April 2026 (reported mapping)' },
     ],
     sections: [
       { type: 'heading', text: 'What it is', id: 'what-it-is' },
@@ -562,7 +570,7 @@ export const FORMS: ReferencePage[] = [
       { type: 'heading', text: 'What to do next', id: 'what-to-do-next' },
       {
         type: 'paragraph',
-        text: 'If you qualify, submit the declaration in April to every bank and company that pays you interest, and note the unique identification number the bank allots. If you did not submit one for FY 2025-26 and TDS was deducted, nothing is lost: the tax shows in Form 26AS and comes back as a refund when you file by 31 July 2026. Report the full interest in the return either way.',
+        text: 'If you qualify, submit the declaration in April to every bank and company that pays you interest (Form 121 for FY 2026-27), and note the unique identification number the bank allots. If you did not submit one for FY 2025-26 and TDS was deducted, nothing is lost: the tax shows in Form 26AS and comes back as a refund when you file the AY 2026-27 return, due 31 July 2026, or a belated return by 31 December 2026. Report the full interest in the return either way.',
       },
     ],
     faqs: [
@@ -595,6 +603,10 @@ export const FORMS: ReferencePage[] = [
         a: 'No. The form only stops the deduction. The interest remains taxable and must be reported in the ITR under income from other sources. Under the old regime you can claim 80TTA (₹10,000) or 80TTB (₹50,000 for seniors) against it.',
       },
       {
+        q: 'Is Form 15G or 15H still used from April 2026?',
+        a: 'No. For tax year 2026-27 a single Form 121 under the Income-tax Rules 2026 replaces both. Declarations for FY 2025-26 and earlier remain on Form 15G or 15H.',
+      },
+      {
         q: 'Does Form 15G apply to PF withdrawal?',
         a: 'Yes. EPF withdrawals of ₹50,000 or more before five years of continuous service attract 10% TDS under section 192A. If your total income including the withdrawal is below the taxable limit, upload Form 15G with the claim on the UAN portal to avoid the deduction.',
       },
@@ -603,14 +615,14 @@ export const FORMS: ReferencePage[] = [
     act2025: {
       newNumber: 'Form 121',
       status: 'reported',
-      note: 'Reported in secondary sources; verify against the notified Rules.',
+      note: 'Form mapping from two secondary sources that agree. One Form 121 replaces both 15G and 15H for declarations from 1 April 2026.',
     },
     relatedServiceSlugs: ['itr-salaried', 'tds-quarterly'],
     relatedCalculatorSlugs: ['income-tax', 'tds'],
     relatedGuideSlugs: ['old-vs-new-tax-regime', 'itr-filing-guide-ay-2026-27', 'tds-guide-for-employers'],
     relatedReferenceSlugs: ['80tta-80ttb', '87a', 'form-26as'],
     datePublished: '2026-09-13',
-    dateModified: '2026-09-13',
+    dateModified: '2026-11-16',
   },
 
   {
@@ -633,7 +645,7 @@ export const FORMS: ReferencePage[] = [
       'form 26qb correction',
     ],
     summary:
-      'Form 26QB is the challan-cum-statement a buyer files to deposit 1% TDS under section 194-IA when buying immovable property (other than rural agricultural land) for ₹50 lakh or more, or where the stamp duty value is ₹50 lakh or more. It is due within 30 days from the end of the month in which the payment was made, needs no TAN, and is filed once per buyer-seller pair for each instalment. The buyer then downloads Form 16B from TRACES and gives it to the seller.',
+      'Form 26QB is the challan-cum-statement a buyer files to deposit 1% TDS under section 194-IA when buying immovable property (other than rural agricultural land) for ₹50 lakh or more, or where the stamp duty value is ₹50 lakh or more. It is due within 30 days from the end of the month in which the payment was made, needs no TAN, and is filed once per buyer-seller pair for each instalment. The buyer then downloads Form 16B from TRACES and gives it to the seller. For payments from 1 April 2026 the filing is Form 141 under the Income-tax Rules 2026 (property in Schedule B) and the certificate is Form 132; Form 26QB stays for earlier payments and their corrections.',
     keyFacts: [
       { label: 'Legal basis', value: 'Section 194-IA, Rules 30, 31 and 31A' },
       { label: 'Applies when', value: 'Consideration or stamp duty value is ₹50 lakh or more, aggregated across all buyers and sellers; rural agricultural land excluded' },
@@ -641,6 +653,7 @@ export const FORMS: ReferencePage[] = [
       { label: 'Due date', value: 'Within 30 days from the end of the month in which TDS is deducted (payment or credit)' },
       { label: 'Filed on', value: 'e-filing portal, e-Pay Tax, 26QB; buyer\'s PAN, no TAN required' },
       { label: 'Certificate', value: 'Form 16B to the seller, downloaded from TRACES within 15 days of the 26QB due date' },
+      { label: 'From 1 April 2026', value: 'Form 141 (Schedule B) within 30 days of month end and Form 132 certificate; section 393(1) Sl.3(i) (reported form mapping)' },
     ],
     sections: [
       { type: 'heading', text: 'What it is', id: 'what-it-is' },
@@ -724,7 +737,7 @@ export const FORMS: ReferencePage[] = [
       },
       {
         q: 'Do I need a TAN to file Form 26QB?',
-        a: 'No. Form 26QB is filed with the buyer\'s PAN. A TAN is required only when the seller is a non-resident, because that deduction falls under section 195 and is reported in Form 27Q.',
+        a: 'No. Form 26QB, and Form 141 for payments from 1 April 2026, is filed with the buyer\'s PAN. A TAN was required when the seller is a non-resident, because that deduction falls under section 195; from 1 October 2026 an individual or HUF buying from a non-resident no longer needs one.',
       },
       {
         q: 'How do I download Form 16B?',
@@ -736,7 +749,7 @@ export const FORMS: ReferencePage[] = [
       },
       {
         q: 'What is the penalty for late filing of Form 26QB?',
-        a: 'A late filing fee of ₹200 a day under section 234E, limited to the TDS amount, plus interest at 1% a month for late deduction and 1.5% a month for late deposit. A separate penalty of ₹10,000 to ₹1,00,000 under section 271H can apply if the statement is more than a year late.',
+        a: 'A late filing fee of ₹200 a day under section 234E, limited to the TDS amount, plus interest at 1% a month for late deduction and 1.5% a month for late deposit. A separate penalty of ₹10,000 to ₹1,00,000 under section 271H can apply if the statement is more than a year late. For periods from 1 April 2026 the fee is under section 427 (same ₹200 a day, capped at the TDS) and the penalty under section 461, with no penalty if the tax is paid and the statement filed within one month.',
       },
       {
         q: 'Is TDS deducted on the stamp duty value or the sale price?',
@@ -744,7 +757,7 @@ export const FORMS: ReferencePage[] = [
       },
       {
         q: 'What if the seller is an NRI?',
-        a: 'Form 26QB does not apply. Under section 195 the buyer must get a TAN, deduct TDS on the full sale price at the long-term or short-term capital gains rate plus surcharge and cess (unless the seller obtains a lower deduction certificate under section 197), deposit it by the 7th of the next month and file Form 27Q for the quarter.',
+        a: 'Form 26QB does not apply. Under section 195 (section 393(2) from tax year 2026-27) the buyer must deduct TDS on the full sale price at the long-term or short-term capital gains rate plus surcharge and cess (unless the seller obtains a lower deduction certificate under section 197), deposit it by the 7th of the next month and file Form 27Q (Form 144 for periods from 1 April 2026) for the quarter. Until 30 September 2026 this needed a TAN; from 1 October 2026 an individual or HUF buyer does not need one.',
       },
     ],
     group: 'Salary and TDS forms',
@@ -753,7 +766,7 @@ export const FORMS: ReferencePage[] = [
     relatedGuideSlugs: ['capital-gains-tax-guide', 'tds-guide-for-employers', 'itr-filing-guide-ay-2026-27'],
     relatedReferenceSlugs: ['54', 'form-26as', 'form-16'],
     datePublished: '2026-09-13',
-    dateModified: '2026-09-13',
+    dateModified: '2026-11-16',
   },
 
   // ---------------------------------------------------------------------------
@@ -779,12 +792,12 @@ export const FORMS: ReferencePage[] = [
       'itr 1 due date 2026',
     ],
     summary:
-      'ITR-1, called Sahaj, is the one-page return for ordinarily resident individuals with total income up to ₹50 lakh from salary or pension, one house property, other sources such as interest, agricultural income up to ₹5,000, and long-term capital gains under section 112A of up to ₹1.25 lakh. It cannot be used by NRIs, company directors, holders of unlisted shares, anyone with business income, foreign assets, more than one house or capital gains beyond that allowance. The due date for AY 2026-27 is 31 July 2026.',
+      'ITR-1, called Sahaj, is the one-page return for ordinarily resident individuals with total income up to ₹50 lakh from salary or pension, one house property, other sources such as interest, agricultural income up to ₹5,000, and long-term capital gains under section 112A of up to ₹1.25 lakh. It cannot be used by NRIs, company directors, holders of unlisted shares, anyone with business income, foreign assets, more than one house or capital gains beyond that allowance. The due date for AY 2026-27 was 31 July 2026 and was not extended; a belated return is allowed until 31 December 2026. For tax year 2026-27 the due date is 31 July 2027.',
     keyFacts: [
       { label: 'Who', value: 'Ordinarily resident individuals with total income up to ₹50 lakh' },
       { label: 'Income allowed', value: 'Salary or pension, one house property, other sources, agricultural income up to ₹5,000, LTCG under 112A up to ₹1.25 lakh' },
       { label: 'Not for', value: 'NRIs and RNORs, directors, unlisted shares, more than one house, business income, other capital gains, foreign assets or income, brought-forward losses, TDS under 194N' },
-      { label: 'Due date', value: '31 July 2026; belated up to 31 December 2026 with a 234F fee of ₹5,000 (₹1,000 if income up to ₹5 lakh)' },
+      { label: 'Due date', value: '31 July 2026 (not extended); belated up to 31 December 2026 with a 234F fee of ₹5,000 (₹1,000 if income up to ₹5 lakh); revised up to 31 March 2027' },
       { label: 'How', value: 'Online on the e-filing portal with prefilled data, or the offline utility and JSON upload' },
       { label: 'E-verification', value: 'Within 30 days of filing: Aadhaar OTP, net banking, bank EVC, or signed ITR-V to CPC Bengaluru' },
     ],
@@ -864,7 +877,7 @@ export const FORMS: ReferencePage[] = [
       { type: 'heading', text: 'What to do next', id: 'what-to-do-next' },
       {
         type: 'paragraph',
-        text: 'Run the eligibility table against your AIS. If everything fits, file ITR-1 well before 31 July 2026 so any 143(1) refund arrives early. If a single line fails the test, move to ITR-2; it is a longer form but the salary section is identical. A return filed on time can be revised until 31 December 2026 if you spot an error later.',
+        text: 'Run the eligibility table against your AIS. If everything fits and you have not filed yet, file a belated ITR-1 by 31 December 2026; the 31 July 2026 due date has passed. If a single line fails the test, move to ITR-2; it is a longer form but the salary section is identical. A return filed on time can be revised until 31 March 2027 if you spot an error later, with a fee under section 234-I of ₹1,000 (income up to ₹5 lakh) or ₹5,000 if revised after 31 December 2026.',
       },
     ],
     faqs: [
@@ -890,7 +903,7 @@ export const FORMS: ReferencePage[] = [
       },
       {
         q: 'What is the due date for ITR-1 for FY 2025-26?',
-        a: '31 July 2026. A belated return can be filed until 31 December 2026 with a fee of ₹5,000 under section 234F, or ₹1,000 if total income is up to ₹5 lakh, plus 1% monthly interest under 234A on any unpaid tax.',
+        a: '31 July 2026, not extended. A belated return can be filed until 31 December 2026 with a fee of ₹5,000 under section 234F, or ₹1,000 if total income is up to ₹5 lakh, plus 1% monthly interest under 234A on any unpaid tax.',
       },
       {
         q: 'Can I choose the old regime in ITR-1?',
@@ -903,7 +916,7 @@ export const FORMS: ReferencePage[] = [
     relatedGuideSlugs: ['which-itr-form-to-file', 'itr-filing-guide-ay-2026-27', 'old-vs-new-tax-regime'],
     relatedReferenceSlugs: ['itr-2', 'form-16', '234f'],
     datePublished: '2026-09-13',
-    dateModified: '2026-09-13',
+    dateModified: '2026-11-16',
   },
 
   {
@@ -926,13 +939,13 @@ export const FORMS: ReferencePage[] = [
       'itr 2 schedule 112a',
     ],
     summary:
-      'ITR-2 is the return for individuals and HUFs who have no income from business or profession but do not fit ITR-1: capital gains from shares, mutual funds, property or crypto, more than one house property, income above ₹50 lakh, foreign assets or foreign income, NRI or RNOR status, a directorship, unlisted shares, or losses to carry forward. It is due on 31 July 2026 for AY 2026-27 and has no profit and loss account.',
+      'ITR-2 is the return for individuals and HUFs who have no income from business or profession but do not fit ITR-1: capital gains from shares, mutual funds, property or crypto, more than one house property, income above ₹50 lakh, foreign assets or foreign income, NRI or RNOR status, a directorship, unlisted shares, or losses to carry forward. It was due on 31 July 2026 for AY 2026-27 (belated return until 31 December 2026) and has no profit and loss account. For tax year 2026-27 the due date is 31 July 2027.',
     keyFacts: [
       { label: 'Who', value: 'Individuals and HUFs without income from business or profession' },
       { label: 'Triggers', value: 'Capital gains, more than one house, income above ₹50 lakh, foreign assets or income, NRI or RNOR, director, unlisted shares, crypto, lottery winnings, losses to carry forward' },
       { label: 'Key schedules', value: 'S, HP, CG, 112A, OS, VDA, CFL, FA, FSI, TR, AL' },
-      { label: 'Due date', value: '31 July 2026; belated or revised until 31 December 2026' },
-      { label: 'Loss carry forward', value: 'Only if the original return is filed by 31 July 2026' },
+      { label: 'Due date', value: '31 July 2026 (not extended); belated until 31 December 2026; revised until 31 March 2027' },
+      { label: 'Loss carry forward', value: 'Only if the original return was filed by 31 July 2026' },
       { label: 'Not for', value: 'Anyone with business or professional income including F&O or intraday, or partners of firms: file ITR-3' },
     ],
     sections: [
@@ -1005,7 +1018,7 @@ export const FORMS: ReferencePage[] = [
       { type: 'heading', text: 'What to do next', id: 'what-to-do-next' },
       {
         type: 'paragraph',
-        text: 'Reconcile the broker statements with the securities entries in AIS; the AIS shows sale value, not gains, so differences are expected but every sale should be accounted for. File by 31 July 2026 to preserve loss carry forward. If you have foreign assets or DTAA claims, consider having the return reviewed by a qualified professional (CMA/CA): Schedule FA and Schedule TR are where most ITR-2 notices come from.',
+        text: 'Reconcile the broker statements with the securities entries in AIS; the AIS shows sale value, not gains, so differences are expected but every sale should be accounted for. Only a return filed by the due date (31 July 2026 for AY 2026-27) preserves loss carry forward. If you have foreign assets or DTAA claims, consider having the return reviewed by a qualified professional (CMA/CA): Schedule FA and Schedule TR are where most ITR-2 notices come from.',
       },
     ],
     faqs: [
@@ -1031,7 +1044,7 @@ export const FORMS: ReferencePage[] = [
       },
       {
         q: 'What is the due date for ITR-2 for AY 2026-27?',
-        a: '31 July 2026 for individuals not subject to audit. A belated return can be filed until 31 December 2026 with a 234F fee, but capital losses cannot be carried forward from a belated return.',
+        a: '31 July 2026, not extended. A belated return can be filed until 31 December 2026 with a 234F fee, but capital losses cannot be carried forward from a belated return. A return filed on time can be revised until 31 March 2027.',
       },
       {
         q: 'Is Schedule AL mandatory in ITR-2?',
@@ -1044,7 +1057,7 @@ export const FORMS: ReferencePage[] = [
     relatedGuideSlugs: ['which-itr-form-to-file', 'capital-gains-tax-guide', 'itr-filing-guide-ay-2026-27'],
     relatedReferenceSlugs: ['itr-1', 'itr-3', '54'],
     datePublished: '2026-09-13',
-    dateModified: '2026-09-13',
+    dateModified: '2026-11-16',
   },
 
   {
@@ -1067,13 +1080,13 @@ export const FORMS: ReferencePage[] = [
       'how to file itr 3 online',
     ],
     summary:
-      'ITR-3 is the return for individuals and HUFs who have income from a business or profession, including F&O and intraday trading, freelancing with books of account, proprietorships and partners receiving remuneration or interest from a firm. It contains every schedule in ITR-2 plus a profit and loss account, balance sheet and the tax audit fields. For AY 2026-27 it is due on 31 July 2026, or 31 October 2026 where a section 44AB audit applies.',
+      'ITR-3 is the return for individuals and HUFs who have income from a business or profession, including F&O and intraday trading, freelancing with books of account, proprietorships and partners receiving remuneration or interest from a firm. It contains every schedule in ITR-2 plus a profit and loss account, balance sheet and the tax audit fields. For AY 2026-27 it was due on 31 August 2026 without audit (a permanent change by Finance Act 2026), and is due on 21 November 2026 where a section 44AB audit applies, after CBDT Circular 07/2026 extended it from 31 October.',
     keyFacts: [
       { label: 'Who', value: 'Individuals and HUFs with income from business or profession, including partners of firms and LLPs' },
       { label: 'Also covers', value: 'Everything in ITR-2: salary, house property, capital gains, other sources, foreign assets' },
       { label: 'Books', value: 'Part A-BS (balance sheet) and Part A-P&L; a no-account case section if books are not required under 44AA' },
-      { label: 'Audit', value: 'Section 44AB if business turnover exceeds ₹1 crore (₹10 crore with cash receipts and payments up to 5%) or professional receipts exceed ₹50 lakh; report in 3CB-3CD by 30 September 2026' },
-      { label: 'Due date', value: '31 July 2026 without audit; 31 October 2026 with audit; belated or revised until 31 December 2026' },
+      { label: 'Audit', value: 'Section 44AB if business turnover exceeds ₹1 crore (₹10 crore with cash receipts and payments up to 5%) or professional receipts exceed ₹50 lakh; report in 3CB-3CD, due date extended from 30 September to 21 October 2026' },
+      { label: 'Due date', value: '31 August 2026 without audit; 21 November 2026 with audit (30 November 2026 for transfer pricing cases); belated until 31 December 2026; revised until 31 March 2027' },
       { label: 'Trading', value: 'F&O is non-speculative business; intraday equity is speculative business; both go in Schedule BP' },
     ],
     sections: [
@@ -1110,7 +1123,7 @@ export const FORMS: ReferencePage[] = [
         ordered: true,
         items: [
           'Prepare the accounts for FY 2025-26: bank statements, sales and purchase registers, broker tax P&L and contract notes, expense bills, fixed asset register with depreciation, and the closing stock.',
-          'Decide whether a tax audit applies under section 44AB. If it does, the audit report in Form 3CB-3CD must be uploaded by 30 September 2026 by a Chartered Accountant, and the ITR is due 31 October 2026.',
+          'Decide whether a tax audit applies under section 44AB. If it does, the audit report in Form 3CB-3CD must be uploaded by a Chartered Accountant by the extended date of 21 October 2026, and the ITR is due 21 November 2026 (both extended by CBDT Circular 07/2026).',
           'On the e-filing portal, start a return for AY 2026-27, choose Individual and ITR-3. The offline utility is easier for large P&L and trade imports.',
           'Fill Part A-GEN with the nature of business codes, books maintained and audit status. Fill Part A-BS and Part A-P&L, or the no-account case section.',
           'Complete Schedule BP with the tax adjustments, Schedule DPM and DOA for depreciation, and the speculative block for intraday. Then fill Schedule S, HP, CG, OS and FA as in ITR-2.',
@@ -1126,7 +1139,7 @@ export const FORMS: ReferencePage[] = [
           { label: 'F&O net result (non-speculative business)', value: 'Loss of ₹2,40,000' },
           { label: 'Intraday equity profit (speculative business)', value: '₹30,000' },
           { label: 'Set-off: F&O loss against intraday profit (allowed), not against salary', value: '₹30,000 absorbed' },
-          { label: 'Loss carried forward for 8 years, only if ITR-3 is filed by 31 July 2026', value: '₹2,10,000', strong: true },
+          { label: 'Loss carried forward for 8 years, only if ITR-3 is filed by the due date (31 August 2026 without audit)', value: '₹2,10,000', strong: true },
         ],
       },
       {
@@ -1143,7 +1156,7 @@ export const FORMS: ReferencePage[] = [
       { type: 'heading', text: 'What to do next', id: 'what-to-do-next' },
       {
         type: 'paragraph',
-        text: 'Work out your turnover first, because it decides both the audit question and whether presumptive taxation under 44AD or 44ADA is still an option that would let you use ITR-4 instead. If books are needed, get them closed by June so the return is ready well before 31 July 2026. Business filers who want the old regime must also file Form 10-IEA before the due date; without it the return is processed under the new regime.',
+        text: 'Work out your turnover first, because it decides both the audit question and whether presumptive taxation under 44AD or 44ADA is still an option that would let you use ITR-4 instead. If books are needed, get them closed early; for tax year 2026-27 the due dates are 31 August 2027 without audit and 31 October 2027 with audit. Business filers who want the old regime must also file Form 10-IEA before the due date; without it the return is processed under the new regime.',
       },
     ],
     faqs: [
@@ -1165,7 +1178,7 @@ export const FORMS: ReferencePage[] = [
       },
       {
         q: 'What is the due date for ITR-3 for AY 2026-27?',
-        a: '31 July 2026 if no tax audit applies. If your accounts are audited under section 44AB, the audit report is due 30 September 2026 and the return is due 31 October 2026. Belated and revised returns are allowed until 31 December 2026.',
+        a: '31 August 2026 if no tax audit applies, a permanent date set by Finance Act 2026. If your accounts are audited under section 44AB, CBDT Circular 07/2026 extended the audit report to 21 October 2026 and the return to 21 November 2026. A belated return is allowed until 31 December 2026, and a revised return until 31 March 2027.',
       },
       {
         q: 'Can a partner of a firm file ITR-3?',
@@ -1182,7 +1195,7 @@ export const FORMS: ReferencePage[] = [
     relatedGuideSlugs: ['fno-trading-tax-guide', 'which-itr-form-to-file', 'itr-filing-guide-ay-2026-27'],
     relatedReferenceSlugs: ['itr-4', 'itr-2', 'form-10-iea'],
     datePublished: '2026-09-13',
-    dateModified: '2026-09-13',
+    dateModified: '2026-11-16',
   },
 
   {
@@ -1205,14 +1218,14 @@ export const FORMS: ReferencePage[] = [
       'itr 4 for small business',
     ],
     summary:
-      'ITR-4, called Sugam, is the presumptive taxation return for resident individuals, HUFs and partnership firms (not LLPs) with total income up to ₹50 lakh who declare business profit at 8% or 6% of turnover under section 44AD, professional income at 50% of receipts under 44ADA, or goods-carriage income under 44AE. It also takes salary, one house property, other sources and small 112A gains. No balance sheet or profit and loss account is required, and the due date for AY 2026-27 is 31 July 2026.',
+      'ITR-4, called Sugam, is the presumptive taxation return for resident individuals, HUFs and partnership firms (not LLPs) with total income up to ₹50 lakh who declare business profit at 8% or 6% of turnover under section 44AD, professional income at 50% of receipts under 44ADA, or goods-carriage income under 44AE. It also takes salary, one house property, other sources and small 112A gains. No balance sheet or profit and loss account is required. The due date for AY 2026-27 was 31 August 2026, the permanent date for business and professional returns not under audit, and a belated return is allowed until 31 December 2026.',
     keyFacts: [
       { label: 'Who', value: 'Resident individuals, HUFs and partnership firms other than LLPs, with total income up to ₹50 lakh' },
       { label: 'Section 44AD (business)', value: 'Turnover up to ₹2 crore, or ₹3 crore if cash receipts are 5% or less; profit at 8% (6% for digital receipts)' },
       { label: 'Section 44ADA (profession)', value: 'Gross receipts up to ₹50 lakh, or ₹75 lakh if cash receipts are 5% or less; profit at 50%' },
       { label: 'Section 44AE (goods carriages)', value: 'Up to 10 vehicles; ₹7,500 per vehicle per month, or ₹1,000 per ton for heavy goods vehicles' },
       { label: 'Not for', value: 'NRIs, directors, unlisted shares, foreign assets, more than one house, income above ₹50 lakh, commission or agency income, losses to carry forward' },
-      { label: 'Due date', value: '31 July 2026; advance tax in one instalment by 15 March 2026 for presumptive income' },
+      { label: 'Due date', value: '31 August 2026 for AY 2026-27 (31 August 2027 for tax year 2026-27); advance tax in one instalment by 15 March for presumptive income' },
     ],
     sections: [
       { type: 'heading', text: 'What it is', id: 'what-it-is' },
@@ -1278,7 +1291,7 @@ export const FORMS: ReferencePage[] = [
       { type: 'heading', text: 'What to do next', id: 'what-to-do-next' },
       {
         type: 'paragraph',
-        text: 'Check that every exclusion is clear: no directorship, no unlisted shares, no foreign account, one house, income under ₹50 lakh. If you clear the list, ITR-4 is the quickest business return there is. If your real margin is far below the presumptive rate and the numbers are large, it may be worth keeping books and filing ITR-3 instead; a qualified professional (CMA/CA) can run both computations before 31 July 2026.',
+        text: 'Check that every exclusion is clear: no directorship, no unlisted shares, no foreign account, one house, income under ₹50 lakh. If you clear the list, ITR-4 is the quickest business return there is. If your real margin is far below the presumptive rate and the numbers are large, it may be worth keeping books and filing ITR-3 instead; a qualified professional (CMA/CA) can run both computations before you file.',
       },
     ],
     faqs: [
@@ -1308,7 +1321,7 @@ export const FORMS: ReferencePage[] = [
       },
       {
         q: 'Do presumptive filers pay advance tax?',
-        a: 'Yes, but in a single instalment: 100% of the estimated tax by 15 March 2026 for FY 2025-26. Missing it attracts 1% monthly interest under sections 234B and 234C.',
+        a: 'Yes, but in a single instalment: 100% of the estimated tax by 15 March 2026 for FY 2025-26, and by 15 March 2027 for tax year 2026-27. Missing it attracts 1% monthly interest under sections 234B and 234C (sections 424 and 425 from tax year 2026-27).',
       },
     ],
     group: 'ITR forms',
@@ -1317,7 +1330,7 @@ export const FORMS: ReferencePage[] = [
     relatedGuideSlugs: ['which-itr-form-to-file', 'itr-filing-guide-ay-2026-27', 'gst-registration-guide'],
     relatedReferenceSlugs: ['44ad', '44ada', 'itr-3'],
     datePublished: '2026-09-13',
-    dateModified: '2026-09-13',
+    dateModified: '2026-11-16',
   },
 
   // ---------------------------------------------------------------------------
@@ -1342,11 +1355,11 @@ export const FORMS: ReferencePage[] = [
       'form 10-iea withdrawal',
     ],
     summary:
-      'Form 10-IEA is the declaration under section 115BAC(6) and Rule 21AG that a taxpayer with income from business or profession files to opt out of the default new tax regime and be taxed under the old regime. It must be filed on the e-filing portal before the ITR due date, 31 July 2026 or 31 October 2026 for audit cases, and its acknowledgement number goes into ITR-3 or ITR-4. Salaried taxpayers without business income do not file it; they choose the regime inside the ITR each year.',
+      'Form 10-IEA is the declaration under section 115BAC(6) and Rule 21AG that a taxpayer with income from business or profession files to opt out of the default new tax regime and be taxed under the old regime. It must be filed on the e-filing portal by the section 139(1) due date, which for AY 2026-27 is 31 August 2026 for non-audit cases and 21 November 2026 for audit cases after CBDT Circular 07/2026, and its acknowledgement number goes into ITR-3 or ITR-4. Salaried taxpayers without business income do not file it; they choose the regime inside the ITR each year.',
     keyFacts: [
       { label: 'Legal basis', value: 'Section 115BAC(6), Rule 21AG; replaced Form 10-IE from AY 2024-25' },
       { label: 'Who files', value: 'Individuals, HUFs, AOPs, BOIs and artificial juridical persons with business or professional income who want the old regime' },
-      { label: 'Deadline', value: 'On or before the due date under section 139(1): 31 July 2026, or 31 October 2026 if audited' },
+      { label: 'Deadline', value: 'On or before the due date under section 139(1): 31 August 2026, or 21 November 2026 if audited (extended from 31 October)' },
       { label: 'Salaried without business income', value: 'Not required; tick the regime in ITR-1 or ITR-2 every year' },
       { label: 'Switch rule', value: 'After opting out, you can return to the new regime only once; after that you cannot opt out again while you have business income' },
       { label: 'Where', value: 'e-filing portal, e-File, Income Tax Forms, File Income Tax Forms, Form 10-IEA; verify with Aadhaar OTP, EVC or DSC' },
@@ -1371,9 +1384,9 @@ export const FORMS: ReferencePage[] = [
         head: ['Taxpayer', 'Wants old regime', 'Wants new regime', 'Form 10-IEA'],
         rows: [
           ['Salaried, ITR-1 or ITR-2, no business income', 'Choose in the ITR', 'Default, nothing to do', 'Not required'],
-          ['Freelancer under 44ADA, ITR-4', 'File 10-IEA before 31 July 2026, quote number in ITR', 'Default, nothing to do', 'Required for old regime'],
-          ['Proprietor with books, ITR-3, no audit', 'File 10-IEA before 31 July 2026', 'Default', 'Required for old regime'],
-          ['Proprietor under 44AB audit, ITR-3', 'File 10-IEA before 31 October 2026', 'Default', 'Required for old regime'],
+          ['Freelancer under 44ADA, ITR-4', 'File 10-IEA by 31 August 2026, quote number in ITR', 'Default, nothing to do', 'Required for old regime'],
+          ['Proprietor with books, ITR-3, no audit', 'File 10-IEA by 31 August 2026', 'Default', 'Required for old regime'],
+          ['Proprietor under 44AB audit, ITR-3', 'File 10-IEA by 21 November 2026', 'Default', 'Required for old regime'],
           ['F&O trader with salary, ITR-3', 'File 10-IEA; trading is business income', 'Default', 'Required for old regime'],
           ['Partner of a firm, ITR-3', 'File 10-IEA; remuneration is business income', 'Default', 'Required for old regime'],
           ['Business filer who opted out earlier and now wants new regime back', 'n/a', 'File 10-IEA choosing withdrawal', 'Required, and this is the one-time switch'],
@@ -1389,7 +1402,7 @@ export const FORMS: ReferencePage[] = [
           'Select AY 2026-27. Confirm that you have income from business or profession, and choose whether you are opting out of the new regime or withdrawing an earlier opt-out.',
           'Fill the basic details, preview, and verify with Aadhaar OTP, EVC through the bank or a digital signature.',
           'Save the acknowledgement number and date. Enter them in the regime section of ITR-3 or ITR-4 and file the return under the old regime.',
-          'Do this before 31 July 2026 (or 31 October 2026 if audited). A form filed after the due date is not valid and the return is processed under the new regime.',
+          'Do this by the due date: 31 August 2026, or 21 November 2026 if audited. A form filed after the due date is not valid and the return is processed under the new regime.',
         ],
       },
       {
@@ -1428,7 +1441,7 @@ export const FORMS: ReferencePage[] = [
       },
       {
         q: 'What is the due date for Form 10-IEA for AY 2026-27?',
-        a: 'The same as the ITR due date under section 139(1): 31 July 2026 for non-audit cases and 31 October 2026 where a section 44AB audit applies. A form filed after that date is not valid, and the return is processed under the new regime.',
+        a: 'The same as the ITR due date under section 139(1): 31 August 2026 for non-audit cases and, where a section 44AB audit applies, 31 October 2026 as extended to 21 November 2026 by CBDT Circular 07/2026. A form filed after that date is not valid, and the return is processed under the new regime.',
       },
       {
         q: 'Do salaried employees need to file Form 10-IEA?',
@@ -1457,6 +1470,6 @@ export const FORMS: ReferencePage[] = [
     relatedGuideSlugs: ['old-vs-new-tax-regime', 'itr-filing-guide-ay-2026-27', 'fno-trading-tax-guide'],
     relatedReferenceSlugs: ['itr-3', 'itr-4', '80c'],
     datePublished: '2026-09-13',
-    dateModified: '2026-09-13',
+    dateModified: '2026-11-16',
   },
 ]

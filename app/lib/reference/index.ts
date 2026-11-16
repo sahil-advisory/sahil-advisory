@@ -21,7 +21,7 @@ export function act2025Note(page: Pick<ReferencePage, 'slug' | 'act2025'>): Act2
   if (page.act2025) return page.act2025
   const m = act2025ForRef(page.slug)
   if (!m || !m.new) return undefined
-  return { newNumber: m.new, status: 'reported', note: m.note }
+  return { newNumber: m.new, status: m.checked === 'act' ? 'notified' : 'reported', note: m.note }
 }
 
 export function referencePath(r: Pick<ReferencePage, 'kind' | 'slug'>) {

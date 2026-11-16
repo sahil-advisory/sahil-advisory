@@ -22,7 +22,7 @@ export const guide: Guide = {
   excerpt:
     'The structure you pick decides your tax rate, your audit burden, whether investors can put money in and how much you spend on compliance every year. This guide compares the four common options and recommends one for each type of founder.',
   datePublished: '2026-09-06',
-  dateModified: '2026-09-06',
+  dateModified: '2026-11-16',
   readMinutes: 12,
   sections: [
     {
@@ -84,7 +84,7 @@ export const guide: Guide = {
     { type: 'heading', text: 'Tax: slab versus 30% versus 22%', id: 'tax-comparison' },
     {
       type: 'paragraph',
-      text: 'The tax comparison surprises most founders. A proprietor pays at personal slab rates, which under the new regime for FY 2025-26 means nothing up to ₹12 lakh after the 87A rebate, and an average of about 10% on ₹20 lakh. An LLP pays a flat 30% plus 4% cess, but partner remuneration allowed under section 40(b) is deducted first and taxed in the partner hands at slab rates. A company pays 25% (turnover up to ₹400 crore) or a flat 22% under section 115BAA with 10% surcharge and 4% cess, an effective 25.17%, and dividends are then taxed again at the shareholder slab.',
+      text: 'The tax comparison surprises most founders. A proprietor pays at personal slab rates, which under the new regime for FY 2025-26, and unchanged for tax year 2026-27, means nothing up to ₹12 lakh after the 87A rebate (section 156 of the Income-tax Act 2025), and an average of about 10% on ₹20 lakh. An LLP pays a flat 30% plus 4% cess, but partner remuneration allowed under section 40(b) is deducted first and taxed in the partner hands at slab rates. A company pays 25% (turnover up to ₹400 crore) or a flat 22% under section 115BAA with 10% surcharge and 4% cess, an effective 25.17%, and dividends are then taxed again at the shareholder slab.',
     },
     {
       type: 'example',
@@ -117,7 +117,7 @@ export const guide: Guide = {
     {
       type: 'list',
       items: [
-        'Proprietorship: no statutory audit. Tax audit under section 44AB applies above ₹1 crore turnover, or ₹10 crore where cash receipts and payments are each within 5%. Professionals: above ₹50 lakh receipts.',
+        'Proprietorship: no statutory audit. Tax audit under section 44AB (section 63 of the Income-tax Act 2025 from tax year 2026-27) applies above ₹1 crore turnover, or ₹10 crore where cash receipts and payments are each within 5%. Professionals: above ₹50 lakh receipts.',
         'LLP: audit of accounts under the LLP Act above ₹40 lakh turnover or ₹25 lakh partner contribution. Tax audit thresholds apply separately.',
         'OPC and Private Limited: statutory audit under the Companies Act every year from incorporation, even with zero revenue, plus a tax audit above the 44AB limits.',
         'Every audit above is signed by a Chartered Accountant. Compilation, tax computation, ROC filings and returns can be handled by a CMA or CA.',
@@ -135,15 +135,15 @@ export const guide: Guide = {
         ['15 June, 15 Sep, 15 Dec, 15 Mar', 'Advance tax', 'Advance tax', 'Advance tax'],
         ['30 May', '', 'Form 11 annual return', ''],
         ['30 June', '', '', 'DPT-3 return of deposits and loans'],
-        ['31 July', 'ITR-3 or ITR-4 (non-audit)', 'ITR-5 (non-audit)', ''],
+        ['31 August', 'Return for non-audit business or profession (ITR-3 or ITR-4)', 'Return for non-audit cases (ITR-5)', ''],
         ['30 September', 'Tax audit report if applicable', 'DIR-3 KYC for designated partners', 'AGM by this date (not required for OPC); DIR-3 KYC for directors'],
         ['30 October', '', 'Form 8 statement of accounts', 'AOC-4 financial statements within 30 days of AGM'],
-        ['31 October', 'ITR-3 (audit case)', 'ITR-5 (audit case)', 'ITR-6 with audited accounts'],
+        ['31 October', 'Return for audit cases (ITR-3)', 'Return for audit cases (ITR-5)', 'Return with audited accounts (ITR-6)'],
         ['29 November', '', '', 'MGT-7 or MGT-7A annual return within 60 days of AGM'],
         ['Monthly / quarterly', 'GST returns, TDS if applicable', 'GST, TDS, 194T on partner payments', 'GST, TDS on salaries and vendors'],
         ['Ongoing', '', 'Changes via Form 3 and Form 4', '4 board meetings a year (2 for OPC and small companies), MSME-1 half-yearly'],
       ],
-      caption: 'Recurring compliance by structure, FY 2026-27',
+      caption: 'Recurring compliance by structure, tax year 2026-27. The non-audit return date moved from 31 July to 31 August permanently from AY 2026-27, so the returns for tax year 2026-27 fall due on 31 August 2027 (non-audit) and 31 October 2027 (audit cases and companies). ITR form names are those used for AY 2026-27 under the 1961 Act.',
     },
     {
       type: 'paragraph',
@@ -251,11 +251,11 @@ export const guide: Guide = {
     },
     {
       q: 'What are the annual compliances for a Private Limited company?',
-      a: 'At least four board meetings, an AGM by 30 September, AOC-4 within 30 days and MGT-7 within 60 days of the AGM, ADT-1 for auditor appointment, DPT-3 by 30 June, DIR-3 KYC by 30 September, statutory audit and ITR-6 by 31 October, plus GST and TDS returns.',
+      a: 'At least four board meetings, an AGM by 30 September, AOC-4 within 30 days and MGT-7 within 60 days of the AGM, ADT-1 for auditor appointment, DPT-3 by 30 June, DIR-3 KYC by 30 September, statutory audit and the income tax return (ITR-6 for AY 2026-27) by 31 October, plus GST and TDS returns.',
     },
     {
       q: 'Which structure is best for a freelancer?',
-      a: 'A proprietorship using presumptive taxation under 44ADA, where 50% of receipts up to ₹75 lakh is treated as income and taxed at slab rates with the 87A rebate. Registration is not required beyond PAN, and GST applies only above ₹20 lakh.',
+      a: 'A proprietorship using presumptive taxation under 44ADA (section 58 of the Income-tax Act 2025 from tax year 2026-27), where 50% of receipts up to ₹75 lakh is treated as income and taxed at slab rates with the 87A rebate. Registration is not required beyond PAN, and GST applies only above ₹20 lakh.',
     },
   ],
   relatedServiceSlug: 'pvt-ltd-incorporation',

@@ -22,13 +22,13 @@ export const guide: Guide = {
   excerpt:
     'Everything a first-time or returning filer needs for AY 2026-27: who must file, which form to pick, what documents to keep ready, how to file on the e-filing portal, and what happens after you submit.',
   datePublished: '2026-09-06',
-  dateModified: '2026-09-06',
+  dateModified: '2026-11-16',
   readMinutes: 12,
   sections: [
     {
       type: 'key-takeaways',
       items: [
-        'AY 2026-27 covers income earned between 1 April 2025 and 31 March 2026. The due date for most individuals was 31 July 2026; a belated return is still possible until 31 December 2026 with a late fee.',
+        'AY 2026-27 covers income earned between 1 April 2025 and 31 March 2026. The due date for ITR-1, ITR-2 and other non-business returns was 31 July 2026, and for business or professional income not liable to audit 31 August 2026. Audit cases have until 21 November 2026. A belated return is still possible until 31 December 2026 with a late fee.',
         'The new tax regime is the default. Salary up to ₹12.75 lakh is tax-free under it because of the ₹75,000 standard deduction and the ₹60,000 rebate under section 87A.',
         'You must file if your gross total income exceeds the basic exemption limit, or if you meet any of the mandatory triggers such as foreign assets, TDS above ₹25,000 or foreign travel spending above ₹2 lakh.',
         'Filing is not complete until you e-verify within 30 days. An unverified return is treated as never filed.',
@@ -37,7 +37,7 @@ export const guide: Guide = {
     {
       type: 'stat-grid',
       stats: [
-        { label: 'Due date (non-audit)', value: '31 Jul 2026', note: 'Belated return until 31 Dec 2026' },
+        { label: 'Due date (non-business)', value: '31 Jul 2026', note: 'Passed. Belated return until 31 Dec 2026' },
         { label: 'Late fee u/s 234F', value: '₹5,000', note: '₹1,000 if income up to ₹5 lakh' },
         { label: 'E-verify within', value: '30 days', note: 'From the date of filing' },
         { label: 'Tax-free salary (new regime)', value: '₹12.75 lakh', note: 'After ₹75,000 standard deduction' },
@@ -170,18 +170,26 @@ export const guide: Guide = {
       head: ['Event', 'Date', 'Applies to'],
       rows: [
         ['Form 16 issued by employer', '15 June 2026', 'Salaried employees'],
-        ['Original return due date', '31 July 2026', 'Individuals and HUFs not requiring audit'],
-        ['Tax audit report', '30 September 2026', 'Businesses and professionals above audit thresholds'],
-        ['Return due date for audit cases', '31 October 2026', 'Taxpayers whose accounts are audited'],
-        ['Transfer pricing cases', '30 November 2026', 'Taxpayers with international transactions'],
-        ['Belated or revised return', '31 December 2026', 'Everyone, with late fee for belated'],
+        ['Original return due date (passed)', '31 July 2026', 'ITR-1, ITR-2 and other returns without business income'],
+        ['Return due date, non-audit business (passed)', '31 August 2026', 'ITR-3 and ITR-4 filers not liable to audit, and partners of such firms'],
+        ['Tax audit report (passed)', '21 October 2026', 'Extended from 30 September by CBDT Circular 07/2026'],
+        ['Return due date for audit cases', '21 November 2026', 'Tax audit cases under 44AB and trusts; extended from 31 October by CBDT Circular 07/2026'],
+        ['Transfer pricing cases', '30 November 2026', 'Taxpayers with international transactions (Form 3CEB was due 31 October 2026)'],
+        ['Belated return', '31 December 2026', 'Anyone who missed the due date, with the 234F late fee'],
+        ['Revised return', '31 March 2027', 'Free until 31 December 2026, then a 234-I fee of ₹1,000 or ₹5,000'],
         ['Updated return (ITR-U)', '31 March 2031', 'Up to 48 months from the end of AY 2026-27'],
       ],
-      caption: 'Key dates for FY 2025-26 income. CBDT occasionally extends the July date; check the portal for notifications.',
+      caption: 'Key dates for FY 2025-26 income. The 31 July date was not extended. The 31 August date for non-audit business is a permanent change made by the Finance Act 2026, not an extension.',
     },
     {
       type: 'paragraph',
-      text: 'If you are reading this after 31 July 2026, you have not lost the chance to file. A belated return under section 139(4) can be filed up to 31 December 2026, with a late fee and interest. Read our guide on belated, revised and updated returns for the full cost.',
+      text: 'The 31 July and 31 August 2026 due dates have passed, but you have not lost the chance to file. A belated return under section 139(4) can be filed up to 31 December 2026, with a late fee and interest. Read our guide on belated, revised and updated returns for the full cost.',
+    },
+    {
+      type: 'callout',
+      tone: 'info',
+      title: 'Next year: tax year 2026-27 under the Income-tax Act 2025',
+      text: 'Income earned from 1 April 2026 is the tax year 2026-27, the first year under the Income-tax Act 2025. Section 139(1) is now section 263(1), and the due dates are 31 July 2027 generally, 31 August 2027 for business or profession not liable to audit, 31 October 2027 for audit cases and companies, and 30 November 2027 for transfer pricing cases.',
     },
     { type: 'heading', text: 'E-verification: the step most people forget', id: 'e-verification' },
     {
@@ -230,6 +238,7 @@ export const guide: Guide = {
         ['270A', 'Under-reporting or misreporting of income', '50% of tax on under-reported income; 200% for misreporting'],
         ['139(9)', 'Defective return not corrected within 15 days', 'Return treated as invalid'],
       ],
+      caption: 'Sections as they apply to AY 2026-27. From tax year 2026-27, 234F is now section 428(a) and 234A, 234B and 234C are now sections 423, 424 and 425 of the Income-tax Act 2025.',
     },
     {
       type: 'example',
@@ -244,13 +253,13 @@ export const guide: Guide = {
     { type: 'heading', text: 'What to do next', id: 'what-to-do-next' },
     {
       type: 'paragraph',
-      text: 'Download your AIS and Form 16, run the income tax calculator to settle the regime question, then file on the portal or hand it to an expert. If the July date has passed, file a belated return before 31 December 2026 to keep the late fee at its minimum and stop interest from growing.',
+      text: 'Download your AIS and Form 16, run the income tax calculator to settle the regime question, then file on the portal or hand it to an expert. If your due date has passed, file a belated return before 31 December 2026 to stop interest from growing. Audit cases still have until 21 November 2026.',
     },
   ],
   faqs: [
     {
       q: 'What is the last date to file ITR for AY 2026-27?',
-      a: '31 July 2026 for individuals not requiring audit, 31 October 2026 for audit cases. A belated or revised return can be filed until 31 December 2026, and an updated return (ITR-U) up to 31 March 2031.',
+      a: '31 July 2026 for ITR-1, ITR-2 and other non-business returns, 31 August 2026 for business or professional income not liable to audit, and 21 November 2026 for audit cases (extended from 31 October by CBDT Circular 07/2026). A belated return can be filed until 31 December 2026, a revised return until 31 March 2027 (with a 234-I fee after 31 December 2026), and an updated return (ITR-U) up to 31 March 2031.',
     },
     {
       q: 'Is ITR filing mandatory if my salary is below ₹12.75 lakh?',
@@ -282,7 +291,7 @@ export const guide: Guide = {
     },
     {
       q: 'Can I switch from the new regime to the old regime this year?',
-      a: 'Yes, if you have no business income, by opting out in a return filed by 31 July 2026. Taxpayers with business income can switch out of the new regime only once in their lifetime using Form 10-IEA.',
+      a: 'Yes, if you have no business income, by opting out in a return filed by the due date, which was 31 July 2026 for AY 2026-27 and has now passed. The next chance is the return for tax year 2026-27, due 31 July 2027. Taxpayers with business income can switch out of the new regime only once in their lifetime using Form 10-IEA.',
     },
   ],
   relatedServiceSlug: 'itr-salaried',

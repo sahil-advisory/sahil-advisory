@@ -98,6 +98,27 @@ crore) were checked on 16 November 2026; recheck after each Budget.
 Owner to confirm: all ten prices (launch proposals), the one-month pilot and
 NDA-before-access promises on global accounting, and the 150-transaction band.
 
+## Content refresh (16 November 2026)
+
+Every dated fact was re-checked against Finance Act 2026, the enacted
+Income-tax Act 2025, CBDT/CBIC notices and agreed secondary sources. The
+facts and their status live in `docs/VERIFIED-FACTS-2026-11.md`; content may
+state only what is listed there. Key changes: ITR-3/4 non-audit due 31 August
+(law change), audit cases extended to 21 November 2026, revised returns to
+31 March 2027 with the 234-I fee, new TDS forms (138/140/144/130/141) from
+1 April 2026, GST 2.0 rates (5/18/40), STT increase on F&O, slabs unchanged
+for tax year 2026-27.
+
+`app/lib/act2025.ts` rows carry `checked: 'act'` when the number was read in
+the enacted Act; those render as verified. Form numbers stay `reported`.
+
+Monthly due-date pages (GSTR-1, GSTR-3B, TDS deposit, 26QB) generate a
+month-by-month table and a "due date for <month>" FAQ. One-off extensions
+go in the deadline's `extensions` map keyed by tax period ('YYYY-MM').
+
+Next refresh triggers: GSTR-9 extension (watch late December), Budget
+1 February 2027, any CBDT circular. Re-date a page only when its facts change.
+
 ## Backend
 
 Design and build order: `docs/BACKEND.md`. Shape and running cost:

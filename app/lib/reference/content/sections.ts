@@ -28,14 +28,14 @@ export const SECTIONS: ReferencePage[] = [
       '80c maximum limit',
     ],
     summary:
-      'Section 80C allows a deduction of up to ₹1,50,000 a year from your gross total income for investments and payments such as PPF, EPF, ELSS, life insurance premium, NSC, 5-year tax-saver FD, Sukanya Samriddhi, tuition fees and home loan principal. It is available only under the old tax regime. At the 30% slab the full limit saves ₹46,800 including cess.',
+      'Section 80C allows a deduction of up to ₹1,50,000 a year from your gross total income for investments and payments such as PPF, EPF, ELSS, life insurance premium, NSC, 5-year tax-saver FD, Sukanya Samriddhi, tuition fees and home loan principal. It is available only under the old tax regime. At the 30% slab the full limit saves ₹46,800 including cess. From tax year 2026-27 (FY 2026-27) the deduction is section 123 of the Income-tax Act 2025.',
     keyFacts: [
       { label: 'Maximum deduction', value: '₹1,50,000 per year (combined with 80CCC and 80CCD(1))' },
       { label: 'Regime', value: 'Old regime only. Not available under the new regime.' },
       { label: 'Who can claim', value: 'Individuals and HUFs. Not companies, firms or LLPs.' },
       { label: 'Maximum tax saved', value: '₹46,800 at 30% slab, ₹31,200 at 20%, ₹7,800 at 5% (including 4% cess)' },
       { label: 'Basis', value: 'Actual payment during 1 April 2025 to 31 March 2026' },
-      { label: 'Income-tax Act 2025', value: 'Section 123 (reported)' },
+      { label: 'Income-tax Act 2025', value: 'Section 123, from tax year 2026-27 (list in Schedule XV)' },
     ],
     sections: [
       { type: 'heading', text: 'How it works', id: 'how-it-works' },
@@ -101,7 +101,7 @@ export const SECTIONS: ReferencePage[] = [
       { type: 'heading', text: 'What to do next', id: 'next-steps' },
       {
         type: 'paragraph',
-        text: 'Add up the payments you have already made this year, starting with EPF from your salary slip, home loan principal from the bank statement and school fee receipts. If the total is below ₹1.5 lakh and the old regime is better for you, top up with PPF or ELSS before 31 March 2026. Keep the receipts; your employer needs proof for Form 16 by January or February, and you need them if the return is picked for verification. If you are unsure which regime to choose, an expert-assisted return includes the comparison.',
+        text: 'Add up the payments you have already made this year, starting with EPF from your salary slip, home loan principal from the bank statement and school fee receipts. FY 2025-26 closed on 31 March 2026, so nothing more can be added for that year. Payments from 1 April 2026 count for tax year 2026-27 under section 123 of the Income-tax Act 2025; if the old regime suits you, plan any PPF or ELSS top-up before 31 March 2027. Keep the receipts; your employer needs proof for Form 16 (Form 130 from tax year 2026-27) by January or February, and you need them if the return is picked for verification. If you are unsure which regime to choose, an expert-assisted return includes the comparison.',
       },
     ],
     faqs: [
@@ -135,17 +135,17 @@ export const SECTIONS: ReferencePage[] = [
       },
       {
         q: 'What is the new section number for 80C under the Income-tax Act 2025?',
-        a: 'Secondary sources report section 80C as section 123 of the Income-tax Act 2025, which applies from tax year 2026-27. The limit of ₹1,50,000 is reported to continue. Verify against the notified Rules before relying on the new number.',
+        a: 'Section 123 of the Income-tax Act 2025, confirmed in the enacted Act, with the list of qualifying payments in Schedule XV. It applies from tax year 2026-27 (FY 2026-27). Returns for FY 2025-26 (AY 2026-27) still use section 80C. The limit of ₹1,50,000 is reported to continue.',
       },
     ],
     group: 'Deductions',
-    act2025: { newNumber: 'Section 123', status: 'reported', note: 'Reported in secondary sources; verify against the notified Rules.' },
+    act2025: { newNumber: 'Section 123', status: 'notified' },
     relatedServiceSlugs: ['itr-salaried', 'itr-salaried-plus'],
     relatedCalculatorSlugs: ['income-tax', 'take-home-salary'],
     relatedGuideSlugs: ['old-vs-new-tax-regime', 'itr-filing-guide-ay-2026-27', 'income-tax-act-2025-what-changes'],
     relatedReferenceSlugs: ['80ccd-1b', '80d', 'form-16'],
     datePublished: '2026-09-13',
-    dateModified: '2026-09-13',
+    dateModified: '2026-11-16',
   },
   // ---------------------------------------------------------------- 80D
   {
@@ -168,7 +168,7 @@ export const SECTIONS: ReferencePage[] = [
       '80d maximum limit 1 lakh',
     ],
     summary:
-      'Section 80D allows a deduction of up to ₹25,000 for health insurance premium paid for yourself, spouse and dependent children, rising to ₹50,000 if any of you is a senior citizen. A further ₹25,000 is allowed for parents, or ₹50,000 if they are senior citizens, so the maximum is ₹1,00,000. Preventive health check-ups up to ₹5,000 count within these limits. Old regime only.',
+      'Section 80D allows a deduction of up to ₹25,000 for health insurance premium paid for yourself, spouse and dependent children, rising to ₹50,000 if any of you is a senior citizen. A further ₹25,000 is allowed for parents, or ₹50,000 if they are senior citizens, so the maximum is ₹1,00,000. Preventive health check-ups up to ₹5,000 count within these limits. Old regime only. From tax year 2026-27 it is section 126 of the Income-tax Act 2025.',
     keyFacts: [
       { label: 'Self, spouse and children', value: '₹25,000, or ₹50,000 if any is aged 60 or above' },
       { label: 'Parents', value: '₹25,000, or ₹50,000 if either parent is aged 60 or above' },
@@ -272,7 +272,7 @@ export const SECTIONS: ReferencePage[] = [
     relatedGuideSlugs: ['old-vs-new-tax-regime', 'itr-filing-guide-ay-2026-27'],
     relatedReferenceSlugs: ['80c', '80ccd-1b', 'form-16'],
     datePublished: '2026-09-13',
-    dateModified: '2026-09-13',
+    dateModified: '2026-11-16',
   },
   // ---------------------------------------------------------------- 80CCD(1B)
   {
@@ -295,7 +295,7 @@ export const SECTIONS: ReferencePage[] = [
       'nps 14 percent employer contribution',
     ],
     summary:
-      'Section 80CCD(1B) allows an additional deduction of ₹50,000 for your own contribution to NPS Tier 1, over and above the ₹1,50,000 limit of section 80C, under the old regime only. Employer contribution to NPS under section 80CCD(2) is separate and is allowed in both regimes, up to 14% of basic plus DA under the new regime and 10% under the old regime for private employees.',
+      'Section 80CCD(1B) allows an additional deduction of ₹50,000 for your own contribution to NPS Tier 1, over and above the ₹1,50,000 limit of section 80C, under the old regime only. Employer contribution to NPS under section 80CCD(2) is separate and is allowed in both regimes, up to 14% of basic plus DA under the new regime and 10% under the old regime for private employees. From tax year 2026-27, 80CCD(1B) is section 124(3) and 80CCD(2) is section 124(1)-(2) of the Income-tax Act 2025.',
     keyFacts: [
       { label: 'Extra deduction', value: '₹50,000 for own NPS Tier 1 contribution' },
       { label: 'Relationship to 80C', value: 'Over and above ₹1,50,000, so up to ₹2,00,000 in total' },
@@ -359,7 +359,7 @@ export const SECTIONS: ReferencePage[] = [
       { type: 'heading', text: 'What to do next', id: 'next-steps' },
       {
         type: 'paragraph',
-        text: 'Download the Tier 1 transaction statement from the CRA portal (Protean or KFintech) for 1 April 2025 to 31 March 2026 and split it into your contribution and employer contribution. Report your own contribution against 80CCD(1) and 80CCD(1B) in Schedule VI-A, and the employer share against 80CCD(2). Check that the employer figure matches Form 16. If you have not yet contributed this year and are on the old regime, ₹50,000 into Tier 1 before 31 March saves up to ₹15,600 at the top slab. Contribute a few days early: the deduction is on the date the money is credited to the CRA, not the date you initiate the transfer, and a 31 March payment that lands on 2 April belongs to next year. If you do not have an account yet, an eNPS account opens online with PAN and Aadhaar in about ten minutes, and the first contribution can go through the same day.',
+        text: 'Download the Tier 1 transaction statement from the CRA portal (Protean or KFintech) for 1 April 2025 to 31 March 2026 and split it into your contribution and employer contribution. Report your own contribution against 80CCD(1) and 80CCD(1B) in Schedule VI-A, and the employer share against 80CCD(2). Check that the employer figure matches Form 16. On the old regime, ₹50,000 into Tier 1 saved up to ₹15,600 at the top slab for FY 2025-26; contributions from 1 April 2026 count for tax year 2026-27, where the deduction is section 124(3) of the Income-tax Act 2025. Contribute a few days early: the deduction is on the date the money is credited to the CRA, not the date you initiate the transfer, and a 31 March payment that lands on 2 April belongs to next year. If you do not have an account yet, an eNPS account opens online with PAN and Aadhaar in about ten minutes, and the first contribution can go through the same day.',
       },
     ],
     faqs: [
@@ -398,7 +398,7 @@ export const SECTIONS: ReferencePage[] = [
     relatedGuideSlugs: ['old-vs-new-tax-regime', 'itr-filing-guide-ay-2026-27'],
     relatedReferenceSlugs: ['80c', '80d', 'form-16'],
     datePublished: '2026-09-13',
-    dateModified: '2026-09-13',
+    dateModified: '2026-11-16',
   },
   // ---------------------------------------------------------------- 24(b)
   {
@@ -421,7 +421,7 @@ export const SECTIONS: ReferencePage[] = [
       'section 24 vs 80c home loan',
     ],
     summary:
-      'Section 24(b) allows a deduction of up to ₹2,00,000 a year for interest on a home loan for a self-occupied house, under the old regime. For a let-out property there is no cap on the interest, but the loss from house property that can be set off against other income is limited to ₹2,00,000; the balance is carried forward for 8 years. Interest paid before construction is completed is claimed in 5 equal instalments starting the year of completion.',
+      'Section 24(b) allows a deduction of up to ₹2,00,000 a year for interest on a home loan for a self-occupied house, under the old regime. For a let-out property there is no cap on the interest, but the loss from house property that can be set off against other income is limited to ₹2,00,000; the balance is carried forward for 8 years. Interest paid before construction is completed is claimed in 5 equal instalments starting the year of completion. From tax year 2026-27 it is section 22(1)(b) of the Income-tax Act 2025.',
     keyFacts: [
       { label: 'Self-occupied limit', value: '₹2,00,000 per year (₹30,000 if the loan is for repairs or taken before 1 April 1999)' },
       { label: 'Let-out property', value: 'No cap on interest; loss set-off against other income capped at ₹2,00,000' },
@@ -524,7 +524,7 @@ export const SECTIONS: ReferencePage[] = [
     relatedGuideSlugs: ['old-vs-new-tax-regime', 'itr-filing-guide-ay-2026-27', 'which-itr-form-to-file'],
     relatedReferenceSlugs: ['80c', 'itr-2', 'form-16'],
     datePublished: '2026-09-13',
-    dateModified: '2026-09-13',
+    dateModified: '2026-11-16',
   },
   // ---------------------------------------------------------------- 80TTA / 80TTB
   {
@@ -676,14 +676,14 @@ export const SECTIONS: ReferencePage[] = [
       'tax on 12.5 lakh salary new regime',
     ],
     summary:
-      'Section 87A gives a rebate of up to ₹60,000 under the new regime for FY 2025-26 if your taxable income is ₹12,00,000 or less, which brings the tax to nil. Under the old regime the rebate is ₹12,500 if taxable income is ₹5,00,000 or less. Just above ₹12 lakh, marginal relief caps the tax at the amount by which income exceeds ₹12 lakh, so ₹12.10 lakh pays ₹10,400 including cess, not ₹63,960.',
+      'Section 87A gives a rebate of up to ₹60,000 under the new regime for FY 2025-26 if your taxable income is ₹12,00,000 or less, which brings the tax to nil. Under the old regime the rebate is ₹12,500 if taxable income is ₹5,00,000 or less. Just above ₹12 lakh, marginal relief caps the tax at the amount by which income exceeds ₹12 lakh, so ₹12.10 lakh pays ₹10,400 including cess, not ₹63,960. Finance Act 2026 keeps the same rebate for tax year 2026-27, where it is section 156 of the Income-tax Act 2025.',
     keyFacts: [
       { label: 'New regime rebate', value: 'Up to ₹60,000 if taxable income is ₹12,00,000 or less' },
       { label: 'Old regime rebate', value: 'Up to ₹12,500 if taxable income is ₹5,00,000 or less' },
       { label: 'Marginal relief', value: 'New regime only: tax cannot exceed income above ₹12,00,000' },
       { label: 'Zero-tax salary (new regime)', value: '₹12,75,000 gross, after ₹75,000 standard deduction' },
       { label: 'Who can claim', value: 'Resident individuals only. Not NRIs, HUFs, firms or companies' },
-      { label: 'Income-tax Act 2025', value: 'Section 156 (reported)' },
+      { label: 'Income-tax Act 2025', value: 'Section 156, same ₹60,000 rebate up to ₹12 lakh for tax year 2026-27' },
     ],
     sections: [
       { type: 'heading', text: 'How it works', id: 'how-it-works' },
@@ -782,17 +782,17 @@ export const SECTIONS: ReferencePage[] = [
       },
       {
         q: 'What is the new section number for 87A under the Income-tax Act 2025?',
-        a: 'Secondary sources report the rebate as section 156 of the Income-tax Act 2025, applicable from tax year 2026-27. Verify against the notified Rules before relying on it.',
+        a: 'Section 156 of the Income-tax Act 2025, confirmed in the enacted Act and applicable from tax year 2026-27. Finance Act 2026 kept the rebate at ₹60,000 up to ₹12 lakh with marginal relief under the new regime, and ₹12,500 up to ₹5 lakh under the old regime. Returns for AY 2026-27 still cite section 87A.',
       },
     ],
     group: 'Exemptions and rebates',
-    act2025: { newNumber: 'Section 156', status: 'reported', note: 'Reported in secondary sources; verify against the notified Rules.' },
+    act2025: { newNumber: 'Section 156', status: 'notified' },
     relatedServiceSlugs: ['itr-salaried'],
     relatedCalculatorSlugs: ['income-tax', 'take-home-salary'],
     relatedGuideSlugs: ['old-vs-new-tax-regime', 'itr-filing-guide-ay-2026-27', 'income-tax-act-2025-what-changes'],
     relatedReferenceSlugs: ['10-13a', 'itr-1', 'form-16'],
     datePublished: '2026-09-13',
-    dateModified: '2026-09-13',
+    dateModified: '2026-11-16',
   },
   // ---------------------------------------------------------------- 10(13A)
   {
@@ -815,7 +815,7 @@ export const SECTIONS: ReferencePage[] = [
       'hra exemption without rent receipts',
     ],
     summary:
-      'Section 10(13A) exempts House Rent Allowance to the extent of the least of three amounts: actual HRA received, rent paid minus 10% of basic plus DA, and 50% of basic plus DA in Delhi, Mumbai, Kolkata or Chennai (40% elsewhere). The exemption is available only under the old regime and only if you actually pay rent. Landlord PAN is mandatory when annual rent exceeds ₹1,00,000.',
+      'Section 10(13A) exempts House Rent Allowance to the extent of the least of three amounts: actual HRA received, rent paid minus 10% of basic plus DA, and 50% of basic plus DA in Delhi, Mumbai, Kolkata or Chennai (40% elsewhere). The exemption is available only under the old regime and only if you actually pay rent. Landlord PAN is mandatory when annual rent exceeds ₹1,00,000. From tax year 2026-27 the exemption is in section 11 read with Schedule III of the Income-tax Act 2025.',
     keyFacts: [
       { label: 'Formula', value: 'Least of: HRA received; rent paid minus 10% of basic plus DA; 50% (metro) or 40% (non-metro) of basic plus DA' },
       { label: 'Metro cities', value: 'Delhi, Mumbai, Kolkata, Chennai. Every other city is 40%' },
@@ -881,7 +881,7 @@ export const SECTIONS: ReferencePage[] = [
       { type: 'heading', text: 'What to do next', id: 'next-steps' },
       {
         type: 'paragraph',
-        text: 'Submit rent receipts, the rent agreement and landlord PAN to your employer before the January or February proof deadline so that the exemption appears in Form 16 and TDS is lower through the year. If you missed the employer deadline, you can still claim the exemption in the return by reducing the taxable salary figure, but keep the proof. If your salary has no HRA component, claim section 80GG instead, up to ₹60,000 a year, provided neither you nor your spouse owns a house in the city where you work. Generate month-wise receipts with the rent receipt tool if your landlord does not issue them. If you paid rent above ₹50,000 a month at any point in the year, deduct 2% TDS once at the end of the tenancy or the year, deposit it through Form 26QC within 30 days, and give the landlord Form 16C; the department matches this against your HRA claim.',
+        text: 'Submit rent receipts, the rent agreement and landlord PAN to your employer before the January or February proof deadline so that the exemption appears in Form 16 (Form 130 from tax year 2026-27) and TDS is lower through the year. If you missed the employer deadline, you can still claim the exemption in the return by reducing the taxable salary figure, but keep the proof. If your salary has no HRA component, claim section 80GG instead, up to ₹60,000 a year, provided neither you nor your spouse owns a house in the city where you work. Generate month-wise receipts with the rent receipt tool if your landlord does not issue them. If you paid rent above ₹50,000 a month at any point in the year, deduct 2% TDS once at the end of the tenancy or the year, deposit it through Form 26QC within 30 days, and give the landlord Form 16C; the department matches this against your HRA claim.',
       },
     ],
     faqs: [
@@ -924,7 +924,7 @@ export const SECTIONS: ReferencePage[] = [
     relatedGuideSlugs: ['hra-exemption', 'old-vs-new-tax-regime', 'itr-filing-guide-ay-2026-27'],
     relatedReferenceSlugs: ['87a', 'form-16', '24b'],
     datePublished: '2026-09-13',
-    dateModified: '2026-09-13',
+    dateModified: '2026-11-16',
   },
   // ---------------------------------------------------------------- 44AD
   {
@@ -948,7 +948,7 @@ export const SECTIONS: ReferencePage[] = [
       'who is not eligible for 44ad',
     ],
     summary:
-      'Section 44AD allows a resident individual, HUF or partnership firm with business turnover up to ₹2 crore, or ₹3 crore if at least 95% of receipts are digital, to declare profit at 8% of turnover (6% for amounts received digitally) without maintaining books of account or getting a tax audit. Once you opt out after using it, you cannot return for 5 years. Advance tax is paid in one instalment by 15 March.',
+      'Section 44AD allows a resident individual, HUF or partnership firm with business turnover up to ₹2 crore, or ₹3 crore if at least 95% of receipts are digital, to declare profit at 8% of turnover (6% for amounts received digitally) without maintaining books of account or getting a tax audit. Once you opt out after using it, you cannot return for 5 years. Advance tax is paid in one instalment by 15 March. From tax year 2026-27 the scheme is section 58 of the Income-tax Act 2025, with the same limits and rates.',
     keyFacts: [
       { label: 'Turnover limit', value: '₹2 crore, or ₹3 crore if cash receipts are 5% or less of total receipts' },
       { label: 'Presumptive rate', value: '8% of turnover; 6% on receipts by account payee cheque, bank transfer, UPI or card' },
@@ -1019,7 +1019,7 @@ export const SECTIONS: ReferencePage[] = [
       { type: 'heading', text: 'What to do next', id: 'next-steps' },
       {
         type: 'paragraph',
-        text: 'Total your receipts for 1 April 2025 to 31 March 2026 from bank statements, UPI and card settlement reports and cash register, keeping the digital and cash figures separate because they carry different rates. Check that the GST turnover in GSTR-3B matches, since the AIS reports it. File ITR-4 by the non-audit due date. If turnover is likely to cross ₹2 crore, or you are a partner in an LLP, or you earn commission, the scheme does not apply and you will need books and possibly a tax audit signed by an empanelled Chartered Accountant. An expert-assisted business return checks eligibility before the form is chosen, and reconciles the ITR turnover with GST returns so that the two never disagree in the AIS.',
+        text: 'Total your receipts for 1 April 2025 to 31 March 2026 from bank statements, UPI and card settlement reports and cash register, keeping the digital and cash figures separate because they carry different rates. Check that the GST turnover in GSTR-3B matches, since the AIS reports it. The ITR-4 due date for AY 2026-27 was 31 August 2026, the new permanent date for business returns not under audit; a belated return is allowed until 31 December 2026. For tax year 2026-27 the non-audit due date is 31 August 2027. If turnover is likely to cross ₹2 crore, or you are a partner in an LLP, or you earn commission, the scheme does not apply and you will need books and possibly a tax audit signed by an empanelled Chartered Accountant. An expert-assisted business return checks eligibility before the form is chosen, and reconciles the ITR turnover with GST returns so that the two never disagree in the AIS.',
       },
     ],
     faqs: [
@@ -1045,7 +1045,7 @@ export const SECTIONS: ReferencePage[] = [
       },
       {
         q: 'When is advance tax due for 44AD taxpayers?',
-        a: 'In one instalment of 100% by 15 March of the financial year, so 15 March 2026 for FY 2025-26. The four-instalment schedule does not apply. Interest under section 234C is charged only if the March instalment is short.',
+        a: 'In one instalment of 100% by 15 March of the financial year, so 15 March 2027 for tax year 2026-27 (it was 15 March 2026 for FY 2025-26). The four-instalment schedule does not apply. Interest under section 234C is charged only if the March instalment is short.',
       },
       {
         q: 'Which ITR form is used for 44AD?',
@@ -1062,7 +1062,7 @@ export const SECTIONS: ReferencePage[] = [
     relatedGuideSlugs: ['which-itr-form-to-file', 'itr-filing-guide-ay-2026-27', 'gst-return-filing-guide'],
     relatedReferenceSlugs: ['44ada', 'itr-4', 'itr-3'],
     datePublished: '2026-09-13',
-    dateModified: '2026-09-13',
+    dateModified: '2026-11-16',
   },
   // ---------------------------------------------------------------- 44ADA
   {
@@ -1086,7 +1086,7 @@ export const SECTIONS: ReferencePage[] = [
       '44ada vs 44ad',
     ],
     summary:
-      'Section 44ADA allows a resident individual or partnership firm in a specified profession with gross receipts up to ₹50 lakh, or ₹75 lakh if at least 95% of receipts are digital, to declare 50% of receipts as taxable income without maintaining books or getting a tax audit. It covers legal, medical, engineering, architecture, accountancy, technical consultancy, interior decoration, film artists, company secretaries and IT professionals. F&O trading is a business, not a profession, and is not eligible.',
+      'Section 44ADA allows a resident individual or partnership firm in a specified profession with gross receipts up to ₹50 lakh, or ₹75 lakh if at least 95% of receipts are digital, to declare 50% of receipts as taxable income without maintaining books or getting a tax audit. It covers legal, medical, engineering, architecture, accountancy, technical consultancy, interior decoration, film artists, company secretaries and IT professionals. F&O trading is a business, not a profession, and is not eligible. From tax year 2026-27 the scheme sits in section 58 of the Income-tax Act 2025, with the same limits.',
     keyFacts: [
       { label: 'Receipts limit', value: '₹50 lakh; ₹75 lakh if cash receipts are 5% or less of total' },
       { label: 'Presumed income', value: '50% of gross receipts (higher if you choose)' },
@@ -1156,7 +1156,7 @@ export const SECTIONS: ReferencePage[] = [
       { type: 'heading', text: 'What to do next', id: 'next-steps' },
       {
         type: 'paragraph',
-        text: 'Total the fees received in FY 2025-26 from bank statements and match them with Form 26AS and the AIS, where every 194J deduction appears. Confirm the profession fits the 44AA(1) list. If your receipts crossed ₹50 lakh but cash was under 5%, you are still inside the ₹75 lakh limit. File ITR-4 if you have no capital gains and at most one house property, otherwise ITR-3 with the presumptive schedule. If you also registered for GST because receipts crossed ₹20 lakh, keep the GSTR-3B turnover consistent with the ITR figure. An expert-assisted freelancer return reconciles all three and confirms the profession fits the notified list before the presumptive schedule is used.',
+        text: 'Total the fees received in FY 2025-26 from bank statements and match them with Form 26AS and the AIS, where every 194J deduction appears. Confirm the profession fits the 44AA(1) list. If your receipts crossed ₹50 lakh but cash was under 5%, you are still inside the ₹75 lakh limit. File ITR-4 if you have no capital gains and at most one house property, otherwise ITR-3 with the presumptive schedule. The AY 2026-27 due date was 31 August 2026 (belated return until 31 December 2026); for tax year 2026-27 it is 31 August 2027. If you also registered for GST because receipts crossed ₹20 lakh, keep the GSTR-3B turnover consistent with the ITR figure. An expert-assisted freelancer return reconciles all three and confirms the profession fits the notified list before the presumptive schedule is used.',
       },
     ],
     faqs: [
@@ -1199,7 +1199,7 @@ export const SECTIONS: ReferencePage[] = [
     relatedGuideSlugs: ['which-itr-form-to-file', 'fno-trading-tax-guide', 'gst-registration-guide'],
     relatedReferenceSlugs: ['44ad', 'itr-4', 'form-26as'],
     datePublished: '2026-09-13',
-    dateModified: '2026-09-13',
+    dateModified: '2026-11-16',
   },
   // ---------------------------------------------------------------- 54
   {
@@ -1358,13 +1358,15 @@ export const SECTIONS: ReferencePage[] = [
       'is 234f applicable if no tax payable',
     ],
     summary:
-      'Section 234F charges a late fee of ₹5,000 if you file your income tax return after the due date, reduced to ₹1,000 if your total income does not exceed ₹5,00,000. It applies to every belated return filed up to 31 December 2026 for AY 2026-27, even if no tax is due, but not if your gross total income is below the basic exemption limit and you were not otherwise required to file. Interest under section 234A at 1% a month on unpaid tax is charged in addition.',
+      'Section 234F charges a late fee of ₹5,000 if you file your income tax return after the due date, reduced to ₹1,000 if your total income does not exceed ₹5,00,000. For AY 2026-27 it applies to every belated return filed up to 31 December 2026, even if no tax is due, but not if your gross total income is below the basic exemption limit and you were not otherwise required to file. Interest under section 234A at 1% a month on unpaid tax is charged in addition. From tax year 2026-27 the same fee is section 428(a) of the Income-tax Act 2025.',
     keyFacts: [
       { label: 'Fee if total income above ₹5 lakh', value: '₹5,000' },
       { label: 'Fee if total income up to ₹5 lakh', value: '₹1,000' },
       { label: 'Fee if income below the exemption limit', value: 'Nil, unless filing was compulsory for another reason' },
-      { label: 'Due date AY 2026-27 (non-audit)', value: '31 July 2026; belated return allowed until 31 December 2026' },
-      { label: 'Interest under 234A', value: '1% per month or part of a month on unpaid tax from 1 August 2026' },
+      { label: 'Due date AY 2026-27', value: '31 July 2026 (ITR-1, ITR-2); 31 August 2026 for business or profession not under audit; 21 November 2026 for audit cases' },
+      { label: 'Belated return', value: 'Allowed until 31 December 2026' },
+      { label: 'Interest under 234A', value: '1% per month or part of a month on unpaid tax from the day after the due date' },
+      { label: 'Tax year 2026-27', value: 'Section 428(a), same ₹1,000 or ₹5,000; due date 31 July 2027 (31 August 2027 non-audit business)' },
       { label: 'Paid how', value: 'Before filing, as self-assessment tax under the fee head in Challan 280' },
     ],
     sections: [
@@ -1375,7 +1377,7 @@ export const SECTIONS: ReferencePage[] = [
       },
       {
         type: 'paragraph',
-        text: 'The amount depends on total income. If total income after deductions exceeds ₹5,00,000, the fee is ₹5,000. If it is ₹5,00,000 or below, the fee is ₹1,000. For AY 2026-27 the due date for salaried and non-audit taxpayers is 31 July 2026, and a belated return under section 139(4) can be filed until 31 December 2026. The same fee applies whether you file on 1 August or 31 December; it does not grow with delay.',
+        text: 'The amount depends on total income. If total income after deductions exceeds ₹5,00,000, the fee is ₹5,000. If it is ₹5,00,000 or below, the fee is ₹1,000. For AY 2026-27 the due date is 31 July 2026 for salaried and other non-business taxpayers, and 31 August 2026 for business or professional income not liable to audit, a permanent change made by Finance Act 2026 rather than an extension. Audit cases have until 21 November 2026 under CBDT Circular 07/2026. A belated return under section 139(4) can be filed until 31 December 2026. The same fee applies whether you file the day after the due date or on 31 December; it does not grow with delay.',
       },
       {
         type: 'paragraph',
@@ -1383,19 +1385,20 @@ export const SECTIONS: ReferencePage[] = [
       },
       {
         type: 'paragraph',
-        text: 'Interest is separate. Section 234A charges 1% per month or part of a month on the tax still unpaid after the due date, from 1 August 2026 until the date you file. If all your tax was already covered by TDS or advance tax, 234A is nil but 234F is still payable. Section 234B and 234C interest for short advance tax runs on its own timeline and is unaffected by when you file.',
+        text: 'Interest is separate. Section 234A charges 1% per month or part of a month on the tax still unpaid after the due date, from the day after the due date (1 August 2026 for a 31 July due date) until the date you file. From tax year 2026-27, 234A becomes section 423 of the Income-tax Act 2025. If all your tax was already covered by TDS or advance tax, 234A is nil but 234F is still payable. Section 234B and 234C interest for short advance tax runs on its own timeline and is unaffected by when you file.',
       },
       {
         type: 'table',
         head: ['Situation', 'Section 234F fee', 'Section 234A interest'],
         rows: [
-          ['Filed by 31 July 2026', 'Nil', 'Nil'],
+          ['Filed by the due date (31 July or 31 August 2026)', 'Nil', 'Nil'],
           ['Belated, total income above ₹5 lakh', '₹5,000', '1% per month on unpaid tax'],
           ['Belated, total income up to ₹5 lakh', '₹1,000', '1% per month on unpaid tax'],
           ['Belated, gross total income below exemption limit, no compulsory filing trigger', 'Nil', 'Nil'],
           ['Belated, all tax already paid through TDS, refund due', '₹5,000 or ₹1,000', 'Nil'],
-          ['Revised return filed after an on-time original', 'Nil', 'Nil'],
-          ['Updated return (ITR-U) after 31 December', '₹5,000 or ₹1,000 plus 60% to 70% additional tax', '1% per month'],
+          ['Revised return filed by 31 December 2026 after an on-time original', 'Nil', 'Nil'],
+          ['Revised return filed 1 January to 31 March 2027', 'Nil under 234F; ₹1,000 or ₹5,000 under section 234-I', 'Nil'],
+          ['Updated return (ITR-U) after the belated window', '₹5,000 or ₹1,000 plus 25% to 70% additional tax', '1% per month'],
         ],
         caption: 'Late filing consequences for AY 2026-27.',
       },
@@ -1415,7 +1418,7 @@ export const SECTIONS: ReferencePage[] = [
         type: 'callout',
         tone: 'warning',
         title: 'The cost that is bigger than the fee',
-        text: 'A belated return cannot carry forward most losses. Capital losses, business losses and F&O losses from FY 2025-26 are lost for future set-off if the return is filed after 31 July 2026. House property loss is the exception. For a trader with a ₹5 lakh F&O loss, the real cost of filing late is the future tax on ₹5 lakh, not the ₹5,000 fee. You also cannot choose the old regime in a belated return; the new regime applies by default.',
+        text: 'A belated return cannot carry forward most losses. Capital losses, business losses and F&O losses from FY 2025-26 are lost for future set-off if the return is filed after the due date, which for a non-audit trader was 31 August 2026. House property loss is the exception. For a trader with a ₹5 lakh F&O loss, the real cost of filing late is the future tax on ₹5 lakh, not the ₹5,000 fee. You also cannot choose the old regime in a belated return; the new regime applies by default.',
       },
       {
         type: 'tool-card',
@@ -1425,13 +1428,13 @@ export const SECTIONS: ReferencePage[] = [
       { type: 'heading', text: 'What to do next', id: 'next-steps' },
       {
         type: 'paragraph',
-        text: 'If the due date has passed, file now rather than waiting until December; the fee is the same but the 234A interest keeps running. Pay the fee and any tax through Challan 280 as self-assessment tax before submitting, entering the fee in the fee field so that the challan matches the return. E-verify within 30 days, or the return is treated as not filed and the fee is wasted. If you missed 31 December as well, the only route is an updated return under section 139(8A), with additional tax on top. A belated or revised return through an expert-assisted service takes a day and includes the interest computation. If you have a genuine reason for the delay and a refund at stake, a condonation application under section 119(2)(b) can allow a return beyond the belated window, but it is discretionary and slow, so do not plan around it.',
+        text: 'If the due date has passed, file now rather than waiting until December; the fee is the same but the 234A interest keeps running. Pay the fee and any tax through Challan 280 as self-assessment tax before submitting, entering the fee in the fee field so that the challan matches the return. E-verify within 30 days, or the return is treated as not filed and the fee is wasted. If you missed 31 December as well, the only route is an updated return under section 139(8A), available for AY 2026-27 until 31 March 2031, with additional tax on top. A belated or revised return through an expert-assisted service takes a day and includes the interest computation. If you have a genuine reason for the delay and a refund at stake, a condonation application under section 119(2)(b) can allow a return beyond the belated window, but it is discretionary and slow, so do not plan around it.',
       },
     ],
     faqs: [
       {
         q: 'What is the late fee under section 234F for AY 2026-27?',
-        a: '₹5,000 if total income exceeds ₹5,00,000, and ₹1,000 if total income is ₹5,00,000 or less. It applies to returns filed after 31 July 2026 (non-audit cases) up to 31 December 2026.',
+        a: '₹5,000 if total income exceeds ₹5,00,000, and ₹1,000 if total income is ₹5,00,000 or less. For AY 2026-27 it applies to returns filed after the due date (31 July 2026, or 31 August 2026 for business or professional income not under audit) up to 31 December 2026. From tax year 2026-27 the same fee is charged under section 428(a) of the Income-tax Act 2025.',
       },
       {
         q: 'Is 234F applicable if my income is below the taxable limit?',
@@ -1443,11 +1446,11 @@ export const SECTIONS: ReferencePage[] = [
       },
       {
         q: 'Does the 234F fee increase the later I file?',
-        a: 'No. It is a flat ₹5,000 or ₹1,000 for any belated return filed up to 31 December. What increases is 234A interest at 1% a month on unpaid tax, and after 31 December an updated return carries additional tax of 60% or 70% of the tax due.',
+        a: 'No. It is a flat ₹5,000 or ₹1,000 for any belated return filed up to 31 December. What increases is 234A interest at 1% a month on unpaid tax, and after 31 December an updated return carries additional tax of 25% to 70%, rising with each year of delay.',
       },
       {
         q: 'Is 234F charged on a revised return?',
-        a: 'No, if the original return was filed by the due date. A revised return corrects an on-time return and carries no fee. If the original itself was belated, the fee was already paid on it.',
+        a: 'No, if the original return was filed by the due date. A revised return corrects an on-time return and carries no 234F fee. For AY 2026-27 a revision is allowed until 31 March 2027, but one filed after 31 December 2026 attracts a separate fee under section 234-I: ₹1,000 if total income is up to ₹5 lakh, ₹5,000 otherwise. If the original itself was belated, the 234F fee was already paid on it.',
       },
       {
         q: 'Can the 234F fee be waived?',
@@ -1455,7 +1458,7 @@ export const SECTIONS: ReferencePage[] = [
       },
       {
         q: 'How is section 234A interest calculated?',
-        a: '1% simple interest per month or part of a month on the tax unpaid after the due date, from 1 August 2026 to the date of filing. If TDS and advance tax already cover your liability, 234A is nil.',
+        a: '1% simple interest per month or part of a month on the tax unpaid after the due date, from the day after the due date (1 August 2026 for a 31 July due date) to the date of filing. If TDS and advance tax already cover your liability, 234A is nil.',
       },
       {
         q: 'Which losses can be carried forward in a belated return?',
@@ -1468,7 +1471,7 @@ export const SECTIONS: ReferencePage[] = [
     relatedGuideSlugs: ['belated-revised-updated-return', 'itr-filing-guide-ay-2026-27', 'fno-trading-tax-guide'],
     relatedReferenceSlugs: ['143-1', 'itr-1', 'form-26as'],
     datePublished: '2026-09-13',
-    dateModified: '2026-09-13',
+    dateModified: '2026-11-16',
   },
   // ---------------------------------------------------------------- 143(1)
   {
@@ -1492,7 +1495,7 @@ export const SECTIONS: ReferencePage[] = [
       '143(1) refund processed',
     ],
     summary:
-      'An intimation under section 143(1) is the computer-generated result of the Centralised Processing Centre checking your return against Form 26AS, AIS and arithmetic. It shows one of three outcomes: refund, demand, or no change. A proposed adjustment under 143(1)(a) must be answered on the e-filing portal within 30 days or it is applied automatically. A demand must be paid or disputed within 30 days; mistakes are fixed through rectification under section 154.',
+      'An intimation under section 143(1) is the computer-generated result of the Centralised Processing Centre checking your return against Form 26AS, AIS and arithmetic. It shows one of three outcomes: refund, demand, or no change. A proposed adjustment under 143(1)(a) must be answered on the e-filing portal within 30 days or it is applied automatically. A demand must be paid or disputed within 30 days; mistakes are fixed through rectification under section 154. AY 2026-27 returns are processed under section 143(1) of the 1961 Act; from tax year 2026-27 the provision is section 270(1) of the Income-tax Act 2025.',
     keyFacts: [
       { label: 'What it is', value: 'Automated processing result, not a scrutiny notice' },
       { label: 'Time limit for issue', value: 'Within 9 months from the end of the FY in which the return is filed' },
@@ -1589,7 +1592,7 @@ export const SECTIONS: ReferencePage[] = [
       },
       {
         q: 'Can I file a revised return after receiving a 143(1) intimation?',
-        a: 'Yes, up to 31 December 2026 for AY 2026-27, because processing does not end the revision window. Use a revised return if you left out income or need to change a claim, and rectification if the department made a mistake.',
+        a: 'Yes, up to 31 March 2027 for AY 2026-27 after Finance Act 2026, because processing does not end the revision window. A revision filed after 31 December 2026 carries a fee under section 234-I of ₹1,000 (total income up to ₹5 lakh) or ₹5,000. Use a revised return if you left out income or need to change a claim, and rectification if the department made a mistake.',
       },
     ],
     group: 'Compliance',
@@ -1598,6 +1601,6 @@ export const SECTIONS: ReferencePage[] = [
     relatedGuideSlugs: ['income-tax-notices-explained', 'belated-revised-updated-return', 'itr-filing-guide-ay-2026-27'],
     relatedReferenceSlugs: ['ais', 'form-26as', '234f'],
     datePublished: '2026-09-13',
-    dateModified: '2026-09-13',
+    dateModified: '2026-11-16',
   },
 ]

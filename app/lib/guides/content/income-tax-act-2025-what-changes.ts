@@ -12,7 +12,7 @@ export const guide: Guide = {
   h1: 'Income-tax Act 2025: What Changes From 1 April 2026 (and What Does Not)',
   metaTitle: 'Income-tax Act 2025: What Changes From 1 April 2026',
   metaDescription:
-    'The Income-tax Act 2025 applies from 1 April 2026. What the tax year means, why AY 2026-27 returns stay under the old Act, and the reported section renumbering.',
+    'The Income-tax Act 2025 applies from 1 April 2026. What the tax year means, the verified section and form renumbering, and what changed in Finance Act 2026.',
   keywords: [
     'income tax act 2025',
     'new income tax act from april 2026',
@@ -24,18 +24,18 @@ export const guide: Guide = {
     'does new income tax act change tax slabs',
   ],
   excerpt:
-    'The Income-tax Act 2025 is in force from 1 April 2026, but your AY 2026-27 return is still filed under the 1961 Act. Here is what actually changes, what only looks different, and what you need to do this year and next.',
+    'The Income-tax Act 2025 has been in force since 1 April 2026, and the Income-tax Rules 2026 with their new forms since the same day. Your AY 2026-27 return stays under the 1961 Act. Here is what actually changes, what only looks different, and what to do now.',
   datePublished: '2026-09-06',
-  dateModified: '2026-09-06',
+  dateModified: '2026-11-16',
   readMinutes: 10,
   sections: [
     {
       type: 'key-takeaways',
       items: [
-        'The Income-tax Act 2025 applies from tax year 2026-27, which began on 1 April 2026. Returns for FY 2025-26 (AY 2026-27), due 31 July 2026 or belated by 31 December 2026, are filed under the Income-tax Act 1961.',
+        'The Income-tax Act 2025 applies from tax year 2026-27, which began on 1 April 2026. Returns for FY 2025-26 (AY 2026-27), belated by 31 December 2026 or revised by 31 March 2027, are still filed under the Income-tax Act 1961.',
         'The single "tax year" replaces the previous year and assessment year pair. Income earned in tax year 2026-27 is reported in a return due in 2027.',
-        'The Act does not change tax slabs, rates, the ₹75,000 standard deduction, the 87A rebate or capital gains rates. Rates continue to come from each year\'s Finance Act.',
-        'Sections and forms are renumbered. The commonly cited mappings, such as 80C becoming section 123 and Form 16 becoming Form 130, are reported in secondary sources and should be verified against the notified Rules.',
+        'Finance Act 2026 kept the tax slabs, the ₹75,000 standard deduction, the ₹60,000 rebate up to ₹12 lakh and capital gains rates unchanged for tax year 2026-27. It raised STT on futures and options and changed how buybacks are taxed.',
+        'Sections and forms are renumbered: 80C is now section 123 and 87A is section 156, checked against the enacted Act. The Income-tax Rules 2026, notified on 20 March 2026, brought new forms: Form 130 replaces Form 16, and TDS statements moved to Forms 138, 140 and 144 from the July 2026 quarter.',
       ],
     },
     {
@@ -44,13 +44,13 @@ export const guide: Guide = {
         { label: 'In force from', value: '1 April 2026', note: 'Tax year 2026-27 onwards' },
         { label: 'Sections', value: '536', note: 'Against 819 effective sections in the 1961 Act' },
         { label: 'Chapters and schedules', value: '23 and 16', note: 'Down from 47 chapters' },
-        { label: 'AY 2026-27 return due', value: '31 Jul 2026', note: 'Under the 1961 Act, belated by 31 Dec 2026' },
+        { label: 'AY 2026-27 belated return', value: '31 Dec 2026', note: 'Under the 1961 Act; revised by 31 Mar 2027' },
       ],
     },
     {
       type: 'tool-card',
       calculatorSlug: 'income-tax',
-      text: 'The slabs in this calculator are unchanged by the 2025 Act. Use it for both your AY 2026-27 return and your tax year 2026-27 planning.',
+      text: 'The slabs in this calculator are the same for FY 2025-26 and tax year 2026-27, because Finance Act 2026 left them unchanged. Use it for both your AY 2026-27 return and your tax year 2026-27 planning.',
     },
     { type: 'heading', text: 'Why the Act was rewritten', id: 'why-a-new-act' },
     {
@@ -70,15 +70,15 @@ export const guide: Guide = {
       type: 'table',
       head: ['Income earned in', '1961 Act terminology', '2025 Act terminology', 'Return filed'],
       rows: [
-        ['1 April 2025 to 31 March 2026', 'Previous year 2025-26, assessment year 2026-27', 'Not applicable, old Act governs', 'By 31 July 2026 (31 October 2026 audit cases)'],
-        ['1 April 2026 to 31 March 2027', 'Would have been AY 2027-28', 'Tax year 2026-27', 'By 31 July 2027, under the 2025 Act'],
-        ['1 April 2027 to 31 March 2028', '', 'Tax year 2027-28', 'By 31 July 2028'],
+        ['1 April 2025 to 31 March 2026', 'Previous year 2025-26, assessment year 2026-27', 'Not applicable, old Act governs', '31 July 2026 (31 August with business income, 21 November 2026 audit cases); belated by 31 December 2026'],
+        ['1 April 2026 to 31 March 2027', 'Would have been AY 2027-28', 'Tax year 2026-27', '31 July 2027 (31 August with business income, 31 October audit cases), under section 263'],
+        ['1 April 2027 to 31 March 2028', '', 'Tax year 2027-28', '31 July 2028, on the same pattern'],
       ],
       caption: 'How the tax year lines up with the old previous year and assessment year',
     },
     {
       type: 'paragraph',
-      text: 'For a business or profession set up during the year, the tax year begins on the date of setting up and ends on 31 March. Forms, notices and challans for tax year 2026-27 will use the new term. Everything relating to AY 2026-27 and earlier keeps the old labels.',
+      text: 'For a business or profession set up during the year, the tax year begins on the date of setting up and ends on 31 March. Forms, notices and challans for tax year 2026-27 use the new term. Everything relating to AY 2026-27 and earlier keeps the old labels.',
     },
     { type: 'heading', text: 'AY 2026-27 filings stay under the 1961 Act', id: 'ay-2026-27-under-old-act' },
     {
@@ -88,10 +88,10 @@ export const guide: Guide = {
     {
       type: 'callout',
       tone: 'success',
-      title: 'Nothing changes for the return you are filing this year',
-      text: 'If you have not yet filed for FY 2025-26, file under the 1961 Act exactly as before: due date 31 July 2026 for non-audit cases and 31 October 2026 for audit cases, belated or revised by 31 December 2026 with the 234F fee of ₹5,000 (₹1,000 if income is up to ₹5 lakh). The new Act does not touch this return.',
+      title: 'Your AY 2026-27 return stays under the old Act',
+      text: 'If you have not yet filed for FY 2025-26, file a belated return under the 1961 Act by 31 December 2026 with the 234F fee of ₹5,000 (₹1,000 if income is up to ₹5 lakh). A filed return can be revised until 31 March 2027; Finance Act 2026 extended that window and added a fee under section 234-I for revisions after 31 December. The new Act does not touch this return.',
     },
-    { type: 'heading', text: 'Reported section renumbering', id: 'section-renumbering' },
+    { type: 'heading', text: 'Section renumbering', id: 'section-renumbering' },
     {
       type: 'paragraph',
       text: 'Because provisions were regrouped, almost every section has a new number and several have been merged. Exemptions that lived in section 10 now sit in schedules, and TDS provisions that ran from 192 to 206 are consolidated into a small group of sections with tables. The mapping below is the one most often cited for the provisions individuals and small businesses use.',
@@ -99,29 +99,29 @@ export const guide: Guide = {
     {
       type: 'callout',
       tone: 'warning',
-      title: 'Verify before relying on these numbers',
-      text: 'The section and form mappings in this guide are reported in secondary sources, including the Bill as passed and draft Rules released for consultation. Verify them against the notified Income-tax Rules 2026 and the final forms on the e-filing portal before quoting them in a return, a certificate or a contract.',
+      title: 'How these numbers were checked',
+      text: 'On 16 November 2026 we checked the section numbers below against the text of the Income-tax Act 2025 as enacted, and corrected two that commonly circulate wrongly: short-term gains on listed equity (111A) is section 196, not 197, and reassessment is split between section 280 (the 148 notice) and section 281 (the 148A procedure). Where published mappings disagree, as for 142(1), we show no number rather than guess.',
     },
     {
       type: 'table',
       head: ['Provision', '1961 Act section', 'Reported 2025 Act reference'],
       rows: act2025Of('section').map(row),
-      caption: 'Section mapping, reported and unverified. Returns for AY 2026-27 still use the 1961 numbering.',
+      caption: 'Section mapping. Returns for AY 2026-27 still use the 1961 numbering.',
     },
     {
       type: 'paragraph',
       text: 'The pattern to remember is that deductions from total income (the old chapter VI-A) now begin in the 120s, TDS and TCS sit in the 390s, and the return and assessment provisions are in the 260s to 280s. Software vendors and the department are expected to show both numbers during the transition.',
     },
-    { type: 'heading', text: 'Reported form renumbering', id: 'form-renumbering' },
+    { type: 'heading', text: 'Form renumbering under the Income-tax Rules 2026', id: 'form-renumbering' },
     {
       type: 'paragraph',
-      text: 'The forms prescribed under the Rules are also being renumbered in sequence, which affects the documents employees and businesses handle most. Draft Rules released for public comment carried the numbers below. They apply to documents relating to tax year 2026-27 and later, so the first Form 130 would be issued in 2027 for salary paid from April 2026.',
+      text: 'The Income-tax Rules 2026 were notified on 20 March 2026 (Notification 22/2026) and apply from 1 April 2026. They renumber every prescribed form. Forms tied to a period from April 2026 are already in use: TDS statements for the quarter ending June 2026 were filed on Forms 138, 140 and 144 by 31 July 2026, and property buyers have used Form 141 instead of 26QB since April. The first Form 130, replacing Form 16, will be issued by 15 June 2027.',
     },
     {
       type: 'table',
       head: ['Document', 'Current form', 'Reported new form'],
       rows: [...act2025Of('form'), ...act2025Of('challan')].map(row),
-      caption: 'Form and challan renumbering, reported and unverified. The first Form 130 would be issued in 2027 for salary paid from April 2026.',
+      caption: 'Form and challan renumbering as published in mappings of the Rules. Periods up to March 2026 stay on the old forms.',
     },
     { type: 'heading', text: 'What does not change: slabs, rates and deductions', id: 'what-does-not-change' },
     {
@@ -131,11 +131,11 @@ export const guide: Guide = {
     {
       type: 'list',
       items: [
-        'Slabs and rates: unchanged by the Act. The FY 2025-26 new regime slabs (0% to ₹4 lakh, 5% to ₹8 lakh, 10% to ₹12 lakh, 15% to ₹16 lakh, 20% to ₹20 lakh, 25% to ₹24 lakh, 30% above) and 4% cess come from the Finance Act, and rates for tax year 2026-27 come from the Finance Act 2026.',
+        'Slabs and rates: unchanged. The new regime slabs (0% to ₹4 lakh, 5% to ₹8 lakh, 10% to ₹12 lakh, 15% to ₹16 lakh, 20% to ₹20 lakh, 25% to ₹24 lakh, 30% above) and 4% cess apply to tax year 2026-27 as they did to FY 2025-26; Finance Act 2026 proposed no change.',
         'Standard deduction of ₹75,000 under the new regime and ₹50,000 under the old regime, and the ₹60,000 rebate under 87A for income up to ₹12 lakh, continue under their new section numbers.',
-        'Capital gains: 20% short-term and 12.5% long-term on listed equity with the ₹1.25 lakh exemption, 12.5% on property and other assets, 30% on virtual digital assets.',
+        'Capital gains: 20% short-term and 12.5% long-term on listed equity with the ₹1.25 lakh exemption, 12.5% on property and other assets, 30% on virtual digital assets. Buyback proceeds are taxed as capital gains rather than dividend from tax year 2026-27.',
         'Presumptive taxation limits of ₹2 crore (₹3 crore digital) under 44AD and ₹50 lakh (₹75 lakh digital) under 44ADA.',
-        'Due dates, the 48-month updated return window, advance tax instalments and interest under 234A, 234B and 234C, in renumbered form.',
+        'Advance tax instalments, the 48-month updated return window, and interest for late return, short advance tax and deferment (234A, 234B and 234C, now sections 423, 424 and 425). Return due dates are in section 263, with 31 August now the date for non-audit business and professional taxpayers.',
         'Old regime deductions: 80C ₹1.5 lakh, 80D, 80CCD(1B) ₹50,000, 24(b) ₹2 lakh interest on self-occupied property, HRA under 10(13A).',
       ],
     },
@@ -153,13 +153,25 @@ export const guide: Guide = {
         { label: 'Tax before cess', value: '₹1,45,000' },
         { label: 'Cess at 4%', value: '₹5,800' },
         { label: 'Total tax under the 1961 Act for FY 2025-26', value: '₹1,50,800', strong: true },
-        { label: 'Total tax under the 2025 Act for tax year 2026-27, if the Finance Act 2026 keeps these slabs', value: '₹1,50,800', strong: true },
+        { label: 'Total tax under the 2025 Act for tax year 2026-27 (slabs unchanged by Finance Act 2026)', value: '₹1,50,800', strong: true },
+      ],
+    },
+    { type: 'heading', text: 'What Finance Act 2026 changed', id: 'finance-act-2026' },
+    {
+      type: 'list',
+      items: [
+        'STT on derivatives from 1 April 2026: futures up from 0.02% to 0.05%, options premium from 0.1% to 0.15%, and exercised options from 0.125% to 0.15%.',
+        'Buybacks: proceeds are taxed as capital gains in the hands of shareholders instead of as dividend, with additional tax for promoters.',
+        'Revised returns: the window runs to 12 months from the end of the year (31 March 2027 for AY 2026-27), with a fee of ₹1,000 or ₹5,000 for a revision filed after nine months.',
+        'Updated returns: a further 10% additional tax if filed after a reassessment notice, and an updated return may now be filed to reduce a loss.',
+        'TCS from 1 April 2026: remittances for education or medical treatment above ₹10 lakh at 2% (was 5%), overseas tour packages at a flat 2%, and liquor, scrap and minerals at 2%.',
+        'TDS: supply of manpower is treated as work (contractor rates of 1% or 2%), and from 1 October 2026 an individual buying property from a non-resident no longer needs a TAN.',
       ],
     },
     { type: 'heading', text: 'What actually changes in substance', id: 'substantive-changes' },
     {
       type: 'paragraph',
-      text: 'Beyond numbering and language, a small number of practical changes were made during the drafting, several on the Select Committee recommendation. These are reported in the Act as passed and in commentary; check the final text for the exact wording.',
+      text: 'Beyond numbering and language, a small number of practical changes were made during the drafting, several on the Select Committee recommendation.',
     },
     {
       type: 'list',
@@ -180,15 +192,15 @@ export const guide: Guide = {
     { type: 'heading', text: 'What taxpayers must do now', id: 'what-to-do-now' },
     {
       type: 'paragraph',
-      text: 'For most individuals the honest answer is nothing this year. File the FY 2025-26 return as usual, pay advance tax for tax year 2026-27 on the same dates, and keep the same records. The work begins in 2027, when the first returns and certificates under the new Act are due.',
+      text: 'For most individuals there is little to do until 2027: close out the FY 2025-26 return, pay advance tax for tax year 2026-27 on the same dates, and keep the same records. Employers and deductors are already on the new forms, so the transition is theirs to manage now.',
     },
     {
       type: 'table',
       head: ['Who', 'Now (2026)', 'Next year (2027)'],
       rows: [
-        ['Salaried employees', 'File AY 2026-27 return by 31 July 2026 under the 1961 Act', 'Expect Form 130 instead of Form 16 by June 2027; check the new form against payslips'],
-        ['Employers and deductors', 'Continue TDS deposits and 24Q/26Q filings under the old section numbers', 'Update payroll and TDS software for section 392 and 393 references, new form numbers and the tax year label'],
-        ['Businesses and professionals', 'File ITR-3 or ITR-4 for AY 2026-27; keep contracts referencing 194C or 194J as they are', 'Update TDS clauses in new contracts, audit report references and lower deduction certificate applications'],
+        ['Salaried employees', 'Belated AY 2026-27 return by 31 December 2026 if not filed; third advance tax instalment by 15 December if you have other income', 'Expect Form 130 instead of Form 16 by June 2027; check it against payslips'],
+        ['Employers and deductors', 'File quarterly statements on Forms 138, 140 and 144 (Q3 due 31 January 2027); corrections for quarters up to March 2026 stay on 24Q and 26Q', 'Issue Form 130 and 131 certificates; quote sections 392 and 393 in payroll and contracts'],
+        ['Businesses and professionals', 'Belated or revised AY 2026-27 return; refer to the new section numbers in new contracts', 'First return under section 263, due 31 August 2027 if not audited'],
         ['Investors', 'No change to capital gains computation or reporting', 'Check that broker and RTA statements use tax year 2026-27 and new schedule references'],
         ['Anyone with a pending notice', 'Reply under the 1961 Act procedure; deadlines and sections in the notice are unchanged', 'Notices for tax year 2026-27 onwards will cite the new sections'],
       ],
@@ -198,12 +210,12 @@ export const guide: Guide = {
       type: 'callout',
       tone: 'info',
       title: 'Keep both numbers handy for a year',
-      text: 'During 2027 you will see old and new section numbers side by side in Form 26AS, TRACES, broker statements and software. Keep a printed mapping for the ten sections you use most, and confirm each against the notified Rules once, rather than trusting a screenshot from a forum.',
+      text: 'For the next year you will see old and new numbers side by side in Form 26AS (now Form 168), TRACES, broker statements and software. Keep a mapping for the ten sections you use most, such as the table above, rather than trusting a screenshot from a forum.',
     },
     { type: 'heading', text: 'What to do next', id: 'what-to-do-next' },
     {
       type: 'paragraph',
-      text: 'If your FY 2025-26 return is not yet filed, file it now under the 1961 Act before 31 December 2026 to limit the late fee and interest. For tax year 2026-27, continue paying advance tax on 15 September, 15 December and 15 March, and keep records as usual. When the notified Rules and the new forms are published, we will update this guide with the verified section and form mappings; until then treat the tables above as a reading aid, not a citation.',
+      text: 'If your FY 2025-26 return is not yet filed, file it now under the 1961 Act before 31 December 2026 to limit the late fee and interest. For tax year 2026-27, pay the third advance tax instalment by 15 December 2026 and the last by 15 March 2027, and keep records as usual. If you deduct TDS, make sure your software files on the new forms.',
     },
   ],
   faqs: [
@@ -213,7 +225,7 @@ export const guide: Guide = {
     },
     {
       q: 'Do I file my AY 2026-27 return under the new Act?',
-      a: 'No. The return for FY 2025-26 (AY 2026-27), due 31 July 2026 for non-audit cases and belated by 31 December 2026, is filed under the 1961 Act with the existing ITR forms, section numbers and Form 16.',
+      a: 'No. The return for FY 2025-26 (AY 2026-27), now belated by 31 December 2026 or revised by 31 March 2027, is filed under the 1961 Act with the existing ITR forms, section numbers and Form 16.',
     },
     {
       q: 'What is a tax year under the Income-tax Act 2025?',
@@ -221,15 +233,15 @@ export const guide: Guide = {
     },
     {
       q: 'Does the new Income-tax Act change tax slabs or rates?',
-      a: 'No. The Act does not alter slabs, the ₹75,000 standard deduction, the ₹60,000 rebate under 87A or capital gains rates. Rates are fixed each year by the Finance Act, so tax year 2026-27 rates come from the Finance Act 2026.',
+      a: 'No. Rates are fixed each year by the Finance Act, and Finance Act 2026 kept the slabs, the ₹75,000 standard deduction, the ₹60,000 rebate up to ₹12 lakh (now section 156) and capital gains rates unchanged for tax year 2026-27.',
     },
     {
       q: 'What is the new section number for 80C?',
-      a: 'Section 123 of the 2025 Act, according to the Act as passed and secondary sources. The ₹1.5 lakh limit and eligible investments are unchanged. Verify the number against the notified Rules and forms before quoting it.',
+      a: 'Section 123 of the Income-tax Act 2025, with the list of eligible investments in Schedule XV. The ₹1.5 lakh limit and eligible investments are unchanged, and the deduction is still available only under the old regime.',
     },
     {
       q: 'Will Form 16 be replaced?',
-      a: 'Draft Rules reported that the salary TDS certificate becomes Form 130 for tax year 2026-27 onwards, so the first one would be issued by June 2027. Form 16 for FY 2025-26, issued by 15 June 2026, is unaffected.',
+      a: 'Yes. Under the Income-tax Rules 2026 the salary TDS certificate is Form 130 for salary paid from 1 April 2026, so the first one is due by 15 June 2027. Form 16 for FY 2025-26, issued by 15 June 2026, is unaffected.',
     },
     {
       q: 'Is the old tax regime abolished by the Income-tax Act 2025?',
@@ -241,7 +253,7 @@ export const guide: Guide = {
     },
     {
       q: 'What should employers do to prepare for the new Act?',
-      a: 'Nothing for the FY 2025-26 cycle. From the 2027 filing season, update payroll and TDS software for the new section references (392 for salary, 393 for other TDS), the new form numbers and the tax year label, and verify these against the notified Rules.',
+      a: 'The change has already happened for them. TDS deducted from 1 April 2026 is reported on Forms 138 (salary), 140 (other residents) and 144 (non-residents), certificates become Forms 130 and 131, and contracts and payroll should cite section 392 for salary and section 393 for other TDS. Corrections for quarters up to March 2026 stay on the old forms.',
     },
   ],
   relatedServiceSlug: 'itr-salaried',

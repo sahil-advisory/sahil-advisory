@@ -144,7 +144,7 @@ export default function IncomeTaxCalculator() {
     <div className="grid gap-6 lg:grid-cols-2 lg:items-start">
       <div className="rounded-2xl border border-border bg-card p-5 sm:p-6 shadow-[var(--shadow-card)]">
         <h2 className="text-base font-bold text-navy-900">Your income and deductions</h2>
-        <p className="mt-1 text-xs text-muted">All figures for the full year FY {FY}.</p>
+        <p className="mt-1 text-xs text-muted">All figures for a full year: FY {FY}, and tax year 2026-27 (same slabs).</p>
         <div className="mt-4 space-y-4">
           <MoneyInput label="Gross annual income (salary before deductions)" value={gross} onChange={setGross} hint="Use gross salary from Form 16 Part B, plus any other income." />
           <div className="grid gap-4 sm:grid-cols-2">
@@ -180,7 +180,7 @@ export default function IncomeTaxCalculator() {
         <div className="rounded-2xl border border-border bg-card p-5 sm:p-6 shadow-[var(--shadow-card)]">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <h2 className="text-base font-bold text-navy-900">Old vs new regime</h2>
-            <span className="rounded-md border border-navy-100 bg-navy-100 px-2 py-0.5 text-[11px] font-bold uppercase tracking-wider text-navy-900">FY {FY}</span>
+            <span className="rounded-md border border-navy-100 bg-navy-100 px-2 py-0.5 text-[11px] font-bold uppercase tracking-wider text-navy-900">FY {FY} / TY 2026-27</span>
           </div>
           <p className="mt-2 text-sm text-text-2">
             {diff === 0 ? (

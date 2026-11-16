@@ -111,14 +111,14 @@ const LOGIC: Record<string, SectionLogic> = {
     threshold: 5_000_000,
     thresholdKind: 'perTransaction',
     amountLabel: 'Property consideration (or stamp duty value if higher)',
-    note: 'Applies when the consideration or stamp duty value is ₹50 lakh or more. Buyer deducts and files Form 26QB within 30 days of month end; no TAN needed.',
+    note: 'Applies when the consideration or stamp duty value is ₹50 lakh or more. Buyer deducts and files Form 26QB (Form 141 for payments from 1 April 2026) within 30 days of month end; no TAN needed.',
   },
   '194-IB': {
     rate: 2,
     threshold: 50_000,
     thresholdKind: 'perMonth',
     amountLabel: 'Monthly rent',
-    note: 'For individuals/HUFs not liable to tax audit. Deduct once in the last month of the year or tenancy on the total rent for the year and file Form 26QC.',
+    note: 'For individuals/HUFs not liable to tax audit. Deduct once in the last month of the year or tenancy on the total rent for the year and file Form 26QC (Form 141 for payments from 1 April 2026).',
   },
   '194Q': {
     rate: 0.1,
@@ -246,7 +246,7 @@ export default function TdsCalculator() {
         <div className="rounded-2xl border border-border bg-card p-5 sm:p-6 shadow-[var(--shadow-card)]">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <h2 className="text-base font-bold text-navy-900">TDS under section {meta.section}</h2>
-            <span className="rounded-md border border-navy-100 bg-navy-100 px-2 py-0.5 text-[11px] font-bold uppercase tracking-wider text-navy-900">FY {FY}</span>
+            <span className="rounded-md border border-navy-100 bg-navy-100 px-2 py-0.5 text-[11px] font-bold uppercase tracking-wider text-navy-900">FY {FY} / TY 2026-27</span>
           </div>
           <div className={`mt-4 flex items-start gap-2 rounded-xl border p-3 text-sm ${r.applies ? 'border-green-100 bg-green-50 text-green-700' : 'border-border bg-bg-alt text-text-2'}`}>
             {r.applies ? <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0" aria-hidden /> : <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-muted" aria-hidden />}
@@ -278,10 +278,10 @@ export default function TdsCalculator() {
             <Row label="Net payable to deductee" value={formatINR(r.net)} strong />
           </div>
           <div className="mt-4 rounded-lg border border-border bg-bg-alt/60 p-3 text-[11px] leading-relaxed text-muted">
-            <strong className="text-text-2">Assumptions:</strong> FY {FY} rates and thresholds as revised by Budget 2025. Without PAN (or with an inoperative PAN) TDS is at 20% or
+            <strong className="text-text-2">Assumptions:</strong> FY {FY} rates and thresholds as revised by Budget 2025; the thresholds carry into section 393 of the Income-tax Act 2025 for tax year 2026-27. Without PAN (or with an inoperative PAN) TDS is at 20% or
             the section rate, whichever is higher (5% for s.194Q). No surcharge or cess on TDS for resident payees. Deposit TDS by the {TDS.depositDay}th of the next month
             (30 April for March); interest {TDS.interestLateDeductionPct}% per month for late deduction and {TDS.interestLateDepositPct}% for late deposit; late-filing fee{' '}
-            {formatINR(TDS.sec234E_perDay)} per day u/s 234E. Lower-deduction certificates u/s 197 and Form 15G/15H are not modelled.
+            {formatINR(TDS.sec234E_perDay)} per day u/s 234E (section 427 from tax year 2026-27). Lower-deduction certificates u/s 197 and Form 15G/15H are not modelled.
           </div>
         </div>
       </div>

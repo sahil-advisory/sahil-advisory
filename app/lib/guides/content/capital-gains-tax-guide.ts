@@ -3,8 +3,8 @@ import type { Guide } from '../types'
 export const guide: Guide = {
   slug: 'capital-gains-tax-guide',
   cluster: 'capital-gains',
-  title: 'Capital Gains Tax in India FY 2025-26: Shares, Mutual Funds and Property',
-  h1: 'Capital Gains Tax in India FY 2025-26: Shares, Mutual Funds and Property',
+  title: 'Capital Gains Tax in India FY 2025-26 and 2026-27: Shares, Mutual Funds and Property',
+  h1: 'Capital Gains Tax in India FY 2025-26 and 2026-27: Shares, Mutual Funds and Property',
   metaTitle: 'Capital Gains Tax FY 2025-26: Shares, Funds, Property',
   metaDescription:
     'Capital gains tax FY 2025-26: holding periods, 20% STCG, 12.5% LTCG above ₹1.25 lakh, property at 12.5% or 20% indexed, sections 54 and 54F, loss set-off.',
@@ -20,9 +20,9 @@ export const guide: Guide = {
     'grandfathering ltcg',
   ],
   excerpt:
-    'A single reference for how shares, equity and debt mutual funds, property, gold and crypto are taxed in FY 2025-26, with the post-July 2024 rates, worked examples, reinvestment exemptions and loss rules.',
+    'A single reference for how shares, equity and debt mutual funds, property, gold and crypto are taxed in FY 2025-26 and tax year 2026-27, with the post-July 2024 rates, the new buyback rule, worked examples, reinvestment exemptions and loss rules.',
   datePublished: '2026-09-06',
-  dateModified: '2026-09-06',
+  dateModified: '2026-11-16',
   readMinutes: 14,
   sections: [
     {
@@ -32,6 +32,7 @@ export const guide: Guide = {
         'Property and most other assets become long-term after 24 months and are taxed at 12.5% without indexation. Resident individuals and HUFs who bought property before 23 July 2024 can instead pay 20% with indexation if that is lower.',
         'Debt mutual funds bought on or after 1 April 2023 are taxed at your slab rate regardless of holding period. Crypto is taxed at a flat 30% with no loss set-off.',
         'Long-term capital losses set off only against long-term gains; short-term losses set off against both. Unabsorbed losses carry forward for 8 years only if you file by the due date.',
+        'The rates are unchanged for tax year 2026-27 under the Income-tax Act 2025. The one change: from tax year 2026-27, buyback proceeds are taxed as capital gains for the shareholder, not as dividend.',
       ],
     },
     {
@@ -51,7 +52,7 @@ export const guide: Guide = {
     { type: 'heading', text: 'The July 2024 reset: one set of rates for everything', id: 'july-2024-changes' },
     {
       type: 'paragraph',
-      text: 'The Finance (No. 2) Act 2024 simplified capital gains from 23 July 2024. Long-term gains on every asset class are now taxed at 12.5% without indexation, short-term gains on listed equity moved from 15% to 20%, and the equity LTCG exemption rose from ₹1 lakh to ₹1.25 lakh. Holding periods were reduced to two categories: 12 months for listed securities and 24 months for everything else. FY 2025-26 is the first full year under these rules.',
+      text: 'The Finance (No. 2) Act 2024 simplified capital gains from 23 July 2024. Long-term gains on every asset class are now taxed at 12.5% without indexation, short-term gains on listed equity moved from 15% to 20%, and the equity LTCG exemption rose from ₹1 lakh to ₹1.25 lakh. Holding periods were reduced to two categories: 12 months for listed securities and 24 months for everything else. FY 2025-26 is the first full year under these rules, and the Finance Act 2026 kept the same rates and holding periods for tax year 2026-27. Under the Income-tax Act 2025, section 111A is now section 196, section 112A is now section 198, and other long-term gains at 12.5% without indexation fall under section 197.',
     },
     { type: 'heading', text: 'Holding periods and rates by asset', id: 'holding-periods-rates' },
     {
@@ -67,7 +68,7 @@ export const guide: Guide = {
         ['Unlisted shares, physical gold, jewellery, other capital assets', '24 months', 'Slab rate', '12.5%'],
         ['Crypto and other virtual digital assets', 'Not applicable', '30% flat u/s 115BBH', '30% flat u/s 115BBH'],
       ],
-      caption: 'Rates for transfers during FY 2025-26. Add 4% cess to every rate, and surcharge where total income exceeds ₹50 lakh (surcharge on 111A and 112A gains is capped at 15%).',
+      caption: 'Rates for transfers during FY 2025-26, unchanged for tax year 2026-27. Add 4% cess to every rate, and surcharge where total income exceeds ₹50 lakh (surcharge on 111A and 112A gains is capped at 15%).',
     },
     { type: 'heading', text: 'Listed shares and equity mutual funds', id: 'equity-shares-mutual-funds' },
     {
@@ -103,6 +104,17 @@ export const guide: Guide = {
       tone: 'info',
       title: 'The ₹1.25 lakh exemption resets every year',
       text: 'Investors with large equity holdings can book up to ₹1.25 lakh of long-term gains each March and reinvest, paying no tax and raising the cost base. The 87A rebate does not apply to 112A gains, so this harvesting is the main relief available.',
+    },
+    { type: 'heading', text: 'Share buybacks from tax year 2026-27', id: 'buyback' },
+    {
+      type: 'paragraph',
+      text: 'From tax year 2026-27, the amount a shareholder receives when a company buys back its shares is taxed as capital gains, not as dividend. The gain is worked out like any other sale of shares, so the holding period decides whether it is short-term or long-term and the normal rates above apply. Promoters pay additional tax on buyback gains, taking the effective rate to 22% for a corporate promoter and 30% for other promoters.',
+    },
+    {
+      type: 'callout',
+      tone: 'info',
+      title: 'Buybacks in FY 2025-26',
+      text: 'The capital gains treatment applies from tax year 2026-27. A buyback in FY 2025-26 is reported in the AY 2026-27 return under the rules that applied in that year, so check the date of the buyback before you compute the tax.',
     },
     { type: 'heading', text: 'Grandfathering for shares bought before 1 February 2018', id: 'grandfathering' },
     {
@@ -167,7 +179,7 @@ export const guide: Guide = {
       type: 'callout',
       tone: 'warning',
       title: 'Buyer TDS and advance tax',
-      text: 'The buyer must deduct 1% TDS under section 194-IA if the property price is ₹50 lakh or more, and file Form 26QB. The seller still has to pay the balance tax as advance tax in the instalment following the sale, or face interest under section 234C.',
+      text: 'The buyer must deduct 1% TDS under section 194-IA (now section 393(1) Sl.3(i) of the Income-tax Act 2025) if the higher of the property price and the stamp duty value is ₹50 lakh or more. Payments up to 31 March 2026 were reported in Form 26QB; from 1 April 2026 the buyer files Form 141, the single challan-cum-statement under the Income-tax Rules 2026. The seller still has to pay the balance tax as advance tax in the instalment following the sale, or face interest under section 234C.',
     },
     { type: 'heading', text: 'Exemptions: sections 54, 54F and 54EC', id: 'exemptions-54-54f-54ec' },
     {
@@ -182,7 +194,7 @@ export const guide: Guide = {
     },
     {
       type: 'paragraph',
-      text: 'If you cannot buy the new house before the return due date, deposit the unutilised gain in a Capital Gains Account Scheme account with a bank before 31 July 2026 to keep the exemption alive. Money left in the account after the time limit becomes taxable in the year the limit expires.',
+      text: 'If you cannot buy the new house before the return due date, deposit the unutilised gain in a Capital Gains Account Scheme account with a bank before that due date to keep the exemption alive. For AY 2026-27 the due date for non-business returns was 31 July 2026 and has passed; for gains in tax year 2026-27 it is 31 July 2027. Money left in the account after the time limit becomes taxable in the year the limit expires.',
     },
     {
       type: 'service-card',
@@ -240,13 +252,13 @@ export const guide: Guide = {
     { type: 'heading', text: 'What to do next', id: 'what-to-do-next' },
     {
       type: 'paragraph',
-      text: 'Download your broker tax P&L, mutual fund capital gains statements and, if you sold property, the sale deed and original purchase documents. Run each asset through the capital gains calculator, decide the indexed versus 12.5% route for property, check whether a section 54 or 54EC investment is still within its time limit, and file ITR-2 by the due date so that any losses stay available for the next 8 years.',
+      text: 'Download your broker tax P&L, mutual fund capital gains statements and, if you sold property, the sale deed and original purchase documents. Run each asset through the capital gains calculator, decide the indexed versus 12.5% route for property, check whether a section 54 or 54EC investment is still within its time limit, and file by the due date so that any losses stay available for the next 8 years. The AY 2026-27 due date of 31 July 2026 has passed; a belated return can still be filed until 31 December 2026 with the section 234F fee, but a loss in a belated return cannot be carried forward. For sales in tax year 2026-27, the due date is 31 July 2027 for non-business returns.',
     },
   ],
   faqs: [
     {
       q: 'What is the LTCG tax rate on shares for FY 2025-26?',
-      a: '12.5% on long-term gains above ₹1.25 lakh in a financial year, plus 4% cess. Long-term means listed shares or equity mutual funds held for more than 12 months.',
+      a: '12.5% on long-term gains above ₹1.25 lakh in a financial year, plus 4% cess. The rate is the same for tax year 2026-27, where it sits in section 198 of the Income-tax Act 2025. Long-term means listed shares or equity mutual funds held for more than 12 months.',
     },
     {
       q: 'What is the STCG tax rate on equity?',
@@ -279,6 +291,10 @@ export const guide: Guide = {
     {
       q: 'Do I need to pay advance tax on capital gains?',
       a: 'Yes if total tax after TDS exceeds ₹10,000. Because gains cannot be predicted, section 234C interest is waived as long as you pay the tax on the gain in the instalment immediately after the sale, or by 31 March if the sale is after 15 March.',
+    },
+    {
+      q: 'How is a share buyback taxed from 2026-27?',
+      a: 'From tax year 2026-27 the buyback proceeds are taxed as capital gains in the hands of the shareholder, not as dividend, at the normal short-term or long-term rate. Promoters pay additional tax, taking the effective rate to 22% for corporate promoters and 30% for others.',
     },
     {
       q: 'Which ITR form is required for capital gains?',

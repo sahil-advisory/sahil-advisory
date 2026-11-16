@@ -113,12 +113,13 @@ export const LATE_FEES = {
 export const ADVANCE_TAX = {
   threshold: 10_000,
   instalments: [
-    { date: '2025-06-15', cumulativePct: 15, label: '15 June' },
-    { date: '2025-09-15', cumulativePct: 45, label: '15 September' },
-    { date: '2025-12-15', cumulativePct: 75, label: '15 December' },
-    { date: '2026-03-15', cumulativePct: 100, label: '15 March' },
+    // Tax year 2026-27: instalment rule unchanged (s.408 of the 2025 Act).
+    { date: '2026-06-15', cumulativePct: 15, label: '15 June' },
+    { date: '2026-09-15', cumulativePct: 45, label: '15 September' },
+    { date: '2026-12-15', cumulativePct: 75, label: '15 December' },
+    { date: '2027-03-15', cumulativePct: 100, label: '15 March' },
   ],
-  presumptive: { date: '2026-03-15', cumulativePct: 100 },
+  presumptive: { date: '2027-03-15', cumulativePct: 100 },
 }
 
 export const HRA = {

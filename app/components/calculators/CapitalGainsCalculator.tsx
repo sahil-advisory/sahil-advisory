@@ -256,7 +256,7 @@ export default function CapitalGainsCalculator() {
         <div className="rounded-2xl border border-border bg-card p-5 sm:p-6 shadow-[var(--shadow-card)]">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <h2 className="text-base font-bold text-navy-900">Capital gains tax</h2>
-            <span className="rounded-md border border-navy-100 bg-navy-100 px-2 py-0.5 text-[11px] font-bold uppercase tracking-wider text-navy-900">FY {FY}</span>
+            <span className="rounded-md border border-navy-100 bg-navy-100 px-2 py-0.5 text-[11px] font-bold uppercase tracking-wider text-navy-900">FY {FY} / TY 2026-27</span>
           </div>
           {!r.valid ? <p className="mt-3 rounded-lg border border-red-100 bg-red-50 p-3 text-xs text-red-600">Enter a sale date after the purchase date.</p> : null}
           <div className="mt-4 grid grid-cols-2 gap-3">

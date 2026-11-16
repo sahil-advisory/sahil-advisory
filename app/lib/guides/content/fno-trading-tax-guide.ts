@@ -21,7 +21,7 @@ export const guide: Guide = {
   excerpt:
     'F&O and intraday profits are business income, not capital gains. This guide explains turnover, the 44AD decision, when a tax audit is needed, how losses are set off and how to fill ITR-3 for FY 2025-26.',
   datePublished: '2026-09-06',
-  dateModified: '2026-09-06',
+  dateModified: '2026-11-16',
   readMinutes: 11,
   sections: [
     {
@@ -30,7 +30,8 @@ export const guide: Guide = {
         'F&O profit or loss is non-speculative business income. Intraday equity profit or loss is speculative business income. Both go in ITR-3, never ITR-1 or ITR-2.',
         'Turnover for F&O is the sum of absolute profits and losses on every trade, plus option premium received on contracts that were not squared off. Contract value is not turnover.',
         'Tax audit is required only above ₹10 crore turnover when 95% or more of receipts and payments are digital (₹1 crore otherwise), or when you fall into the 44AD opt-out trap.',
-        'F&O losses can be set off against any income except salary and carried forward for 8 years, but only if the return is filed by 31 July 2026 (31 October 2026 for audit cases).',
+        'F&O losses can be set off against any income except salary and carried forward for 8 years, but only if the return is filed by the due date. For AY 2026-27 that was 31 August 2026 for non-audit traders (now passed) and is 21 November 2026 for audit cases, as extended by CBDT Circular 07/2026.',
+        'STT on derivatives went up from 1 April 2026: 0.05% on futures (was 0.02%) and 0.15% on the sale of options premium (was 0.1%). Every trade in tax year 2026-27 carries the higher cost.',
       ],
     },
     {
@@ -38,7 +39,7 @@ export const guide: Guide = {
       stats: [
         { label: 'Audit threshold (digital)', value: '₹10 crore', note: 'Turnover, with 95% digital receipts and payments' },
         { label: 'Loss carry forward', value: '8 years', note: 'F&O (non-speculative). Intraday: 4 years' },
-        { label: 'ITR-3 due date', value: '31 Jul 2026', note: '31 Oct 2026 if tax audit applies' },
+        { label: 'ITR-3 due date, AY 2026-27', value: '31 Aug 2026', note: 'Passed. Audit cases: 21 Nov 2026 (extended)' },
         { label: 'Advance tax trigger', value: '₹10,000', note: 'Tax liability after TDS for the year' },
       ],
     },
@@ -114,6 +115,34 @@ export const guide: Guide = {
         'Open positions on 31 March 2026: mark-to-market on open futures is generally recognised only on settlement, but be consistent from year to year.',
       ],
     },
+    { type: 'heading', text: 'STT rates from 1 April 2026', id: 'stt-rates' },
+    {
+      type: 'paragraph',
+      text: 'The Finance Act 2026 raised securities transaction tax on derivatives from 1 April 2026. Your FY 2025-26 tax P&L reflects the old rates. Trades from April 2026 onwards fall in tax year 2026-27, the first year under the Income-tax Act 2025, and carry the new ones. A high-frequency trader should budget for the extra cost, because it is charged on every trade whether it makes money or not.',
+    },
+    {
+      type: 'table',
+      head: ['Transaction', 'Up to 31 March 2026', 'From 1 April 2026'],
+      rows: [
+        ['Futures', '0.02%', '0.05%'],
+        ['Options, sale of premium', '0.1%', '0.15%'],
+        ['Options exercised', '0.125%', '0.15%'],
+      ],
+      caption: 'STT on exchange-traded derivatives, before and after Finance Act 2026',
+    },
+    {
+      type: 'example',
+      title: 'STT on one month of trading, old and new rates',
+      lines: [
+        { label: 'Futures contract value subject to STT', value: '₹50,00,000' },
+        { label: 'STT at 0.02% (up to 31 March 2026)', value: '₹1,000' },
+        { label: 'STT at 0.05% (from 1 April 2026)', value: '₹2,500' },
+        { label: 'Options premium sold', value: '₹2,00,000' },
+        { label: 'STT at 0.1% (up to 31 March 2026)', value: '₹200' },
+        { label: 'STT at 0.15% (from 1 April 2026)', value: '₹300' },
+        { label: 'Extra STT for the month (1,500 plus 100)', value: '₹1,600', strong: true },
+      ],
+    },
     { type: 'heading', text: 'Should you opt for presumptive taxation under 44AD?', id: '44ad-option' },
     {
       type: 'paragraph',
@@ -144,11 +173,11 @@ export const guide: Guide = {
         ['Opted 44AD earlier, now declaring below 6% and income above ₹4 lakh (new regime exemption)', 'Any', 'Yes, under 44AB(e)'],
         ['Loss year, never opted for 44AD', 'Up to ₹10 crore', 'No'],
       ],
-      caption: 'Tax audit triggers for traders, FY 2025-26',
+      caption: 'Tax audit triggers for traders, FY 2025-26 and tax year 2026-27 (limits unchanged)',
     },
     {
       type: 'paragraph',
-      text: 'A tax audit under section 44AB can only be signed by a Chartered Accountant. The audit report in Form 3CB and 3CD is due by 30 September 2026 and the audited ITR-3 by 31 October 2026. Books of account are separately mandatory under section 44AA when business income exceeds ₹2.5 lakh or turnover exceeds ₹25 lakh, even without an audit.',
+      text: 'A tax audit under section 44AB can only be signed by a Chartered Accountant. For AY 2026-27, CBDT Circular 07/2026 extended the audit report in Form 3CB and 3CD from 30 September to 21 October 2026 and the audited ITR-3 from 31 October to 21 November 2026. From tax year 2026-27 the tax audit provision is section 63 of the Income-tax Act 2025, and Forms 3CA, 3CB and 3CD are replaced by Form 26 under the Income-tax Rules 2026. Books of account are separately mandatory under section 44AA when business income exceeds ₹2.5 lakh or turnover exceeds ₹25 lakh, even without an audit.',
     },
     { type: 'heading', text: 'Setting off and carrying forward trading losses', id: 'loss-set-off' },
     {
@@ -183,12 +212,12 @@ export const guide: Guide = {
       type: 'callout',
       tone: 'warning',
       title: 'File on time or lose the carry forward',
-      text: 'Section 80 read with section 139(3) allows carry forward of business losses only when the return is filed by the due date. A belated return filed on 15 August 2026 keeps the same-year set-off but forfeits the ₹90,000 and ₹40,000 carry forward in the example above.',
+      text: 'Section 80 read with section 139(3) allows carry forward of business losses only when the return is filed by the due date. For AY 2026-27 the due date for a non-audit trader was 31 August 2026. A belated return filed after that, up to 31 December 2026, keeps the same-year set-off but forfeits the ₹90,000 and ₹40,000 carry forward in the example above.',
     },
     { type: 'heading', text: 'Computing tax and advance tax on trading profit', id: 'tax-and-advance-tax' },
     {
       type: 'paragraph',
-      text: 'Trading profit is added to your other income and taxed at slab rates. Under the new regime for FY 2025-26 the slabs are 0% up to ₹4 lakh, 5% from ₹4 to ₹8 lakh, 10% from ₹8 to ₹12 lakh, 15% from ₹12 to ₹16 lakh, 20% from ₹16 to ₹20 lakh, 25% from ₹20 to ₹24 lakh and 30% above, plus 4% cess. The section 87A rebate of up to ₹60,000 makes tax nil where total income is up to ₹12 lakh. The ₹75,000 standard deduction applies only to salary, not trading income.',
+      text: 'Trading profit is added to your other income and taxed at slab rates. Under the new regime for FY 2025-26, and unchanged for tax year 2026-27, the slabs are 0% up to ₹4 lakh, 5% from ₹4 to ₹8 lakh, 10% from ₹8 to ₹12 lakh, 15% from ₹12 to ₹16 lakh, 20% from ₹16 to ₹20 lakh, 25% from ₹20 to ₹24 lakh and 30% above, plus 4% cess. The section 87A rebate (section 156 from tax year 2026-27) of up to ₹60,000 makes tax nil where total income is up to ₹12 lakh. The ₹75,000 standard deduction applies only to salary, not trading income.',
     },
     {
       type: 'example',
@@ -209,7 +238,7 @@ export const guide: Guide = {
     },
     {
       type: 'paragraph',
-      text: 'Advance tax applies whenever the tax liability after TDS exceeds ₹10,000. Traders using 44AD pay the whole amount in one instalment by 15 March. Missing an instalment attracts interest at 1% per month under section 234C, and a shortfall at year end attracts 1% per month under 234B until the balance is paid.',
+      text: 'Advance tax applies whenever the tax liability after TDS exceeds ₹10,000. Traders using 44AD pay the whole amount in one instalment by 15 March. Missing an instalment attracts interest at 1% per month under section 234C, and a shortfall at year end attracts 1% per month under 234B until the balance is paid. From tax year 2026-27 these are sections 425 and 424 of the Income-tax Act 2025, with the same four instalment dates.',
     },
     {
       type: 'service-card',
@@ -244,13 +273,13 @@ export const guide: Guide = {
         'Setting off intraday losses against F&O profit, which is not allowed.',
         'Claiming the ₹75,000 standard deduction against trading income.',
         'Choosing 44AD in a profit year without planning for the opt-out consequences in a loss year.',
-        'Filing after 31 July 2026 and losing the 8-year carry forward.',
+        'Missing the due date (31 August 2026 for non-audit traders for AY 2026-27) and losing the 8-year carry forward.',
       ],
     },
     { type: 'heading', text: 'What to do next', id: 'what-to-do-next' },
     {
       type: 'paragraph',
-      text: 'Download the FY 2025-26 tax P&L from every broker you used, list your other income, and compute turnover the ICAI way before deciding on 44AD. If turnover is under ₹10 crore and you have never opted for 44AD, you can file ITR-3 with a loss and no audit. If you are unsure, an expert-assisted trader return gets the turnover, set-off and schedules right the first time, and audit-tier work goes to an empanelled Chartered Accountant.',
+      text: 'For AY 2026-27, audit cases can still file by 21 November 2026. Non-audit traders who missed 31 August 2026 can file a belated return until 31 December 2026 with the section 234F fee of ₹5,000 (₹1,000 if total income is up to ₹5 lakh), but the loss carry forward is gone. For tax year 2026-27, keep the tax P&L from every broker you use, budget for the higher STT and compute turnover the ICAI way before deciding on 44AD. If turnover is under ₹10 crore and you have never opted for 44AD, you can file with a loss and no audit. If you are unsure, an expert-assisted trader return gets the turnover, set-off and schedules right the first time, and audit-tier work goes to an empanelled Chartered Accountant.',
     },
   ],
   faqs: [
@@ -284,7 +313,11 @@ export const guide: Guide = {
     },
     {
       q: 'What is the last date to file ITR-3 for F&O traders?',
-      a: '31 July 2026 for non-audit cases and 31 October 2026 where a tax audit applies, with the audit report due by 30 September 2026. A belated return can be filed until 31 December 2026 but forfeits loss carry forward.',
+      a: 'For AY 2026-27: 31 August 2026 for non-audit cases, a permanent change made by the Finance Act 2026 (now passed), and 21 November 2026 where a tax audit applies, with the audit report due by 21 October 2026 under CBDT Circular 07/2026. A belated return can be filed until 31 December 2026 but forfeits loss carry forward. For tax year 2026-27 the dates are 31 August 2027 and 31 October 2027.',
+    },
+    {
+      q: 'What is the STT on F&O trades from 1 April 2026?',
+      a: '0.05% on futures, up from 0.02%, and 0.15% on the sale of options premium, up from 0.1%. Exercised options also attract 0.15%, up from 0.125%. The new rates apply to every trade in tax year 2026-27.',
     },
     {
       q: 'Do I have to pay advance tax on F&O profits?',

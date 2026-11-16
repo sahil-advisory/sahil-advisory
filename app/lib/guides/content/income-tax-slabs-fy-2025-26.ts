@@ -7,17 +7,18 @@ import type { Guide } from '../types'
 export const guide: Guide = {
   slug: 'income-tax-slabs-fy-2025-26',
   cluster: 'tax-saving',
-  title: 'Income Tax Slabs FY 2025-26 (AY 2026-27): New and Old Regime Rates',
-  h1: 'Income Tax Slabs FY 2025-26 (AY 2026-27): New Regime and Old Regime Rates',
-  metaTitle: 'Income Tax Slabs FY 2025-26 (AY 2026-27): New and Old Rates',
+  title: 'Income Tax Slabs FY 2025-26 (AY 2026-27) and FY 2026-27: New and Old Regime Rates',
+  h1: 'Income Tax Slabs FY 2025-26 (AY 2026-27) and FY 2026-27: New Regime and Old Regime Rates',
+  metaTitle: 'Income Tax Slabs FY 2025-26 and 2026-27: New and Old Regime',
   metaDescription:
-    'Income tax slab rates for FY 2025-26 under the new and old regime, with the 87A rebate, standard deduction, surcharge, cess and worked examples at ₹7L, ₹12.75L, ₹15L and ₹25L.',
+    'Income tax slabs for FY 2025-26 and FY 2026-27 (unchanged) under the new and old regime, with the rebate, standard deduction, surcharge, cess and examples.',
   keywords: [
     'income tax slab 2025-26',
     'income tax slabs fy 2025-26',
     'new tax regime slab rates',
     'old tax regime slabs',
     'income tax slab ay 2026-27',
+    'income tax slab fy 2026-27',
     'income tax slab for senior citizens',
     'tax free income limit 2025-26',
     'income tax rates india 2025',
@@ -25,9 +26,9 @@ export const guide: Guide = {
     '87a rebate 12 lakh',
   ],
   excerpt:
-    'Under the new regime, income is taxed in seven slabs from nil to 30%, and the section 87A rebate makes salary up to ₹12.75 lakh tax-free. The old regime keeps its four slabs and full deductions. Every rate, with worked examples.',
+    'Under the new regime, income is taxed in seven slabs from nil to 30%, and the section 87A rebate makes salary up to ₹12.75 lakh tax-free. The old regime keeps its four slabs and full deductions. The Finance Act 2026 kept every rate unchanged for tax year 2026-27. Every rate, with worked examples.',
   datePublished: '2026-09-13',
-  dateModified: '2026-09-13',
+  dateModified: '2026-11-16',
   readMinutes: 11,
   relatedServiceSlug: 'itr-salaried',
   relatedGuides: ['old-vs-new-tax-regime', 'hra-exemption', 'itr-filing-guide-ay-2026-27'],
@@ -40,6 +41,7 @@ export const guide: Guide = {
         'The section 87A rebate under the new regime is ₹60,000 for taxable income up to ₹12 lakh. With the ₹75,000 standard deduction, a salary of ₹12.75 lakh pays nothing.',
         'Old regime slabs are unchanged: nil to ₹2.5 lakh, 5% to ₹5 lakh, 20% to ₹10 lakh, 30% above. Senior citizens get a higher nil band only under the old regime.',
         'Health and education cess of 4% applies on the tax in both regimes. Surcharge starts above ₹50 lakh.',
+        'Confirmed: the Finance Act 2026 kept all of these slabs, the rebate and the standard deduction unchanged for tax year 2026-27 (FY 2026-27), the first year under the Income-tax Act 2025.',
       ],
     },
     {
@@ -56,11 +58,11 @@ export const guide: Guide = {
     { type: 'heading', id: 'new-regime-slabs', text: 'New regime slabs for FY 2025-26' },
     {
       type: 'paragraph',
-      text: 'The new regime under section 115BAC is the default. Budget 2025 rewrote its slabs and these are the rates for income earned between 1 April 2025 and 31 March 2026, which you report in AY 2026-27. The same slabs apply to everyone regardless of age.',
+      text: 'The new regime under section 115BAC is the default. Budget 2025 rewrote its slabs and these are the rates for income earned between 1 April 2025 and 31 March 2026, which you report in AY 2026-27. The Finance Act 2026 kept the same slabs for tax year 2026-27 (1 April 2026 to 31 March 2027), where the new regime is section 202 of the Income-tax Act 2025. The same slabs apply to everyone regardless of age.',
     },
     {
       type: 'table',
-      caption: 'New regime, FY 2025-26 (AY 2026-27). Taxable income after the standard deduction.',
+      caption: 'New regime, FY 2025-26 (AY 2026-27) and tax year 2026-27. Taxable income after the standard deduction.',
       head: ['Taxable income', 'Rate', 'Tax at the top of the slab (cumulative)'],
       rows: [
         ['Up to ₹4,00,000', '0%', '₹0'],
@@ -84,7 +86,7 @@ export const guide: Guide = {
     },
     {
       type: 'table',
-      caption: 'Old regime, FY 2025-26, by age on the last day of the financial year.',
+      caption: 'Old regime, FY 2025-26 and tax year 2026-27, by age on the last day of the financial year.',
       head: ['Taxable income', 'Below 60', '60 to 79 (senior)', '80 and above (super senior)'],
       rows: [
         ['Up to ₹2,50,000', '0%', '0%', '0%'],
@@ -104,7 +106,7 @@ export const guide: Guide = {
     { type: 'heading', id: 'rebate-87a', text: 'Section 87A rebate and marginal relief' },
     {
       type: 'paragraph',
-      text: 'The rebate is what makes the headline "no tax up to ₹12 lakh" true. Under the new regime, if your taxable income is ₹12 lakh or less, the tax computed from the slabs is reduced by up to ₹60,000. Slab tax on exactly ₹12 lakh is ₹60,000, so it goes to nil. Under the old regime the rebate is ₹12,500 and applies only up to ₹5 lakh taxable.',
+      text: 'The rebate is what makes the headline "no tax up to ₹12 lakh" true. Under the new regime, if your taxable income is ₹12 lakh or less, the tax computed from the slabs is reduced by up to ₹60,000. Slab tax on exactly ₹12 lakh is ₹60,000, so it goes to nil. Under the old regime the rebate is ₹12,500 and applies only up to ₹5 lakh taxable. From tax year 2026-27 the rebate is section 156 of the Income-tax Act 2025, with the same amounts and marginal relief.',
     },
     {
       type: 'paragraph',
@@ -137,7 +139,7 @@ export const guide: Guide = {
       type: 'list',
       items: [
         'Standard deduction of ₹75,000 for salary and pension income (₹50,000 in the old regime).',
-        'Employer contribution to NPS under section 80CCD(2), up to 14% of basic salary.',
+        'Employer contribution to NPS under section 80CCD(2) (section 124(1)-(2) from tax year 2026-27), up to 14% of basic salary.',
         'Interest on a home loan for a let-out property, set off against the rent.',
         'Family pension deduction of one-third, up to ₹25,000.',
         'Transport and conveyance allowances for specially abled employees, and reimbursements for official travel.',
@@ -155,7 +157,7 @@ export const guide: Guide = {
     },
     {
       type: 'table',
-      caption: 'Surcharge rates, FY 2025-26. Marginal relief also applies at each threshold so a small step over it cannot cost more than the extra income.',
+      caption: 'Surcharge rates, FY 2025-26 and tax year 2026-27. Marginal relief also applies at each threshold so a small step over it cannot cost more than the extra income.',
       head: ['Taxable income', 'New regime', 'Old regime'],
       rows: [
         ['₹50 lakh to ₹1 crore', '10%', '10%'],
@@ -231,7 +233,7 @@ export const guide: Guide = {
     { type: 'heading', id: 'fy-2026-27', text: 'Do the slabs change for FY 2026-27?' },
     {
       type: 'paragraph',
-      text: 'From 1 April 2026 the Income-tax Act 2025 replaces the 1961 Act for tax year 2026-27. It renumbers sections and simplifies language, and the reported position is that it carries the FY 2025-26 slab rates forward unchanged. Budget 2026 is also reported to have left the slabs alone. Treat both as reported rather than confirmed until the Rules are notified; this page is updated within a day of any change, and the date at the top is when it was last checked.',
+      text: 'No. From 1 April 2026 the Income-tax Act 2025 replaces the 1961 Act for tax year 2026-27, and the Finance Act 2026 kept the FY 2025-26 rates unchanged. The new regime, now section 202, remains the default with the same seven slabs. The rebate, now section 156, is still ₹60,000 up to ₹12 lakh with marginal relief. The standard deduction stays at ₹75,000 (₹50,000 in the old regime), the family pension deduction at ₹25,000 (₹15,000 in the old regime) and the employer NPS limit at 14% in the new regime. The old regime is still available by opting out, with the same slabs and senior citizen bands. Surcharge and the 4% cess are also unchanged, so every table and example on this page holds for FY 2026-27.',
     },
 
     { type: 'heading', id: 'what-to-do-next', text: 'What to do next' },
@@ -242,14 +244,14 @@ export const guide: Guide = {
   ],
   faqs: [
     { q: 'What are the income tax slabs for FY 2025-26 under the new regime?', a: 'Nil up to ₹4 lakh, 5% from ₹4 to 8 lakh, 10% from ₹8 to 12 lakh, 15% from ₹12 to 16 lakh, 20% from ₹16 to 20 lakh, 25% from ₹20 to 24 lakh, and 30% above ₹24 lakh. Cess of 4% applies on the tax.' },
-    { q: 'Is income up to ₹12 lakh tax-free in FY 2025-26?', a: 'Yes, under the new regime. Taxable income up to ₹12 lakh attracts a rebate of up to ₹60,000 under section 87A, which cancels the slab tax entirely. For a salaried person the ₹75,000 standard deduction pushes the tax-free salary to ₹12.75 lakh.' },
+    { q: 'Is income up to ₹12 lakh tax-free in FY 2025-26?', a: 'Yes, under the new regime, and the same holds for FY 2026-27. Taxable income up to ₹12 lakh attracts a rebate of up to ₹60,000 under section 87A, which cancels the slab tax entirely. For a salaried person the ₹75,000 standard deduction pushes the tax-free salary to ₹12.75 lakh.' },
     { q: 'What are the old regime slabs for FY 2025-26?', a: 'Nil up to ₹2.5 lakh, 5% from ₹2.5 to 5 lakh, 20% from ₹5 to 10 lakh, and 30% above ₹10 lakh. Senior citizens aged 60 to 79 get a nil band up to ₹3 lakh, and those 80 and above up to ₹5 lakh.' },
     { q: 'What is the standard deduction for FY 2025-26?', a: '₹75,000 under the new regime and ₹50,000 under the old regime, for salary and pension income. It is applied automatically; no proof is needed.' },
     { q: 'Which regime is the default?', a: 'The new regime. If you do nothing, your employer deducts TDS on new regime slabs and your return is filed under it. Salaried taxpayers can switch to the old regime in the return each year; those with business income need Form 10-IEA.' },
     { q: 'What is marginal relief under section 87A?', a: 'A cap that stops a small crossing of ₹12 lakh from creating a large tax bill. Your tax cannot exceed the amount by which taxable income exceeds ₹12 lakh. At ₹12.10 lakh taxable, tax is ₹10,000 plus cess instead of ₹61,500.' },
     { q: 'Do senior citizens get different slabs in the new regime?', a: 'No. The new regime uses the same seven slabs for every age. The higher nil bands of ₹3 lakh and ₹5 lakh for seniors and super seniors exist only in the old regime.' },
     { q: 'When does surcharge apply?', a: 'Above ₹50 lakh of taxable income: 10% of the tax up to ₹1 crore, 15% up to ₹2 crore, and 25% above that. The old regime adds a 37% rate above ₹5 crore; the new regime caps surcharge at 25%.' },
-    { q: 'Are the slabs the same for AY 2026-27 and FY 2025-26?', a: 'Yes. FY 2025-26 is the year the income is earned; AY 2026-27 is the year you file the return for it, by 31 July 2026. The slabs on this page apply to that return.' },
-    { q: 'Will the slabs change under the Income-tax Act 2025?', a: 'The 2025 Act takes effect from tax year 2026-27 and is reported to carry the current slab rates forward unchanged, renumbering the sections. Verify against the notified Rules before relying on it; this page is updated when they are published.' },
+    { q: 'Are the slabs the same for AY 2026-27 and FY 2025-26?', a: 'Yes. FY 2025-26 is the year the income is earned; AY 2026-27 is the year you file the return for it. The due date was 31 July 2026 for most individuals and 31 August 2026 for non-audit business or professional income, and both have passed; a belated return can be filed until 31 December 2026. The slabs on this page apply to that return.' },
+    { q: 'Did the slabs change for FY 2026-27 under the Income-tax Act 2025?', a: 'No. The Finance Act 2026 kept the same slabs for tax year 2026-27, the first year under the 2025 Act. The new regime is now section 202 and the rebate section 156, with the same ₹60,000 rebate up to ₹12 lakh and the same ₹75,000 standard deduction.' },
   ],
 }
