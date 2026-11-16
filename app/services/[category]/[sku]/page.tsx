@@ -34,9 +34,12 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const { category, sku } = await params
   const s = getService(sku)
   if (!s || s.category !== category) return {}
-  const priceTxt = s.price === null ? 'Fixed quote after free triage' : s.price === 0 ? 'Free' : `${s.priceFrom ? 'from ' : ''}₹${s.price.toLocaleString('en-IN')}${unitSuffix(s.unit) ? ' ' + unitSuffix(s.unit).replace('/ ', 'per ') : ''}`
+  const priceTxt = s.price === null ? (s.quoteLabel ?? 'Fixed quote after free triage') : s.price === 0 ? 'Free' : `${s.priceFrom ? 'from ' : ''}₹${s.price.toLocaleString('en-IN')}${unitSuffix(s.unit) ? ' ' + unitSuffix(s.unit).replace('/ ', 'per ') : ''}`
+  // Name plus price when it fits in 60 characters, otherwise the name alone.
+  // Slicing the combined string left titles ending in "| from" or "| Fixed quote aft".
+  const full = `${s.name} | ${priceTxt}`
   return buildMetadata({
-    title: `${s.name} | ${priceTxt}`.slice(0, 60),
+    title: full.length <= 60 ? full : s.name,
     // No manual slice here: buildMetadata clamps at a word boundary, and
     // slicing first can leave a dangling fragment such as a bare "10".
     description: `${s.shortDesc} ${s.whoFor}.`,
@@ -69,7 +72,7 @@ export default async function SkuPage({ params }: { params: Promise<Params> }) {
       serviceType: c.name,
       description: s.longDesc,
       provider: { '@id': ORG_ID },
-      areaServed: { '@type': 'Country', name: 'India' },
+      areaServed: (s.areaServed ?? ['India']).map((name) => ({ '@type': 'Country', name })),
       ...(s.price !== null
         ? {
             offers: {
@@ -136,7 +139,7 @@ export default async function SkuPage({ params }: { params: Promise<Params> }) {
 
       <TrustStrip items={c.trust} />
 
-      <PlanDetails service={s} />
+      <PlanDetails service={s} approvalNote={c.approvalNote} />
 
       <section className="bg-bg-alt py-16 lg:py-20">
         <Container>
@@ -146,7 +149,7 @@ export default async function SkuPage({ params }: { params: Promise<Params> }) {
 
       {(calcs.length > 0 || guides.length > 0) && (
         <Container className="py-16 lg:py-20">
-          <SectionHeading align="left" eyebrow="Before you start" title="Estimate first, then file" />
+          <SectionHeading align="left" eyebrow="Before you start" title={c.approvalNote ? 'Read before you start' : 'Estimate first, then file'} />
           <div className="mt-8 grid gap-4 md:grid-cols-3">
             {calcs.map((k) => (
               <CalculatorCard key={k.slug} calc={k} />

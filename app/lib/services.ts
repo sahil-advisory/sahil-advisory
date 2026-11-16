@@ -2,7 +2,7 @@
 // through when it differs from "price". All prices are launch proposals
 // pending owner sign-off (see docs/PROJECT.md).
 
-export type ServiceCategoryId = 'itr' | 'gst' | 'tds' | 'registrations' | 'notices' | 'audit'
+export type ServiceCategoryId = 'itr' | 'gst' | 'tds' | 'registrations' | 'notices' | 'audit' | 'accounting' | 'loans'
 export type Unit = 'one_time' | 'month' | 'quarter' | 'year' | 'session'
 
 export interface Faq {
@@ -31,6 +31,12 @@ export interface Service {
   keywords: string[]
   relatedGuides?: string[]
   relatedCalculators?: string[]
+  // Countries for the Service schema. Defaults to India; set only for plans
+  // genuinely sold abroad (global accounting).
+  areaServed?: string[]
+  // ISO date the page went live, for an honest sitemap lastmod. Omit for
+  // pages that predate the field (they use STATIC_DATE).
+  dateAdded?: string
 }
 
 export interface ServiceCategory {
@@ -52,6 +58,10 @@ export interface ServiceCategory {
   // Four facts a visitor checks before choosing: due date, cost of missing
   // it, forms, speed. `deadlineKey` renders the live next due date.
   facts: CategoryFact[]
+  // Replaces the "draft computation shared before filing" line on plan pages
+  // where nothing is filed (bookkeeping, loan proposals).
+  approvalNote?: string
+  dateAdded?: string
 }
 
 export type CategoryFactIcon = 'calendar' | 'fee' | 'form' | 'speed' | 'check' | 'shield' | 'rupee' | 'scale'
@@ -340,6 +350,107 @@ export const CATEGORIES: ServiceCategory[] = [
       { label: 'Signed by', value: 'Empanelled CA', hint: 'Cost audit signed by our CMA', icon: 'shield' },
       { label: 'Late report', value: '0.5% of turnover', hint: 'Up to ₹1.5 lakh, section 271B', icon: 'fee' },
     ],
+  },
+  {
+    id: 'accounting',
+    name: 'Outsourced Accounting and Bookkeeping',
+    navLabel: 'Accounting',
+    headline: 'Books closed every month,',
+    headlineEmphasis: 'by the team that files your returns.',
+    intro:
+      'Monthly bookkeeping, cleanup of old books, payroll, MIS and virtual CFO support for Indian businesses, plus outsourced accounting for firms in the US, UK, Australia and Canada. Reconciled books every month, prepared and reviewed by a qualified professional (CMA/CA).',
+    metaTitle: 'Outsourced Accounting and Bookkeeping Services from ₹2,999',
+    metaDescription:
+      'Outsourced bookkeeping from ₹2,999 a month on Tally Prime, Zoho Books, QuickBooks or Xero. Payroll, MIS, virtual CFO and global accounting for overseas firms.',
+    keywords: ['outsourced accounting services', 'bookkeeping services india', 'accounting and bookkeeping services', 'outsourced bookkeeping', 'virtual cfo services', 'payroll processing services', 'global accounting outsourcing'],
+    steps: [
+      { title: 'Scope call and quote', desc: 'Tell us your software, transaction volume and what is behind. We quote a fixed monthly fee before any work starts.', time: '30 minutes' },
+      { title: 'Access and onboarding', desc: 'Share bank statements and invoices, or give us a user login to your accounting file. Opening balances are checked first.', time: '3 to 5 business days' },
+      { title: 'Monthly close and report', desc: 'Entries posted, bank and ledgers reconciled, books closed and a short report sent to you by an agreed date each month.', time: 'Every month' },
+    ],
+    personas: [
+      { title: 'Small business or startup', forms: 'Tally Prime / Zoho Books', desc: 'Monthly entries, reconciliations and a clean ledger for GST, TDS and the bank.', slug: 'bookkeeping-monthly' },
+      { title: 'Books months or years behind', forms: 'Catch-up and cleanup', desc: 'Backlog posted, suspense cleared and balances agreed before the audit or loan.', slug: 'books-cleanup' },
+      { title: 'Founder who needs numbers', forms: 'MIS and virtual CFO', desc: 'Monthly MIS, cash forecast, costing and budgets without a full-time CFO.', slug: 'virtual-cfo' },
+      { title: 'Overseas business or CPA firm', forms: 'QuickBooks Online / Xero', desc: 'Offshore bookkeeping and month-end close for the US, UK, Australia and Canada.', slug: 'global-accounting' },
+    ],
+    trust: ['Reviewed by a qualified CMA', 'Bank reconciled every month', 'Books ready for GST, TDS and audit', 'Your file, your access'],
+    finder: [
+      { label: 'Need monthly bookkeeping', desc: 'Entries, reconciliations, monthly close', slug: 'bookkeeping-monthly' },
+      { label: 'Books are behind or messy', desc: 'One-time catch-up and cleanup', slug: 'books-cleanup' },
+      { label: 'Have employees on payroll', desc: 'Salary, PF, ESI, PT and TDS', slug: 'payroll-processing' },
+      { label: 'Want MIS and forecasts', desc: 'Virtual CFO, budgets, costing', slug: 'virtual-cfo' },
+      { label: 'Business outside India', desc: 'QuickBooks Online or Xero, offshore team', slug: 'global-accounting' },
+    ],
+    faqs: [
+      { q: 'What does outsourced accounting include?', a: 'Recording sales, purchases, expenses and receipts, reconciling bank and card accounts, keeping receivables and payables current, closing the books each month and preparing a profit and loss account and balance sheet. Payroll, MIS reporting and virtual CFO work are separate plans you can add.' },
+      { q: 'How much do bookkeeping services cost?', a: 'Monthly bookkeeping starts at ₹2,999 a month for up to 150 transactions. Higher volumes are quoted by band, and cleanup of past years is a one-time fee per year of backlog. Every fee is fixed and quoted before work starts. Prices exclude 18% GST.' },
+      { q: 'Which accounting software do you work on?', a: 'Tally Prime, Zoho Books and QuickBooks for Indian businesses, and QuickBooks Online and Xero for overseas clients. If you have no software yet, we recommend one based on your size and set it up.' },
+      { q: 'Do I still need separate GST and TDS filing?', a: 'Yes. Bookkeeping keeps the records; filing GST and TDS returns are separate plans. When we do both, the books feed the returns directly, so figures are entered once and match each other.' },
+      { q: 'How do I send bills and statements every month?', a: 'Upload them on your dashboard or send them on WhatsApp, or give us read-only bank feeds and a user login to your accounting file. We send a list of anything missing before the monthly close.' },
+      { q: 'Can the firm that keeps our books also audit them?', a: 'No. The auditor must be independent of the person who keeps the books. If we maintain your accounts, your statutory or tax audit is assigned to an empanelled professional who had no part in that work.' },
+      { q: 'Do you work with businesses outside India?', a: 'Yes. Our global accounting plan covers bookkeeping, reconciliations and month-end close for businesses and accounting firms in the US, UK, Australia, Canada and the UAE, working in your own QuickBooks Online or Xero file.' },
+    ],
+    deadlineKeys: ['gstr-3b', 'tds-payment'],
+    facts: [
+      { label: 'Bookkeeping', value: 'From ₹2,999', hint: 'Per month, up to 150 transactions', icon: 'rupee' },
+      { label: 'Monthly close', value: 'Agreed date', hint: 'Books closed and reported monthly', icon: 'calendar' },
+      { label: 'Software', value: 'Tally, Zoho, QBO, Xero', hint: 'We work in your file', icon: 'form' },
+      { label: 'Reviewed by', value: 'Qualified CMA', hint: 'Before every monthly report', icon: 'shield' },
+    ],
+    approvalNote: 'Monthly report shared with you after every close, with a list of open items.',
+    dateAdded: '2026-11-16',
+  },
+  {
+    id: 'loans',
+    name: 'Business Loans and Bank Finance',
+    navLabel: 'Business Loans',
+    headline: 'The right limit from the right lender,',
+    headlineEmphasis: 'with a proposal the bank can approve.',
+    intro:
+      'Fund-based finance (cash credit, overdraft, working capital demand loans, term loans) and non-fund-based limits (bank guarantees and letters of credit), plus Mudra and CGTMSE collateral-free loans. We assess what you qualify for, prepare the CMA data and project report, and present the file to banks and NBFCs. We are advisers, not a lender: sanction, rate and terms are always the lender\'s decision.',
+    metaTitle: 'Business Loan Advisory | Working Capital, Term Loan, BG, LC',
+    metaDescription:
+      'Working capital, cash credit, term loan, bank guarantee and LC limits, Mudra and CGTMSE loans. Eligibility check, CMA data and bank-ready proposal by a CMA.',
+    keywords: ['business loan consultant', 'working capital loan', 'cash credit limit', 'term loan for business', 'bank guarantee limit', 'letter of credit limit', 'fund based and non fund based', 'cgtmse loan', 'mudra loan'],
+    steps: [
+      { title: 'Eligibility check', desc: 'Share two years of financials, current loans and what you need. We tell you which facility fits and how much a lender is likely to assess.', time: 'Within 2 working days' },
+      { title: 'Proposal prepared', desc: 'CMA data, projections, project report and the lender\'s application set, checked against the bank\'s own norms before submission.', time: '7 to 10 business days' },
+      { title: 'Lender submission and follow-up', desc: 'File presented to the banks or NBFCs you choose. We answer queries, attend the discussion and review the sanction terms with you.', time: 'Until sanction or decline' },
+    ],
+    personas: [
+      { title: 'Need day-to-day funds', forms: 'Cash credit, OD, WCDL', desc: 'Fund-based working capital against stock and receivables.', slug: 'working-capital-loan' },
+      { title: 'Buying machinery or expanding', forms: 'Term loan', desc: 'Project report and DSCR-backed proposal for a fixed-asset loan.', slug: 'term-loan' },
+      { title: 'Contractor, supplier or importer', forms: 'Bank guarantee, LC', desc: 'Non-fund-based limits sized to your contracts and purchase cycle.', slug: 'bank-guarantee-lc' },
+      { title: 'Small business without collateral', forms: 'Mudra, CGTMSE', desc: 'Government-backed loans up to ₹20 lakh (Mudra) or ₹10 crore (CGTMSE cover).', slug: 'msme-scheme-loans' },
+    ],
+    trust: ['Prepared by a qualified CMA', 'Advisers, not a lender', 'Fixed fee quoted upfront', 'Sanction terms reviewed with you'],
+    finder: [
+      { label: 'Cash credit or overdraft', desc: 'Fund-based working capital', slug: 'working-capital-loan' },
+      { label: 'Machinery, building or expansion', desc: 'Term loan with project report', slug: 'term-loan' },
+      { label: 'Need a bank guarantee', desc: 'Performance, bid or advance guarantee', slug: 'bank-guarantee-lc' },
+      { label: 'Need a letter of credit', desc: 'Import or inland LC limit', slug: 'bank-guarantee-lc' },
+      { label: 'No collateral to offer', desc: 'Mudra or CGTMSE-covered loan', slug: 'msme-scheme-loans' },
+      { label: 'Renew, enhance or move a loan', desc: 'Renewal, enhancement or takeover', slug: 'loan-renewal-takeover' },
+    ],
+    faqs: [
+      { q: 'What is the difference between fund-based and non-fund-based limits?', a: 'A fund-based limit puts money in your account: cash credit, overdraft, working capital demand loans, bill discounting and term loans. A non-fund-based limit is a commitment by the bank on your behalf, such as a bank guarantee or a letter of credit. No money moves unless the guarantee is invoked or the LC is paid, at which point it becomes a fund-based exposure.' },
+      { q: 'How much working capital limit can my business get?', a: 'For MSMEs with fund-based working capital limits up to ₹5 crore, banks can use the turnover method: working capital need is taken at 25% of projected annual turnover, the borrower brings 5% as margin and the bank finances at least 20%. Above ₹5 crore, or for seasonal businesses, banks assess limits from the operating cycle or a cash budget, which is what CMA data is for.' },
+      { q: 'Do you give loans yourselves?', a: 'No. Sahil Advisory is not a bank, NBFC or lender. We assess your eligibility, prepare the proposal and present it to the lenders you choose. The sanction, interest rate, security and terms are decided by the lender.' },
+      { q: 'Can I get a business loan without collateral?', a: 'Yes, within limits. Mudra loans under PMMY go up to ₹20 lakh without collateral, with the Tarun Plus tier (above ₹10 lakh) open to borrowers who have repaid an earlier Tarun loan. Loans from member lenders to micro and small enterprises can be covered by CGTMSE up to ₹10 crore from 1 April 2025, which removes the need for collateral on the covered amount.' },
+      { q: 'What documents does a bank need for a business loan?', a: 'KYC of the business and promoters, Udyam registration, two to three years of audited financials and income tax returns, GST returns, twelve months of bank statements, existing loan sanction letters and statements, and projections. For term loans, quotations for the asset and a project report.' },
+      { q: 'Do you guarantee loan approval?', a: 'No adviser can, and you should be wary of anyone who does. What we do is make sure the proposal is complete, the numbers hold together and the facility requested matches what your financials support, which is what most declines come down to.' },
+      { q: 'What is CMA data and why does the bank want it?', a: 'Credit Monitoring Arrangement data is the bank-prescribed set of past and projected financial statements, working capital assessment and ratios used to size and monitor a limit. It is prepared by a Cost and Management Accountant, which is our core qualification.' },
+    ],
+    deadlineKeys: [],
+    facts: [
+      { label: 'Turnover method', value: '20% of turnover', hint: 'Minimum bank finance, limits up to ₹5 crore', icon: 'scale' },
+      { label: 'CGTMSE cover', value: 'Up to ₹10 crore', hint: 'Collateral-free, from 1 April 2025', icon: 'shield' },
+      { label: 'Mudra', value: 'Up to ₹20 lakh', hint: 'Tarun Plus for repeat borrowers', icon: 'rupee' },
+      { label: 'Proposal ready', value: '7 to 10 days', hint: 'CMA data and project report', icon: 'speed' },
+    ],
+    approvalNote: 'Proposal shared with you for review before it goes to any lender.',
+    dateAdded: '2026-11-16',
   },
 ]
 
@@ -807,6 +918,174 @@ export const SERVICES: Service[] = [
     keywords: ['stock audit', 'bank stock audit', 'drawing power certificate', 'book debt verification'],
     relatedGuides: ['cma-report-bank-loan'], relatedCalculators: ['emi'],
   },
+  // Accounting. Bookkeeping is not filing: GST and TDS returns stay separate
+  // plans, and a business whose books we keep is audited by someone else.
+  {
+    slug: 'bookkeeping-monthly', category: 'accounting', name: 'Monthly Bookkeeping and Accounting', whoFor: 'Proprietors, firms, LLPs and companies that want reconciled books every month',
+    shortDesc: 'Entries, bank reconciliation and a monthly close on Tally Prime, Zoho Books or QuickBooks, from ₹2,999 a month.',
+    longDesc: 'We record your sales, purchases, expenses and receipts, reconcile every bank and card account, keep receivables and payables current and close the books by an agreed date each month. You get a profit and loss account, a balance sheet and a short list of open items. Because the same team handles GST and TDS, the ledgers are kept in the form those returns need, which removes the usual month-end mismatch between books and portal.',
+    unit: 'month', mrp: 4999, price: 2999, priceFrom: true, priceNote: 'Up to 150 transactions a month. Higher volumes quoted by band.', popular: true,
+    includes: ['Sales, purchase, expense and receipt entries', 'Bank and credit card reconciliation', 'Receivables and payables ageing', 'GST and TDS ledgers kept return-ready', 'Monthly profit and loss account and balance sheet', 'Open-items list after every close'],
+    documents: ['Sales and purchase invoices for the month', 'Bank and credit card statements', 'Expense bills and receipts', 'Login to your accounting software, or a backup file', 'Last closing balance sheet'],
+    turnaroundDays: 'Monthly close by an agreed date',
+    faqs: [
+      { q: 'What counts as a transaction?', a: 'Each invoice, bill, receipt, payment or bank entry posted is one transaction. Most small businesses fall under 150 a month. We count your first month and confirm the band before billing.' },
+      { q: 'Do you need a login to our software?', a: 'It is the easiest way, and you can remove our user at any time. If you prefer, send a backup or export each month and we return the updated file.' },
+    ],
+    keywords: ['bookkeeping services', 'monthly bookkeeping services', 'accounting services for small business', 'tally accounting services', 'zoho books accountant'],
+    relatedGuides: ['gst-return-filing-guide', 'tds-guide-for-employers'], relatedCalculators: ['gst'],
+    dateAdded: '2026-11-16',
+  },
+  {
+    slug: 'books-cleanup', category: 'accounting', name: 'Accounts Cleanup and Catch-up', whoFor: 'Businesses whose books are months or years behind, or do not agree with the bank',
+    shortDesc: 'Backlog posted, suspense cleared and balances agreed with the bank, GST and 26AS before an audit, loan or return.',
+    longDesc: 'Books fall behind for ordinary reasons: a bookkeeper leaves, the business grows, or entries were made only at year-end. We post the backlog, clear suspense and unreconciled entries, agree the bank balances, match sales with GSTR-1 and TDS with Form 26AS, and hand you books that an auditor or a bank can rely on. The fee is per financial year of backlog, quoted after we see the file.',
+    unit: 'one_time', mrp: 9999, price: 6999, priceFrom: true, priceNote: 'Per financial year, up to 1,500 transactions. Quoted after a file review.',
+    includes: ['Backlog entries posted', 'Bank reconciliation for every month', 'Suspense and unreconciled entries cleared', 'Sales matched with GSTR-1, ITC with GSTR-2B', 'TDS matched with Form 26AS', 'Adjustment schedule explaining every correction'],
+    documents: ['Bank statements for the period', 'Sales and purchase invoices', 'GST returns filed for the period', 'Form 26AS and AIS', 'Existing accounting file, if any', 'Loan and asset documents'],
+    turnaroundDays: '7 to 15 business days per year',
+    faqs: [
+      { q: 'Our books have not been written for two years. Is that fixable?', a: 'Yes. As long as bank statements and invoices exist, the books can be rebuilt. We start with the bank, which is the most reliable record, and work outwards.' },
+      { q: 'Will a cleanup change our filed returns?', a: 'It can show that a filed GST or income tax return was wrong. We tell you what the differences are and the options to correct them, including the updated return, before anything is filed.' },
+    ],
+    keywords: ['accounts cleanup services', 'catch up bookkeeping', 'books of accounts backlog', 'accounting cleanup', 'reconstruct books of accounts'],
+    relatedGuides: ['belated-revised-updated-return', 'gst-return-filing-guide'], relatedCalculators: [],
+    dateAdded: '2026-11-16',
+  },
+  {
+    slug: 'payroll-processing', category: 'accounting', name: 'Payroll Processing with PF, ESI and TDS', whoFor: 'Employers with 1 to 100 employees',
+    shortDesc: 'Monthly salary computation, payslips, PF and ESI challans, professional tax and TDS on salary, from ₹1,999 a month.',
+    longDesc: 'We compute salaries from your attendance and pay structure, issue payslips, prepare the PF electronic challan cum return and ESI contribution by the 15th, deduct professional tax where your state levies it, and compute TDS on salary under the regime each employee chooses. Quarterly 24Q returns and Form 16 at year-end are covered under our TDS plans, and the payroll entries flow straight into your books.',
+    unit: 'month', mrp: 2999, price: 1999, priceFrom: true, priceNote: 'Up to 15 employees. Larger teams quoted per employee.',
+    includes: ['Salary computation and payslips', 'PF ECR and ESI contribution filing', 'Professional tax deduction and payment', 'TDS on salary under the chosen regime', 'Payroll journal for your books', 'New joiner and exit formalities'],
+    documents: ['Employee master with PAN, UAN and bank details', 'Monthly attendance and leave', 'Salary structure and revisions', 'Investment declarations for old-regime employees', 'PF, ESI and PT registrations'],
+    turnaroundDays: 'Payroll by an agreed date each month',
+    faqs: [
+      { q: 'When are PF and ESI due?', a: 'Both the PF electronic challan cum return and ESI contributions are due by the 15th of the following month. TDS on salary is due by the 7th, and by 30 April for March.' },
+      { q: 'Do you file the quarterly TDS return and Form 16 too?', a: 'Those are covered by our quarterly TDS return and Form 16 plans. Payroll data feeds them directly, so nothing is entered twice.' },
+    ],
+    keywords: ['payroll processing services', 'payroll outsourcing india', 'pf esi filing services', 'salary processing services'],
+    relatedGuides: ['tds-guide-for-employers', 'old-vs-new-tax-regime'], relatedCalculators: ['income-tax', 'hra'],
+    dateAdded: '2026-11-16',
+  },
+  {
+    slug: 'virtual-cfo', category: 'accounting', name: 'MIS Reporting and Virtual CFO', whoFor: 'Founders and owners who need monthly numbers, forecasts and costing without a full-time CFO',
+    shortDesc: 'Monthly MIS pack, cash flow forecast, budgets, product costing and bank readiness, led by a Cost and Management Accountant.',
+    longDesc: 'A virtual CFO turns reconciled books into decisions. Each month you get an MIS pack comparing actuals with budget, a rolling cash flow forecast, receivables and payables position, and margin by product or customer. Costing is a Cost Accountant\'s home ground, so we also build product cost sheets and pricing floors, prepare you for bank reviews and sit in on the conversations that need numbers. Scope and fee are agreed after a first review of your books.',
+    unit: 'month', mrp: 14999, price: null, quoteLabel: 'Quoted after scope review',
+    includes: ['Monthly MIS pack against budget', 'Rolling 13-week cash flow forecast', 'Annual budget and quarterly reforecast', 'Product and customer margin analysis', 'Costing and pricing review', 'Monthly review call with the owner'],
+    documents: ['Reconciled books, or our bookkeeping plan', 'Sales and purchase data by product or customer', 'Existing budgets or targets', 'Loan sanction letters and covenants'],
+    turnaroundDays: 'MIS by the 10th of each month',
+    faqs: [
+      { q: 'Do our books need to be in order first?', a: 'Yes. MIS on unreconciled books is guesswork. If they are not current, we start with a cleanup or run bookkeeping alongside the CFO work.' },
+      { q: 'How is this different from bookkeeping?', a: 'Bookkeeping records what happened. Virtual CFO work explains why, forecasts what comes next and recommends what to change: pricing, credit terms, costs and funding.' },
+    ],
+    keywords: ['virtual cfo services', 'mis reporting services', 'outsourced cfo india', 'part time cfo', 'cash flow forecasting services'],
+    relatedGuides: [], relatedCalculators: [],
+    dateAdded: '2026-11-16',
+  },
+  {
+    slug: 'global-accounting', category: 'accounting', name: 'Global Accounting Outsourcing (US, UK, Australia, Canada)', whoFor: 'Overseas businesses and accounting firms that want an offshore bookkeeping team',
+    shortDesc: 'Bookkeeping, reconciliations and month-end close in your QuickBooks Online or Xero file, by an Indian team led by a qualified CMA.',
+    longDesc: 'We work inside your own QuickBooks Online, Xero or Sage file, using a user login you create and can remove at any time. Each month we post transactions, reconcile bank and card accounts, manage payables and receivables, and close the books with a reconciled profit and loss account and balance sheet. For accounting firms we work under your name and review, so your clients deal only with you. Tax returns and statutory filings in your country stay with your CPA or accountant; we prepare the books and schedules they need. Every engagement starts with a one-month pilot.',
+    unit: 'month', mrp: 0, price: null, quoteLabel: 'Monthly fee quoted after a pilot month',
+    includes: ['Transaction coding and posting', 'Bank, card and payment gateway reconciliation', 'Accounts payable and receivable', 'Month-end close with accruals and prepayments', 'Monthly management reports', 'Year-end pack for your CPA or accountant', 'Cleanup and catch-up of past months'],
+    documents: ['User access to QuickBooks Online, Xero or Sage', 'Bank and card feeds or statements', 'Chart of accounts and closing balances', 'Payroll and sales platform reports', 'Prior year financial statements'],
+    turnaroundDays: 'Monthly close by an agreed working day',
+    faqs: [
+      { q: 'Do you prepare or file tax returns in our country?', a: 'No. Returns and filings in the US, UK, Australia or Canada remain with your local CPA, chartered accountant or tax agent. We prepare reconciled books and year-end schedules so their work is faster and cheaper.' },
+      { q: 'Do you work with accounting firms as a white-label team?', a: 'Yes. We work in your clients\' files under your review process and do not contact your clients unless you ask us to.' },
+      { q: 'How is data kept confidential?', a: 'We work only inside your accounting file with access you grant and can revoke, sign a confidentiality agreement before access, and share documents only through folders you control.' },
+      { q: 'Is Indian GST added to our invoice?', a: 'Normally no. Accounting services to a client outside India, paid in foreign currency, qualify as an export of services, which we supply under a Letter of Undertaking without GST.' },
+      { q: 'Can we start with a trial?', a: 'Every engagement starts with a one-month pilot on your live file, or a single backlogged month. You see the quality of the close before agreeing a monthly fee.' },
+    ],
+    keywords: ['global accounting outsourcing', 'offshore bookkeeping services', 'outsourced accounting india for us firms', 'quickbooks online bookkeeping', 'xero bookkeeping services', 'white label bookkeeping'],
+    relatedGuides: [], relatedCalculators: [],
+    areaServed: ['United States', 'United Kingdom', 'Australia', 'Canada', 'United Arab Emirates', 'India'],
+    dateAdded: '2026-11-16',
+  },
+  // Loans. We advise and prepare; lenders decide. Never imply we lend,
+  // guarantee sanction, or set rates.
+  {
+    slug: 'working-capital-loan', category: 'loans', name: 'Working Capital Loan: Cash Credit, Overdraft and WCDL', whoFor: 'Traders, manufacturers and service businesses that need funds for stock and receivables',
+    shortDesc: 'Fund-based working capital limits assessed, CMA data prepared and the proposal presented to banks and NBFCs.',
+    longDesc: 'Cash credit and overdraft limits fund the gap between paying suppliers and collecting from customers, secured on stock and receivables. Working capital demand loans and bill discounting do the same job at a fixed tenor. We work out the limit your numbers support, by the turnover method for limits up to ₹5 crore or the operating cycle above that, prepare CMA data and the drawing power working, and present the proposal to the lenders you choose. We also set up the monthly stock statement so the limit you get is the limit you can draw.',
+    unit: 'one_time', mrp: 24999, price: 14999, priceFrom: true, priceNote: 'For limits up to ₹5 crore. Larger limits quoted on scope.', popular: true,
+    includes: ['Eligibility and limit assessment', 'CMA data for 3 to 5 years', 'Drawing power and stock statement format', 'Proposal and application set for the lender', 'Submission to up to 3 lenders of your choice', 'Sanction letter review with you'],
+    documents: ['Audited financials and ITRs for 2 to 3 years', 'GST returns for the last 12 months', 'Bank statements for 12 months', 'Debtor and creditor ageing', 'Stock statement', 'Existing loan sanction letters', 'KYC and Udyam certificate'],
+    turnaroundDays: '7 to 10 business days to a ready proposal',
+    faqs: [
+      { q: 'What is the difference between cash credit and overdraft?', a: 'Cash credit is secured on stock and receivables and drawn up to the drawing power you declare in a monthly stock statement. An overdraft is usually secured on a fixed deposit, property or other collateral and has no drawing power calculation. Both charge interest only on the amount used.' },
+      { q: 'What is drawing power?', a: 'The amount you can actually draw from a cash credit limit in a given month: eligible stock and receivables, less creditors and the bank\'s margin. A ₹1 crore limit with low stock may allow only part of it to be drawn.' },
+    ],
+    keywords: ['working capital loan', 'cash credit limit', 'overdraft limit for business', 'wcdl loan', 'working capital loan for msme', 'cc limit'],
+    relatedGuides: [], relatedCalculators: ['emi'],
+    dateAdded: '2026-11-16',
+  },
+  {
+    slug: 'term-loan', category: 'loans', name: 'Term Loan for Machinery, Expansion or Project', whoFor: 'Businesses buying machinery, vehicles or property, or setting up a new unit',
+    shortDesc: 'Project report, repayment schedule and DSCR working for a term loan, presented to banks and NBFCs.',
+    longDesc: 'A term loan is repaid in instalments from the cash the new asset or project generates, so the lender looks first at whether the projections can carry the EMIs. We prepare the project report with cost of project and means of finance, projected financials, the repayment schedule and the debt service coverage ratio, and check that your own contribution meets the lender\'s margin. The proposal goes to the banks or NBFCs you choose, with CGTMSE cover explored where collateral is short.',
+    unit: 'one_time', mrp: 24999, price: 14999, priceFrom: true, priceNote: 'Projects up to ₹5 crore. Larger projects quoted on scope.',
+    includes: ['Project report with cost and means of finance', 'Projected financials for the loan tenure', 'DSCR and repayment schedule', 'CGTMSE or subsidy scheme check', 'Submission to up to 3 lenders of your choice', 'Sanction letter review with you'],
+    documents: ['Audited financials and ITRs for 2 to 3 years', 'Quotations for machinery or assets', 'Property documents if offered as security', 'Bank statements for 12 months', 'Existing loan details', 'KYC and Udyam certificate'],
+    turnaroundDays: '7 to 10 business days to a ready proposal',
+    faqs: [
+      { q: 'What is DSCR and what do banks look for?', a: 'Debt service coverage ratio is the cash available for debt service divided by the interest and principal due in the year. Lenders want it comfortably above 1, and most look for an average well above 1.25 across the tenure.' },
+      { q: 'How much do I need to bring myself?', a: 'The promoter contribution, or margin, is set by the lender and the scheme, commonly 15% to 25% of the project cost. The project report shows where it comes from.' },
+    ],
+    keywords: ['term loan for business', 'machinery loan', 'project loan', 'project report for term loan', 'dscr calculation'],
+    relatedGuides: [], relatedCalculators: ['emi'],
+    dateAdded: '2026-11-16',
+  },
+  {
+    slug: 'bank-guarantee-lc', category: 'loans', name: 'Bank Guarantee and Letter of Credit Limits', whoFor: 'Contractors, government suppliers, exporters and importers',
+    shortDesc: 'Non-fund-based limits for performance, bid and advance guarantees and import or inland LCs, sized to your contracts.',
+    longDesc: 'Bank guarantees and letters of credit are non-fund-based: the bank lends its credit, not its cash, and charges a commission plus a margin, usually held as a fixed deposit. A guarantee limit is sized to your order book: bid bonds for tenders, performance guarantees on award, and advance payment guarantees against mobilisation advances. An LC limit is sized to your purchase cycle, broadly the monthly purchases made on LC multiplied by the lead time plus the usance period. We work out both, prepare the proposal and negotiate margin and security with the lender.',
+    unit: 'one_time', mrp: 19999, price: 9999, priceFrom: true, priceNote: 'Fee depends on the number of facilities and lenders.',
+    includes: ['BG limit assessment from your order book', 'LC limit assessment from your purchase cycle', 'Margin and security structuring', 'Proposal and application set', 'Submission to the lenders of your choice', 'Sanction terms and commission review'],
+    documents: ['Order book, work orders or tender documents', 'Purchase pattern and supplier terms for LC', 'Audited financials and ITRs for 2 to 3 years', 'Existing BG and LC outstanding', 'Bank statements for 12 months', 'KYC and Udyam certificate'],
+    turnaroundDays: '5 to 10 business days to a ready proposal',
+    faqs: [
+      { q: 'What types of bank guarantee are there?', a: 'Financial guarantees back a payment obligation. Performance guarantees back completion of a contract. Bid bonds or EMD guarantees back a tender bid, and advance payment guarantees back a mobilisation advance from the buyer.' },
+      { q: 'Does a bank guarantee count as a loan?', a: 'It is a contingent liability, not a loan. It becomes a fund-based exposure only if the beneficiary invokes it and the bank pays, at which point the bank recovers the amount from you.' },
+    ],
+    keywords: ['bank guarantee limit', 'letter of credit limit', 'non fund based limits', 'performance bank guarantee', 'bid bond guarantee', 'lc limit assessment'],
+    relatedGuides: [], relatedCalculators: [],
+    dateAdded: '2026-11-16',
+  },
+  {
+    slug: 'msme-scheme-loans', category: 'loans', name: 'Mudra and CGTMSE Collateral-free Loans', whoFor: 'Micro and small enterprises without property or other collateral to offer',
+    shortDesc: 'Mudra loans up to ₹20 lakh and CGTMSE-covered loans up to ₹10 crore, with the project report the lender needs.',
+    longDesc: 'Pradhan Mantri Mudra Yojana loans come in four tiers: Shishu up to ₹50,000, Kishore up to ₹5 lakh, Tarun up to ₹10 lakh and Tarun Plus up to ₹20 lakh for borrowers who have repaid a Tarun loan. Larger loans to micro and small enterprises can be covered by the Credit Guarantee Fund Trust for Micro and Small Enterprises, whose ceiling rose to ₹10 crore from 1 April 2025. We check which route fits, register you on Udyam if needed, prepare the project report and present it to member lenders.',
+    unit: 'one_time', mrp: 9999, price: 6999, priceFrom: true, priceNote: 'Mudra loans. CGTMSE-covered loans quoted by loan size.',
+    includes: ['Scheme eligibility check', 'Udyam registration if needed', 'Project report and projections', 'Application set for the lender', 'Submission to member lenders of your choice', 'Follow-up until sanction or decline'],
+    documents: ['KYC of the business and promoters', 'Udyam certificate, or details to register', 'Business plan or quotations', 'Bank statements for 6 to 12 months', 'ITRs and financials, if any'],
+    turnaroundDays: '5 to 7 business days to a ready proposal',
+    faqs: [
+      { q: 'Who pays the CGTMSE fee?', a: 'The lender pays an annual guarantee fee to CGTMSE and usually passes it on to the borrower. The rate depends on the loan amount, so we include it in the cost comparison between lenders.' },
+      { q: 'Can a first-time borrower get a Tarun Plus Mudra loan?', a: 'No. Tarun Plus, from ₹10 lakh to ₹20 lakh, is for borrowers who have taken and repaid a Tarun loan. A first-time borrower can apply under Shishu, Kishore or Tarun.' },
+    ],
+    keywords: ['mudra loan', 'cgtmse loan', 'collateral free business loan', 'mudra loan project report', 'tarun plus mudra loan', 'cgtmse scheme'],
+    relatedGuides: [], relatedCalculators: ['emi'],
+    dateAdded: '2026-11-16',
+  },
+  {
+    slug: 'loan-renewal-takeover', category: 'loans', name: 'Limit Renewal, Enhancement and Loan Takeover', whoFor: 'Existing borrowers renewing limits, needing more, or moving to another lender',
+    shortDesc: 'Annual renewal papers, enhancement proposals and takeover of loans to a lender with better terms.',
+    longDesc: 'Working capital limits are reviewed every year, and a renewal that slips leaves the account irregular. We prepare the renewal set, including updated CMA data and stock statements, and where the business has grown, an enhancement proposal backed by the new turnover. If another lender offers a better rate or structure, we prepare the takeover proposal and compare the full cost, including processing fees, prepayment charges and security release, before you move.',
+    unit: 'one_time', mrp: 14999, price: 9999, priceFrom: true, priceNote: 'Renewal or enhancement. Takeovers quoted by loan size.',
+    includes: ['Renewal set with updated CMA data', 'Enhancement proposal backed by turnover', 'Takeover cost comparison between lenders', 'Stock statement and drawing power review', 'Submission and follow-up with the lender', 'Sanction terms review'],
+    documents: ['Current sanction letter and terms', 'Latest audited financials and ITR', 'Provisional financials for the current year', 'Stock statements filed with the bank', 'Loan account statements'],
+    turnaroundDays: '5 to 7 business days to a ready proposal',
+    faqs: [
+      { q: 'What happens if the limit is not renewed on time?', a: 'The account can be marked out of order and, if it stays that way, classified as a non-performing asset. Start the renewal papers at least a month before the review date.' },
+      { q: 'Is a loan takeover worth it for a lower rate?', a: 'Only after counting processing fees, legal and valuation charges, any prepayment charge and the time to release security. We put the full cost of both lenders side by side before you decide.' },
+    ],
+    keywords: ['cc limit renewal', 'working capital enhancement', 'loan takeover', 'business loan balance transfer'],
+    relatedGuides: [], relatedCalculators: ['emi'],
+    dateAdded: '2026-11-16',
+  },
 ]
 
 export const CONSULTATIONS = [
@@ -832,6 +1111,8 @@ export const CATEGORY_PATH: Record<ServiceCategoryId, string> = {
   registrations: '/services/registrations',
   notices: '/services/notices',
   audit: '/services/audit',
+  accounting: '/services/accounting',
+  loans: '/services/loans',
 }
 export function servicePath(s: Pick<Service, 'category' | 'slug'>) {
   return `${CATEGORY_PATH[s.category]}/${s.slug}`

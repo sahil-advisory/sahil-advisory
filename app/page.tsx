@@ -44,6 +44,8 @@ const CATEGORY_CARDS = [
   { id: 'registrations', name: 'Business registrations', sub: 'For starting or structuring entities', items: ['Private Limited, LLP, OPC, partnership', 'MSME Udyam, IEC, DSC, Startup India', 'TAN, PAN and professional tax', 'CMA data and project reports for loans'], cta: 'View registrations' },
   { id: 'audit', name: 'Audit and assurance', sub: 'Signed by the right professional', items: ['Tax audit under 44AB, signed by a CA', 'Statutory audit under the Companies Act', 'Cost audit under section 148, signed by our CMA', 'Internal and stock audit'], cta: 'View audit services' },
   { id: 'notices', name: 'Tax notices', sub: 'For replies, assessments and appeals', items: ['143(1) intimation and 139(9) defective', '142(1), 143(2) scrutiny submissions', '148 / 148A reassessment', 'GST ASMT-10, DRC-01 and TDS defaults'], cta: 'Resolve a notice' },
+  { id: 'accounting', name: 'Accounting and bookkeeping', sub: 'For books closed every month', items: ['Monthly bookkeeping from ₹2,999', 'Cleanup and catch-up of old books', 'Payroll with PF, ESI and TDS', 'Global accounting for overseas firms'], cta: 'View accounting plans' },
+  { id: 'loans', name: 'Business loans', sub: 'Fund-based and non-fund-based', items: ['Cash credit, overdraft and WCDL', 'Term loans with project report', 'Bank guarantee and LC limits', 'Mudra and CGTMSE collateral-free loans'], cta: 'View loan services' },
 ] as const
 
 export default function HomePage() {
@@ -105,7 +107,7 @@ export default function HomePage() {
       {/* What do you need help with */}
       <section className="py-16 lg:py-24">
         <Container>
-          <SectionHeading eyebrow="Services" title="What do you need help with?" desc="Filing, registrations, audit and notices, each with a fixed price, a named professional and a tracked timeline." />
+          <SectionHeading eyebrow="Services" title="What do you need help with?" desc="Filing, accounting, registrations, loans, audit and notices, each with a fixed price, a named professional and a tracked timeline." />
           <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {CATEGORY_CARDS.map((c, i) => (
               <Reveal key={c.id} delay={i * 80} className="h-full">

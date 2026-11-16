@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ArrowRight, Star, Calculator as CalcIcon, BookOpen, Clock, Check, FileText, Receipt, Percent, Building2, ClipboardCheck, ScrollText, type LucideIcon } from 'lucide-react'
+import { ArrowRight, Star, Calculator as CalcIcon, BookOpen, Clock, Check, FileText, Receipt, Percent, Building2, ClipboardCheck, ScrollText, BookOpenCheck, Landmark, type LucideIcon } from 'lucide-react'
 import { Badge, CheckList, PriceTag } from './ui'
 import { servicePath, unitSuffix, servicesIn, CATEGORY_PATH, type Service, type ServiceCategoryId } from '@/app/lib/services'
 import { formatINR } from '@/app/lib/format'
@@ -59,6 +59,8 @@ const CATEGORY_ICON: Record<ServiceCategoryId, LucideIcon> = {
   registrations: Building2,
   audit: ClipboardCheck,
   notices: ScrollText,
+  accounting: BookOpenCheck,
+  loans: Landmark,
 }
 
 // Whole card is the link. Starting price and plan count come from the

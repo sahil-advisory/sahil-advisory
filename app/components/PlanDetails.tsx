@@ -101,7 +101,7 @@ export function DocArt({ kind }: { kind: DocKind }) {
   )
 }
 
-export default function PlanDetails({ service }: { service: Service }) {
+export default function PlanDetails({ service, approvalNote }: { service: Service; approvalNote?: string }) {
   const fetchable = service.documents.filter((d) => /ais|26as|with your consent/i.test(d)).length
   return (
     <section className="relative overflow-hidden py-16 lg:py-20">
@@ -126,7 +126,7 @@ export default function PlanDetails({ service }: { service: Service }) {
             </ul>
             <div className="mt-6 flex items-center gap-3 rounded-2xl bg-navy-900 px-4 py-3.5 text-sm text-white">
               <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white/10"><Check className="h-4 w-4 text-green-400" aria-hidden /></span>
-              <span>Draft computation shared for your approval before anything is filed. Turnaround <strong className="font-semibold">{service.turnaroundDays}</strong>.</span>
+              <span>{approvalNote ?? 'Draft computation shared for your approval before anything is filed.'} Turnaround <strong className="font-semibold">{service.turnaroundDays}</strong>.</span>
             </div>
           </div>
         </Reveal>

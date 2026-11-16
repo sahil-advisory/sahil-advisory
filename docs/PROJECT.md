@@ -83,6 +83,21 @@ must stay that way:
 Never move a service between those rows without checking the statute. The
 cost audit line is a genuine differentiator: it is work a CA cannot sign.
 
+## Accounting and loans categories (added 16 November 2026)
+
+`/services/accounting` (bookkeeping, cleanup, payroll, virtual CFO, global
+accounting for US/UK/AU/CA) and `/services/loans` (working capital, term loan,
+BG and LC limits, Mudra and CGTMSE, renewal and takeover). The existing
+`cma-project-report` stays under registrations so its indexed URL is unchanged.
+
+Rules for loan copy: we are advisers, not a lender; never imply guaranteed
+sanction, a rate, or lender tie-ups we do not have. Scheme figures (Mudra
+tiers, CGTMSE ₹10 crore from 1 April 2025, 20% turnover method up to ₹5
+crore) were checked on 16 November 2026; recheck after each Budget.
+
+Owner to confirm: all ten prices (launch proposals), the one-month pilot and
+NDA-before-access promises on global accounting, and the 150-transaction band.
+
 ## Backend
 
 Design and build order: `docs/BACKEND.md`. Shape and running cost:

@@ -42,6 +42,8 @@ const CALLBACK_OPTIONS: Record<ServiceCategoryId, { label: string; values: strin
   registrations: { label: 'Registration', values: ['Pvt Ltd / LLP / OPC', 'MSME / IEC / DSC', 'GST / TAN / PAN', 'Bank loan report', 'Not sure'] },
   notices: { label: 'Notice type', values: ['Income tax 143(1) / 139(9)', 'Scrutiny / reassessment', 'GST notice', 'TDS default', 'Not sure'] },
   audit: { label: 'Audit type', values: ['Tax audit 44AB', 'Statutory audit', 'Cost audit', 'Internal audit', 'Stock audit', 'Not sure'] },
+  accounting: { label: 'You need', values: ['Monthly bookkeeping', 'Cleanup of old books', 'Payroll', 'MIS / virtual CFO', 'Business outside India', 'Not sure'] },
+  loans: { label: 'Facility', values: ['Cash credit / overdraft', 'Term loan', 'Bank guarantee / LC', 'Mudra / CGTMSE', 'Renewal or takeover', 'Not sure'] },
 }
 
 export default async function CategoryPage({ params }: { params: Promise<Params> }) {
@@ -107,7 +109,7 @@ export default async function CategoryPage({ params }: { params: Promise<Params>
             </div>
             <div className="space-y-4 lg:pl-4">
               {deadlines.length > 0 && <DeadlineWidget items={deadlines} />}
-              <CallbackForm compact service={c.navLabel} title="Get a free callback from a tax expert" options={CALLBACK_OPTIONS[c.id]} />
+              <CallbackForm compact service={c.navLabel} title="Get a free callback from a qualified professional" options={CALLBACK_OPTIONS[c.id]} />
             </div>
           </div>
         </Container>
@@ -167,7 +169,7 @@ export default async function CategoryPage({ params }: { params: Promise<Params>
           <div>
             {guides.length > 0 && (
               <div>
-                <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-muted">Read before you file</p>
+                <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-muted">Read before you start</p>
                 <ul className="mt-3 divide-y divide-border rounded-2xl border border-border bg-card">
                   {guides.map((g) => (
                     <li key={g.slug}>

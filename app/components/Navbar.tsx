@@ -3,7 +3,7 @@
 import { useEffect, useState, useSyncExternalStore, type CSSProperties, type ReactNode } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Menu, X, ChevronDown, FileText, Receipt, Percent, Building2, ScrollText, Headset, Calculator, BookOpen, CalendarClock, ClipboardCheck } from 'lucide-react'
+import { Menu, X, ChevronDown, FileText, Receipt, Percent, Building2, ScrollText, Headset, Calculator, BookOpen, CalendarClock, ClipboardCheck, BookOpenCheck, Landmark } from 'lucide-react'
 import { SITE, WHATSAPP_DEFAULT } from '@/app/lib/site'
 import { track } from '@/app/lib/analytics'
 import { Logo } from './Logo'
@@ -63,10 +63,12 @@ const returns = [
   { label: 'ITR Filing', desc: 'Salaried, traders, freelancers, NRI', href: '/services/itr', icon: FileText },
   { label: 'GST Returns', desc: 'Registration, monthly, QRMP, annual', href: '/services/gst', icon: Receipt },
   { label: 'TDS Returns', desc: '24Q, 26Q, 26QB, corrections', href: '/services/tds', icon: Percent },
+  { label: 'Accounting', desc: 'Bookkeeping, payroll, virtual CFO, global', href: '/services/accounting', icon: BookOpenCheck },
 ]
 const business = [
   { label: 'Registrations', desc: 'Pvt Ltd, LLP, MSME, IEC, DSC', href: '/services/registrations', icon: Building2 },
   { label: 'Audit', desc: '44AB tax audit, statutory, cost, internal', href: '/services/audit', icon: ClipboardCheck },
+  { label: 'Business Loans', desc: 'Working capital, term loan, BG, LC', href: '/services/loans', icon: Landmark },
   { label: 'Tax Notices', desc: 'Free triage, fixed-fee replies', href: '/services/notices', icon: ScrollText },
   { label: 'Consultation', desc: '30-min calls from ₹499', href: '/consult', icon: Headset },
 ]
@@ -146,7 +148,7 @@ export default function Navbar() {
             <MegaPanel open={mega === 'services'} width="w-[640px]">
               <div className="overflow-hidden rounded-2xl border border-border bg-white shadow-[var(--shadow-lift)]">
                 <div className="grid grid-cols-2 gap-6 p-6">
-                  <MegaGroup title="Returns" items={returns} />
+                  <MegaGroup title="Returns and accounting" items={returns} />
                   <MegaGroup title="Business and compliance" items={business} />
                 </div>
                 <div className="flex items-center justify-between gap-4 border-t border-border bg-bg-alt px-6 py-3.5">
@@ -211,7 +213,7 @@ export default function Navbar() {
         {/* Keyed on `open` so the stagger replays each time the drawer opens. */}
         <div key={String(open)} className="space-y-6 px-4 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-6">
             {[
-              { title: 'Returns', items: returns },
+              { title: 'Returns and accounting', items: returns },
               { title: 'Business and compliance', items: business },
               { title: 'Resources', items: resources },
             ].map((g, i) => (

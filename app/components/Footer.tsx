@@ -17,6 +17,10 @@ const services = [
   { label: 'CMA Report for Bank Loan', href: '/services/registrations/cma-project-report' },
   { label: 'Tax Audit (44AB)', href: '/services/audit/tax-audit-44ab' },
   { label: 'Cost Audit (Section 148)', href: '/services/audit/cost-audit-148' },
+  { label: 'Bookkeeping Services', href: '/services/accounting' },
+  { label: 'Global Accounting', href: '/services/accounting/global-accounting' },
+  { label: 'Business Loans', href: '/services/loans' },
+  { label: 'Working Capital Loan', href: '/services/loans/working-capital-loan' },
   { label: 'Tax Notice Reply', href: '/services/notices' },
 ]
 

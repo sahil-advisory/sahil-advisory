@@ -14,6 +14,9 @@ import { REFERENCE, referencePath } from './reference'
 // edit. Guides use their own dateModified; due-date pages their lastVerified.
 // Restamping everything per deploy makes Google ignore lastmod entirely.
 export const STATIC_DATE = new Date('2026-09-13')
+// Home, /services and /pricing list every category, so they changed when the
+// accounting and loans categories went live.
+const HUBS_DATE = new Date('2026-11-16')
 
 export type Entry = {
   url: string
@@ -31,9 +34,9 @@ export function sitemapEntries(section: SitemapSection): Entry[] {
   switch (section) {
     case 'pages':
       return [
-        { url: u(''), lastModified: STATIC_DATE, changeFrequency: 'weekly', priority: 1 },
-        { url: u('/services'), lastModified: STATIC_DATE, changeFrequency: 'weekly', priority: 0.9 },
-        { url: u('/pricing'), lastModified: STATIC_DATE, changeFrequency: 'weekly', priority: 0.9 },
+        { url: u(''), lastModified: HUBS_DATE, changeFrequency: 'weekly', priority: 1 },
+        { url: u('/services'), lastModified: HUBS_DATE, changeFrequency: 'weekly', priority: 0.9 },
+        { url: u('/pricing'), lastModified: HUBS_DATE, changeFrequency: 'weekly', priority: 0.9 },
         { url: u('/consult'), lastModified: STATIC_DATE, changeFrequency: 'monthly', priority: 0.8 },
         { url: u('/calculators'), lastModified: STATIC_DATE, changeFrequency: 'monthly', priority: 0.8 },
         { url: u('/guides'), lastModified: STATIC_DATE, changeFrequency: 'weekly', priority: 0.8 },
@@ -47,8 +50,8 @@ export function sitemapEntries(section: SitemapSection): Entry[] {
       ]
     case 'services':
       return [
-        ...CATEGORIES.map((c) => ({ url: u(CATEGORY_PATH[c.id]), lastModified: STATIC_DATE, changeFrequency: 'weekly' as const, priority: 0.9 })),
-        ...SERVICES.map((s) => ({ url: u(servicePath(s)), lastModified: STATIC_DATE, changeFrequency: 'monthly' as const, priority: s.popular ? 0.85 : 0.7 })),
+        ...CATEGORIES.map((c) => ({ url: u(CATEGORY_PATH[c.id]), lastModified: c.dateAdded ? new Date(c.dateAdded) : STATIC_DATE, changeFrequency: 'weekly' as const, priority: 0.9 })),
+        ...SERVICES.map((s) => ({ url: u(servicePath(s)), lastModified: s.dateAdded ? new Date(s.dateAdded) : STATIC_DATE, changeFrequency: 'monthly' as const, priority: s.popular ? 0.85 : 0.7 })),
       ]
     case 'guides':
       return [
