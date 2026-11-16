@@ -19,6 +19,9 @@ export interface CalculatorDef {
   keywords: string[]
   intro: string
   updatedFor: string
+  // ISO date of the last factual edit; drives sitemap lastmod. Omit to use
+  // the site-wide STATIC_DATE.
+  dateModified?: string
   sections: CalcSection[]
   faqs: { q: string; a: string }[]
   relatedServiceSlug: string
@@ -306,16 +309,16 @@ const GST_SECTIONS: CalcSection[] = [
     table: {
       head: ['Rate', 'Typical goods and services'],
       rows: [
-        ['0% (nil / exempt)', 'Fresh fruit and vegetables, milk, unbranded food grains, education, healthcare, residential rent'],
-        ['5%', 'Packaged food, restaurants (no ITC), economy air travel, transport of goods, life-saving drugs, footwear and apparel below thresholds'],
-        ['12%', 'Processed foods, business-class air travel, some construction materials, works contracts for government'],
-        ['18%', 'Most services (professional fees, software, telecom), electronics, cosmetics, capital goods, financial services'],
-        ['28%', 'Luxury and sin goods: cars, tobacco, aerated drinks, air conditioners and large appliances; often with compensation cess'],
+        ['0% (nil / exempt)', 'Fresh fruit and vegetables, milk, unbranded food grains, education, healthcare, residential rent, individual life and health insurance'],
+        ['5%', 'Packaged food and dairy such as butter, ghee and cheese, medicines, apparel and footwear up to ₹2,500, restaurants (no ITC), economy air travel, transport of goods'],
+        ['18%', 'Most services (professional fees, software, telecom), electronics, air conditioners and televisions, cement, small cars and motorcycles up to 350cc, capital goods'],
+        ['40%', 'Luxury and sin goods: larger cars, motorcycles above 350cc, aerated and sugared drinks, yachts and private aircraft'],
         ['0.25% / 1.5% / 3%', 'Rough diamonds, cut and polished diamonds, gold and silver jewellery (use the custom rate option)'],
       ],
     },
     paragraphs: [
-      'Rates are set by the GST Council against the HSN or SAC code of the item, not by the industry you are in. Always confirm the code on the supplier\'s invoice or the CBIC rate schedule; the Council has been consolidating slabs (with a two-rate structure of 5% and 18% announced in September 2025 and a special rate for sin goods), so check the current notified rate for your HSN before printing a rate card.',
+      'From 22 September 2025 GST moved to two main rates, 5% and 18%, plus 40% for luxury and sin goods. The old 12% and 28% slabs no longer apply to most items: they were folded into 5%, 18% or 40% item by item. Tobacco and pan masala followed a separate timeline, so check the current notification for them.',
+      'Rates attach to the HSN or SAC code of the item, not to the industry you are in. Confirm the code on the supplier\'s invoice or the CBIC rate schedule before printing a rate card. The Finance Ministry has said future rate changes will normally take effect once a year, from 1 April.',
     ],
   },
   {
@@ -349,7 +352,7 @@ const GST_SECTIONS: CalcSection[] = [
       'Your GSTIN, the customer\'s GSTIN, invoice number and date, HSN/SAC code with the applicable rate.',
       'Taxable value, and the CGST/SGST or IGST amounts as separate lines; never show a single "GST 18%" line on a B2B invoice.',
       'Place of supply and whether reverse charge applies.',
-      'E-invoicing is mandatory if turnover exceeded ₹5 crore in any year since 2017-18; the IRN and QR code must appear on the invoice.',
+      'E-invoicing is mandatory if turnover exceeded ₹5 crore in any year since 2017-18; the IRN and QR code must appear on the invoice. Businesses with turnover of ₹10 crore or more must report each e-invoice within 30 days of its date.',
       'Report the invoice in GSTR-1 on time so it appears in the customer\'s GSTR-2B; credit is only allowed for invoices that show up there.',
     ],
   },
@@ -359,8 +362,9 @@ const GST_FAQS = [
   { q: 'How do I calculate GST on an amount?', a: 'Multiply the taxable value by the rate: ₹10,000 at 18% is ₹1,800 of GST, giving a total of ₹11,800. For intra-state sales split the ₹1,800 equally as CGST ₹900 and SGST ₹900; for inter-state sales charge IGST ₹1,800.' },
   { q: 'How do I remove GST from an inclusive price?', a: 'Divide the inclusive price by (1 + rate ÷ 100). A price of ₹11,800 including 18% GST contains a taxable value of ₹10,000 and ₹1,800 of tax. Do not take 18% of ₹11,800, which would wrongly give ₹2,124.' },
   { q: 'What is the difference between CGST, SGST and IGST?', a: 'CGST and SGST are charged together, half each, when the supplier and place of supply are in the same state; IGST is charged at the full rate on inter-state supplies, imports and exports. The total tax is the same, only the beneficiary government and the credit set-off rules differ.' },
-  { q: 'What are the GST rates in India?', a: 'The main slabs are 0%, 5%, 12%, 18% and 28%, with special rates of 0.25% for rough diamonds, 3% for gold and 1.5% for polished diamonds. Rates attach to the HSN or SAC code, and the GST Council has announced a consolidation towards 5% and 18%, so verify the current notified rate for your item.' },
-  { q: 'Is GST charged on the MRP?', a: 'No, the MRP already includes GST, so a retailer cannot add GST on top of it. To find the tax inside an MRP, divide by (1 + rate); an MRP of ₹500 at 12% contains ₹53.57 of GST and a taxable value of ₹446.43.' },
+  { q: 'What are the GST rates in India?', a: 'Since 22 September 2025 the main rates are 5% and 18%, with 40% for luxury and sin goods and nil for exempt items. Special rates apply to gold (3%), cut and polished diamonds (1.5%) and rough diamonds (0.25%). The old 12% and 28% slabs were folded into these rates. Rates attach to the HSN or SAC code, so verify the notified rate for your item.' },
+  { q: 'Are 12% and 28% GST rates still applicable?', a: 'Not for most goods and services. The GST Council\'s rate rationalisation, effective 22 September 2025, moved items in the 12% slab mostly to 5% and items in the 28% slab mostly to 18%, with luxury and sin goods at 40%. Invoices dated on or after 22 September 2025 use the new rates.' },
+  { q: 'Is GST charged on the MRP?', a: 'No, the MRP already includes GST, so a retailer cannot add GST on top of it. To find the tax inside an MRP, divide by (1 + rate); an MRP of ₹525 at 5% contains ₹25 of GST and a taxable value of ₹500.' },
   { q: 'When is GST registration mandatory?', a: 'When aggregate turnover exceeds ₹40 lakh for goods or ₹20 lakh for services in most states (₹20 lakh and ₹10 lakh in special category states), or immediately for inter-state supply of goods, e-commerce sellers and reverse-charge cases. Voluntary registration is allowed below the threshold to claim input credit.' },
   { q: 'Can I claim input tax credit on the GST I pay?', a: 'Yes, a registered business can set off GST paid on business purchases against GST collected on sales, provided the supplier has filed GSTR-1 and the invoice appears in your GSTR-2B. Credit is blocked on items such as personal vehicles, food and beverages, club memberships and construction of immovable property.' },
 ]
@@ -687,13 +691,14 @@ export const CALCULATORS: CalculatorDef[] = [
   },
   {
     slug: 'gst', name: 'GST Calculator',
-    h1: 'GST Calculator: Add or Remove GST at 5%, 12%, 18%, 28%',
-    metaTitle: 'GST Calculator | Add or Remove GST (5%, 12%, 18%, 28%)',
+    h1: 'GST Calculator: Add or Remove GST at 5%, 18% and 40%',
+    metaTitle: 'GST Calculator | Add or Remove GST at 5%, 18%, 40%',
     metaDescription:
       'Free GST calculator to add GST to a price or extract it from an inclusive amount. Shows the CGST, SGST and IGST split for every rate slab.',
     keywords: ['gst calculator', 'gst calculator online', 'reverse gst calculator', 'gst inclusive calculator', 'cgst sgst calculator'],
     intro: 'Enter an amount, pick the GST rate and choose whether the amount is exclusive or inclusive of GST. The calculator shows the tax amount and the CGST/SGST or IGST split for intra-state and inter-state supplies.',
-    updatedFor: 'Current GST rate slabs',
+    updatedFor: 'GST 2.0 rates from 22 September 2025',
+    dateModified: '2026-11-16',
     sections: GST_SECTIONS, faqs: GST_FAQS, relatedServiceSlug: 'gst-monthly',
     ctaText: 'Need GSTR-1 and 3B filed every month? From ₹999 with ITC reconciliation.',
     related: ['tds', 'income-tax'], phase: 0,

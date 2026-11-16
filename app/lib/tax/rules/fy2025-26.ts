@@ -162,7 +162,9 @@ export const TDS = {
 }
 
 export const GST = {
-  rates: [0, 5, 12, 18, 28],
+  // GST 2.0 from 22 September 2025 (56th Council, Notf 9/2025-CT(Rate)):
+  // 12% and 28% folded into 5%, 18% and a 40% rate for luxury and sin goods.
+  rates: [0, 5, 18, 40],
   registrationThreshold: { goods: 4_000_000, services: 2_000_000, specialStates: 1_000_000 }, // verify
   gstr1Day: 11,
   gstr3bDay: 20,

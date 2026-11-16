@@ -1,6 +1,6 @@
 import { CalendarClock, AlertTriangle, FileText, Zap, CheckCircle2, ShieldCheck, IndianRupee, Scale, type LucideIcon } from 'lucide-react'
 import type { CategoryFact, CategoryFactIcon } from '@/app/lib/services'
-import { getDeadline, nextDue } from '@/app/lib/due-dates'
+import { getDeadline, nextDueFor } from '@/app/lib/due-dates'
 import { formatDateIN } from '@/app/lib/format'
 
 // The four things a visitor checks before choosing a plan: due date, cost
@@ -24,7 +24,7 @@ export default function CategoryFacts({ facts }: { facts: CategoryFact[] }) {
     if (f.deadlineKey) {
       const d = getDeadline(f.deadlineKey)
       if (d) {
-        const due = nextDue(d.rule, now)
+        const due = nextDueFor(d, now)
         const days = Math.max(0, Math.ceil((due.getTime() - now.getTime()) / 86_400_000))
         return { label: f.label, value: formatDateIN(due), hint: days === 0 ? 'Due today' : `${days} days left`, icon: 'calendar' as const, urgent: days <= 7, live: true }
       }

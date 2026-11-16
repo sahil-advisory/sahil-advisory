@@ -16,7 +16,7 @@ import {
   type DeliverableType,
 } from '@/app/lib/db'
 import { getService } from '@/app/lib/services'
-import { DEADLINES, nextDue } from '@/app/lib/due-dates'
+import { DEADLINES, nextDueFor } from '@/app/lib/due-dates'
 import { formatDateIN } from '@/app/lib/format'
 import { resolveChecklist, checklistFor } from '@/app/lib/checklists'
 import { checklistComplete, STATUS_LABEL } from './status'
@@ -184,7 +184,7 @@ export async function createEngagement(
 
 function defaultDueDate(serviceSlug: string): Date | null {
   const d = DEADLINES.find((x) => x.serviceSlug === serviceSlug) ?? (serviceSlug.startsWith('itr-') ? DEADLINES.find((x) => x.key === 'itr-non-audit') : undefined)
-  return d ? nextDue(d.rule) : null
+  return d ? nextDueFor(d) : null
 }
 
 // ── Status ─────────────────────────────────────────────────────────────────

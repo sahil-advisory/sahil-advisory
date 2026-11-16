@@ -59,7 +59,7 @@ export function sitemapEntries(section: SitemapSection): Entry[] {
         ...GUIDES.map((g) => ({ url: u(guidePath(g)), lastModified: new Date(g.dateModified), changeFrequency: 'monthly' as const, priority: 0.75 })),
       ]
     case 'calculators':
-      return LIVE_CALCULATORS.map((c) => ({ url: u(`/calculators/${c.slug}`), lastModified: STATIC_DATE, changeFrequency: 'monthly' as const, priority: 0.85 }))
+      return LIVE_CALCULATORS.map((c) => ({ url: u(`/calculators/${c.slug}`), lastModified: c.dateModified ? new Date(c.dateModified) : STATIC_DATE, changeFrequency: 'monthly' as const, priority: 0.85 }))
     case 'due-dates':
       return DEADLINES.map((d) => ({ url: u(`/due-dates/${d.slug}`), lastModified: new Date(d.lastVerified), changeFrequency: 'weekly' as const, priority: 0.8 }))
     case 'reference':

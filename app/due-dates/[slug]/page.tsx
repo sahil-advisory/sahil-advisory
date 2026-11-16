@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation'
 import { ArrowRight, AlertTriangle, CheckCircle2 } from 'lucide-react'
 import { buildMetadata, breadcrumbJsonLd, graph, ORG_ID } from '@/app/lib/seo'
 import { BASE_URL } from '@/app/lib/site'
-import { DEADLINES, getDeadlineBySlug, nextDue } from '@/app/lib/due-dates'
+import { DEADLINES, getDeadlineBySlug, nextDueFor, nextPeriodLabel, periodSchedule } from '@/app/lib/due-dates'
 import { formatDateIN } from '@/app/lib/format'
 import { getService } from '@/app/lib/services'
 import { REVIEWER } from '@/app/lib/experts'
@@ -29,10 +29,14 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const { slug } = await params
   const d = getDeadlineBySlug(slug)
   if (!d) return {}
-  const next = nextDue(d.rule)
+  const next = nextDueFor(d)
   const year = next.getFullYear()
+  // Monthly returns are searched by period ("GSTR-3B due date for October
+  // 2026"), so name the period the next due date belongs to.
+  const period = nextPeriodLabel(d)
+  const title = period ? `${d.shortLabel} due date for ${period}: ${formatDateIN(next)}` : `${d.label} due date ${year}: ${formatDateIN(next)}`
   return buildMetadata({
-    title: `${d.label} due date ${year}: ${formatDateIN(next)}`.slice(0, 60),
+    title: title.length <= 60 ? title : `${d.label} due date ${year}`,
     description: `${d.intro} Late fee: ${d.lateFee}.`,
     path: `/due-dates/${d.slug}`,
     keywords: d.keywords,
@@ -46,10 +50,20 @@ export default async function DueDatePage({ params }: { params: Promise<Params> 
   const d = getDeadlineBySlug(slug)
   if (!d) notFound()
   const path = `/due-dates/${d.slug}`
-  const next = nextDue(d.rule)
+  const next = nextDueFor(d)
+  const period = nextPeriodLabel(d)
+  const schedule = periodSchedule(d)
+  const prev = schedule.filter((r) => r.due.getTime() < next.getTime()).at(-1)
+  const fmt = (x: Date) => x.toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Asia/Kolkata' })
+  const faqs = period
+    ? [
+        { q: `What is the ${d.shortLabel} due date for ${period}?`, a: `${d.shortLabel} for ${period} is due on ${fmt(next)}.${prev ? ` The return for ${prev.period} was due on ${fmt(prev.due)}.` : ''} ${d.lateFee ? `Missing it costs ${d.lateFee.charAt(0).toLowerCase()}${d.lateFee.slice(1)}.` : ''}`.trim() },
+        ...d.faqs,
+      ]
+    : d.faqs
   const service = d.serviceSlug ? getService(d.serviceSlug) : undefined
   const siblings = DEADLINES.filter((x) => x.category === d.category && x.key !== d.key).slice(0, 3)
-  const others = DEADLINES.filter((x) => x.key !== d.key).map((x) => ({ key: x.key, label: x.shortLabel, slug: x.slug, dueIso: nextDue(x.rule).toISOString() })).sort((a, b) => a.dueIso.localeCompare(b.dueIso)).slice(0, 2)
+  const others = DEADLINES.filter((x) => x.key !== d.key).map((x) => ({ key: x.key, label: x.shortLabel, slug: x.slug, dueIso: nextDueFor(x).toISOString() })).sort((a, b) => a.dueIso.localeCompare(b.dueIso)).slice(0, 2)
 
   const jsonLd = graph(
     {
@@ -72,13 +86,13 @@ export default async function DueDatePage({ params }: { params: Promise<Params> 
   return (
     <>
       <JsonLd data={jsonLd} />
-      <FaqJsonLd faqs={d.faqs} />
+      <FaqJsonLd faqs={faqs} />
       <Container className="py-8 lg:py-12">
         <Breadcrumbs crumbs={[{ name: 'Due dates', path: '/due-dates' }, { name: d.label, path }]} />
         <div className="mt-6 grid items-start gap-10 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
           <article>
             <h1 className="text-3xl font-extrabold leading-[1.1] tracking-tight text-navy-900 sm:text-4xl">
-              {d.label} due date: <span className="text-green-600">{formatDateIN(next)}</span>
+              {d.label} due date{period ? ` for ${period}` : ''}: <span className="text-green-600">{formatDateIN(next)}</span>
             </h1>
             <p className="mt-3 text-sm text-muted">{d.form} · {d.appliesTo}</p>
             <p className="mt-5 text-lg leading-relaxed text-text-2">{d.intro}</p>
@@ -96,6 +110,36 @@ export default async function DueDatePage({ params }: { params: Promise<Params> 
               </div>
             </div>
 
+            {schedule.length > 0 && (
+              <section className="mt-10" aria-labelledby="schedule">
+                <h2 id="schedule" className="text-xl font-bold text-navy-900">{d.shortLabel} due date for each month</h2>
+                <p className="mt-2 text-sm text-text-2">The return for each tax period and the date it is due. Extensions notified for a specific month are marked.</p>
+                <div className="mt-4 overflow-x-auto rounded-2xl border border-border bg-card">
+                  <table className="w-full text-left text-sm">
+                    <thead className="bg-bg-alt text-xs uppercase tracking-wider text-muted">
+                      <tr><th scope="col" className="px-4 py-3 font-semibold">Tax period</th><th scope="col" className="px-4 py-3 font-semibold">Due date</th></tr>
+                    </thead>
+                    <tbody className="divide-y divide-border">
+                      {schedule.map((r) => {
+                        const isNext = r.due.getTime() === next.getTime()
+                        const past = r.due.getTime() < next.getTime()
+                        return (
+                          <tr key={r.periodKey} className={isNext ? 'bg-green-50' : undefined}>
+                            <td className="px-4 py-3 font-semibold text-navy-900">{d.shortLabel} for {r.period}</td>
+                            <td className={`px-4 py-3 font-mono tabular ${past ? 'text-muted' : 'text-navy-900'}`}>
+                              {r.due.toLocaleDateString('en-IN', { weekday: 'short', day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Asia/Kolkata' })}
+                              {isNext && <span className="ml-2 font-sans text-xs font-bold text-green-700">Next</span>}
+                              {r.extended && <span className="ml-2 font-sans text-xs font-bold text-red-600">Extended</span>}
+                            </td>
+                          </tr>
+                        )
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+            )}
+
             <div className="prose-tax mt-8">
               {d.body.map((p, i) => <p key={i}>{p}</p>)}
             </div>
@@ -108,7 +152,7 @@ export default async function DueDatePage({ params }: { params: Promise<Params> 
             )}
 
             <div className="mt-12">
-              <FaqAccordion faqs={d.faqs} title={`${d.label}: questions`} />
+              <FaqAccordion faqs={faqs} title={`${d.label}: questions`} />
             </div>
 
             {siblings.length > 0 && (
@@ -118,7 +162,7 @@ export default async function DueDatePage({ params }: { params: Promise<Params> 
                   {siblings.map((s) => (
                     <li key={s.key}>
                       <Link href={`/due-dates/${s.slug}`} className="flex items-center justify-between px-4 py-3 text-sm font-semibold text-navy-900 hover:text-green-700">
-                        {s.label} <span className="font-mono text-xs text-muted">{formatDateIN(nextDue(s.rule))}</span>
+                        {s.label} <span className="font-mono text-xs text-muted">{formatDateIN(nextDueFor(s))}</span>
                       </Link>
                     </li>
                   ))}

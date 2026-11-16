@@ -22,7 +22,7 @@ export const guide: Guide = {
   excerpt:
     'Everything a new business needs before applying for a GSTIN: thresholds, mandatory registration cases, documents by entity type, the portal process with Aadhaar authentication, timelines, composition scheme and what non-registration costs.',
   datePublished: '2026-09-06',
-  dateModified: '2026-09-06',
+  dateModified: '2026-11-16',
   readMinutes: 11,
   sections: [
     {
@@ -46,7 +46,7 @@ export const guide: Guide = {
     {
       type: 'tool-card',
       calculatorSlug: 'gst',
-      text: 'Once registered you must charge GST on every invoice. See how 5%, 12%, 18% or 28% changes your selling price before you decide on voluntary registration.',
+      text: 'Once registered you must charge GST on every invoice. See how 5%, 18% or 40% changes your selling price before you decide on voluntary registration.',
     },
     { type: 'heading', text: 'Who must register: the turnover thresholds', id: 'threshold-limits' },
     {
@@ -140,7 +140,7 @@ export const guide: Guide = {
     },
     {
       type: 'paragraph',
-      text: 'Where Aadhaar authentication is not done, or the applicant is flagged, the officer may order physical verification of the premises and the time limit extends to 30 days. A simplified track for low-risk applicants with expected monthly output tax up to ₹2.5 lakh, approved within 3 working days, was introduced from November 2025; check the current status on the portal when you apply.',
+      text: 'Where Aadhaar authentication is not done, or the applicant is flagged, the officer may order physical verification of the premises and the time limit extends to 30 days. ',
     },
     {
       type: 'table',
@@ -152,6 +152,10 @@ export const guide: Guide = {
         ['Aadhaar not authenticated or flagged', '30 days with physical verification', 'Deemed approved after 30 days'],
       ],
       caption: 'Registration timelines under rule 9',
+    },
+    {
+      type: 'paragraph',
+      text: 'Since 1 November 2025 there is also a faster, optional route under rule 14A. An applicant who expects output tax on supplies to registered businesses of no more than ₹2.5 lakh a month, and completes Aadhaar authentication, is granted registration within 3 working days. Most new freelancers, small traders and service providers qualify. The option can be withdrawn later if supplies grow beyond the limit.',
     },
     {
       type: 'paragraph',
@@ -254,7 +258,7 @@ export const guide: Guide = {
     },
     {
       q: 'How many days does GST registration take?',
-      a: '7 working days from the ARN date where Aadhaar authentication is completed and the application is not flagged. If a query is raised, or physical verification is ordered, it can take up to 30 days.',
+      a: '3 working days under the simplified rule 14A route, available since 1 November 2025 to Aadhaar-authenticated applicants whose output tax on B2B supplies will not exceed ₹2.5 lakh a month. Otherwise 7 working days from the ARN date where Aadhaar authentication is completed and the application is not flagged, and up to 30 days if a query is raised or physical verification is ordered.',
     },
     {
       q: 'Which documents are needed for GST registration of a proprietorship?',

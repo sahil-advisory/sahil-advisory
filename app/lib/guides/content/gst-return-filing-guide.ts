@@ -22,7 +22,7 @@ export const guide: Guide = {
   excerpt:
     'A plain-language map of GST returns for regular, QRMP and composition taxpayers: what to file, the due dates, how IMS and GSTR-2B decide your input tax credit, and what late filing costs.',
   datePublished: '2026-09-06',
-  dateModified: '2026-09-06',
+  dateModified: '2026-11-16',
   readMinutes: 11,
   sections: [
     {
@@ -227,6 +227,10 @@ export const guide: Guide = {
     {
       type: 'paragraph',
       text: 'The annual return is also the last chance to pay any shortfall found during the year through DRC-03 with interest, before the department finds it in scrutiny. Composition dealers file GSTR-4 by 30 June instead.',
+    },
+    {
+      type: 'paragraph',
+      text: 'GSTR-9 for FY 2025-26 has new tables. Table 8A now draws on IMS, Table 8H1 captures import ITC taken in the following year, Tables 6A1 and 6H report ITC of earlier years and reclaims, and the rate-wise tables are split at 22 September 2025, when GST moved to 5%, 18% and 40%. Plan the reconciliation in two halves for that reason.',
     },
     { type: 'heading', text: 'A monthly filing checklist', id: 'monthly-checklist' },
     {

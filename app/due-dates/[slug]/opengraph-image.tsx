@@ -29,6 +29,8 @@ function ruleSummary(rule: Rule): string {
   switch (rule.kind) {
     case 'monthly':
       return `${ordinal(rule.day)} of every month`
+    case 'days-after-month-end':
+      return `${rule.days} days after each month end`
     case 'quarterly':
       return `${ordinal(rule.day)}, ${rule.monthsAfterQuarter} month${rule.monthsAfterQuarter === 1 ? '' : 's'} after each quarter`
     case 'yearly':

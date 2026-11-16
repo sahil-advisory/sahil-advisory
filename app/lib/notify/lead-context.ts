@@ -3,7 +3,7 @@ import { SERVICES, CATEGORIES, getService, getCategory, servicePath, unitSuffix,
 import { getGuide, guidePath } from '@/app/lib/guides'
 import { getCalculator } from '@/app/lib/calculators'
 import { getReference, referencePath } from '@/app/lib/reference'
-import { getDeadlineBySlug, nextDue } from '@/app/lib/due-dates'
+import { getDeadlineBySlug, nextDueFor } from '@/app/lib/due-dates'
 import { formatINR, formatDateIN } from '@/app/lib/format'
 
 // Turns "which page was the form on" into something a customer would want to
@@ -94,7 +94,7 @@ export function resolveLeadContext(input: { service?: string; sourceUrl?: string
   if (seg[0] === 'due-dates' && seg[1]) {
     const d = getDeadlineBySlug(seg[1])
     if (d) {
-      const due = nextDue(d.rule)
+      const due = nextDueFor(d)
       return withPlan((d.serviceSlug && getService(d.serviceSlug)) || byName, { kind: 'deadline', topic: input.service || d.label, pageLabel: `the ${d.label} due date page`, pageUrl: url, note: `Next due date: ${formatDateIN(due.toISOString())}. ${d.lateFee}` })
     }
   }

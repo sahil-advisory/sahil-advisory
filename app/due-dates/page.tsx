@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { buildMetadata, breadcrumbJsonLd, graph, webPageJsonLd } from '@/app/lib/seo'
 import { SITE } from '@/app/lib/site'
-import { DEADLINES, nextDue } from '@/app/lib/due-dates'
+import { DEADLINES, nextDueFor } from '@/app/lib/due-dates'
 import { formatDateIN } from '@/app/lib/format'
 import { upcomingDeadlines } from '@/app/lib/deadline-items'
 import JsonLd from '@/app/components/JsonLd'
@@ -30,7 +30,7 @@ const FAQS = [
 
 export default function DueDatesHub() {
   const now = new Date()
-  const rows = DEADLINES.map((d) => ({ d, next: nextDue(d.rule, now) })).sort((a, b) => a.next.getTime() - b.next.getTime())
+  const rows = DEADLINES.map((d) => ({ d, next: nextDueFor(d, now) })).sort((a, b) => a.next.getTime() - b.next.getTime())
   return (
     <>
       <JsonLd data={graph(webPageJsonLd({ path: '/due-dates', name: 'Tax due dates calendar', description: metadata.description as string }), breadcrumbJsonLd([{ name: 'Due dates', path: '/due-dates' }], '/due-dates'))} />

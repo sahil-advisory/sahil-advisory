@@ -1,7 +1,7 @@
 import { BASE_URL, SITE } from './site'
 import { CATEGORIES, CATEGORY_PATH, CONSULTATIONS, servicesIn, servicePath, unitSuffix } from './services'
 import { LIVE_CALCULATORS } from './calculators'
-import { DEADLINES, nextDue } from './due-dates'
+import { DEADLINES, nextDueFor } from './due-dates'
 import { GUIDES, CLUSTERS, guidesIn, guidePath } from './guides'
 import { publishedExperts } from './experts'
 import { REFERENCE, referenceOf, referencePath } from './reference'
@@ -47,7 +47,7 @@ export function llmsIndex(): string {
   lines.push('## Due dates')
   lines.push('')
   const now = new Date()
-  for (const d of DEADLINES) lines.push(`- [${d.label}](${u(`/due-dates/${d.slug}`)}): next ${formatDateIN(nextDue(d.rule, now))}. ${d.lateFee}.`)
+  for (const d of DEADLINES) lines.push(`- [${d.label}](${u(`/due-dates/${d.slug}`)}): next ${formatDateIN(nextDueFor(d, now))}. ${d.lateFee}.`)
   lines.push('')
   lines.push('## Guides')
   lines.push('')
@@ -113,7 +113,7 @@ export function llmsFull(): string {
   out.push('\n# Due dates\n')
   const now = new Date()
   for (const d of DEADLINES) {
-    out.push(`\n## ${d.label}\nURL: ${u(`/due-dates/${d.slug}`)}\nNext due: ${formatDateIN(nextDue(d.rule, now))}\nApplies to: ${d.appliesTo}\nLate fee: ${d.lateFee}${d.interest ? `\nInterest: ${d.interest}` : ''}\nLast verified: ${d.lastVerified}\n\n${d.intro}\n\n${d.body.join('\n\n')}\n`)
+    out.push(`\n## ${d.label}\nURL: ${u(`/due-dates/${d.slug}`)}\nNext due: ${formatDateIN(nextDueFor(d, now))}\nApplies to: ${d.appliesTo}\nLate fee: ${d.lateFee}${d.interest ? `\nInterest: ${d.interest}` : ''}\nLast verified: ${d.lastVerified}\n\n${d.intro}\n\n${d.body.join('\n\n')}\n`)
     out.push(d.faqs.map((f) => `\n**Q: ${f.q}**\n${f.a}`).join('\n') + '\n')
   }
 
