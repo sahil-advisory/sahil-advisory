@@ -42,7 +42,7 @@ export default function AboutPage() {
             <StatsRow stats={[
               { value: `${SITE.returnsFiled}+`, label: 'Returns filed' },
               { value: `${SITE.yearsInPractice}+`, label: 'Years' },
-              { value: SITE.googleRating.toFixed(1), label: 'Google rating' },
+              { value: SITE.googleRating.toFixed(1), label: `Google rating, ${SITE.googleReviewCount} reviews` },
               { value: '100%', label: 'On time' },
             ]} />
             {publishedExperts().map((e) => <ExpertCard key={e.slug} expert={e} compact />)}

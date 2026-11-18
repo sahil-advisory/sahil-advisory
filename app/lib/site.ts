@@ -34,7 +34,8 @@ export const SITE = {
   hours: 'Mon to Sat, 10 AM to 7 PM IST',
   openingHours: 'Mo-Sa 10:00-19:00',
   address: {
-    street: 'CHB Flats, Phase 9, Sector 63',
+    // Must match the Google Business Profile word for word (NAP consistency).
+    street: 'No. 2032B, Block 22, Chandigarh Housing Board Flats, Phase 9, Sector 63',
     locality: 'Chandigarh',
     region: 'Chandigarh',
     postalCode: '160047',
@@ -58,8 +59,9 @@ export const SITE = {
   // Real number from the practice. Replace with a DB count in Phase 1.
   returnsFiled: 640,
   yearsInPractice: 8,
+  // From the Google Business Profile, checked 18 November 2026.
   googleRating: 5.0,
-  googleReviewCount: 3,
+  googleReviewCount: 31,
 } as const
 
 export function whatsappLink(text: string): string {

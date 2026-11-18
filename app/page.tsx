@@ -173,7 +173,7 @@ export default function HomePage() {
             <StatsRow light stats={[
               { value: `${SITE.returnsFiled}+`, label: 'Returns filed' },
               { value: `${SITE.yearsInPractice}+`, label: 'Years in practice' },
-              { value: `${SITE.googleRating.toFixed(1)}`, label: 'Google rating' },
+              { value: `${SITE.googleRating.toFixed(1)}`, label: `Google rating, ${SITE.googleReviewCount} reviews` },
               { value: '100%', label: 'On-time filing' },
             ]} />
           </div>
@@ -233,7 +233,7 @@ export default function HomePage() {
       <section className="py-16 lg:py-24">
         <Container className="grid gap-10 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
           <div>
-            <SectionHeading align="left" eyebrow="Clients" title="What clients say" desc={`Rated ${SITE.googleRating.toFixed(1)} on Google. Ask us for references in your line of work.`} />
+            <SectionHeading align="left" eyebrow="Clients" title="What clients say" desc={`Rated ${SITE.googleRating.toFixed(1)} from ${SITE.googleReviewCount} Google reviews. Ask us for references in your line of work.`} />
             <div className="mt-8 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
               {TESTIMONIALS.map((t) => (
                 <TestimonialCard key={t.name} t={t} />
