@@ -1,0 +1,70 @@
+import type { Guide } from '../types'
+
+// Illustrative figures. They tie: gap 110 = assets 155 - liabilities 45;
+// method II 71.25 = 75% of 155 - 45; DSCR 1.92 = 46 / 24.
+export const guide: Guide = {
+  slug: 'cma-report-sample',
+  cluster: 'business-setup',
+  title: 'CMA Report Sample: A Worked Example for a ₹5.6 Crore Business',
+  h1: 'CMA Report Sample: A Worked Example for a ₹5.6 Crore Business',
+  metaTitle: 'CMA Report Sample with Worked Figures and Ratios',
+  metaDescription:
+    'A CMA report sample with worked figures: operating statement, current assets, bank finance under both methods, DSCR and drawing power, each step explained.',
+  keywords: ['cma report sample', 'cma data sample', 'cma report example', 'sample cma report for bank loan', 'dscr calculation example'],
+  excerpt: 'An invented manufacturer taken through a CMA report line by line, so you can see how the limit and ratios come out.',
+  datePublished: '2026-11-24',
+  dateModified: '2026-11-24',
+  readMinutes: 6,
+  sections: [
+    { type: 'callout', tone: 'info', title: 'Illustration only', text: 'The business and its figures are invented. Your bank\'s template, margins and norms will differ. All amounts are in ₹ lakh.' },
+    { type: 'heading', text: 'Step 1: operating statement', id: 'operating-statement' },
+    { type: 'table', head: ['₹ lakh', 'Last year', 'Current year (estimate)', 'Next year (projected)'], rows: [
+      ['Sales', '400', '480', '560'],
+      ['Cost of sales, including depreciation of 6', '320', '384', '448'],
+      ['Selling and administration', '40', '46', '52'],
+      ['Operating profit', '40', '50', '60'],
+      ['Interest', '8', '10', '12'],
+      ['Profit before tax', '32', '40', '48'],
+      ['Tax, taken at 25%', '8', '10', '12'],
+      ['Profit after tax', '24', '30', '36'],
+    ], caption: 'Cost of sales stays at 80% of sales. A sudden change here is the first thing a bank will question.' },
+    { type: 'heading', text: 'Step 2: working capital next year', id: 'working-capital' },
+    { type: 'table', head: ['₹ lakh', 'Amount', 'Level'], rows: [
+      ['Stock', '75', 'About 61 days of cost of sales'],
+      ['Debtors', '70', 'About 46 days of sales'],
+      ['Other current assets', '10', ''],
+      ['Total current assets', '155', ''],
+      ['Creditors', '35', 'About 29 days of cost of sales'],
+      ['Other current liabilities', '10', ''],
+      ['Current liabilities, excluding bank borrowing', '45', ''],
+      ['Working capital gap', '110', '155 less 45'],
+    ] },
+    { type: 'heading', text: 'Step 3: how much the bank may finance', id: 'mpbf' },
+    { type: 'example', title: 'Three ways to reach a limit', lines: [
+      { label: 'First method: 75% of the gap of 110', value: '82.50' },
+      { label: 'Second method: 75% of current assets of 155, less 45', value: '71.25', strong: true },
+      { label: 'Turnover method: 20% of sales of 560', value: '112.00' },
+    ] },
+    { type: 'paragraph', text: 'The turnover method gives 112, slightly more than the whole gap of 110. A lender will not necessarily sanction the highest figure, since it also looks at what the business actually needs. Under the second method the owner funds 38.75 and the current ratio is 155 divided by 116.25, or 1.33.' },
+    { type: 'heading', text: 'Step 4: can the business repay?', id: 'dscr' },
+    { type: 'example', title: 'DSCR with a term loan', lines: [
+      { label: 'Profit after tax', value: '36' },
+      { label: 'Add depreciation', value: '6' },
+      { label: 'Add term loan interest', value: '4' },
+      { label: 'Cash available', value: '46' },
+      { label: 'Principal 20 plus interest 4', value: '24' },
+      { label: 'DSCR', value: '1.92', strong: true },
+    ] },
+    { type: 'heading', text: 'Step 5: drawing power', id: 'drawing-power' },
+    { type: 'paragraph', text: 'A sanctioned limit is a ceiling. Suppose the bank keeps a 25% margin on paid stock and 40% on debtors. Paid stock is 75 less creditors of 35, or 40, of which 30 counts. Debtors of 70 give 42. Drawing power is 72, enough to use a limit of 71.25 in full. If stock falls, so does the amount you can draw.' },
+    { type: 'service-card', serviceSlug: 'cma-project-report', text: 'We prepare this on your own figures, in your bank\'s format.' },
+  ],
+  faqs: [
+    { q: 'Can I use this sample for my bank?', a: 'No. Use it to understand the layout. A bank compares every figure with your accounts, GST returns and bank statements, so the report must be built from your own records.' },
+    { q: 'What current ratio do banks look for?', a: 'The second method works out to about 1.33. Many lenders accept a different level depending on the business and scheme, so check your lender\'s norm.' },
+    { q: 'What is a good DSCR?', a: 'Lenders want it comfortably above 1, because at 1 every rupee of cash goes to repayment. The minimum and average required differ between lenders.' },
+  ],
+  relatedServiceSlug: 'cma-project-report',
+  relatedGuides: ['cma-report-bank-loan', 'working-capital-assessment', 'cma-report-charges'],
+  relatedCalculators: [],
+}

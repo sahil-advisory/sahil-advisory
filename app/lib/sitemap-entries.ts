@@ -3,6 +3,7 @@ import { CATEGORIES, CATEGORY_PATH, SERVICES, servicePath } from './services'
 import { LIVE_CALCULATORS } from './calculators'
 import { DEADLINES } from './due-dates'
 import { GUIDES, CLUSTERS, guidesIn, guidePath } from './guides'
+import { LOCATIONS, locationPath } from './locations'
 import { publishedExperts } from './experts'
 import { REFERENCE, referencePath } from './reference'
 
@@ -16,7 +17,7 @@ import { REFERENCE, referencePath } from './reference'
 export const STATIC_DATE = new Date('2026-09-13')
 // Home, /services and /pricing list every category, so they changed when the
 // accounting and loans categories went live.
-const HUBS_DATE = new Date('2026-11-16')
+const HUBS_DATE = new Date('2026-11-24')
 
 export type Entry = {
   url: string
@@ -38,11 +39,12 @@ export function sitemapEntries(section: SitemapSection): Entry[] {
         { url: u('/services'), lastModified: HUBS_DATE, changeFrequency: 'weekly', priority: 0.9 },
         { url: u('/pricing'), lastModified: HUBS_DATE, changeFrequency: 'weekly', priority: 0.9 },
         { url: u('/consult'), lastModified: STATIC_DATE, changeFrequency: 'monthly', priority: 0.8 },
-        { url: u('/calculators'), lastModified: STATIC_DATE, changeFrequency: 'monthly', priority: 0.8 },
+        { url: u('/calculators'), lastModified: HUBS_DATE, changeFrequency: 'monthly', priority: 0.8 },
         { url: u('/guides'), lastModified: STATIC_DATE, changeFrequency: 'weekly', priority: 0.8 },
         { url: u('/due-dates'), lastModified: STATIC_DATE, changeFrequency: 'weekly', priority: 0.8 },
         { url: u('/experts'), lastModified: STATIC_DATE, changeFrequency: 'monthly', priority: 0.6 },
         ...publishedExperts().map((e) => ({ url: u(`/experts/${e.slug}`), lastModified: STATIC_DATE, changeFrequency: 'monthly' as const, priority: 0.5 })),
+        ...LOCATIONS.map((l) => ({ url: u(locationPath(l)), lastModified: new Date(l.dateModified), changeFrequency: 'monthly' as const, priority: 0.8 })),
         { url: u('/about'), lastModified: STATIC_DATE, changeFrequency: 'monthly', priority: 0.5 },
         { url: u('/contact'), lastModified: STATIC_DATE, changeFrequency: 'yearly', priority: 0.5 },
         { url: u('/trust'), lastModified: STATIC_DATE, changeFrequency: 'yearly', priority: 0.4 },

@@ -127,6 +127,8 @@ export const HRA = {
   nonMetroPct: 40,
   rentExcessPct: 10,
   metros: ['Delhi', 'Mumbai', 'Kolkata', 'Chennai'],
+  // Added to the 50% list from tax year 2026-27 (Income-tax Rules 2026).
+  metrosAddedTY2026: ['Bengaluru', 'Hyderabad', 'Pune', 'Ahmedabad'],
 }
 
 export const PRESUMPTIVE = {

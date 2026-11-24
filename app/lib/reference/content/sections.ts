@@ -818,7 +818,7 @@ export const SECTIONS: ReferencePage[] = [
       'Section 10(13A) exempts House Rent Allowance to the extent of the least of three amounts: actual HRA received, rent paid minus 10% of basic plus DA, and 50% of basic plus DA in Delhi, Mumbai, Kolkata or Chennai (40% elsewhere). The exemption is available only under the old regime and only if you actually pay rent. Landlord PAN is mandatory when annual rent exceeds ₹1,00,000. From tax year 2026-27 the exemption is in section 11 read with Schedule III of the Income-tax Act 2025.',
     keyFacts: [
       { label: 'Formula', value: 'Least of: HRA received; rent paid minus 10% of basic plus DA; 50% (metro) or 40% (non-metro) of basic plus DA' },
-      { label: 'Metro cities', value: 'Delhi, Mumbai, Kolkata, Chennai. Every other city is 40%' },
+      { label: '50% cities', value: 'Delhi, Mumbai, Kolkata, Chennai; from tax year 2026-27 also Bengaluru, Hyderabad, Pune, Ahmedabad. Every other city is 40%' },
       { label: 'Regime', value: 'Old regime only. Fully taxable under the new regime' },
       { label: 'Landlord PAN', value: 'Required if annual rent exceeds ₹1,00,000' },
       { label: 'TDS on rent', value: '2% under section 194-IB if monthly rent exceeds ₹50,000' },
@@ -895,7 +895,7 @@ export const SECTIONS: ReferencePage[] = [
       },
       {
         q: 'Which cities are metro for HRA?',
-        a: 'Only Delhi, Mumbai, Kolkata and Chennai qualify for the 50% limb. Gurugram, Noida, Bengaluru, Hyderabad, Pune and all other cities are 40%.',
+        a: 'For FY 2025-26, Delhi, Mumbai, Kolkata and Chennai. From tax year 2026-27, Bengaluru, Hyderabad, Pune and Ahmedabad also get the 50% limit. Every other city is at 40%.',
       },
       {
         q: 'Can I pay rent to my parents and claim HRA?',

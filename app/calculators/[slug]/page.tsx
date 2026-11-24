@@ -11,6 +11,8 @@ import { REVIEWER } from '@/app/lib/experts'
 import { CALCULATOR_COMPONENTS } from '@/app/components/calculators'
 import JsonLd from '@/app/components/JsonLd'
 import FaqJsonLd from '@/app/components/FaqJsonLd'
+import CallbackForm from '@/app/components/CallbackForm'
+import AdvanceTaxBanner from '@/app/components/AdvanceTaxBanner'
 import CalculatorTracker from '@/app/components/CalculatorTracker'
 import RelatedReference from '@/app/components/reference/RelatedReference'
 import TrackedLink from '@/app/components/TrackedLink'
@@ -24,6 +26,15 @@ export function generateStaticParams(): Params[] {
   return LIVE_CALCULATORS.map((c) => ({ slug: c.slug }))
 }
 export const dynamicParams = false
+// The advance tax banner appears and hides by date.
+export const revalidate = 86400
+
+const ADVANCE_TAX_RELEVANT = ['income-tax', 'capital-gains', 'stcg', 'ltcg']
+const FORM_OPTIONS: Record<string, { label: string; values: string[] }> = {
+  gst: { label: 'GST status', values: ['Registered', 'Not registered yet', 'Already late', 'Not sure'] },
+  tds: { label: 'You are', values: ['Employer', 'Business', 'Property buyer', 'Tenant', 'Not sure'] },
+}
+const DEFAULT_FORM_OPTIONS = { label: 'Income source', values: ['Salary', 'Shares / mutual funds', 'F&O / intraday', 'Property sale', 'Business / freelance', 'NRI'] }
 
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
   const { slug } = await params
@@ -77,14 +88,18 @@ export default async function CalculatorPage({ params }: { params: Promise<Param
           {Tool ? <CalculatorTracker slug={c.slug}><Tool /></CalculatorTracker> : <p className="rounded-xl border border-border bg-bg-alt p-6 text-sm text-muted">This calculator is being finalised.</p>}
         </div>
 
+        {ADVANCE_TAX_RELEVANT.includes(c.slug) && <AdvanceTaxBanner className="mt-8" />}
+
         {service && (
-          <div className="mt-8 flex flex-col items-start justify-between gap-4 rounded-2xl border border-green-100 bg-green-50 p-6 sm:flex-row sm:items-center">
+          <section className="mt-8 grid gap-6 rounded-2xl border border-green-100 bg-green-50 p-6 lg:grid-cols-2 lg:items-center" aria-label="Get this filed for you">
             <div>
-              <p className="text-base font-bold text-navy-900">{c.ctaText}</p>
-              <p className="mt-1 text-sm text-text-2">{service.name}: {service.shortDesc}</p>
+              <p className="text-xl font-bold text-navy-900">{c.ctaText}</p>
+              <p className="mt-2 text-sm text-text-2">{service.name}: {service.shortDesc}</p>
+              <p className="mt-2 text-sm text-text-2">You see and approve the draft before anything is filed.</p>
+              <TrackedLink event="calculator_cta_click" props={{ calculator: c.slug, plan: service.slug }} href={servicePath(service)} className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-green-700 hover:underline">See the plan and price <ArrowRightIcon className="h-4 w-4" aria-hidden /></TrackedLink>
             </div>
-            <TrackedLink event="calculator_cta_click" props={{ calculator: c.slug, plan: service.slug }} href={servicePath(service)} className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg bg-green-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-green-700">View plan <ArrowRightIcon className="h-4 w-4" aria-hidden /></TrackedLink>
-          </div>
+            <CallbackForm compact service={service.name} title="Have this filed for you" subtitle="Free callback. No payment now." options={FORM_OPTIONS[c.slug] ?? DEFAULT_FORM_OPTIONS} />
+          </section>
         )}
 
         {c.sections.length > 0 && (

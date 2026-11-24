@@ -186,7 +186,7 @@ const HRA_SECTIONS: CalcSection[] = [
   {
     heading: 'Metro versus non-metro: which cities count',
     paragraphs: [
-      'Only Delhi, Mumbai, Kolkata and Chennai are metros for HRA. Bengaluru, Hyderabad, Pune, Ahmedabad, Gurugram, Noida, Chandigarh, Mohali and Panchkula are all non-metro despite high rents, so the 40% limit applies. Because the third test is 40% or 50% of basic plus DA, employees with a low basic and high special allowance often find their exemption capped even when they pay high rent; asking HR to restructure salary with a higher basic can raise the exemption.',
+      'From tax year 2026-27 eight cities get the 50% limit under the Income-tax Rules 2026: Delhi, Mumbai, Kolkata, Chennai, Bengaluru, Hyderabad, Pune and Ahmedabad. For FY 2025-26 only the first four did. Gurugram, Noida, Chandigarh, Mohali and Panchkula stay at 40% despite high rents. Because the third test is 40% or 50% of basic plus DA, employees with a low basic and high special allowance often find their exemption capped even when they pay high rent; asking HR to restructure salary with a higher basic can raise the exemption.',
     ],
   },
   {
@@ -204,11 +204,11 @@ const HRA_SECTIONS: CalcSection[] = [
 ]
 
 const HRA_FAQS = [
-  { q: 'How is HRA exemption calculated?', a: 'HRA exemption is the least of three amounts: actual HRA received, rent paid minus 10% of salary (basic plus DA), and 50% of salary in Delhi, Mumbai, Kolkata or Chennai or 40% elsewhere. The remaining HRA is taxable. For example, with ₹4,80,000 basic, ₹2,40,000 HRA and ₹2,16,000 rent in a non-metro, the exemption is ₹1,68,000.' },
+  { q: 'How is HRA exemption calculated?', a: 'HRA exemption is the least of three amounts: actual HRA received, rent paid minus 10% of salary (basic plus DA), and 50% of salary in the listed cities (four for FY 2025-26, eight from tax year 2026-27) or 40% elsewhere. The remaining HRA is taxable. For example, with ₹4,80,000 basic, ₹2,40,000 HRA and ₹2,16,000 rent in a non-metro, the exemption is ₹1,68,000.' },
   { q: 'Is HRA exemption available in the new tax regime?', a: 'No, HRA exemption under section 10(13A) is available only in the old regime. Under the new regime the entire HRA is taxable, but the wider slabs and ₹75,000 standard deduction often more than compensate unless your total deductions are very large.' },
   { q: 'Is landlord PAN mandatory for HRA?', a: 'Yes, if annual rent exceeds ₹1,00,000 the landlord\'s PAN must be reported to your employer in Form 12BB. If the landlord does not have a PAN, a signed declaration in Form 60 with their name and address is accepted instead.' },
   { q: 'Can I claim HRA if I pay rent to my parents?', a: 'Yes, provided the house belongs to your parents, you actually transfer the rent (preferably by bank) and they declare it as income from house property in their return. Keep a rent agreement and receipts, since these claims are checked more closely.' },
-  { q: 'Which cities are metro for HRA purposes?', a: 'Only four cities count as metros: Delhi, Mumbai, Kolkata and Chennai, where the limit is 50% of salary. Bengaluru, Hyderabad, Pune, Chandigarh and every other city are non-metro, where the limit is 40% of salary.' },
+  { q: 'Which cities are metro for HRA purposes?', a: 'From tax year 2026-27 the 50% limit covers eight cities: Delhi, Mumbai, Kolkata, Chennai, Bengaluru, Hyderabad, Pune and Ahmedabad. For FY 2025-26 only Delhi, Mumbai, Kolkata and Chennai qualified. Every other city, including Chandigarh, is at 40%.' },
   { q: 'Can I claim both HRA and home loan interest?', a: 'Yes, both can be claimed in the same year if you live in rented accommodation and own a house elsewhere, or if your own house is in the same city but you cannot occupy it for genuine work reasons. Interest on a let-out or deemed let-out property is claimed under section 24(b).' },
   { q: 'Do I need rent receipts if rent is below ₹3,000 a month?', a: 'No, CBDT allows employers to grant HRA exemption without receipts when rent is up to ₹3,000 a month. Above that, employers ask for monthly receipts, and above ₹1,00,000 a year the landlord\'s PAN as well. Keep bank proof regardless in case of an income-tax notice.' },
   { q: 'What if my employer did not give HRA exemption in Form 16?', a: 'You can still claim it while filing the ITR by reducing the taxable salary and reporting the exempt HRA under section 10(13A) in the exempt income schedule. Keep rent receipts, agreement and bank statements, because such claims are often verified against the landlord\'s PAN.' },
@@ -295,6 +295,88 @@ const CAPITAL_GAINS_FAQS = [
   { q: 'Can I save capital gains tax by buying another house?', a: 'Yes, section 54 exempts long-term gains from a residential house reinvested in another house within two years (three for construction), and section 54F does the same for gains from other assets if the entire sale amount is reinvested. Alternatively invest up to ₹50 lakh in 54EC bonds within six months.' },
   { q: 'Do I need to pay advance tax on capital gains?', a: 'Yes, if your total tax after TDS exceeds ₹10,000, the tax on a gain is due with the next advance tax instalment after the sale. No interest under section 234C is charged for instalments before the sale date as long as the tax is paid in the remaining instalments.' },
   { q: 'Which ITR form is used for capital gains?', a: 'ITR-2 for salaried and other individuals with capital gains, and ITR-3 if you also have business or F&O income. ITR-1 can be used only if long-term equity gains under section 112A are up to ₹1.25 lakh and there is no loss to carry forward.' },
+]
+
+const STCG_SECTIONS: CalcSection[] = [
+  {
+    heading: 'STCG tax rate by asset',
+    paragraphs: ['Short-term capital gains on listed shares and equity mutual funds are taxed at a flat 20% plus 4% cess under section 111A, which is section 196 of the Income-tax Act 2025 from tax year 2026-27. Everything else that is short-term is added to your income and taxed at your slab rate.'],
+    table: {
+      head: ['Asset', 'Short-term if held up to', 'Tax'],
+      rows: [
+        ['Listed shares, equity mutual funds and ETFs (STT paid)', '12 months', '20%'],
+        ['Debt mutual funds bought on or after 1 April 2023', 'Any period', 'Slab rate'],
+        ['House, flat or land', '24 months', 'Slab rate'],
+        ['Gold, unlisted shares and most other assets', '24 months', 'Slab rate'],
+      ],
+    },
+  },
+  {
+    heading: 'Worked example: shares sold within a year',
+    paragraphs: [
+      'You buy listed shares for ₹5,00,000 on 10 May 2026 and sell them for ₹6,00,000 on 20 October 2026. The ₹1,00,000 gain is short-term. Tax is 20%, or ₹20,000, plus 4% cess of ₹800: ₹20,800 in all. Holding the same shares until after 10 May 2027 would make the gain long-term and, with no other equity gains that year, fully covered by the ₹1.25 lakh exemption.',
+      'Brokerage is deductible. Securities transaction tax is not.',
+    ],
+  },
+  {
+    heading: 'What short-term gains cannot use',
+    bullets: [
+      'The ₹1.25 lakh exemption is only for long-term equity gains.',
+      'Deductions such as 80C and 80D cannot be claimed against gains taxed at 20%.',
+      'The new regime rebate does not reduce tax on gains taxed at 20%, even when total income is within ₹12 lakh.',
+      'A resident individual whose other income is below the basic exemption limit can set the unused part against the gain.',
+    ],
+  },
+  {
+    heading: 'Losses and advance tax',
+    paragraphs: ['A short-term loss can be set off against short-term or long-term gains and carried forward for eight years, provided the return is filed by the due date. No TDS is deducted on a resident\'s share sales, so tax on a gain made between 16 September and 15 December goes into the 15 December advance tax instalment.'],
+  },
+]
+
+const STCG_FAQS = [
+  { q: 'What is the STCG tax rate on shares in 2026-27?', a: '20% plus 4% cess, an effective 20.8%, on listed shares and equity mutual funds sold within 12 months. Finance Act 2026 left the rate unchanged.' },
+  { q: 'Is there any exemption on short-term capital gains?', a: 'No. The ₹1.25 lakh exemption is for long-term equity gains only. A resident with other income below the basic exemption limit can use the unused part of that limit.' },
+  { q: 'Does the 87A rebate apply to STCG on shares?', a: 'Not under the new regime. The rebate does not cover tax on gains charged at special rates, so 20% applies even if your total income is within ₹12 lakh.' },
+  { q: 'Which ITR form reports short-term capital gains?', a: 'ITR-2 if you have no business income, or ITR-3 if you also have business or F&O income. Short-term gains cannot be reported in ITR-1.' },
+]
+
+const LTCG_SECTIONS: CalcSection[] = [
+  {
+    heading: 'LTCG tax rate by asset',
+    paragraphs: ['Long-term capital gains are taxed at 12.5% without indexation, plus 4% cess. Listed equity is covered by section 112A, now section 198 of the Income-tax Act 2025, and gets a ₹1.25 lakh yearly exemption. Other long-term gains fall under section 197.'],
+    table: {
+      head: ['Asset', 'Long-term after', 'Tax'],
+      rows: [
+        ['Listed shares, equity mutual funds and ETFs (STT paid)', '12 months', '12.5% above ₹1.25 lakh'],
+        ['House, flat or land bought from 23 July 2024', '24 months', '12.5%'],
+        ['House, flat or land bought before 23 July 2024', '24 months', '12.5%, or 20% with indexation if lower'],
+        ['Gold, unlisted shares and most other assets', '24 months', '12.5%'],
+      ],
+    },
+  },
+  {
+    heading: 'Worked example: equity funds held over a year',
+    paragraphs: ['You buy units for ₹5,00,000 in June 2024 and redeem them for ₹8,00,000 in October 2026. The gain is ₹3,00,000. After the ₹1,25,000 exemption, ₹1,75,000 is taxed at 12.5%: ₹21,875, plus cess of ₹875, a total of ₹22,750. If you had already booked ₹1,00,000 of equity gains that year, only ₹25,000 of exemption would be left and the tax would be ₹35,750.'],
+  },
+  {
+    heading: 'Property: 12.5% or 20% with indexation',
+    paragraphs: ['A resident individual or HUF selling land or a building bought before 23 July 2024 can pay whichever is lower: 12.5% without indexation, or 20% with the cost indexed. The Cost Inflation Index is 376 for 2025-26 and 384 for 2026-27. Choose property in the calculator and it compares both.'],
+  },
+  {
+    heading: 'Ways to use the rules',
+    bullets: [
+      'The ₹1.25 lakh equity exemption is per year and cannot be carried forward, so booking gains each year can use it fully.',
+      'Section 54 and 54F can exempt a gain reinvested in a house, and 54EC covers up to ₹50 lakh invested in specified bonds.',
+      'Long-term losses can be set off only against long-term gains and carried forward for eight years if the return is on time.',
+    ],
+  },
+]
+
+const LTCG_FAQS = [
+  { q: 'What is the LTCG tax rate in 2026-27?', a: '12.5% plus 4% cess without indexation. Listed shares and equity funds are exempt up to ₹1.25 lakh a year. Finance Act 2026 left these unchanged.' },
+  { q: 'Is the ₹1.25 lakh exemption per share or per year?', a: 'Per person per year, across all listed shares and equity funds together. Enter gains you have already booked this year and the calculator reduces the exemption.' },
+  { q: 'What is the Cost Inflation Index for 2026-27?', a: '384, against 376 for 2025-26. It matters mainly for resident individuals and HUFs selling land or buildings bought before 23 July 2024.' },
+  { q: 'Is cess charged on capital gains tax?', a: 'Yes. Health and education cess of 4% is added to the tax, so 12.5% becomes an effective 13% before any surcharge.' },
 ]
 
 const GST_SECTIONS: CalcSection[] = [
@@ -705,24 +787,24 @@ export const CALCULATORS: CalculatorDef[] = [
     keywords: ['hra calculator', 'hra exemption calculator', 'house rent allowance calculator', 'hra calculation formula', '10(13a) exemption'],
     intro: 'HRA exemption is the least of three amounts: actual HRA received, rent paid minus 10% of salary, and 50% of salary in a metro (40% elsewhere). This calculator shows all three so you can see which one limits your exemption.',
     updatedFor: 'FY 2025-26 and tax year 2026-27, old regime only',
-    dateModified: '2026-11-16',
+    dateModified: '2026-11-24',
     sections: HRA_SECTIONS, faqs: HRA_FAQS, relatedServiceSlug: 'itr-salaried',
     ctaText: 'Not sure whether to claim HRA or switch to the new regime? We compare both when filing.',
     related: ['income-tax', 'rent-receipt-generator', 'old-vs-new-regime'], phase: 0,
   },
   {
     slug: 'capital-gains', name: 'Capital Gains Tax Calculator',
-    h1: 'Capital Gains Tax Calculator FY 2025-26 (Shares, Mutual Funds, Property)',
-    metaTitle: 'Capital Gains Tax Calculator FY 2025-26 | STCG and LTCG',
+    h1: 'Capital Gains Tax Calculator FY 2026-27 (Shares, Mutual Funds, Property)',
+    metaTitle: 'Capital Gains Tax Calculator FY 2026-27 | Shares, Property',
     metaDescription:
-      'Work out capital gains tax on shares, mutual funds and property for FY 2025-26 at the post-July 2024 rates: 20% STCG, 12.5% LTCG, ₹1.25 lakh exempt.',
+      'Work out capital gains tax on shares, mutual funds and property for FY 2025-26 and FY 2026-27, with the ₹1.25 lakh exemption and the property indexation choice.',
     keywords: ['capital gains tax calculator', 'ltcg calculator', 'stcg calculator', 'capital gains on shares', 'capital gains on property calculator', 'ltcg tax on mutual funds'],
     intro: 'Select the asset, enter purchase and sale details and the calculator applies the correct holding period, rate and exemption. For property bought before 23 July 2024 it also shows the indexed 20% option so you can pick the lower tax.',
     updatedFor: 'FY 2025-26 and tax year 2026-27, rates unchanged',
-    dateModified: '2026-11-16',
+    dateModified: '2026-11-24',
     sections: CAPITAL_GAINS_SECTIONS, faqs: CAPITAL_GAINS_FAQS, relatedServiceSlug: 'itr-capital-gains',
     ctaText: 'Sold shares or property this year? Get capital gains filed correctly from ₹1,999.',
-    related: ['income-tax', 'advance-tax', 'fno-turnover'], phase: 0,
+    related: ['stcg', 'ltcg', 'advance-tax'], phase: 0,
   },
   {
     slug: 'gst', name: 'GST Calculator',
@@ -761,7 +843,7 @@ export const CALCULATORS: CalculatorDef[] = [
     keywords: ['advance tax calculator', 'advance tax due date', 'advance tax instalments', '234c interest calculator', 'advance tax for f&o'],
     intro: 'Enter your expected income for the year, TDS already deducted and deductions. The calculator computes total tax under your chosen regime and splits it into the four instalments, with interest if an instalment is missed.',
     updatedFor: 'Tax year 2026-27 instalments, slabs unchanged',
-    dateModified: '2026-11-16',
+    dateModified: '2026-11-24',
     sections: ADVANCE_TAX_SECTIONS, faqs: ADVANCE_TAX_FAQS, relatedServiceSlug: 'itr-fno-trader',
     ctaText: 'Trader or freelancer with advance tax to plan? A 30-minute session costs ₹499.',
     related: ['income-tax', 'capital-gains', 'freelancer-44ada'], phase: 0,
@@ -795,6 +877,34 @@ export const CALCULATORS: CalculatorDef[] = [
     related: ['hra', 'income-tax'], phase: 0,
   },
   // Phase 1 (listed in hub as "coming soon", not in sitemap until built)
+  {
+    slug: 'stcg', name: 'STCG Calculator',
+    h1: 'Short Term Capital Gains Tax Calculator FY 2026-27',
+    metaTitle: 'STCG Calculator FY 2026-27 | Short Term Capital Gain Tax',
+    metaDescription:
+      'Calculate short term capital gains tax on shares, mutual funds and property. 20% on listed equity plus cess, slab rate on other assets, with worked examples.',
+    keywords: ['stcg calculator', 'short term capital gains calculator', 'short term capital gain tax calculator', 'stcg tax calculator', 'stcg on shares'],
+    intro: 'Short-term gains on listed shares and equity funds are taxed at 20% plus cess when sold within 12 months. Enter your purchase and sale to see the tax.',
+    updatedFor: 'FY 2025-26 and tax year 2026-27',
+    dateModified: '2026-11-24',
+    sections: STCG_SECTIONS, faqs: STCG_FAQS, relatedServiceSlug: 'itr-capital-gains',
+    ctaText: 'Traded this year? Get every gain and loss reported correctly from ₹1,999.',
+    related: ['ltcg', 'capital-gains', 'advance-tax'], phase: 0,
+  },
+  {
+    slug: 'ltcg', name: 'LTCG Calculator',
+    h1: 'Long Term Capital Gains Tax Calculator FY 2026-27',
+    metaTitle: 'LTCG Calculator FY 2026-27 | Long Term Capital Gain Tax',
+    metaDescription:
+      'Calculate long term capital gains tax at 12.5% with the ₹1.25 lakh equity exemption. Compares 12.5% with 20% indexation for property bought before July 2024.',
+    keywords: ['ltcg calculator', 'long term capital gains calculator', 'long term capital gain tax calculator', 'ltcg on shares', 'ltcg on property'],
+    intro: 'Long-term gains are taxed at 12.5% plus cess, with the first ₹1.25 lakh of listed equity gains exempt each year. Enter your purchase and sale to see the tax.',
+    updatedFor: 'FY 2025-26 and tax year 2026-27',
+    dateModified: '2026-11-24',
+    sections: LTCG_SECTIONS, faqs: LTCG_FAQS, relatedServiceSlug: 'itr-capital-gains',
+    ctaText: 'Sold shares, funds or property? Get the gain filed correctly from ₹1,999.',
+    related: ['stcg', 'capital-gains', 'advance-tax'], phase: 0,
+  },
   { slug: 'old-vs-new-regime', name: 'Old vs New Regime Comparison', h1: '', metaTitle: '', metaDescription: '', keywords: [], intro: '', updatedFor: '', sections: [], faqs: [], relatedServiceSlug: 'itr-salaried', ctaText: '', related: [], phase: 1 },
   { slug: 'gratuity', name: 'Gratuity Calculator', h1: '', metaTitle: '', metaDescription: '', keywords: [], intro: '', updatedFor: '', sections: [], faqs: [], relatedServiceSlug: 'itr-salaried', ctaText: '', related: [], phase: 1 },
   { slug: 'nps', name: 'NPS Calculator', h1: '', metaTitle: '', metaDescription: '', keywords: [], intro: '', updatedFor: '', sections: [], faqs: [], relatedServiceSlug: 'itr-salaried', ctaText: '', related: [], phase: 1 },

@@ -1,5 +1,6 @@
 import { BASE_URL, SITE } from './site'
 import { CATEGORIES, CATEGORY_PATH, CONSULTATIONS, servicesIn, servicePath, unitSuffix } from './services'
+import { LOCATIONS, locationPath } from './locations'
 import { LIVE_CALCULATORS } from './calculators'
 import { DEADLINES, nextDueFor } from './due-dates'
 import { GUIDES, CLUSTERS, guidesIn, guidePath } from './guides'
@@ -65,6 +66,10 @@ export function llmsIndex(): string {
   lines.push('## Forms')
   lines.push('')
   for (const r of referenceOf('form')) lines.push(`- [${r.name}](${u(referencePath(r))}): ${r.summary}`)
+  lines.push('')
+  lines.push('## Locations')
+  lines.push('')
+  for (const l of LOCATIONS) lines.push(`- [${l.city}](${u(locationPath(l))}): ${l.intro}`)
   lines.push('')
   lines.push('## People')
   lines.push('')

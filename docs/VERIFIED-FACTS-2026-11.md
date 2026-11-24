@@ -131,6 +131,14 @@ SECONDARY only: 143(2)->270(2). 142(1): sources disagree, state no number.
 - GSTR-3B March 2026 extended to 21 April 2026.
 - GSTAT hearings began 16 February 2026.
 
+## Added 24 November 2026 (SECONDARY)
+
+- Cost Inflation Index 384 for 2026-27 (notified 15 July 2026).
+- HRA 50% cities from tax year 2026-27: Delhi, Mumbai, Kolkata, Chennai,
+  Bengaluru, Hyderabad, Pune, Ahmedabad. FY 2025-26: first four only.
+- Professional tax: none in Chandigarh or Haryana. Punjab State Development
+  Tax exists; sources conflict on current collection, so state no amount.
+
 ## Copy rules (from AGENTS.md)
 
 "expert-assisted", "qualified professional (CMA/CA)"; never "CA-assisted".

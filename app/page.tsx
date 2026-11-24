@@ -12,6 +12,7 @@ import { upcomingDeadlines } from '@/app/lib/deadline-items'
 import JsonLd from '@/app/components/JsonLd'
 import FaqJsonLd from '@/app/components/FaqJsonLd'
 import HeroStatusCard from '@/app/components/HeroStatusCard'
+import AdvanceTaxBanner from '@/app/components/AdvanceTaxBanner'
 import DeadlineWidget from '@/app/components/DeadlineWidget'
 import CallbackForm from '@/app/components/CallbackForm'
 import Reveal from '@/app/components/Reveal'
@@ -103,6 +104,8 @@ export default function HomePage() {
           </div>
         </Container>
       </section>
+
+      <Container><AdvanceTaxBanner className="mt-8" /></Container>
 
       {/* What do you need help with */}
       <section className="py-16 lg:py-24">

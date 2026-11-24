@@ -2,6 +2,8 @@ import type { ComponentType } from 'react'
 import IncomeTaxCalculator from './IncomeTaxCalculator'
 import HraCalculator from './HraCalculator'
 import CapitalGainsCalculator from './CapitalGainsCalculator'
+import StcgCalculator from './StcgCalculator'
+import LtcgCalculator from './LtcgCalculator'
 import GstCalculator from './GstCalculator'
 import TdsCalculator from './TdsCalculator'
 import AdvanceTaxCalculator from './AdvanceTaxCalculator'
@@ -13,6 +15,8 @@ export const CALCULATOR_COMPONENTS: Record<string, ComponentType> = {
   'income-tax': IncomeTaxCalculator,
   hra: HraCalculator,
   'capital-gains': CapitalGainsCalculator,
+  stcg: StcgCalculator,
+  ltcg: LtcgCalculator,
   gst: GstCalculator,
   tds: TdsCalculator,
   'advance-tax': AdvanceTaxCalculator,

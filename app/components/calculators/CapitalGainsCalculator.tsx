@@ -46,7 +46,7 @@ const CII: Record<string, number> = {
   '2001-02': 100, '2002-03': 105, '2003-04': 109, '2004-05': 113, '2005-06': 117, '2006-07': 122, '2007-08': 129,
   '2008-09': 137, '2009-10': 148, '2010-11': 167, '2011-12': 184, '2012-13': 200, '2013-14': 220, '2014-15': 240,
   '2015-16': 254, '2016-17': 264, '2017-18': 272, '2018-19': 280, '2019-20': 289, '2020-21': 301, '2021-22': 317,
-  '2022-23': 331, '2023-24': 348, '2024-25': 363, '2025-26': 376,
+  '2022-23': 331, '2023-24': 348, '2024-25': 363, '2025-26': 376, '2026-27': 384,
 }
 const CII_YEARS = Object.keys(CII)
 
@@ -78,13 +78,17 @@ function holdingText(from: Date, to: Date): string {
 type Asset = 'equity' | 'debtMf' | 'property' | 'other'
 const SLAB_RATES = ['5', '10', '15', '20', '25', '30']
 
-export default function CapitalGainsCalculator() {
+type Initial = { buyDate: string; sellDate: string; buyPrice: string; sellPrice: string }
+const DEFAULTS: Initial = { buyDate: '2023-01-15', sellDate: '2025-08-20', buyPrice: '500000', sellPrice: '800000' }
+
+export default function CapitalGainsCalculator({ initial = DEFAULTS }: { initial?: Initial }) {
   const [asset, setAsset] = useState<Asset>('equity')
-  const [buyDate, setBuyDate] = useState('2023-01-15')
-  const [sellDate, setSellDate] = useState('2025-08-20')
-  const [buyPrice, setBuyPrice] = useState('500000')
-  const [sellPrice, setSellPrice] = useState('800000')
+  const [buyDate, setBuyDate] = useState(initial.buyDate)
+  const [sellDate, setSellDate] = useState(initial.sellDate)
+  const [buyPrice, setBuyPrice] = useState(initial.buyPrice)
+  const [sellPrice, setSellPrice] = useState(initial.sellPrice)
   const [expenses, setExpenses] = useState('0')
+  const [ltcgUsed, setLtcgUsed] = useState('0')
   const [slab, setSlab] = useState('30')
   const [ciiBuyOverride, setCiiBuyOverride] = useState('')
   const [ciiSellOverride, setCiiSellOverride] = useState('')
@@ -129,7 +133,7 @@ export default function CapitalGainsCalculator() {
     } else if (asset === 'equity') {
       if (longTerm) {
         classification = 'Long-term capital gain (s.112A)'
-        exemption = Math.min(gain, CAPITAL_GAINS.equity.ltcgExemption)
+        exemption = Math.min(gain, Math.max(0, CAPITAL_GAINS.equity.ltcgExemption - num(ltcgUsed)))
         taxable = gain - exemption
         rateLabel = `${CAPITAL_GAINS.equity.ltcgRate}%`
         baseTax = (taxable * CAPITAL_GAINS.equity.ltcgRate) / 100
@@ -167,7 +171,7 @@ export default function CapitalGainsCalculator() {
     const cess = (baseTax * CESS_RATE) / 100
     const total = Math.round(baseTax + cess)
     return { valid, from, to, cost, sale, exp, gain, longTerm, holdingMonths, debtAtSlab, legacyProperty, buyFy, sellFy, indexedCost, indexedGain, classification, rateLabel, taxable, exemption, baseTax, cess, total, alt, chosenNote, needsSlab: asset !== 'equity' }
-  }, [asset, buyDate, sellDate, buyPrice, sellPrice, expenses, slab, ciiBuyOverride, ciiSellOverride])
+  }, [asset, buyDate, sellDate, buyPrice, sellPrice, expenses, ltcgUsed, slab, ciiBuyOverride, ciiSellOverride])
 
   const showSlab = r.needsSlab
   const showCii = asset === 'property' && r.legacyProperty && r.longTerm
@@ -214,6 +218,7 @@ export default function CapitalGainsCalculator() {
             <MoneyInput label="Purchase price (cost of acquisition)" value={buyPrice} onChange={setBuyPrice} hint={asset === 'equity' ? 'For shares bought before 1 Feb 2018 use the higher of cost and FMV on 31 Jan 2018.' : undefined} />
             <MoneyInput label="Sale price (full value of consideration)" value={sellPrice} onChange={setSellPrice} />
             <MoneyInput label="Transfer expenses (brokerage, stamp duty, legal)" value={expenses} onChange={setExpenses} />
+            {asset === 'equity' && r.longTerm ? <MoneyInput label="Equity LTCG already booked this year" value={ltcgUsed} onChange={setLtcgUsed} hint="Uses up part of the ₹1.25 lakh yearly exemption." /> : null}
             {showSlab ? (
               <label className="block">
                 <span className="text-xs font-semibold text-text-2">Your income-tax slab rate (for short-term / slab-rate gains)</span>

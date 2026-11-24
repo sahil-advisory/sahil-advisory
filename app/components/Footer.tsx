@@ -41,6 +41,9 @@ const company = [
   { label: 'Pricing', href: '/pricing' },
   { label: 'Book a consultation', href: '/consult' },
   { label: 'Contact', href: '/contact' },
+  { label: 'Tax consultant in Chandigarh', href: '/locations/chandigarh' },
+  { label: 'Tax consultant in Panchkula', href: '/locations/panchkula' },
+  { label: 'Tax consultant for Mohali', href: '/locations/mohali' },
   { label: 'Security and privacy', href: '/trust' },
 ]
 

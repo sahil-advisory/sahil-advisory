@@ -441,7 +441,7 @@ export const CATEGORIES: ServiceCategory[] = [
       { q: 'Can I get a business loan without collateral?', a: 'Yes, within limits. Mudra loans under PMMY go up to ₹20 lakh without collateral, with the Tarun Plus tier (above ₹10 lakh) open to borrowers who have repaid an earlier Tarun loan. Loans from member lenders to micro and small enterprises can be covered by CGTMSE up to ₹10 crore from 1 April 2025, which removes the need for collateral on the covered amount.' },
       { q: 'What documents does a bank need for a business loan?', a: 'KYC of the business and promoters, Udyam registration, two to three years of audited financials and income tax returns, GST returns, twelve months of bank statements, existing loan sanction letters and statements, and projections. For term loans, quotations for the asset and a project report.' },
       { q: 'Do you guarantee loan approval?', a: 'No adviser can, and you should be wary of anyone who does. What we do is make sure the proposal is complete, the numbers hold together and the facility requested matches what your financials support, which is what most declines come down to.' },
-      { q: 'What is CMA data and why does the bank want it?', a: 'Credit Monitoring Arrangement data is the bank-prescribed set of past and projected financial statements, working capital assessment and ratios used to size and monitor a limit. It is prepared by a Cost and Management Accountant, which is our core qualification.' },
+      { q: 'What is CMA data and why does the bank want it?', a: 'Credit Monitoring Arrangement data is the bank-prescribed set of past and projected financial statements, working capital assessment and ratios used to size and monitor a limit. We prepare it in house, led by a Cost and Management Accountant.' },
     ],
     deadlineKeys: [],
     facts: [
@@ -803,11 +803,11 @@ export const SERVICES: Service[] = [
   },
   {
     slug: 'cma-project-report', category: 'registrations', name: 'CMA Data and Project Report for Bank Loan', whoFor: 'Businesses applying for working capital, term loans or Mudra loans', shortDesc: 'Bank-format CMA data with projections, ratios and fund flow prepared by a Cost Accountant.',
-    longDesc: 'Credit Monitoring Arrangement data in the format banks prescribe: operating statement, analysis of balance sheet, working capital assessment, fund flow and ratio analysis, plus a project report narrative. Prepared by a CMA, which is the professional banks expect for this document. Fee depends on loan size.',
-    unit: 'one_time', mrp: 14999, price: 4999,
+    longDesc: 'Credit Monitoring Arrangement data in the format banks prescribe: operating statement, analysis of balance sheet, working capital assessment, fund flow and ratio analysis, plus a project report narrative. Prepared by a Cost and Management Accountant; check whether your lender needs it certified, and by whom. Fee depends on loan size.',
+    unit: 'one_time', mrp: 14999, price: 4999, priceFrom: true,
     includes: ['CMA data (6 forms) for 3 to 5 years', 'Project report narrative', 'Ratio analysis and DSCR', 'One revision after bank feedback'], documents: ['Last 2 to 3 years financials', 'Loan requirement and purpose', 'Existing loan statements', 'Order book or sales pipeline'], turnaroundDays: '5 to 7 business days',
     faqs: [{ q: 'Why does the fee range from ₹4,999 to ₹14,999?', a: '₹4,999 covers Mudra and small loans up to ₹25 lakh. Larger working capital limits and term loans need more detailed projections and start at ₹9,999.' }],
-    keywords: ['cma report for bank loan', 'project report for mudra loan', 'cma data preparation'], relatedGuides: ['cma-report-bank-loan'], relatedCalculators: ['emi'],
+    keywords: ['cma report for bank loan', 'project report for mudra loan', 'cma data preparation'], relatedGuides: ['cma-report-bank-loan', 'cma-report-charges', 'cma-report-sample'], relatedCalculators: ['emi'],
   },
   // Notices
   {
@@ -982,7 +982,7 @@ export const SERVICES: Service[] = [
       { q: 'How is this different from bookkeeping?', a: 'Bookkeeping records what happened. Virtual CFO work explains why, forecasts what comes next and recommends what to change: pricing, credit terms, costs and funding.' },
     ],
     keywords: ['virtual cfo services', 'mis reporting services', 'outsourced cfo india', 'part time cfo', 'cash flow forecasting services'],
-    relatedGuides: [], relatedCalculators: [],
+    relatedGuides: ['working-capital-assessment'], relatedCalculators: [],
     dateAdded: '2026-11-16',
   },
   {
@@ -1020,7 +1020,7 @@ export const SERVICES: Service[] = [
       { q: 'What is drawing power?', a: 'The amount you can actually draw from a cash credit limit in a given month: eligible stock and receivables, less creditors and the bank\'s margin. A ₹1 crore limit with low stock may allow only part of it to be drawn.' },
     ],
     keywords: ['working capital loan', 'cash credit limit', 'overdraft limit for business', 'wcdl loan', 'working capital loan for msme', 'cc limit'],
-    relatedGuides: [], relatedCalculators: ['emi'],
+    relatedGuides: ['working-capital-assessment', 'cma-report-bank-loan'], relatedCalculators: ['emi'],
     dateAdded: '2026-11-16',
   },
   {
@@ -1036,7 +1036,7 @@ export const SERVICES: Service[] = [
       { q: 'How much do I need to bring myself?', a: 'The promoter contribution, or margin, is set by the lender and the scheme, commonly 15% to 25% of the project cost. The project report shows where it comes from.' },
     ],
     keywords: ['term loan for business', 'machinery loan', 'project loan', 'project report for term loan', 'dscr calculation'],
-    relatedGuides: [], relatedCalculators: ['emi'],
+    relatedGuides: ['cma-report-bank-loan', 'cma-report-sample'], relatedCalculators: ['emi'],
     dateAdded: '2026-11-16',
   },
   {
@@ -1068,7 +1068,7 @@ export const SERVICES: Service[] = [
       { q: 'Can a first-time borrower get a Tarun Plus Mudra loan?', a: 'No. Tarun Plus, from ₹10 lakh to ₹20 lakh, is for borrowers who have taken and repaid a Tarun loan. A first-time borrower can apply under Shishu, Kishore or Tarun.' },
     ],
     keywords: ['mudra loan', 'cgtmse loan', 'collateral free business loan', 'mudra loan project report', 'tarun plus mudra loan', 'cgtmse scheme'],
-    relatedGuides: [], relatedCalculators: ['emi'],
+    relatedGuides: ['cma-report-charges', 'cma-report-bank-loan'], relatedCalculators: ['emi'],
     dateAdded: '2026-11-16',
   },
   {
@@ -1084,7 +1084,7 @@ export const SERVICES: Service[] = [
       { q: 'Is a loan takeover worth it for a lower rate?', a: 'Only after counting processing fees, legal and valuation charges, any prepayment charge and the time to release security. We put the full cost of both lenders side by side before you decide.' },
     ],
     keywords: ['cc limit renewal', 'working capital enhancement', 'loan takeover', 'business loan balance transfer'],
-    relatedGuides: [], relatedCalculators: ['emi'],
+    relatedGuides: ['working-capital-assessment', 'cma-report-bank-loan'], relatedCalculators: ['emi'],
     dateAdded: '2026-11-16',
   },
 ]

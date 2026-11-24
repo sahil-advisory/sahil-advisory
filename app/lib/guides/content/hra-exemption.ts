@@ -22,7 +22,7 @@ export const guide: Guide = {
   excerpt:
     'HRA is the largest exemption most salaried employees can claim under the old regime. This guide walks through the formula, the metro list, rent to parents, the PAN and TDS rules, and 80GG for those without HRA.',
   datePublished: '2026-09-06',
-  dateModified: '2026-11-16',
+  dateModified: '2026-11-24',
   readMinutes: 10,
   sections: [
     {
@@ -84,7 +84,7 @@ export const guide: Guide = {
     { type: 'heading', text: 'Metro cities for HRA', id: 'metro-cities' },
     {
       type: 'paragraph',
-      text: 'Only four cities count as metros for section 10(13A): Delhi, Mumbai, Kolkata and Chennai. The list has not been updated to include Bengaluru, Hyderabad, Pune, Gurugram, Noida, Chandigarh or Ahmedabad, so employees in those cities use 40% of salary in limb 3, even though rents there are often higher than in Kolkata or Chennai.',
+      text: 'From tax year 2026-27 the Income-tax Rules 2026 give the 50% limit to eight cities: Delhi, Mumbai, Kolkata, Chennai, Bengaluru, Hyderabad, Pune and Ahmedabad. For FY 2025-26 only the first four qualified. Gurugram, Noida, Chandigarh and every other city stay out of the list, so employees there use 40% of salary in limb 3, even though rents there are often higher than in Kolkata or Chennai.',
     },
     {
       type: 'callout',
@@ -194,7 +194,7 @@ export const guide: Guide = {
         'Using total CTC or gross salary instead of basic plus DA in limbs 2 and 3, which inflates the exemption.',
         'Claiming HRA for months when no rent was paid, for example while living with family between two leases.',
         'Claiming both HRA and home loan interest on a house in the same city without a genuine reason, which is allowed in law but frequently questioned.',
-        'Treating Bengaluru, Hyderabad or Pune as metros and using 50%.',
+        'Using 50% for Bengaluru, Hyderabad, Pune or Ahmedabad in an FY 2025-26 return. They qualify only from tax year 2026-27.',
         'Skipping the 194-IB TDS on rent above ₹50,000 a month; the default attracts interest and a late fee of ₹200 a day for the statement (Form 26QC up to March 2026, Form 141 from April 2026; the fee is section 427 of the Income-tax Act 2025).',
         'Filing under the new regime and still entering an HRA exemption in the return, which CPC removes with an adjustment under 143(1)(a).',
       ],
@@ -224,7 +224,7 @@ export const guide: Guide = {
     },
     {
       q: 'Which cities are metro for HRA purposes?',
-      a: 'Only Delhi, Mumbai, Kolkata and Chennai. Bengaluru, Hyderabad, Pune, Gurugram, Noida, Chandigarh and Ahmedabad are non-metro at 40% of salary.',
+      a: 'From tax year 2026-27, eight cities at 50%: Delhi, Mumbai, Kolkata, Chennai, Bengaluru, Hyderabad, Pune and Ahmedabad. For FY 2025-26, only the first four. All others, including Chandigarh, are at 40%.',
     },
     {
       q: 'Can I claim HRA and home loan interest together?',

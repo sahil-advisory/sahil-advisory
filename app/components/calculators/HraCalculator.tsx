@@ -96,12 +96,12 @@ export default function HraCalculator() {
             value={metro}
             onChange={setMetro}
             options={[
-              { value: 'metro', label: `Metro (${HRA.metros.join(', ')})` },
-              { value: 'non', label: 'Non-metro' },
+              { value: 'metro', label: `50% city (${HRA.metros.join(', ')})` },
+              { value: 'non', label: '40% city' },
             ]}
           />
           <p className="text-[11px] text-muted">
-            Only {HRA.metros.join(', ')} count as metros for HRA. Bengaluru, Hyderabad, Pune, Chandigarh and every other city are non-metro ({HRA.nonMetroPct}%).
+            For rent from April 2026, {HRA.metrosAddedTY2026.join(', ')} also count as {HRA.metroPct}% cities. For FY 2025-26 they are {HRA.nonMetroPct}%. Chandigarh, Mohali, Panchkula and every other city stay at {HRA.nonMetroPct}%.
           </p>
         </div>
       </div>

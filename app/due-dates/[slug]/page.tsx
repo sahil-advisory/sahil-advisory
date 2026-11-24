@@ -5,8 +5,8 @@ import { ArrowRight, AlertTriangle, CheckCircle2 } from 'lucide-react'
 import { buildMetadata, breadcrumbJsonLd, graph, ORG_ID } from '@/app/lib/seo'
 import { BASE_URL } from '@/app/lib/site'
 import { DEADLINES, getDeadlineBySlug, nextDueFor, nextPeriodLabel, periodSchedule } from '@/app/lib/due-dates'
-import { formatDateIN } from '@/app/lib/format'
-import { getService } from '@/app/lib/services'
+import { formatDateIN, formatINR } from '@/app/lib/format'
+import { getService, servicePath, unitSuffix } from '@/app/lib/services'
 import { REVIEWER } from '@/app/lib/experts'
 import JsonLd from '@/app/components/JsonLd'
 import FaqJsonLd from '@/app/components/FaqJsonLd'
@@ -110,6 +110,16 @@ export default async function DueDatePage({ params }: { params: Promise<Params> 
                 <p className="mt-1 text-sm text-text-2">Against <a href={d.sourceUrl} target="_blank" rel="noopener noreferrer" className="underline">{new URL(d.sourceUrl).hostname}</a>. Updated within 24 hours of any extension.</p>
               </div>
             </div>
+
+            {service && service.price !== null && service.price > 0 && (
+              <div className="mt-6 flex flex-col items-start justify-between gap-3 rounded-2xl border border-green-100 bg-green-50 p-5 sm:flex-row sm:items-center">
+                <div>
+                  <p className="font-bold text-navy-900">Have {service.name} handled {service.priceFrom ? 'from ' : 'for '}{formatINR(service.price)}{unitSuffix(service.unit) ? ` ${unitSuffix(service.unit)}` : ''}</p>
+                  <p className="mt-1 text-sm text-text-2">{service.shortDesc}</p>
+                </div>
+                <Button href={servicePath(service)} icon>See the plan</Button>
+              </div>
+            )}
 
             {schedule.length > 0 && (
               <section className="mt-10" aria-labelledby="schedule">
