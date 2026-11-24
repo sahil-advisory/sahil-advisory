@@ -37,7 +37,8 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const title = period ? `${d.shortLabel} due date for ${period}: ${formatDateIN(next)}` : `${d.label} due date ${year}: ${formatDateIN(next)}`
   return buildMetadata({
     title: title.length <= 60 ? title : `${d.label} due date ${year}`,
-    description: `${d.intro} Late fee: ${d.lateFee}.`,
+    // Lead with the answer: the intro alone is clamped before any date appears.
+    description: period ? `${d.shortLabel} for ${period} is due on ${formatDateIN(next)}. See the due date for every month, late fee and interest, and what to do if you miss it.` : `${d.intro} Late fee: ${d.lateFee}.`,
     path: `/due-dates/${d.slug}`,
     keywords: d.keywords,
     type: 'article',

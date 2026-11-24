@@ -127,7 +127,7 @@ SECONDARY only: 143(2)->270(2). 142(1): sources disagree, state no number.
   GSTR-1A. Returns cannot be filed more than 3 years after the due date.
   IMS optional; no action = deemed accepted.
 - GSTR-9/9C FY 2025-26 due 31 December 2026, not extended. ITC for FY 2025-26
-  closed 30 November 2026. E-invoicing ₹5 crore; 30-day reporting at ₹10 crore.
+  can be claimed until 30 November 2026 or the GSTR-9 filing date, if earlier. E-invoicing ₹5 crore; 30-day reporting at ₹10 crore.
 - GSTR-3B March 2026 extended to 21 April 2026.
 - GSTAT hearings began 16 February 2026.
 

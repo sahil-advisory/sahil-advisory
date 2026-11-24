@@ -86,7 +86,7 @@ export const DEADLINES: Deadline[] = [
     intro: 'GSTR-9 is the annual return consolidating all monthly or quarterly filings for a financial year. It is due on 31 December following the financial year. GSTR-9C, the reconciliation statement, is due on the same date for turnover above ₹5 crore.',
     body: [
       'GSTR-9 for FY 2025-26 is due by 31 December 2026, and the forms have been open on the portal since 8 October 2026. It is optional for taxpayers with aggregate turnover up to ₹2 crore, but filing it voluntarily closes the year cleanly.',
-      'FY 2025-26 is the first year with the new tables. Table 8A now draws on IMS, Table 8H1 captures import ITC taken in the following year, Tables 6A1 and 6H show ITC of earlier years and reclaims, and the rate-wise tables are split at 22 September 2025 because GST rates changed that day. ITC for FY 2025-26 invoices could be claimed only up to 30 November 2026.',
+      'FY 2025-26 is the first year with the new tables. Table 8A now draws on IMS, Table 8H1 captures import ITC taken in the following year, Tables 6A1 and 6H show ITC of earlier years and reclaims, and the rate-wise tables are split at 22 September 2025 because GST rates changed that day. ITC for FY 2025-26 invoices can be claimed up to 30 November 2026 or the date the annual return is filed, whichever is earlier.',
       'The return reconciles GSTR-1, GSTR-3B and your books. Differences in turnover or ITC must be explained, and any additional liability paid through DRC-03.',
     ],
     faqs: [

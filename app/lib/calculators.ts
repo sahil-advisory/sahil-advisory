@@ -333,7 +333,7 @@ const GST_SECTIONS: CalcSection[] = [
   {
     heading: 'Worked example: a ₹50,000 consulting invoice',
     paragraphs: [
-      'A Chandigarh consultant bills a Mohali client ₹50,000 for services (SAC 9983, 18%). Both are in Punjab, so the invoice shows taxable value ₹50,000, CGST 9% ₹4,500, SGST 9% ₹4,500, total ₹59,000. If the client were in Delhi, the invoice would show IGST 18% ₹9,000 and the same ₹59,000 total.',
+      'A Chandigarh consultant bills a Chandigarh client ₹50,000 for services (SAC 9983, 18%). Both are in the same union territory, so the invoice shows taxable value ₹50,000, CGST 9% ₹4,500, UTGST 9% ₹4,500, total ₹59,000. If the client were in Mohali (Punjab) or Panchkula (Haryana), a different state even though it is next door, the invoice would show IGST 18% ₹9,000 and the same ₹59,000 total.',
       'If the consultant had agreed an all-inclusive fee of ₹59,000, the taxable value is ₹59,000 ÷ 1.18 = ₹50,000 and the GST is ₹9,000, exactly the figures above. The client, if registered, pays ₹59,000 but recovers ₹9,000 as input tax credit, so the net cost to the client is ₹50,000; to an unregistered client the tax is a real cost.',
     ],
   },
@@ -733,7 +733,7 @@ export const CALCULATORS: CalculatorDef[] = [
     keywords: ['gst calculator', 'gst calculator online', 'reverse gst calculator', 'gst inclusive calculator', 'cgst sgst calculator'],
     intro: 'Enter an amount, pick the GST rate and choose whether the amount is exclusive or inclusive of GST. The calculator shows the tax amount and the CGST/SGST or IGST split for intra-state and inter-state supplies.',
     updatedFor: 'GST 2.0 rates from 22 September 2025',
-    dateModified: '2026-11-16',
+    dateModified: '2026-11-24',
     sections: GST_SECTIONS, faqs: GST_FAQS, relatedServiceSlug: 'gst-monthly',
     ctaText: 'Need GSTR-1 and 3B filed every month? From ₹999 with ITC reconciliation.',
     related: ['tds', 'income-tax'], phase: 0,
